@@ -63,10 +63,10 @@ public final class NativeLoader {
                         PATH_TO_NATIVES.toString(),
                         WIN64,
                         libName);
+                Files.createDirectories(libDirPath);
                 final Path libFilePath = Paths.get(
                         libDirPath.toString(),
                         libFile);
-                Files.createDirectories(libDirPath);
                 try (InputStream in = Win64NativeLoader.class.getResourceAsStream("/natives/win64/" + libName + "/" + libFile)) {
                     try (OutputStream out = new FileOutputStream(libFilePath.toString())) {
                         final byte[] buffer = new byte[BUFFER_SIZE];
