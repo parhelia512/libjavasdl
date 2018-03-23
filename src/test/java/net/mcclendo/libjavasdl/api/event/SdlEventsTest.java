@@ -26,7 +26,7 @@ public final class SdlEventsTest {
 
         final SDL_Event event = (SDL_Event) Union.newInstance(SDL_Event.class);
         final SDL_QuitEvent quitEvent = new SDL_QuitEvent();
-        quitEvent.type = SDL_EventType.SDL_QUIT;
+        quitEvent.type = SdlEvents.SDL_QUIT;
         quitEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", quitEvent);
 
@@ -35,9 +35,9 @@ public final class SdlEventsTest {
         Assert.assertEquals(0, SdlEvents.SDL_PeepEvents(
                 events,
                 2,
-                SDL_eventaction.SDL_PEEKEVENT,
-                SDL_EventType.SDL_FIRSTEVENT,
-                SDL_EventType.SDL_LASTEVENT));
+                SdlEvents.SDL_PEEKEVENT,
+                SdlEvents.SDL_FIRSTEVENT,
+                SdlEvents.SDL_LASTEVENT));
 
         SdlEvents.SDL_PushEvent(event);
         SdlEvents.SDL_PushEvent(event);
@@ -45,17 +45,17 @@ public final class SdlEventsTest {
         Assert.assertEquals(2, SdlEvents.SDL_PeepEvents(
                 events,
                 2,
-                SDL_eventaction.SDL_PEEKEVENT,
-                SDL_EventType.SDL_FIRSTEVENT,
-                SDL_EventType.SDL_LASTEVENT));
+                SdlEvents.SDL_PEEKEVENT,
+                SdlEvents.SDL_FIRSTEVENT,
+                SdlEvents.SDL_LASTEVENT));
 
         Assert.assertEquals(
-                SDL_EventType.SDL_QUIT,
+                SdlEvents.SDL_QUIT,
                 Union.newInstance(
                         SDL_Event.class,
                         events.share(0)).readField("type"));
         Assert.assertEquals(
-                SDL_EventType.SDL_QUIT,
+                SdlEvents.SDL_QUIT,
                 Union.newInstance(
                         SDL_Event.class,
                         events.share(new SDL_Event().size())).readField("type"));
@@ -69,14 +69,14 @@ public final class SdlEventsTest {
 
         final SDL_Event event = (SDL_Event) Union.newInstance(SDL_Event.class);
         final SDL_QuitEvent quitEvent = (SDL_QuitEvent) Structure.newInstance(SDL_QuitEvent.class);
-        quitEvent.type = SDL_EventType.SDL_QUIT;
+        quitEvent.type = SdlEvents.SDL_QUIT;
         quitEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", quitEvent);
         event.setType("quit");
 
-        Assert.assertEquals(false, SdlEvents.SDL_HasEvent(SDL_EventType.SDL_QUIT));
+        Assert.assertEquals(false, SdlEvents.SDL_HasEvent(SdlEvents.SDL_QUIT));
         Assert.assertEquals(1, SdlEvents.SDL_PushEvent(event));
-        Assert.assertEquals(true, SdlEvents.SDL_HasEvent(SDL_EventType.SDL_QUIT));
+        Assert.assertEquals(true, SdlEvents.SDL_HasEvent(SdlEvents.SDL_QUIT));
 
         Sdl.SDL_Quit();
     }
@@ -88,22 +88,22 @@ public final class SdlEventsTest {
         final SDL_Event event = (SDL_Event) Union.newInstance(SDL_Event.class);
 
         final SDL_QuitEvent lowMemEvent = (SDL_QuitEvent) Structure.newInstance(SDL_QuitEvent.class);
-        lowMemEvent.type = SDL_EventType.SDL_APP_LOWMEMORY;
+        lowMemEvent.type = SdlEvents.SDL_APP_LOWMEMORY;
         lowMemEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", lowMemEvent);
         event.setType("quit");
         Assert.assertEquals(1, SdlEvents.SDL_PushEvent(event));
 
-        Assert.assertEquals(false, SdlEvents.SDL_HasEvents(SDL_EventType.SDL_FIRSTEVENT, SDL_EventType.SDL_QUIT));
+        Assert.assertEquals(false, SdlEvents.SDL_HasEvents(SdlEvents.SDL_FIRSTEVENT, SdlEvents.SDL_QUIT));
 
         final SDL_QuitEvent quitEvent = (SDL_QuitEvent) Structure.newInstance(SDL_QuitEvent.class);
-        quitEvent.type = SDL_EventType.SDL_QUIT;
+        quitEvent.type = SdlEvents.SDL_QUIT;
         quitEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", quitEvent);
         event.setType("quit");
         Assert.assertEquals(1, SdlEvents.SDL_PushEvent(event));
 
-        Assert.assertEquals(true, SdlEvents.SDL_HasEvents(SDL_EventType.SDL_FIRSTEVENT, SDL_EventType.SDL_QUIT));
+        Assert.assertEquals(true, SdlEvents.SDL_HasEvents(SdlEvents.SDL_FIRSTEVENT, SdlEvents.SDL_QUIT));
 
         Sdl.SDL_Quit();
     }
@@ -114,15 +114,15 @@ public final class SdlEventsTest {
 
         final SDL_Event event = (SDL_Event) Union.newInstance(SDL_Event.class);
         final SDL_QuitEvent quitEvent = (SDL_QuitEvent) Structure.newInstance(SDL_QuitEvent.class);
-        quitEvent.type = SDL_EventType.SDL_QUIT;
+        quitEvent.type = SdlEvents.SDL_QUIT;
         quitEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", quitEvent);
         event.setType("quit");
         Assert.assertEquals(1, SdlEvents.SDL_PushEvent(event));
 
-        Assert.assertEquals(true, SdlEvents.SDL_HasEvent(SDL_EventType.SDL_QUIT));
-        SdlEvents.SDL_FlushEvent(SDL_EventType.SDL_QUIT);
-        Assert.assertEquals(false, SdlEvents.SDL_HasEvent(SDL_EventType.SDL_QUIT));
+        Assert.assertEquals(true, SdlEvents.SDL_HasEvent(SdlEvents.SDL_QUIT));
+        SdlEvents.SDL_FlushEvent(SdlEvents.SDL_QUIT);
+        Assert.assertEquals(false, SdlEvents.SDL_HasEvent(SdlEvents.SDL_QUIT));
 
         Sdl.SDL_Quit();
     }
@@ -133,15 +133,15 @@ public final class SdlEventsTest {
 
         final SDL_Event event = (SDL_Event) Union.newInstance(SDL_Event.class);
         final SDL_QuitEvent quitEvent = (SDL_QuitEvent) Structure.newInstance(SDL_QuitEvent.class);
-        quitEvent.type = SDL_EventType.SDL_QUIT;
+        quitEvent.type = SdlEvents.SDL_QUIT;
         quitEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", quitEvent);
         event.setType("quit");
         Assert.assertEquals(1, SdlEvents.SDL_PushEvent(event));
 
-        Assert.assertEquals(true, SdlEvents.SDL_HasEvent(SDL_EventType.SDL_QUIT));
-        SdlEvents.SDL_FlushEvents(SDL_EventType.SDL_FIRSTEVENT, SDL_EventType.SDL_LASTEVENT);
-        Assert.assertEquals(false, SdlEvents.SDL_HasEvent(SDL_EventType.SDL_QUIT));
+        Assert.assertEquals(true, SdlEvents.SDL_HasEvent(SdlEvents.SDL_QUIT));
+        SdlEvents.SDL_FlushEvents(SdlEvents.SDL_FIRSTEVENT, SdlEvents.SDL_LASTEVENT);
+        Assert.assertEquals(false, SdlEvents.SDL_HasEvent(SdlEvents.SDL_QUIT));
 
         Sdl.SDL_Quit();
     }
@@ -152,7 +152,7 @@ public final class SdlEventsTest {
 
         final SDL_Event event = (SDL_Event) Union.newInstance(SDL_Event.class);
         final SDL_QuitEvent quitEvent = (SDL_QuitEvent) Structure.newInstance(SDL_QuitEvent.class);
-        quitEvent.type = SDL_EventType.SDL_QUIT;
+        quitEvent.type = SdlEvents.SDL_QUIT;
         quitEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", quitEvent);
         event.setType("quit");
@@ -169,7 +169,7 @@ public final class SdlEventsTest {
 
         final SDL_Event event = (SDL_Event) Union.newInstance(SDL_Event.class);
         final SDL_QuitEvent quitEvent = (SDL_QuitEvent) Structure.newInstance(SDL_QuitEvent.class);
-        quitEvent.type = SDL_EventType.SDL_QUIT;
+        quitEvent.type = SdlEvents.SDL_QUIT;
         quitEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", quitEvent);
         event.setType("quit");
@@ -186,7 +186,7 @@ public final class SdlEventsTest {
 
         final SDL_Event event = (SDL_Event) Union.newInstance(SDL_Event.class);
         final SDL_QuitEvent quitEvent = (SDL_QuitEvent) Structure.newInstance(SDL_QuitEvent.class);
-        quitEvent.type = SDL_EventType.SDL_QUIT;
+        quitEvent.type = SdlEvents.SDL_QUIT;
         quitEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", quitEvent);
         event.setType("quit");
@@ -204,14 +204,14 @@ public final class SdlEventsTest {
 
         final SDL_Event event = (SDL_Event) Union.newInstance(SDL_Event.class);
         final SDL_QuitEvent quitEvent = (SDL_QuitEvent) Structure.newInstance(SDL_QuitEvent.class);
-        quitEvent.type = SDL_EventType.SDL_QUIT;
+        quitEvent.type = SdlEvents.SDL_QUIT;
         quitEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", quitEvent);
         event.setType("quit");
 
-        Assert.assertEquals(false, SdlEvents.SDL_HasEvent(SDL_EventType.SDL_QUIT));
+        Assert.assertEquals(false, SdlEvents.SDL_HasEvent(SdlEvents.SDL_QUIT));
         Assert.assertEquals(1, SdlEvents.SDL_PushEvent(event));
-        Assert.assertEquals(true, SdlEvents.SDL_HasEvent(SDL_EventType.SDL_QUIT));
+        Assert.assertEquals(true, SdlEvents.SDL_HasEvent(SdlEvents.SDL_QUIT));
 
         Sdl.SDL_Quit();
     }
@@ -222,7 +222,7 @@ public final class SdlEventsTest {
 
         final SDL_Event event = (SDL_Event) Union.newInstance(SDL_Event.class);
         final SDL_QuitEvent quitEvent = (SDL_QuitEvent) Structure.newInstance(SDL_QuitEvent.class);
-        quitEvent.type = SDL_EventType.SDL_QUIT;
+        quitEvent.type = SdlEvents.SDL_QUIT;
         quitEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", quitEvent);
         event.setType("quit");
@@ -267,7 +267,7 @@ public final class SdlEventsTest {
 
         final SDL_Event event = (SDL_Event) Union.newInstance(SDL_Event.class);
         final SDL_QuitEvent quitEvent = (SDL_QuitEvent) Structure.newInstance(SDL_QuitEvent.class);
-        quitEvent.type = SDL_EventType.SDL_QUIT;
+        quitEvent.type = SdlEvents.SDL_QUIT;
         quitEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", quitEvent);
         event.setType("quit");
@@ -291,7 +291,7 @@ public final class SdlEventsTest {
 
         final SDL_Event event = (SDL_Event) Union.newInstance(SDL_Event.class);
         final SDL_QuitEvent quitEvent = (SDL_QuitEvent) Structure.newInstance(SDL_QuitEvent.class);
-        quitEvent.type = SDL_EventType.SDL_QUIT;
+        quitEvent.type = SdlEvents.SDL_QUIT;
         quitEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", quitEvent);
         event.setType("quit");
@@ -324,7 +324,7 @@ public final class SdlEventsTest {
 
         final SDL_Event event = (SDL_Event) Union.newInstance(SDL_Event.class);
         final SDL_QuitEvent quitEvent = new SDL_QuitEvent();
-        quitEvent.type = SDL_EventType.SDL_QUIT;
+        quitEvent.type = SdlEvents.SDL_QUIT;
         quitEvent.timestamp = (int) TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         event.writeField("quit", quitEvent);
 
@@ -348,14 +348,14 @@ public final class SdlEventsTest {
         Sdl.SDL_Init(Sdl.SDL_INIT_EVENTS);
 
         Assert.assertEquals(SdlEvents.SDL_ENABLE, SdlEvents.SDL_GetEventState(
-                SDL_EventType.SDL_QUIT));
+                SdlEvents.SDL_QUIT));
 
         SdlEvents.SDL_EventState(
-                SDL_EventType.SDL_QUIT,
+                SdlEvents.SDL_QUIT,
                 SdlEvents.SDL_DISABLE);
 
         Assert.assertEquals(SdlEvents.SDL_DISABLE, SdlEvents.SDL_GetEventState(
-                SDL_EventType.SDL_QUIT));
+                SdlEvents.SDL_QUIT));
 
         Sdl.SDL_Quit();
     }
