@@ -28,7 +28,7 @@ public final class SdlEvents {
     public static native void SDL_PumpEvents();
 
     public static native int SDL_PeepEvents(
-            SDL_Event events,
+            Pointer events,
             int numevents,
             int action,
             int minType,
@@ -66,7 +66,7 @@ public final class SdlEvents {
             Pointer userdata);
 
     public static native boolean SDL_GetEventFilter(
-            SDL_EventFilter filter,
+            PointerByReference filter,
             PointerByReference userdata);
 
     public static native void SDL_AddEventWatch(
