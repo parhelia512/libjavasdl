@@ -8,6 +8,7 @@ import org.junit.Test;
 import net.mcclendo.libjavasdl.api.Sdl;
 import net.mcclendo.libjavasdl.api.rect.SDL_Rect;
 
+import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
@@ -748,6 +749,7 @@ public final class SdlVideoTest {
         SdlVideo.SDL_RaiseWindow(
                 window);
         Assert.assertTrue((SdlVideo.SDL_GetWindowFlags(window) & SdlVideo.SDL_WINDOW_INPUT_FOCUS) != 0);
+        SdlVideo.SDL_SetWindowInputFocus(window);
 
         SdlVideo.SDL_RestoreWindow(
                 window);
@@ -805,6 +807,226 @@ public final class SdlVideoTest {
                         window,
                         rects[0].getPointer(),
                         2));
+
+        SdlVideo.SDL_DestroyWindow(window);
+
+        Sdl.SDL_Quit();
+    }
+
+    @Test
+    public void windowGrab() {
+        Sdl.SDL_Init(Sdl.SDL_INIT_VIDEO);
+
+        final String windowTitle = UUID.randomUUID().toString();
+
+        final SDL_Window window = SdlVideo.SDL_CreateWindow(
+                windowTitle,
+                0,
+                0,
+                640,
+                480,
+                SdlVideo.SDL_WINDOW_INPUT_GRABBED);
+
+        Assert.assertNotNull(window);
+        Assert.assertTrue(SdlVideo.SDL_GetWindowGrab(window));
+        Assert.assertEquals(
+                window.getPointer(),
+                SdlVideo.SDL_GetGrabbedWindow().getPointer());
+        SdlVideo.SDL_SetWindowGrab(
+                window,
+                false);
+        Assert.assertFalse(SdlVideo.SDL_GetWindowGrab(window));
+        Assert.assertNull(
+                SdlVideo.SDL_GetGrabbedWindow());
+
+        SdlVideo.SDL_DestroyWindow(window);
+
+        Sdl.SDL_Quit();
+    }
+
+    @Test
+    public void windowBrightness() {
+        Sdl.SDL_Init(Sdl.SDL_INIT_VIDEO);
+
+        final String windowTitle = UUID.randomUUID().toString();
+
+        final SDL_Window window = SdlVideo.SDL_CreateWindow(
+                windowTitle,
+                0,
+                0,
+                640,
+                480,
+                0);
+        Assert.assertNotNull(window);
+        Assert.assertTrue(SdlVideo.SDL_GetWindowBrightness(window) == 1f);
+        Assert.assertEquals(
+                0,
+                SdlVideo.SDL_SetWindowBrightness(
+                        window,
+                        0.5f));
+        Assert.assertTrue(SdlVideo.SDL_GetWindowBrightness(window) == 0.5f);
+
+        SdlVideo.SDL_DestroyWindow(window);
+
+        Sdl.SDL_Quit();
+    }
+
+    @Test
+    public void windowOpacity() {
+        Sdl.SDL_Init(Sdl.SDL_INIT_VIDEO);
+
+        final String windowTitle = UUID.randomUUID().toString();
+
+        final SDL_Window window = SdlVideo.SDL_CreateWindow(
+                windowTitle,
+                0,
+                0,
+                640,
+                480,
+                0);
+        Assert.assertNotNull(window);
+
+        final FloatByReference opacity = new FloatByReference();
+        Assert.assertEquals(
+                0,
+                SdlVideo.SDL_GetWindowOpacity(
+                        window,
+                        opacity));
+        Assert.assertEquals(1, opacity.getValue(), .01f);
+        Assert.assertEquals(
+                0,
+                SdlVideo.SDL_SetWindowOpacity(
+                        window,
+                        0.5f));
+        Assert.assertEquals(
+                0,
+                SdlVideo.SDL_GetWindowOpacity(
+                        window,
+                        opacity));
+        Assert.assertEquals(0.5f, opacity.getValue(), .01f);
+
+        Assert.assertEquals(
+                0,
+                SdlVideo.SDL_SetWindowBrightness(
+                        window,
+                        0.5f));
+        Assert.assertTrue(SdlVideo.SDL_GetWindowBrightness(window) == 0.5f);
+
+        SdlVideo.SDL_DestroyWindow(window);
+
+        Sdl.SDL_Quit();
+    }
+
+    @Test
+    public void windowModal() {
+        Sdl.SDL_Init(Sdl.SDL_INIT_VIDEO);
+
+        final SDL_Window parentWindow = SdlVideo.SDL_CreateWindow(
+                UUID.randomUUID().toString(),
+                0,
+                0,
+                640,
+                480,
+                0);
+        Assert.assertNotNull(parentWindow);
+
+        final SDL_Window modalWindow = SdlVideo.SDL_CreateWindow(
+                UUID.randomUUID().toString(),
+                0,
+                0,
+                640,
+                480,
+                0);
+        Assert.assertNotNull(modalWindow);
+
+        SdlVideo.SDL_SetWindowModalFor(modalWindow, parentWindow);
+
+        SdlVideo.SDL_DestroyWindow(modalWindow);
+        SdlVideo.SDL_DestroyWindow(parentWindow);
+
+        Sdl.SDL_Quit();
+    }
+
+    @Test
+    public void gammaRamp() {
+        Sdl.SDL_Init(Sdl.SDL_INIT_VIDEO);
+
+        final SDL_Window window = SdlVideo.SDL_CreateWindow(
+                UUID.randomUUID().toString(),
+                0,
+                0,
+                640,
+                480,
+                0);
+        Assert.assertNotNull(window);
+
+        final Pointer r = new Memory(2 * 256);
+        final Pointer g = new Memory(2 * 256);
+        final Pointer b = new Memory(2 * 256);
+
+        Assert.assertEquals(
+                0,
+                SdlVideo.SDL_GetWindowGammaRamp(
+                        window,
+                        r,
+                        g,
+                        b));
+
+        Assert.assertEquals(
+                0,
+                SdlVideo.SDL_SetWindowGammaRamp(
+                        window,
+                        r,
+                        g,
+                        b));
+
+        SdlVideo.SDL_DestroyWindow(window);
+
+        Sdl.SDL_Quit();
+    }
+
+    @Test
+    public void hitTest() {
+        Sdl.SDL_Init(Sdl.SDL_INIT_VIDEO);
+
+        final SDL_Window window = SdlVideo.SDL_CreateWindow(
+                UUID.randomUUID().toString(),
+                0,
+                0,
+                640,
+                480,
+                0);
+        Assert.assertNotNull(window);
+
+        Assert.assertEquals(
+                0,
+                SdlVideo.SDL_SetWindowHitTest(
+                        window,
+                        (w, a, d) -> SdlVideo.SDL_HITTEST_NORMAL,
+                        Pointer.NULL));
+
+        SdlVideo.SDL_DestroyWindow(window);
+
+        Sdl.SDL_Quit();
+    }
+
+    @Test
+    public void screensaver() {
+        Sdl.SDL_Init(Sdl.SDL_INIT_VIDEO);
+
+        final SDL_Window window = SdlVideo.SDL_CreateWindow(
+                UUID.randomUUID().toString(),
+                0,
+                0,
+                640,
+                480,
+                0);
+        Assert.assertNotNull(window);
+
+        SdlVideo.SDL_DisableScreenSaver();
+        Assert.assertFalse(SdlVideo.SDL_IsScreenSaverEnabled());
+        SdlVideo.SDL_EnableScreenSaver();
+        Assert.assertTrue(SdlVideo.SDL_IsScreenSaverEnabled());
 
         SdlVideo.SDL_DestroyWindow(window);
 

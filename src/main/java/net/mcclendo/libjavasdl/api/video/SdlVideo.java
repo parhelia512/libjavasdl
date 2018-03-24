@@ -99,6 +99,17 @@ public final class SdlVideo {
     public static final int SDL_GL_CONTEXT_RESET_NO_NOTIFICATION = 0x0000;
     public static final int SDL_GL_CONTEXT_RESET_LOSE_CONTEXT = 0x0001;
 
+    public static final int SDL_HITTEST_NORMAL = 0;
+    public static final int SDL_HITTEST_DRAGGABLE = 1;
+    public static final int SDL_HITTEST_RESIZE_TOPLEFT = 2;
+    public static final int SDL_HITTEST_RESIZE_TOP = 3;
+    public static final int SDL_HITTEST_RESIZE_TOPRIGHT = 4;
+    public static final int SDL_HITTEST_RESIZE_RIGHT = 5;
+    public static final int SDL_HITTEST_RESIZE_BOTTOMRIGHT = 6;
+    public static final int SDL_HITTEST_RESIZE_BOTTOM = 7;
+    public static final int SDL_HITTEST_RESIZE_BOTTOMLEFT = 8;
+    public static final int SDL_HITTEST_RESIZE_LEFT = 9;
+
     static {
         NativeLoader.loadLibrary(
                 SdlVideo.class,
@@ -235,17 +246,17 @@ public final class SdlVideo {
 
     public static native Pointer SDL_SetWindowData(
             SDL_Window window,
-                                                String name,
-                                                    Pointer userdata);
+            String name,
+            Pointer userdata);
 
     public static native Pointer SDL_GetWindowData(
             SDL_Window window,
-                                                String name);
+            String name);
 
 
     public static native void SDL_SetWindowPosition(
             SDL_Window window,
-                                                       int x,
+            int x,
             int y);
 
     public static native void SDL_GetWindowPosition(
@@ -256,7 +267,7 @@ public final class SdlVideo {
     public static native void SDL_SetWindowSize(
             SDL_Window window,
             int w,
-                                                   int h);
+            int h);
 
     public static native void SDL_GetWindowSize(
             SDL_Window window,
@@ -265,39 +276,39 @@ public final class SdlVideo {
 
     public static native int SDL_GetWindowBordersSize(
             SDL_Window window,
-                                                         IntByReference top,
+            IntByReference top,
             IntByReference left,
             IntByReference bottom,
             IntByReference right);
 
     public static native void SDL_SetWindowMinimumSize(
             SDL_Window window,
-                                                          int minW,
+            int minW,
             int minH);
 
     public static native void SDL_GetWindowMinimumSize(
             SDL_Window window,
-                                                          IntByReference w,
+            IntByReference w,
             IntByReference h);
 
 
     public static native void SDL_SetWindowMaximumSize(
             SDL_Window window,
-                                                          int maxW,
+            int maxW,
             int maxH);
 
     public static native void SDL_GetWindowMaximumSize(
             SDL_Window window,
-                                                          IntByReference w,
+            IntByReference w,
             IntByReference h);
 
     public static native void SDL_SetWindowBordered(
             SDL_Window window,
-                                                       boolean bordered);
+            boolean bordered);
 
     public static native void SDL_SetWindowResizable(
             SDL_Window window,
-                                                        boolean resizable);
+            boolean resizable);
 
     public static native void SDL_ShowWindow(
             SDL_Window window);
@@ -319,7 +330,7 @@ public final class SdlVideo {
 
     public static native int SDL_SetWindowFullscreen(
             SDL_Window window,
-                                                        int flags);
+            int flags);
 
     public static native SDL_Surface SDL_GetWindowSurface(
             SDL_Window window);
@@ -332,11 +343,108 @@ public final class SdlVideo {
             Pointer rects,
             int numrects);
 
+    public static native int SDL_SetWindowGrab(
+            SDL_Window window,
+            boolean grabbed);
 
+    public static native boolean SDL_GetWindowGrab(
+            SDL_Window window);
 
+    public static native SDL_Window SDL_GetGrabbedWindow();
 
+    public static native int SDL_SetWindowBrightness(
+            SDL_Window window,
+            float brightness);
 
+    public static native float SDL_GetWindowBrightness(
+            SDL_Window window);
+
+    public static native int SDL_SetWindowOpacity(
+            SDL_Window window,
+            float opacity);
+
+    public static native int SDL_GetWindowOpacity(
+            SDL_Window window,
+            FloatByReference outOpacity);
+
+    public static native int SDL_SetWindowModalFor(
+            SDL_Window modalWindow,
+            SDL_Window parentWindow);
+
+    public static native int SDL_SetWindowInputFocus(
+            SDL_Window window);
+
+    public static native int SDL_SetWindowGammaRamp(
+            SDL_Window window,
+            Pointer red,
+            Pointer green,
+            Pointer blue);
+
+    public static native int SDL_GetWindowGammaRamp(
+            SDL_Window window,
+            Pointer red,
+            Pointer green,
+            Pointer blue);
+
+    public static native int SDL_SetWindowHitTest(
+            SDL_Window window,
+            SDL_HitTest callback,
+            Pointer callbackData);
 
     public static native void SDL_DestroyWindow(
             SDL_Window window);
+
+    public static native boolean SDL_IsScreenSaverEnabled();
+
+    public static native void SDL_EnableScreenSaver();
+
+    public static native void SDL_DisableScreenSaver();
+
+    public static native int SDL_GL_LoadLibrary(
+            String path);
+
+    public static native Pointer SDL_GL_GetProcAddress(
+            String proc);
+
+    public static native void SDL_GL_UnloadLibrary();
+
+    public static native boolean SDL_GL_ExtensionSupported(
+            String extension);
+
+    public static native void SDL_GL_ResetAttributes();
+
+    public static native int SDL_GL_SetAttribute(
+            int attr,
+            int value);
+
+    public static native int SDL_GL_GetAttribute(
+            int attr,
+            IntByReference value);
+
+    public static native SDL_GLContext SDL_GL_CreateContext(
+            SDL_Window window);
+
+    public static native int SDL_GL_MakeCurrent(
+            SDL_Window window,
+            SDL_GLContext context);
+
+    public static native SDL_Window SDL_GL_GetCurrentWindow();
+
+    public static native SDL_GLContext SDL_GL_GetCurrentContext();
+
+    public static native void SDL_GL_GetDrawableSize(
+            SDL_Window window,
+            IntByReference w,
+            IntByReference h);
+
+    public static native int SDL_GL_SetSwapInterval(
+            int interval);
+
+    public static native int SDL_GL_GetSwapInterval();
+
+    public static native void SDL_GL_SwapWindow(
+            SDL_Window window);
+
+    public static native void SDL_GL_DeleteContext(
+            SDL_GLContext context);
 }
