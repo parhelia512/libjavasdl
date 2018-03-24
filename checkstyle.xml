@@ -143,7 +143,7 @@
         </module>
         <module name="MemberName"/>
         <module name="MethodName">
-            <property name="format" value="(^[a-z][a-zA-Z0-9]*$)|(^SDL_[A-Z][a-zA-Z0-9]*$)"/>
+            <property name="format" value="(^[a-z][a-zA-Z0-9]*$)|(^SDL_[A-Z][a-zA-Z0-9_]*$)"/>
         </module>
         <module name="MethodTypeParameterName"/>
         <module name="PackageName"/>
