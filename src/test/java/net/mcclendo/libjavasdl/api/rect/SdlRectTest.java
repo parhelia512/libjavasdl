@@ -1,17 +1,15 @@
-package net.mcclendo.libjavasdl.api.video;
+package net.mcclendo.libjavasdl.api.rect;
 
 import org.junit.Test;
 
 import net.mcclendo.libjavasdl.api.Sdl;
 
-public final class SdlVideoTest {
+public final class SdlRectTest {
 
     @Test
     public void control() {
         Sdl.SDL_Init(0);
-
-        SdlVideo.SDL_GetNumVideoDrivers();
-
+        SdlRect.SDL_RectEmpty(new SDL_Rect());
         Sdl.SDL_Quit();
     }
 }

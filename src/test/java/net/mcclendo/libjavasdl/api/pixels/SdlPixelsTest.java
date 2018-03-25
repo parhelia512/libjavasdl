@@ -1,17 +1,16 @@
-package net.mcclendo.libjavasdl.api.video;
+package net.mcclendo.libjavasdl.api.pixels;
 
 import org.junit.Test;
 
 import net.mcclendo.libjavasdl.api.Sdl;
 
-public final class SdlVideoTest {
+public final class SdlPixelsTest {
 
     @Test
     public void control() {
         Sdl.SDL_Init(0);
-
-        SdlVideo.SDL_GetNumVideoDrivers();
-
+        SdlPixels.SDL_FreePalette(
+                SdlPixels.SDL_AllocPalette(1));
         Sdl.SDL_Quit();
     }
 }
