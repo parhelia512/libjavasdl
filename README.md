@@ -6,8 +6,6 @@ libjavasdl is a mapping of SDL2 APIs to Java. There are two goals for libjavasdl
 Because of these goals there is a lot of room for Java niceties (Enums, encapulation, autoclosable, type-safety, etc.).
 These will be applied at some time int he future by wrapping the raw API.
 
-## Differences
+## Not Implemented
 * SDL_assert.h was not implemented.
-
-## Untested
-* GL support routines in SDL_video.h
+* SDL_SysWMinfo.h was not implemented.
