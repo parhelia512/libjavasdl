@@ -9,3 +9,5 @@ These will be applied at some time int he future by wrapping the raw API.
 ## Not Implemented
 * SDL_assert.h was not implemented.
 * SDL_SysWMinfo.h was not implemented.
+* Threads (SDL_thread.h, SDL_mutex.h, SDL_atomic.h) was not implemented.
+* Platform and CPU Information (SDL_platform.h, SDL_cpuinfo.h, SDL_endian.h, SDL_bits.h)
