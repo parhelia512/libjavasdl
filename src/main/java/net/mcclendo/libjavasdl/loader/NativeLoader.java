@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.sun.jna.Library;
 import com.sun.jna.Native;
 
 public final class NativeLoader {
@@ -39,15 +40,12 @@ public final class NativeLoader {
         Native.register(nativeClass, library.getLibraryName());
     }
 
-    public static <T> T loadLibrary(
+    public static <T extends Library> T loadLibrary(
             final Class<?> nativeClass,
             final NativeLibrary library,
             final Class<T> clazz) {
         loadLibrary(nativeClass, library);
-
-        return Native.loadLibrary(
-                library.getLibraryName(),
-                clazz);
+        return Native.load(library.getLibraryName(), clazz);
     }
 
     private static class Win64NativeLoader {
