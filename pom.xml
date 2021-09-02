@@ -6,7 +6,7 @@
 
     <groupId>io.github.libjsdl</groupId>
     <artifactId>libjsdl</artifactId>
-    <version>2.0.8</version>
+    <version>2.0.8-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
