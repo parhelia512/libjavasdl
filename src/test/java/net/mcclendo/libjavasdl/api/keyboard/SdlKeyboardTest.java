@@ -1,6 +1,6 @@
 package net.mcclendo.libjavasdl.api.keyboard;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import net.mcclendo.libjavasdl.api.Sdl;
 import net.mcclendo.libjavasdl.api.keybaord.SdlKeyboard;
