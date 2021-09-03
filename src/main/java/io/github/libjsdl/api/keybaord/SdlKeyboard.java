@@ -5,7 +5,7 @@ import com.sun.jna.ptr.IntByReference;
 
 import io.github.libjsdl.api.rect.SDL_Rect;
 import io.github.libjsdl.api.video.SDL_Window;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 @SuppressWarnings({
         "checkstyle:MagicNumber",
@@ -554,16 +554,14 @@ public final class SdlKeyboard {
     public static final int KMOD_GUI = (KMOD_LGUI | KMOD_RGUI);
 
     static {
-        NativeLoader.loadLibrary(
-                SdlKeyboard.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlKeyboard.class);
     }
 
     private SdlKeyboard() {
     }
 
     public static int SDL_SCANCODE_TO_KEYCODE(
-            final int x) {
+            int x) {
         return (x | SDLK_SCANCODE_MASK);
     }
 

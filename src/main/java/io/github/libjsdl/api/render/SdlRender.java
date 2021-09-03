@@ -13,7 +13,7 @@ import io.github.libjsdl.api.rect.SDL_Point;
 import io.github.libjsdl.api.rect.SDL_Rect;
 import io.github.libjsdl.api.surface.SDL_Surface;
 import io.github.libjsdl.api.video.SDL_Window;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 public final class SdlRender {
 
@@ -35,9 +35,7 @@ public final class SdlRender {
     public static final int SDL_FLIP_VERTICAL = 0x00000002;
 
     static {
-        NativeLoader.loadLibrary(
-                SdlRender.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlRender.class);
     }
 
     private SdlRender() {

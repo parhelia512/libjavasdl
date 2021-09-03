@@ -4,7 +4,7 @@ import io.github.libjsdl.api.joystick.SDL_Joystick;
 import io.github.libjsdl.api.joystick.SDL_JoystickGUID;
 import io.github.libjsdl.api.rwops.SDL_RWops;
 import io.github.libjsdl.api.rwops.SdlRWops;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
 public final class SdlGamecontroller {
@@ -42,16 +42,14 @@ public final class SdlGamecontroller {
     private static final int SDL_CONTROLLER_BUTTON_MAX = 15;
 
     static {
-        NativeLoader.loadLibrary(
-                SdlGamecontroller.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlGamecontroller.class);
     }
 
     private SdlGamecontroller() {
     }
 
     public static int SDL_GameControllerAddMappingsFromFile(
-            final String file) {
+            String file) {
         return SDL_GameControllerAddMappingsFromRW(SdlRWops.SDL_RWFromFile(file, "rb"), 1);
     }
 

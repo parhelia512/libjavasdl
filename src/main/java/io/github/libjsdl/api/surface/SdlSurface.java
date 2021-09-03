@@ -9,7 +9,7 @@ import io.github.libjsdl.api.pixels.SDL_PixelFormat;
 import io.github.libjsdl.api.rect.SDL_Rect;
 import io.github.libjsdl.api.rwops.SDL_RWops;
 import io.github.libjsdl.api.rwops.SdlRWops;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 public final class SdlSurface {
 
@@ -24,9 +24,7 @@ public final class SdlSurface {
     public static final int SDL_YUV_CONVERSION_AUTOMATIC = 3;
 
     static {
-        NativeLoader.loadLibrary(
-                SdlSurface.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlSurface.class);
     }
 
     private SdlSurface() {
@@ -34,7 +32,7 @@ public final class SdlSurface {
 
     @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
     public static boolean SDL_MUSTLOCK(
-            final SDL_Surface s) {
+            SDL_Surface s) {
         return ((s.flags & SDL_RLEACCEL) != 0);
     }
 
@@ -94,7 +92,7 @@ public final class SdlSurface {
             int freesrc);
 
     public static SDL_Surface SDL_LoadBMP(
-            final String file) {
+            String file) {
         return SDL_LoadBMP_RW(SdlRWops.SDL_RWFromFile(file, "rb"), 1);
     }
 
@@ -104,8 +102,8 @@ public final class SdlSurface {
             int freedst);
 
     public static int SDL_SaveBMP(
-            final SDL_Surface surface,
-            final String file) {
+            SDL_Surface surface,
+            String file) {
         return SDL_SaveBMP_RW(
                 surface,
                 SdlRWops.SDL_RWFromFile(file, "wb"),
@@ -197,10 +195,10 @@ public final class SdlSurface {
             int color);
 
     public static int SDL_BlitSurface(
-            final SDL_Surface src,
-            final SDL_Rect srcrect,
-            final SDL_Surface dst,
-            final SDL_Rect dstrect) {
+            SDL_Surface src,
+            SDL_Rect srcrect,
+            SDL_Surface dst,
+            SDL_Rect dstrect) {
         return SDL_UpperBlit(
                 src,
                 srcrect,
@@ -227,10 +225,10 @@ public final class SdlSurface {
             SDL_Rect dstrect);
 
     public static int SDL_BlitScaled(
-            final SDL_Surface src,
-            final SDL_Rect srcrect,
-            final SDL_Surface dst,
-            final SDL_Rect dstrect) {
+            SDL_Surface src,
+            SDL_Rect srcrect,
+            SDL_Surface dst,
+            SDL_Rect dstrect) {
         return SDL_UpperBlitScaled(
                 src,
                 srcrect,

@@ -5,7 +5,7 @@ import com.sun.jna.ptr.IntByReference;
 
 import io.github.libjsdl.api.surface.SDL_Surface;
 import io.github.libjsdl.api.video.SDL_Window;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
 public final class SdlMouse {
@@ -39,9 +39,7 @@ public final class SdlMouse {
     public static final int SDL_BUTTON_X2MASK = SDL_BUTTON(SDL_BUTTON_X2);
 
     static {
-        NativeLoader.loadLibrary(
-                SdlMouse.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlMouse.class);
     }
 
     private SdlMouse() {
@@ -108,7 +106,7 @@ public final class SdlMouse {
             int toggle);
 
     public static int SDL_BUTTON(
-            final int x) {
+            int x) {
         return (1 << ((x) - 1));
     }
 }

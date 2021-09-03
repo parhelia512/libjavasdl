@@ -3,7 +3,7 @@ package io.github.libjsdl.api.joystick;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
 
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
 public final class SdlJoystick {
@@ -41,9 +41,7 @@ public final class SdlJoystick {
     public static final int SDL_HAT_LEFTDOWN = (SDL_HAT_LEFT | SDL_HAT_DOWN);
 
     static {
-        NativeLoader.loadLibrary(
-                SdlJoystick.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlJoystick.class);
     }
 
     private SdlJoystick() {

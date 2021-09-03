@@ -1,6 +1,6 @@
 package io.github.libjsdl.api;
 
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 public final class Sdl {
 
@@ -20,26 +20,29 @@ public final class Sdl {
                     + SDL_INIT_HAPTIC
                     + SDL_INIT_GAMECONTROLLER;
 
-    static {
-        NativeLoader.loadLibrary(
-                Sdl.class,
-                NativeLoader.NativeLibrary.SDL2);
-    }
-
     private Sdl() {
     }
 
-    public static native int SDL_Init(
-            int flags);
+    public static int SDL_Init(int flags) {
+        NativeLoader.loadSdl2Library();
+        return SdlInternalInit.SDL_Init(flags);
+    }
 
-    public static native int SDL_InitSubSystem(
-            int flags);
+    public static int SDL_InitSubSystem(int flags) {
+        NativeLoader.loadSdl2Library();
+        return SdlInternalInit.SDL_InitSubSystem(flags);
+    }
 
-    public static native void SDL_QuitSubSystem(
-            int flags);
+    public static int SDL_WasInit(int flags) {
+        NativeLoader.loadSdl2Library();
+        return SdlInternalInit.SDL_WasInit(flags);
+    }
 
-    public static native int SDL_WasInit(
-            int flags);
+    public static void SDL_Quit() {
+        SdlInternalInit.SDL_Quit();
+    }
 
-    public static native void SDL_Quit();
+    public static void SDL_QuitSubSystem(int flags) {
+        SdlInternalInit.SDL_QuitSubSystem(flags);
+    }
 }

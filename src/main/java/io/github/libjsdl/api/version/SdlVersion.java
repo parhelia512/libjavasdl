@@ -1,7 +1,7 @@
 package io.github.libjsdl.api.version;
 
 import io.github.libjsdl.api.log.SDL_version;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 @SuppressWarnings({
         "checkstyle:MagicNumber",
@@ -13,9 +13,7 @@ public final class SdlVersion {
     public static final int SDL_PATCHLEVEL = 8;
 
     static {
-        NativeLoader.loadLibrary(
-                SdlVersion.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlVersion.class);
     }
 
     private SdlVersion() {
@@ -31,9 +29,9 @@ public final class SdlVersion {
     }
 
     public static int SDL_VERSIONNUM(
-            final int x,
-            final int y,
-            final int z) {
+            int x,
+            int y,
+            int z) {
         return ((x) * 1000 + (y) * 100 + (z));
     }
 
@@ -42,9 +40,9 @@ public final class SdlVersion {
     }
 
     public static boolean SDL_VERSION_ATLEAST(
-            final int x,
-            final int y,
-            final int z) {
+            int x,
+            int y,
+            int z) {
         return (SDL_COMPILEDVERSION() >= SDL_VERSIONNUM(x, y, z));
     }
 

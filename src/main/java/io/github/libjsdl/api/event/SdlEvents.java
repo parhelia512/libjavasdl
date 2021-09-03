@@ -4,7 +4,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
 
 import io.github.libjsdl.api.event.events.SDL_Event;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 @SuppressWarnings("checkstyle:DeclarationOrder")
 public final class SdlEvents {
@@ -86,9 +86,7 @@ public final class SdlEvents {
     public static final int SDL_GETEVENT = 2;
 
     static {
-        NativeLoader.loadLibrary(
-                SdlEvents.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlEvents.class);
     }
 
     private SdlEvents() {
@@ -160,7 +158,7 @@ public final class SdlEvents {
             int state);
 
     public static byte SDL_GetEventState(
-            final int type) {
+            int type) {
         return SDL_EventState(type, SDL_QUERY);
     }
 
