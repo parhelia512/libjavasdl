@@ -1,11 +1,11 @@
 package io.github.libjsdl.api.surface;
 
 import com.sun.jna.Pointer;
+import com.sun.jna.Structure;
 
 import io.github.libjsdl.api.rect.SDL_Rect;
-import io.github.libjsdl.jna.AbstractSdlStructure;
 
-public final class SDL_Surface extends AbstractSdlStructure {
+public final class SDL_Surface extends Structure {
 
     public int flags;
     public Pointer format;

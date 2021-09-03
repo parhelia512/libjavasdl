@@ -1,8 +1,14 @@
 package io.github.libjsdl.api.event.events;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
-public final class SDL_TextInputSdlStructure extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "timestamp",
+        "windowID",
+        "text"
+})
+public final class SDL_TextInputSdlStructure extends Structure {
 
     private static final int BUF_SIZE = 32;
 

@@ -1,10 +1,20 @@
 package io.github.libjsdl.api.event.events;
 
 import com.sun.jna.NativeLong;
+import com.sun.jna.Structure;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
-
-public final class SDL_MultiGestureEvent extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "timestamp",
+        "touchId",
+        "dTheta",
+        "dDist",
+        "x",
+        "y",
+        "numFingers",
+        "padding"
+})
+public final class SDL_MultiGestureEvent extends Structure {
 
     public int type;
     public int timestamp;

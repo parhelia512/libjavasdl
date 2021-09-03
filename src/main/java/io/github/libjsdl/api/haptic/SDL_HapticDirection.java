@@ -1,9 +1,14 @@
 package io.github.libjsdl.api.haptic;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
 @SuppressWarnings("checkstyle:MagicNumber")
-public final class SDL_HapticDirection extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "dir"
+})
+public final class SDL_HapticDirection extends Structure {
+
     public byte type;
-    int[] dir = new int[3];
+    public int[] dir = new int[3];
 }

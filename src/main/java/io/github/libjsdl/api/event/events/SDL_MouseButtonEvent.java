@@ -1,8 +1,20 @@
 package io.github.libjsdl.api.event.events;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
-public final class SDL_MouseButtonEvent extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "timestamp",
+        "windowID",
+        "which",
+        "button",
+        "state",
+        "clicks",
+        "padding1",
+        "x",
+        "y"
+})
+public final class SDL_MouseButtonEvent extends Structure {
 
     public int type;
     public int timestamp;

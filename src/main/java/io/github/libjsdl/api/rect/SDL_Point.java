@@ -1,8 +1,12 @@
 package io.github.libjsdl.api.rect;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
-public final class SDL_Point extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "x",
+        "y"
+})
+public final class SDL_Point extends Structure {
 
     public int x;
     public int y;

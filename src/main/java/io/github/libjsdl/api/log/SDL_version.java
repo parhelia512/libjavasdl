@@ -1,8 +1,13 @@
 package io.github.libjsdl.api.log;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
-public final class SDL_version extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "major",
+        "minor",
+        "patch"
+})
+public final class SDL_version extends Structure {
 
     public byte major;
     public byte minor;

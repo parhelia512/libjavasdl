@@ -1,10 +1,14 @@
 package io.github.libjsdl.api.joystick;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
 @SuppressWarnings({
         "checkstyle:AbbreviationAsWordInName",
         "checkstyle:MagicNumber"})
-public final class SDL_JoystickGUID extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "data"
+})
+public final class SDL_JoystickGUID extends Structure {
+
     public byte[] data = new byte[16];
 }

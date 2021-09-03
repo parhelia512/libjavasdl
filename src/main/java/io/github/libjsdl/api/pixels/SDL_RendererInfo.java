@@ -1,9 +1,17 @@
 package io.github.libjsdl.api.pixels;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
 @SuppressWarnings("checkstyle:MagicNumber")
-public final class SDL_RendererInfo extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "name",
+        "flags",
+        "numTextureFormats",
+        "textureFormats",
+        "maxTextureWidth",
+        "maxTextureHeight"
+})
+public final class SDL_RendererInfo extends Structure {
 
     public String name;
     public int flags;

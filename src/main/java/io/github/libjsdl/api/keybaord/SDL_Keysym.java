@@ -1,8 +1,14 @@
 package io.github.libjsdl.api.keybaord;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
-public final class SDL_Keysym extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "scancode",
+        "sym",
+        "mod",
+        "unused"
+})
+public final class SDL_Keysym extends Structure {
 
     public int scancode;
     public int sym;

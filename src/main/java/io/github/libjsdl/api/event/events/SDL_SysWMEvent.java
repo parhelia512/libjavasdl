@@ -1,10 +1,14 @@
 package io.github.libjsdl.api.event.events;
 
 import com.sun.jna.Pointer;
+import com.sun.jna.Structure;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
-
-public final class SDL_SysWMEvent extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "timestamp",
+        "msg"
+})
+public final class SDL_SysWMEvent extends Structure {
 
     public int type;
     public int timestamp;

@@ -1,10 +1,18 @@
 package io.github.libjsdl.api.event.events;
 
 import com.sun.jna.NativeLong;
+import com.sun.jna.Structure;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
-
-public final class SDL_JoyHatEvent extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "timestamp",
+        "which",
+        "hat",
+        "value",
+        "padding1",
+        "padding2"
+})
+public final class SDL_JoyHatEvent extends Structure {
 
     public int type;
     public int timestamp;

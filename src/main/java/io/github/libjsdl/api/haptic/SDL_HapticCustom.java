@@ -1,10 +1,25 @@
 package io.github.libjsdl.api.haptic;
 
 import com.sun.jna.Pointer;
+import com.sun.jna.Structure;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
-
-public final class SDL_HapticCustom extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "direction",
+        "length",
+        "delay",
+        "button",
+        "interval",
+        "channels",
+        "period",
+        "samples",
+        "data",
+        "attackLength",
+        "attackLevel",
+        "fadeLength",
+        "fadeLevel"
+})
+public final class SDL_HapticCustom extends Structure {
 
     public short type;
     public SDL_HapticDirection direction;
