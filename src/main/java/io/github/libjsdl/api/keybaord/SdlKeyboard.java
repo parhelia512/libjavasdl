@@ -5,7 +5,7 @@ import com.sun.jna.ptr.IntByReference;
 
 import io.github.libjsdl.api.rect.SDL_Rect;
 import io.github.libjsdl.api.video.SDL_Window;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 @SuppressWarnings({
         "checkstyle:MagicNumber",

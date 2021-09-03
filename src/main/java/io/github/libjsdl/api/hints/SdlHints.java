@@ -2,7 +2,7 @@ package io.github.libjsdl.api.hints;
 
 import com.sun.jna.Pointer;
 
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 public final class SdlHints {
 

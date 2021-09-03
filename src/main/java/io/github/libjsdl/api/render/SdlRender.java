@@ -13,7 +13,7 @@ import io.github.libjsdl.api.rect.SDL_Point;
 import io.github.libjsdl.api.rect.SDL_Rect;
 import io.github.libjsdl.api.surface.SDL_Surface;
 import io.github.libjsdl.api.video.SDL_Window;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 public final class SdlRender {
 

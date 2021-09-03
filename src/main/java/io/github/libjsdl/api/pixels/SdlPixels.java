@@ -5,7 +5,7 @@ import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
 
 import io.github.libjsdl.api.stdinc.SdlStdinc;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 @SuppressWarnings({
         "checkstyle:LineLength",

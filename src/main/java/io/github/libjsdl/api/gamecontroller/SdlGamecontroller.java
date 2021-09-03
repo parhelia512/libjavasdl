@@ -4,7 +4,7 @@ import io.github.libjsdl.api.joystick.SDL_Joystick;
 import io.github.libjsdl.api.joystick.SDL_JoystickGUID;
 import io.github.libjsdl.api.rwops.SDL_RWops;
 import io.github.libjsdl.api.rwops.SdlRWops;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
 public final class SdlGamecontroller {

@@ -6,7 +6,7 @@ import com.sun.jna.ptr.IntByReference;
 
 import io.github.libjsdl.api.rect.SDL_Rect;
 import io.github.libjsdl.api.surface.SDL_Surface;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 @SuppressWarnings({
         "checkstyle:MagicNumber",

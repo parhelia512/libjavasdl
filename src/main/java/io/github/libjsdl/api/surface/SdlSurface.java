@@ -9,7 +9,7 @@ import io.github.libjsdl.api.pixels.SDL_PixelFormat;
 import io.github.libjsdl.api.rect.SDL_Rect;
 import io.github.libjsdl.api.rwops.SDL_RWops;
 import io.github.libjsdl.api.rwops.SdlRWops;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 public final class SdlSurface {
 

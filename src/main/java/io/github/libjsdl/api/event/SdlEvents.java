@@ -4,7 +4,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
 
 import io.github.libjsdl.api.event.events.SDL_Event;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 @SuppressWarnings("checkstyle:DeclarationOrder")
 public final class SdlEvents {

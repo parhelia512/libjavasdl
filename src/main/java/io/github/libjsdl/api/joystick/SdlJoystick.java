@@ -3,7 +3,7 @@ package io.github.libjsdl.api.joystick;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
 
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
 public final class SdlJoystick {

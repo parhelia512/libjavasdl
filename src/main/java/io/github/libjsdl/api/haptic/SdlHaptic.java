@@ -1,7 +1,7 @@
 package io.github.libjsdl.api.haptic;
 
 import io.github.libjsdl.api.joystick.SDL_Joystick;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 @SuppressWarnings("checkstyle:MagicNumber")
 public final class SdlHaptic {

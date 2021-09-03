@@ -4,7 +4,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
 
 import io.github.libjsdl.api.error.SDL_LogOutputFunction;
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 public final class SdlLog {
 

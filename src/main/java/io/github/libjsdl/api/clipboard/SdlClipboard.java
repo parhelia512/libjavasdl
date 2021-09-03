@@ -1,6 +1,6 @@
 package io.github.libjsdl.api.clipboard;
 
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 public final class SdlClipboard {
 

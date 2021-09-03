@@ -1,4 +1,4 @@
-package io.github.libjsdl.loader;
+package io.github.libjsdl.jna;
 
 import com.sun.jna.Native;
 import com.sun.jna.NativeLibrary;

@@ -2,7 +2,7 @@ package io.github.libjsdl.api.rect;
 
 import com.sun.jna.ptr.IntByReference;
 
-import io.github.libjsdl.loader.NativeLoader;
+import io.github.libjsdl.jna.NativeLoader;
 
 public final class SdlRect {
 
