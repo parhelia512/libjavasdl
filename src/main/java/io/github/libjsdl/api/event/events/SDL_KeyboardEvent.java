@@ -1,6 +1,6 @@
 package io.github.libjsdl.api.event.events;
 
-import io.github.libjsdl.api.SDL_Keysym;
+import io.github.libjsdl.api.keybaord.SDL_Keysym;
 import io.github.libjsdl.jna.AbstractSdlStructure;
 
 public final class SDL_KeyboardEvent extends AbstractSdlStructure {
