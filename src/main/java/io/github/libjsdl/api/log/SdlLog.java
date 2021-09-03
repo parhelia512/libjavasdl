@@ -62,44 +62,44 @@ public final class SdlLog {
     //       Note: Varargs are not supported in direct mapping
 
     public static native void SDL_Log(
-            final String fmt,
-            final Object[] args);
+            String fmt,
+            Object[] args);
 
     public static native void SDL_LogVerbose(
-            final int category,
-            final String fmt,
-            final Object[] args);
+            int category,
+            String fmt,
+            Object[] args);
 
     public static native void SDL_LogDebug(
-            final int category,
-            final String fmt,
-            final Object[] args);
+            int category,
+            String fmt,
+            Object[] args);
 
     public static native void SDL_LogInfo(
-            final int category,
-            final String fmt,
-            final Object[] args);
+            int category,
+            String fmt,
+            Object[] args);
 
     public static native void SDL_LogWarn(
-            final int category,
-            final String fmt,
-            final Object[] args);
+            int category,
+            String fmt,
+            Object[] args);
 
     public static native void SDL_LogError(
-            final int category,
-            final String fmt,
-            final Object[] args);
+            int category,
+            String fmt,
+            Object[] args);
 
     public static native void SDL_LogCritical(
-            final int category,
-            final String fmt,
-            final Object[] args);
+            int category,
+            String fmt,
+            Object[] args);
 
     public static native void SDL_LogMessage(
-            final int category,
-            final int priority,
-            final String fmt,
-            final Object[] args);
+            int category,
+            int priority,
+            String fmt,
+            Object[] args);
 
     public static native void SDL_LogGetOutputFunction(
             PointerByReference callback,
@@ -110,8 +110,8 @@ public final class SdlLog {
             Pointer userdata);
 
     public static native void SDL_LogMessageV(
-            final int category,
-            final int priority,
-            final String fmt,
-            final Pointer ap);
+            int category,
+            int priority,
+            String fmt,
+            Pointer ap);
 }

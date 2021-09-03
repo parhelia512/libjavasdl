@@ -20,6 +20,9 @@ public final class Sdl {
                     + SDL_INIT_HAPTIC
                     + SDL_INIT_GAMECONTROLLER;
 
+    private Sdl() {
+    }
+
     public static int SDL_Init(int flags) {
         NativeLoader.loadSdl2Library();
         return SdlInternalInit.SDL_Init(flags);

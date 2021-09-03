@@ -8,8 +8,7 @@ public final class NativeLoader {
     private NativeLoader() {
     }
 
-    public static void registerNativeMethods(
-            final Class<?> nativeClass) {
+    public static void registerNativeMethods(Class<?> nativeClass) {
         NativeLibrary lib = loadSdl2Library();
         Native.register(nativeClass, lib);
     }

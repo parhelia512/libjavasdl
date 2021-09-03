@@ -56,9 +56,6 @@
         <module name="EqualsHashCode"/>
         <module name="ExplicitInitialization"/>
         <module name="FallThrough"/>
-        <module name="FinalLocalVariable">
-            <property name="validateEnhancedForLoopVariable" value="true"/>
-        </module>
         <module name="HiddenField">
             <property name="ignoreConstructorParameter" value="true"/>
             <property name="ignoreSetter" value="true"/>
@@ -120,11 +117,7 @@
             <property name="allowEscapesForControlCharacters" value="true"/>
         </module>
         <module name="CommentsIndentation"/>
-        <module name="FinalParameters">
-            <property name="tokens" value="METHOD_DEF, CTOR_DEF, LITERAL_CATCH, FOR_EACH_CLAUSE"/>
-        </module>
         <module name="OuterTypeFilename"/>
-        <module name="TodoComment"/>
         <module name="TrailingComment"/>
         <module name="UpperEll"/>
 
