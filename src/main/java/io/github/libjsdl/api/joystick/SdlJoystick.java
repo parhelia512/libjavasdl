@@ -41,9 +41,7 @@ public final class SdlJoystick {
     public static final int SDL_HAT_LEFTDOWN = (SDL_HAT_LEFT | SDL_HAT_DOWN);
 
     static {
-        NativeLoader.loadLibrary(
-                SdlJoystick.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlJoystick.class);
     }
 
     private SdlJoystick() {

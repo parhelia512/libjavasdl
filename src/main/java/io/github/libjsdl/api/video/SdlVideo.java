@@ -111,9 +111,7 @@ public final class SdlVideo {
     public static final int SDL_HITTEST_RESIZE_LEFT = 9;
 
     static {
-        NativeLoader.loadLibrary(
-                SdlVideo.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlVideo.class);
     }
 
     private SdlVideo() {

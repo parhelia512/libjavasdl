@@ -35,9 +35,7 @@ public final class SdlRender {
     public static final int SDL_FLIP_VERTICAL = 0x00000002;
 
     static {
-        NativeLoader.loadLibrary(
-                SdlRender.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlRender.class);
     }
 
     private SdlRender() {

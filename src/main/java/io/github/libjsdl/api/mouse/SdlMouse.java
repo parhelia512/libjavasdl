@@ -39,9 +39,7 @@ public final class SdlMouse {
     public static final int SDL_BUTTON_X2MASK = SDL_BUTTON(SDL_BUTTON_X2);
 
     static {
-        NativeLoader.loadLibrary(
-                SdlMouse.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlMouse.class);
     }
 
     private SdlMouse() {

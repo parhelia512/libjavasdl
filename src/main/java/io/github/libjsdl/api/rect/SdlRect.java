@@ -7,9 +7,7 @@ import io.github.libjsdl.loader.NativeLoader;
 public final class SdlRect {
 
     static {
-        NativeLoader.loadLibrary(
-                SdlRect.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlRect.class);
     }
 
     private SdlRect() {

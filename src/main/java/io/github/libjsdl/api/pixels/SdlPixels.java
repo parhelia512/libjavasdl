@@ -108,9 +108,7 @@ public final class SdlPixels {
     public static final int SDL_PIXELFORMAT_EXTERNAL_OES = SDL_DEFINE_PIXELFOURCC('O', 'E', 'S', ' ');
 
     static {
-        NativeLoader.loadLibrary(
-                SdlPixels.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlPixels.class);
     }
 
     private SdlPixels() {

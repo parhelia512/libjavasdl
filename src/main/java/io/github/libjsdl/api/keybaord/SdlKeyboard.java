@@ -554,9 +554,7 @@ public final class SdlKeyboard {
     public static final int KMOD_GUI = (KMOD_LGUI | KMOD_RGUI);
 
     static {
-        NativeLoader.loadLibrary(
-                SdlKeyboard.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlKeyboard.class);
     }
 
     private SdlKeyboard() {

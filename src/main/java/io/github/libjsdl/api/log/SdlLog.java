@@ -1,6 +1,5 @@
 package io.github.libjsdl.api.log;
 
-import com.sun.jna.Library;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
 
@@ -40,13 +39,8 @@ public final class SdlLog {
     public static final int SDL_LOG_PRIORITY_CRITICAL = 6;
     public static final int SDL_NUM_LOG_PRIORITIES = 7;
 
-    private static final SdlLogMappings INSTANCE;
-
     static {
-        INSTANCE = NativeLoader.loadLibrary(
-                SdlLog.class,
-                NativeLoader.NativeLibrary.SDL2,
-                SdlLogMappings.class);
+        NativeLoader.registerNativeMethods(SdlLog.class);
     }
 
     private SdlLog() {
@@ -64,85 +58,48 @@ public final class SdlLog {
 
     public static native void SDL_LogResetPriorities();
 
-    public static void SDL_Log(
-            final String fmt,
-            final Object... args) {
-        INSTANCE.SDL_Log(
-                fmt,
-                args);
-    }
+    // TODO: Replace Object[] by Object... in SDL_Log(..)
+    //       Note: Varargs are not supported in direct mapping
 
-    public static void SDL_LogVerbose(
+    public static native void SDL_Log(
+            final String fmt,
+            final Object[] args);
+
+    public static native void SDL_LogVerbose(
             final int category,
             final String fmt,
-            final Object... args) {
-        INSTANCE.SDL_LogVerbose(
-                category,
-                fmt,
-                args);
-    }
+            final Object[] args);
 
-    public static void SDL_LogDebug(
+    public static native void SDL_LogDebug(
             final int category,
             final String fmt,
-            final Object... args) {
-        INSTANCE.SDL_LogDebug(
-                category,
-                fmt,
-                args);
-    }
+            final Object[] args);
 
-    public static void SDL_LogInfo(
+    public static native void SDL_LogInfo(
             final int category,
             final String fmt,
-            final Object... args) {
-        INSTANCE.SDL_LogInfo(
-                category,
-                fmt,
-                args);
-    }
+            final Object[] args);
 
-    public static void SDL_LogWarn(
+    public static native void SDL_LogWarn(
             final int category,
             final String fmt,
-            final Object... args) {
-        INSTANCE.SDL_LogWarn(
-                category,
-                fmt,
-                args);
-    }
+            final Object[] args);
 
-    public static void SDL_LogError(
+    public static native void SDL_LogError(
             final int category,
             final String fmt,
-            final Object... args) {
-        INSTANCE.SDL_LogError(
-                category,
-                fmt,
-                args);
-    }
+            final Object[] args);
 
-    public static void SDL_LogCritical(
+    public static native void SDL_LogCritical(
             final int category,
             final String fmt,
-            final Object... args) {
-        INSTANCE.SDL_LogCritical(
-                category,
-                fmt,
-                args);
-    }
+            final Object[] args);
 
-    public static void SDL_LogMessage(
+    public static native void SDL_LogMessage(
             final int category,
             final int priority,
             final String fmt,
-            final Object... args) {
-        INSTANCE.SDL_LogMessage(
-                category,
-                priority,
-                fmt,
-                args);
-    }
+            final Object[] args);
 
     public static native void SDL_LogGetOutputFunction(
             PointerByReference callback,
@@ -152,64 +109,9 @@ public final class SdlLog {
             SDL_LogOutputFunction callback,
             Pointer userdata);
 
-    public static void SDL_LogMessageV(
+    public static native void SDL_LogMessageV(
             final int category,
             final int priority,
             final String fmt,
-            final Pointer ap) {
-        INSTANCE.SDL_LogMessageV(
-                category,
-                priority,
-                fmt,
-                ap);
-    }
-
-    public interface SdlLogMappings extends Library {
-
-        void SDL_Log(
-                String fmt,
-                Object... args);
-
-        void SDL_LogVerbose(
-                int category,
-                String fmt,
-                Object... args);
-
-        void SDL_LogDebug(
-                int category,
-                String fmt,
-                Object... args);
-
-        void SDL_LogInfo(
-                int category,
-                String fmt,
-                Object... args);
-
-        void SDL_LogWarn(
-                int category,
-                String fmt,
-                Object... args);
-
-        void SDL_LogError(
-                int category,
-                String fmt,
-                Object... args);
-
-        void SDL_LogCritical(
-                int category,
-                String fmt,
-                Object... args);
-
-        void SDL_LogMessage(
-                int category,
-                int priority,
-                String fmt,
-                Object... args);
-
-        void SDL_LogMessageV(
-                int category,
-                int priority,
-                String fmt,
-                Pointer ap);
-    }
+            final Pointer ap);
 }

@@ -13,9 +13,7 @@ public final class SdlVersion {
     public static final int SDL_PATCHLEVEL = 8;
 
     static {
-        NativeLoader.loadLibrary(
-                SdlVersion.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlVersion.class);
     }
 
     private SdlVersion() {

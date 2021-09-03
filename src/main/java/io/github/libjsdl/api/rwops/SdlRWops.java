@@ -5,9 +5,7 @@ import io.github.libjsdl.loader.NativeLoader;
 public final class SdlRWops {
 
     static {
-        NativeLoader.loadLibrary(
-                SdlRWops.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlRWops.class);
     }
 
     private SdlRWops() {

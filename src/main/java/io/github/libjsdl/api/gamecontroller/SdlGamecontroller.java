@@ -42,9 +42,7 @@ public final class SdlGamecontroller {
     private static final int SDL_CONTROLLER_BUTTON_MAX = 15;
 
     static {
-        NativeLoader.loadLibrary(
-                SdlGamecontroller.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlGamecontroller.class);
     }
 
     private SdlGamecontroller() {

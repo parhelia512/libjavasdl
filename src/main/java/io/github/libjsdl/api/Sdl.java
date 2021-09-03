@@ -21,9 +21,7 @@ public final class Sdl {
                     + SDL_INIT_GAMECONTROLLER;
 
     static {
-        NativeLoader.loadLibrary(
-                Sdl.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(Sdl.class);
     }
 
     private Sdl() {

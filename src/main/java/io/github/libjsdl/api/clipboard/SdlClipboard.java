@@ -5,9 +5,7 @@ import io.github.libjsdl.loader.NativeLoader;
 public final class SdlClipboard {
 
     static {
-        NativeLoader.loadLibrary(
-                SdlClipboard.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlClipboard.class);
     }
 
     private SdlClipboard() {

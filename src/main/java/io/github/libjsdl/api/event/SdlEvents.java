@@ -86,9 +86,7 @@ public final class SdlEvents {
     public static final int SDL_GETEVENT = 2;
 
     static {
-        NativeLoader.loadLibrary(
-                SdlEvents.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlEvents.class);
     }
 
     private SdlEvents() {

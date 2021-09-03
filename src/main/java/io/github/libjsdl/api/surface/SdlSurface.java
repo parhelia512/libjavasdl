@@ -24,9 +24,7 @@ public final class SdlSurface {
     public static final int SDL_YUV_CONVERSION_AUTOMATIC = 3;
 
     static {
-        NativeLoader.loadLibrary(
-                SdlSurface.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlSurface.class);
     }
 
     private SdlSurface() {

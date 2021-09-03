@@ -28,9 +28,7 @@ public final class SdlHaptic {
     public static final int SDL_HAPTIC_INFINITY = (int) 4294967295L;
 
     static {
-        NativeLoader.loadLibrary(
-                SdlHaptic.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlHaptic.class);
     }
 
     private SdlHaptic() {

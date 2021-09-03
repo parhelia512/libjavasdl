@@ -79,9 +79,7 @@ public final class SdlHints {
     public static final int SDL_HINT_OVERRIDE = 2;
 
     static {
-        NativeLoader.loadLibrary(
-                SdlHints.class,
-                NativeLoader.NativeLibrary.SDL2);
+        NativeLoader.registerNativeMethods(SdlHints.class);
     }
 
     private SdlHints() {
