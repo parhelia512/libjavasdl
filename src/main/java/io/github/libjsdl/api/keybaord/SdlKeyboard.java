@@ -561,7 +561,7 @@ public final class SdlKeyboard {
     }
 
     public static int SDL_SCANCODE_TO_KEYCODE(
-            final int x) {
+            int x) {
         return (x | SDLK_SCANCODE_MASK);
     }
 

@@ -106,7 +106,7 @@ public final class SdlMouse {
             int toggle);
 
     public static int SDL_BUTTON(
-            final int x) {
+            int x) {
         return (1 << ((x) - 1));
     }
 }

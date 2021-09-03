@@ -118,7 +118,7 @@ public final class SdlVideo {
     }
 
     public static int SDL_WINDOWPOS_UNDEFINED_DISPLAY(
-            final int x) {
+            int x) {
         return SDL_WINDOWPOS_UNDEFINED_MASK | x;
     }
 
@@ -127,12 +127,12 @@ public final class SdlVideo {
     }
 
     public static boolean SDL_WINDOWPOS_ISUNDEFINED(
-            final int x) {
+            int x) {
         return (((x) & 0xFFFF0000) == SDL_WINDOWPOS_UNDEFINED_MASK);
     }
 
     public static int SDL_WINDOWPOS_CENTERED_DISPLAY(
-            final int x) {
+            int x) {
         return SDL_WINDOWPOS_CENTERED_MASK | x;
     }
 
@@ -141,7 +141,7 @@ public final class SdlVideo {
     }
 
     public static boolean SDL_WINDOWPOS_ISCENTERED(
-            final int x) {
+            int x) {
         return (((x) & 0xFFFF0000) == SDL_WINDOWPOS_CENTERED_MASK);
     }
 

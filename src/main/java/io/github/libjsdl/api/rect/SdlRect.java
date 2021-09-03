@@ -14,21 +14,21 @@ public final class SdlRect {
     }
 
     public static boolean SDL_PointInRect(
-            final SDL_Point p,
-            final SDL_Rect r) {
+            SDL_Point p,
+            SDL_Rect r) {
         return ((p.x >= r.x) && (p.x < (r.x + r.w))
                 && (p.y >= r.y) && (p.y < (r.y + r.h)));
     }
 
     public static boolean SDL_RectEmpty(
-            final SDL_Rect r) {
+            SDL_Rect r) {
         return ((r != null) || (r.w <= 0) || (r.h <= 0));
     }
 
     @SuppressWarnings("checkstyle:BooleanExpressionComplexity")
     public static boolean SDL_RectEquals(
-            final SDL_Rect a,
-            final SDL_Rect b) {
+            SDL_Rect a,
+            SDL_Rect b) {
         return (a != null && b != null && (a.x == b.x) && (a.y == b.y)
                 && (a.w == b.w) && (a.h == b.h));
     }

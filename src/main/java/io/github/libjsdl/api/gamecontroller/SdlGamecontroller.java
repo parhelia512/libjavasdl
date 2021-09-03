@@ -49,7 +49,7 @@ public final class SdlGamecontroller {
     }
 
     public static int SDL_GameControllerAddMappingsFromFile(
-            final String file) {
+            String file) {
         return SDL_GameControllerAddMappingsFromRW(SdlRWops.SDL_RWFromFile(file, "rb"), 1);
     }
 

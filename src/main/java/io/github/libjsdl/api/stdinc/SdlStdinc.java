@@ -9,10 +9,10 @@ public final class SdlStdinc {
     }
 
     public static int SDL_FOURCC(
-            final int a,
-            final int b,
-            final int c,
-            final int d) {
+            int a,
+            int b,
+            int c,
+            int d) {
         return (a << 0) | (b << 8) | (c << 16) | (d << 24);
     }
 }

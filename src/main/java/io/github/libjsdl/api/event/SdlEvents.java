@@ -158,7 +158,7 @@ public final class SdlEvents {
             int state);
 
     public static byte SDL_GetEventState(
-            final int type) {
+            int type) {
         return SDL_EventState(type, SDL_QUERY);
     }
 

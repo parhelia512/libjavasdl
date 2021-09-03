@@ -115,30 +115,30 @@ public final class SdlPixels {
     }
 
     public static int SDL_DEFINE_PIXELFOURCC(
-            final int a,
-            final int b,
-            final int c,
-            final int d) {
+            int a,
+            int b,
+            int c,
+            int d) {
         return SdlStdinc.SDL_FOURCC(a, b, c, d);
     }
 
     @SuppressWarnings("checkstyle:BooleanExpressionComplexity")
     public static int SDL_DEFINE_PIXELFORMAT(
-            final int type,
-            final int order,
-            final int layout,
-            final int bits,
-            final int bytes) {
+            int type,
+            int order,
+            int layout,
+            int bits,
+            int bytes) {
         return ((1 << 28) | ((type) << 24) | ((order) << 20) | ((layout) << 16) | ((bits) << 8) | ((bytes) << 0));
     }
 
     public static int SDL_PIXELFLAG(
-            final int x) {
+            int x) {
         return (((x) >> 28) & 0x0F);
     }
 
     public static int SDL_PIXELTYPE(
-            final int x) {
+            int x) {
         return (((x) >> 24) & 0x0F);
     }
 
@@ -147,7 +147,7 @@ public final class SdlPixels {
     }
 
     public static int SDL_PIXELLAYOUT(
-            final int x) {
+            int x) {
         return (((x) >> 16) & 0x0F);
     }
 
@@ -156,7 +156,7 @@ public final class SdlPixels {
     }
 
     public static int SDL_BYTESPERPIXEL(
-            final int x) {
+            int x) {
         return (SDL_ISPIXELFORMAT_FOURCC(x)
                 ? ((((x) == SDL_PIXELFORMAT_YUY2)
                 || ((x) == SDL_PIXELFORMAT_UYVY)
@@ -164,7 +164,7 @@ public final class SdlPixels {
     }
 
     public static boolean SDL_ISPIXELFORMAT_INDEXED(
-            final int format) {
+            int format) {
         return (!SDL_ISPIXELFORMAT_FOURCC(format)
                 && ((SDL_PIXELTYPE(format) == SDL_PIXELTYPE_INDEX1)
                 || (SDL_PIXELTYPE(format) == SDL_PIXELTYPE_INDEX4)
@@ -172,7 +172,7 @@ public final class SdlPixels {
     }
 
     public static boolean SDL_ISPIXELFORMAT_PACKED(
-            final int format) {
+            int format) {
         return (!SDL_ISPIXELFORMAT_FOURCC(format)
                 && ((SDL_PIXELTYPE(format) == SDL_PIXELTYPE_PACKED8)
                 || (SDL_PIXELTYPE(format) == SDL_PIXELTYPE_PACKED16)
@@ -181,7 +181,7 @@ public final class SdlPixels {
 
     @SuppressWarnings("checkstyle:BooleanExpressionComplexity")
     public static boolean SDL_ISPIXELFORMAT_ARRAY(
-            final int format) {
+            int format) {
         return (!SDL_ISPIXELFORMAT_FOURCC(format)
                 && ((SDL_PIXELTYPE(format) == SDL_PIXELTYPE_ARRAYU8)
                 || (SDL_PIXELTYPE(format) == SDL_PIXELTYPE_ARRAYU16)
@@ -192,7 +192,7 @@ public final class SdlPixels {
 
     @SuppressWarnings("checkstyle:BooleanExpressionComplexity")
     public static boolean SDL_ISPIXELFORMAT_ALPHA(
-            final int format) {
+            int format) {
         return ((SDL_ISPIXELFORMAT_PACKED(format)
                 && ((SDL_PIXELORDER(format) == SDL_PACKEDORDER_ARGB)
                 || (SDL_PIXELORDER(format) == SDL_PACKEDORDER_RGBA)
@@ -206,7 +206,7 @@ public final class SdlPixels {
     }
 
     public static boolean SDL_ISPIXELFORMAT_FOURCC(
-            final int format) {
+            int format) {
         return ((format != 0) && (SDL_PIXELFLAG(format) != 1));
     }
 
