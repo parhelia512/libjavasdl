@@ -14,7 +14,7 @@ public final class NativeLoader {
         Native.register(nativeClass, lib);
     }
 
-    private static NativeLibrary loadSdl2Library() {
+    public static NativeLibrary loadSdl2Library() {
         return NativeLibrary.getInstance("sdl2", NativeLoader.class.getClassLoader());
     }
 }
