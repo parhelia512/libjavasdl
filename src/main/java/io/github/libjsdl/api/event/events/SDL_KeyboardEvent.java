@@ -2,7 +2,7 @@ package io.github.libjsdl.api.event.events;
 
 import com.sun.jna.Structure;
 
-import io.github.libjsdl.api.keybaord.SDL_Keysym;
+import io.github.libjsdl.api.keyboard.SDL_Keysym;
 
 @Structure.FieldOrder({
         "type",

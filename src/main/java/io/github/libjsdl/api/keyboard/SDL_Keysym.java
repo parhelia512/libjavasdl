@@ -1,4 +1,4 @@
-package io.github.libjsdl.api.keybaord;
+package io.github.libjsdl.api.keyboard;
 
 import com.sun.jna.Structure;
 
