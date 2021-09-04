@@ -3,7 +3,6 @@ package org.libsdl.api.surface;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
-
 import org.libsdl.api.pixels.SDL_Palette;
 import org.libsdl.api.pixels.SDL_PixelFormat;
 import org.libsdl.api.rect.SDL_Rect;

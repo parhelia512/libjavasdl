@@ -1,7 +1,6 @@
 package org.libsdl.api.hints;
 
 import com.sun.jna.Pointer;
-
 import org.libsdl.jna.NativeLoader;
 
 public final class SdlHints {

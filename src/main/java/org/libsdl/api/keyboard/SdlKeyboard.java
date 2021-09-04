@@ -2,7 +2,6 @@ package org.libsdl.api.keyboard;
 
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
-
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.jna.NativeLoader;

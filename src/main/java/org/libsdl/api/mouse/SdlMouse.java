@@ -2,7 +2,6 @@ package org.libsdl.api.mouse;
 
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
-
 import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.jna.NativeLoader;

@@ -5,13 +5,12 @@ import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
-
-import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.pixels.SDL_Renderer;
 import org.libsdl.api.pixels.SDL_RendererInfo;
 import org.libsdl.api.pixels.SDL_Texture;
 import org.libsdl.api.rect.SDL_Point;
 import org.libsdl.api.rect.SDL_Rect;
+import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.jna.NativeLoader;
 

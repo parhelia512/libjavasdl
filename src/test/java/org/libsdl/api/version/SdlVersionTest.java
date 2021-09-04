@@ -1,7 +1,6 @@
 package org.libsdl.api.version;
 
 import org.junit.jupiter.api.Test;
-
 import org.libsdl.api.log.SDL_version;
 
 public final class SdlVersionTest {

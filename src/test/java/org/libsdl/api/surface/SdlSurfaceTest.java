@@ -1,7 +1,6 @@
 package org.libsdl.api.surface;
 
 import org.junit.jupiter.api.Test;
-
 import org.libsdl.api.Sdl;
 
 @SuppressWarnings("checkstyle:MagicNumber")

@@ -2,7 +2,6 @@ package org.libsdl.api.event;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
-
 import org.libsdl.api.event.events.SDL_Event;
 import org.libsdl.jna.NativeLoader;
 

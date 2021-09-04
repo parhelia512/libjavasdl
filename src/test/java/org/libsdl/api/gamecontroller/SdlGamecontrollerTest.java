@@ -1,7 +1,6 @@
 package org.libsdl.api.gamecontroller;
 
 import org.junit.jupiter.api.Test;
-
 import org.libsdl.api.Sdl;
 
 public final class SdlGamecontrollerTest {

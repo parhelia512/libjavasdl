@@ -3,7 +3,6 @@ package org.libsdl.api.pixels;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
-
 import org.libsdl.api.stdinc.SdlStdinc;
 import org.libsdl.jna.NativeLoader;
 

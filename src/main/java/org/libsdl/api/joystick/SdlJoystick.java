@@ -2,7 +2,6 @@ package org.libsdl.api.joystick;
 
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
-
 import org.libsdl.jna.NativeLoader;
 
 @SuppressWarnings("checkstyle:AbbreviationAsWordInName")

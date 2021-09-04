@@ -2,7 +2,6 @@ package org.libsdl.api.surface;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-
 import org.libsdl.api.rect.SDL_Rect;
 
 public final class SDL_Surface extends Structure {
