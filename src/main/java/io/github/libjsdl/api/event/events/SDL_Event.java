@@ -62,8 +62,8 @@ public final class SDL_Event extends Union {
     public SDL_CommonEvent common;
     public SDL_WindowEvent window;
     public SDL_KeyboardEvent key;
-    public SDL_TextEditingSdlStructure edit;
-    public SDL_TextInputSdlStructure text;
+    public SDL_TextEditingEvent edit;
+    public SDL_TextInputEvent text;
     public SDL_MouseMotionEvent motion;
     public SDL_MouseButtonEvent button;
     public SDL_MouseWheelEvent wheel;
@@ -77,10 +77,9 @@ public final class SDL_Event extends Union {
     public SDL_ControllerDeviceEvent cdevice;
     public SDL_AudioDeviceEvent adevice;
     public SDL_QuitEvent quit;
-    public SDL_OSEvent os;
     public SDL_UserEvent user;
     public SDL_SysWMEvent syswm;
-    public SDL_TouchFingerSdlStructure tfinger;
+    public SDL_TouchFingerEvent tfinger;
     public SDL_MultiGestureEvent mgesture;
     public SDL_DollarGestureEvent dgesture;
     public SDL_DropEvent drop;
@@ -104,10 +103,10 @@ public final class SDL_Event extends Union {
                 setType(SDL_KeyboardEvent.class);
                 break;
             case SDL_TEXTEDITING:
-                setType(SDL_TextEditingSdlStructure.class);
+                setType(SDL_TextEditingEvent.class);
                 break;
             case SDL_TEXTINPUT:
-                setType(SDL_TextInputSdlStructure.class);
+                setType(SDL_TextInputEvent.class);
                 break;
             case SDL_MOUSEMOTION:
                 setType(SDL_MouseMotionEvent.class);
@@ -150,7 +149,7 @@ public final class SDL_Event extends Union {
             case SDL_FINGERMOTION:
             case SDL_FINGERDOWN:
             case SDL_FINGERUP:
-                setType(SDL_TouchFingerSdlStructure.class);
+                setType(SDL_TouchFingerEvent.class);
                 break;
             case SDL_DOLLARGESTURE:
             case SDL_DOLLARRECORD:

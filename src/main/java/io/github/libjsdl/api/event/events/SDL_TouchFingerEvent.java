@@ -14,7 +14,7 @@ import com.sun.jna.Structure;
         "dy",
         "pressure"
 })
-public final class SDL_TouchFingerSdlStructure extends Structure {
+public final class SDL_TouchFingerEvent extends Structure {
 
     public int type;
     public int timestamp;

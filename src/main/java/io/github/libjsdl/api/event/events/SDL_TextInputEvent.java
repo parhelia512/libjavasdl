@@ -8,7 +8,7 @@ import com.sun.jna.Structure;
         "windowID",
         "text"
 })
-public final class SDL_TextInputSdlStructure extends Structure {
+public final class SDL_TextInputEvent extends Structure {
 
     private static final int BUF_SIZE = 32;
 
