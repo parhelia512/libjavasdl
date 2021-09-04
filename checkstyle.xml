@@ -92,10 +92,11 @@
         <!-- Imports -->
         <module name="AvoidStarImport"/>
         <module name="ImportOrder">
-            <property name="groups" value="/^java\./,javax,org,net,com"/>
+            <property name="groups" value="java,javax,*,org.libsdl"/>
             <property name="ordered" value="true"/>
-            <property name="separated" value="true"/>
-            <property name="option" value="above"/>
+            <property name="separated" value="false"/>
+            <property name="separatedStaticGroups" value="true"/>
+            <property name="option" value="bottom"/>
             <property name="sortStaticImportsAlphabetically" value="true"/>
         </module>
         <module name="IllegalImport"/>
