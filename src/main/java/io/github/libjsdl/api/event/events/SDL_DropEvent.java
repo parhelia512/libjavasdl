@@ -1,10 +1,15 @@
 package io.github.libjsdl.api.event.events;
 
 import com.sun.jna.Pointer;
+import com.sun.jna.Structure;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
-
-public final class SDL_DropEvent extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "timestamp",
+        "file",
+        "windowID"
+})
+public final class SDL_DropEvent extends Structure {
 
     public int type;
     public int timestamp;

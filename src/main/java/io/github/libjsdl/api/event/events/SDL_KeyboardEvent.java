@@ -1,9 +1,20 @@
 package io.github.libjsdl.api.event.events;
 
-import io.github.libjsdl.api.keybaord.SDL_Keysym;
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
-public final class SDL_KeyboardEvent extends AbstractSdlStructure {
+import io.github.libjsdl.api.keyboard.SDL_Keysym;
+
+@Structure.FieldOrder({
+        "type",
+        "timestamp",
+        "windowID",
+        "state",
+        "repeat",
+        "padding2",
+        "padding3",
+        "keysym"
+})
+public final class SDL_KeyboardEvent extends Structure {
 
     public int type;
     public int timestamp;

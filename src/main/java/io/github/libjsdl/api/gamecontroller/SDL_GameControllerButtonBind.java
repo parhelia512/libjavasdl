@@ -1,10 +1,13 @@
 package io.github.libjsdl.api.gamecontroller;
 
+import com.sun.jna.Structure;
 import com.sun.jna.Union;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
-
-public class SDL_GameControllerButtonBind extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "bindType",
+        "value"
+})
+public class SDL_GameControllerButtonBind extends Structure {
 
     public int bindType;
     public Value value;
@@ -15,7 +18,11 @@ public class SDL_GameControllerButtonBind extends AbstractSdlStructure {
         public Hat hat;
     }
 
-    public static final class Hat extends AbstractSdlStructure {
+    @Structure.FieldOrder({
+            "hat",
+            "hatMask"
+    })
+    public static final class Hat extends Structure {
         public int hat;
         public int hatMask;
     }

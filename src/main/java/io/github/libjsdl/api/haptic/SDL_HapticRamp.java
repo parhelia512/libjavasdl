@@ -1,8 +1,22 @@
 package io.github.libjsdl.api.haptic;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
-public final class SDL_HapticRamp extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "direction",
+        "length",
+        "delay",
+        "button",
+        "interval",
+        "start",
+        "end",
+        "attackLength",
+        "attackLevel",
+        "fadeLength",
+        "fadeLevel"
+})
+public final class SDL_HapticRamp extends Structure {
 
     public short type;
     public SDL_HapticDirection direction;

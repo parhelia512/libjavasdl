@@ -1,8 +1,19 @@
 package io.github.libjsdl.api.event.events;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
-public final class SDL_WindowEvent extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "timestamp",
+        "windowID",
+        "event",
+        "padding1",
+        "padding2",
+        "padding3",
+        "data1",
+        "data2"
+})
+public final class SDL_WindowEvent extends Structure {
 
     public int type;
     public int timestamp;

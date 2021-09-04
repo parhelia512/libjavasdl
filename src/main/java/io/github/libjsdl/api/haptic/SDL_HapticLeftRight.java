@@ -1,8 +1,14 @@
 package io.github.libjsdl.api.haptic;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
-public final class SDL_HapticLeftRight extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "length",
+        "largeMagnitude",
+        "smallMagnitude"
+})
+public final class SDL_HapticLeftRight extends Structure {
 
     public short type;
     public int length;

@@ -1,10 +1,19 @@
 package io.github.libjsdl.api.event.events;
 
 import com.sun.jna.NativeLong;
+import com.sun.jna.Structure;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
-
-public final class SDL_DollarGestureEvent extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "timestamp",
+        "touchId",
+        "gestureId",
+        "numFingers",
+        "error",
+        "x",
+        "y"
+})
+public final class SDL_DollarGestureEvent extends Structure {
 
     public int type;
     public int timestamp;

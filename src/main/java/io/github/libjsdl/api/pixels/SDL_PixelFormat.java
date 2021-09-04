@@ -1,10 +1,31 @@
 package io.github.libjsdl.api.pixels;
 
 import com.sun.jna.Pointer;
+import com.sun.jna.Structure;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+@Structure.FieldOrder({
+        "format",
+        "palette",
+        "bitsPerPixel",
+        "bytesPerPixel",
+        "padding",
+        "rMask",
+        "gMask",
+        "bMask",
+        "aMask",
+        "rLoss",
+        "gLoss",
+        "bLoss",
+        "aLoss",
+        "rShift",
+        "gShift",
+        "bShift",
+        "aShift",
+        "refcount",
+        "next"
+})
+public final class SDL_PixelFormat extends Structure {
 
-public class SDL_PixelFormat extends AbstractSdlStructure {
     public int format;
     public SDL_Palette palette;
     public byte bitsPerPixel;

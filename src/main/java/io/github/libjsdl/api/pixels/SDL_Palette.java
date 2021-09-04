@@ -1,8 +1,14 @@
 package io.github.libjsdl.api.pixels;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
-public final class SDL_Palette extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "ncolors",
+        "colors",
+        "version",
+        "refcount"
+})
+public final class SDL_Palette extends Structure {
 
     public int ncolors;
     public SDL_Color colors;

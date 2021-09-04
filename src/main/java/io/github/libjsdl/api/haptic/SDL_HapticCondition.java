@@ -1,9 +1,23 @@
 package io.github.libjsdl.api.haptic;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
 @SuppressWarnings("checkstyle:MagicNumber")
-public final class SDL_HapticCondition extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "direction",
+        "length",
+        "delay",
+        "button",
+        "interval",
+        "rightSat",
+        "leftSat",
+        "rightCoeff",
+        "leftCSoeff",
+        "deadband",
+        "center"
+})
+public final class SDL_HapticCondition extends Structure {
 
     public short type;
     public SDL_HapticDirection direction;

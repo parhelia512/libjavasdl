@@ -1,8 +1,13 @@
 package io.github.libjsdl.api.event.events;
 
-import io.github.libjsdl.jna.AbstractSdlStructure;
+import com.sun.jna.Structure;
 
-public final class SDL_ControllerDeviceEvent extends AbstractSdlStructure {
+@Structure.FieldOrder({
+        "type",
+        "timestamp",
+        "which"
+})
+public final class SDL_ControllerDeviceEvent extends Structure {
 
     public int type;
     public int timestamp;
