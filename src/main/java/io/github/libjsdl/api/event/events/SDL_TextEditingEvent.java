@@ -10,7 +10,7 @@ import com.sun.jna.Structure;
         "start",
         "length"
 })
-public final class SDL_TextEditingSdlStructure extends Structure {
+public final class SDL_TextEditingEvent extends Structure {
 
     private static final int BUF_SIZE = 32;
 
