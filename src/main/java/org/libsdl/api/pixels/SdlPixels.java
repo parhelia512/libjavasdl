@@ -10,7 +10,8 @@ import org.libsdl.jna.NativeLoader;
 @SuppressWarnings({
         "checkstyle:LineLength",
         "checkstyle:MagicNumber",
-        "checkstyle:AbbreviationAsWordInName"})
+        "checkstyle:AbbreviationAsWordInName"
+})
 public final class SdlPixels {
 
     public static final int SDL_ALPHA_OPAQUE = 255;

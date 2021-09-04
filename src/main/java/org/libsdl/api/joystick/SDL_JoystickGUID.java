@@ -2,9 +2,7 @@ package org.libsdl.api.joystick;
 
 import com.sun.jna.Structure;
 
-@SuppressWarnings({
-        "checkstyle:AbbreviationAsWordInName",
-        "checkstyle:MagicNumber"})
+@SuppressWarnings({"checkstyle:AbbreviationAsWordInName", "checkstyle:MagicNumber"})
 @Structure.FieldOrder(
         "data"
 )

@@ -9,7 +9,8 @@ import org.libsdl.jna.NativeLoader;
 
 @SuppressWarnings({
         "checkstyle:MagicNumber",
-        "checkstyle:AbbreviationAsWordInName"})
+        "checkstyle:AbbreviationAsWordInName"
+})
 public final class SdlVideo {
 
     public static final int SDL_WINDOW_FULLSCREEN = 0x00000001;

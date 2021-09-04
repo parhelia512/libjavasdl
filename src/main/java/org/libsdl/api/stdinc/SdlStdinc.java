@@ -2,7 +2,8 @@ package org.libsdl.api.stdinc;
 
 @SuppressWarnings({
         "checkstyle:MagicNumber",
-        "checkstyle:AbbreviationAsWordInName"})
+        "checkstyle:AbbreviationAsWordInName"
+})
 public final class SdlStdinc {
 
     private SdlStdinc() {
@@ -13,6 +14,6 @@ public final class SdlStdinc {
             int b,
             int c,
             int d) {
-        return (a << 0) | (b << 8) | (c << 16) | (d << 24);
+        return a | (b << 8) | (c << 16) | (d << 24);
     }
 }

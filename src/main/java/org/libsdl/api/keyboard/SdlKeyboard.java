@@ -10,7 +10,8 @@ import org.libsdl.jna.NativeLoader;
 @SuppressWarnings({
         "checkstyle:MagicNumber",
         "checkstyle:ConstantName",
-        "checkstyle:AbbreviationAsWordInName"})
+        "checkstyle:AbbreviationAsWordInName"
+})
 public final class SdlKeyboard {
 
     public static final int SDL_SCANCODE_UNKNOWN = 0;
