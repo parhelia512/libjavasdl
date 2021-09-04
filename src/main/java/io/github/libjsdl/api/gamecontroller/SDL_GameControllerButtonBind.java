@@ -1,7 +1,7 @@
 package io.github.libjsdl.api.gamecontroller;
 
-import com.sun.jna.Union;
 import com.sun.jna.Structure;
+import com.sun.jna.Union;
 
 @Structure.FieldOrder({
         "bindType",
