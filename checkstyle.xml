@@ -91,7 +91,6 @@
 
         <!-- Imports -->
         <module name="AvoidStarImport"/>
-        <module name="AvoidStaticImport"/>
         <module name="ImportOrder">
             <property name="groups" value="/^java\./,javax,org,net,com"/>
             <property name="ordered" value="true"/>
