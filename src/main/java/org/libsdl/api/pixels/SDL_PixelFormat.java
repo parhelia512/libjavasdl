@@ -2,6 +2,7 @@ package org.libsdl.api.pixels;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import org.intellij.lang.annotations.MagicConstant;
 
 @Structure.FieldOrder({
         "format",
@@ -26,6 +27,8 @@ import com.sun.jna.Structure;
 })
 public final class SDL_PixelFormat extends Structure {
 
+    // TODO: Check suspicious padding
+    @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class)
     public int format;
     public SDL_Palette palette;
     public byte bitsPerPixel;
