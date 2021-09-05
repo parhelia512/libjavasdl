@@ -1,5 +1,6 @@
 package org.libsdl.api;
 
+import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.NativeLoader;
 
 final class SdlInternalInit {
@@ -12,16 +13,17 @@ final class SdlInternalInit {
     }
 
     static native int SDL_Init(
-            int flags);
+            @MagicConstant(flagsFromClass = SDL_SubSystem.class) int flags);
 
     static native int SDL_InitSubSystem(
-            int flags);
+            @MagicConstant(flagsFromClass = SDL_SubSystem.class) int flags);
 
+    @MagicConstant(flagsFromClass = SDL_SubSystem.class)
     static native int SDL_WasInit(
-            int flags);
+            @MagicConstant(flagsFromClass = SDL_SubSystem.class) int flags);
 
     static native void SDL_Quit();
 
     static native void SDL_QuitSubSystem(
-            int flags);
+            @MagicConstant(flagsFromClass = SDL_SubSystem.class) int flags);
 }

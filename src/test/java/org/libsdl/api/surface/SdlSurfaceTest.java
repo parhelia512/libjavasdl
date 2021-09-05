@@ -2,13 +2,14 @@ package org.libsdl.api.surface;
 
 import org.junit.jupiter.api.Test;
 import org.libsdl.api.Sdl;
+import org.libsdl.api.SDL_SubSystem;
 
 @SuppressWarnings("checkstyle:MagicNumber")
 public final class SdlSurfaceTest {
 
     @Test
     public void control() {
-        Sdl.SDL_Init(Sdl.SDL_INIT_VIDEO);
+        Sdl.SDL_Init(SDL_SubSystem.SDL_INIT_VIDEO);
         final SDL_Surface s = SdlSurface.SDL_CreateRGBSurface(
                 0,
                 0,
