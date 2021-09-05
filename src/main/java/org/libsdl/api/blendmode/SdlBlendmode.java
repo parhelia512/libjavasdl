@@ -1,8 +1,13 @@
 package org.libsdl.api.blendmode;
 
 import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.jna.NativeLoader;
 
 public final class SdlBlendmode {
+
+    static {
+        NativeLoader.registerNativeMethods(SdlBlendmode.class);
+    }
 
     private SdlBlendmode() {
     }
