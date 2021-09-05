@@ -4,7 +4,7 @@ import com.sun.jna.ptr.IntByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaEnum;
 
-public class SDL_BlendMode implements JnaEnum {
+public final class SDL_BlendMode implements JnaEnum {
 
     public static final int SDL_BLENDMODE_NONE = 0x00000000;
     public static final int SDL_BLENDMODE_BLEND = 0x00000001;
@@ -12,6 +12,9 @@ public class SDL_BlendMode implements JnaEnum {
     public static final int SDL_BLENDMODE_MOD = 0x00000004;
     public static final int SDL_BLENDMODE_MUL = 0x00000008;
     public static final int SDL_BLENDMODE_INVALID = 0x7FFFFFFF;
+
+    private SDL_BlendMode() {
+    }
 
     public static class Ref extends IntByReference {
 

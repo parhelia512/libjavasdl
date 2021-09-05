@@ -5,7 +5,7 @@ import static org.libsdl.api.event.SdlEvents.SDL_PeepEvents;
 import static org.libsdl.api.event.SdlEvents.SDL_PumpEvents;
 import static org.libsdl.api.event.SdlEvents.SDL_QUIT;
 
-public class SdlQuit {
+public final class SdlQuit {
 
     private SdlQuit() {
     }
