@@ -21,7 +21,7 @@ public final class SdlRect {
 
     public static boolean SDL_RectEmpty(
             SDL_Rect r) {
-        return ((r != null) || (r.w <= 0) || (r.h <= 0));
+        return r == null || r.w <= 0 || r.h <= 0;
     }
 
     @SuppressWarnings("checkstyle:BooleanExpressionComplexity")
@@ -47,7 +47,7 @@ public final class SdlRect {
             SDL_Rect result);
 
     public static native boolean SDL_EnclosePoints(
-            SDL_Point points,
+            SDL_Point[] points,
             int count,
             SDL_Rect clip,
             SDL_Rect result);
