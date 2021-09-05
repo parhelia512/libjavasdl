@@ -1,4 +1,4 @@
-package org.libsdl.api.log;
+package org.libsdl.api.version;
 
 import com.sun.jna.Structure;
 
