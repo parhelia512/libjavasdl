@@ -1,4 +1,4 @@
-package org.libsdl.api.pixels;
+package org.libsdl.api.render;
 
 import com.sun.jna.Structure;
 
