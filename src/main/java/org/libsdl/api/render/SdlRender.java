@@ -5,6 +5,8 @@ import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
+import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.api.blendmode.SDL_BlendMode;
 import org.libsdl.api.pixels.SDL_Renderer;
 import org.libsdl.api.pixels.SDL_RendererInfo;
 import org.libsdl.api.pixels.SDL_Texture;
@@ -113,11 +115,11 @@ public final class SdlRender {
 
     public static native int SDL_SetTextureBlendMode(
             SDL_Texture texture,
-            int blendMode);
+            @MagicConstant(valuesFromClass = SDL_BlendMode.class) int blendMode);
 
     public static native int SDL_GetTextureBlendMode(
             SDL_Texture texture,
-            IntByReference blendMode);
+            SDL_BlendMode.Ref blendMode);
 
     public static native int SDL_UpdateTexture(
             SDL_Texture texture,
@@ -217,11 +219,11 @@ public final class SdlRender {
 
     public static native int SDL_SetRenderDrawBlendMode(
             SDL_Renderer renderer,
-            int blendMode);
+            @MagicConstant(valuesFromClass = SDL_BlendMode.class) int blendMode);
 
     public static native int SDL_GetRenderDrawBlendMode(
             SDL_Renderer renderer,
-            IntByReference blendMode);
+            SDL_BlendMode.Ref blendMode);
 
     public static native int SDL_RenderClear(
             SDL_Renderer renderer);

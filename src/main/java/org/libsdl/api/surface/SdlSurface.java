@@ -3,6 +3,8 @@ package org.libsdl.api.surface;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
+import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.api.blendmode.SDL_BlendMode;
 import org.libsdl.api.pixels.SDL_Palette;
 import org.libsdl.api.pixels.SDL_PixelFormat;
 import org.libsdl.api.rect.SDL_Rect;
@@ -144,11 +146,11 @@ public final class SdlSurface {
 
     public static native int SDL_SetSurfaceBlendMode(
             SDL_Surface surface,
-            int blendMode);
+            @MagicConstant(valuesFromClass = SDL_BlendMode.class) int blendMode);
 
     public static native int SDL_GetSurfaceBlendMode(
             SDL_Surface surface,
-            IntByReference blendMode);
+            SDL_BlendMode.Ref blendMode);
 
     public static native boolean SDL_SetClipRect(
             SDL_Surface surface,
