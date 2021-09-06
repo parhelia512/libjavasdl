@@ -29,46 +29,45 @@ public final class SdlLog {
 
     // TODO: Replace Object[] by Object... in SDL_Log(..)
     //       Note: Varargs are not supported in direct mapping
-    // TODO: Test if it works with Object[]
-    public static native void SDL_Log(
-            String fmt,
-            Object[] args);
-
-    public static native void SDL_LogVerbose(
-            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
-            String fmt,
-            Object[] args);
-
-    public static native void SDL_LogDebug(
-            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
-            String fmt,
-            Object[] args);
-
-    public static native void SDL_LogInfo(
-            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
-            String fmt,
-            Object[] args);
-
-    public static native void SDL_LogWarn(
-            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
-            String fmt,
-            Object[] args);
-
-    public static native void SDL_LogError(
-            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
-            String fmt,
-            Object[] args);
-
-    public static native void SDL_LogCritical(
-            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
-            String fmt,
-            Object[] args);
-
-    public static native void SDL_LogMessage(
-            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
-            @MagicConstant(valuesFromClass = SDL_LogPriority.class) int priority,
-            String fmt,
-            Object[] args);
+//    public static native void SDL_Log(
+//            String fmt,
+//            Object[] args);
+//
+//    public static native void SDL_LogVerbose(
+//            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
+//            String fmt,
+//            Object[] args);
+//
+//    public static native void SDL_LogDebug(
+//            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
+//            String fmt,
+//            Object[] args);
+//
+//    public static native void SDL_LogInfo(
+//            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
+//            String fmt,
+//            Object[] args);
+//
+//    public static native void SDL_LogWarn(
+//            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
+//            String fmt,
+//            Object[] args);
+//
+//    public static native void SDL_LogError(
+//            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
+//            String fmt,
+//            Object[] args);
+//
+//    public static native void SDL_LogCritical(
+//            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
+//            String fmt,
+//            Object[] args);
+//
+//    public static native void SDL_LogMessage(
+//            @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
+//            @MagicConstant(valuesFromClass = SDL_LogPriority.class) int priority,
+//            String fmt,
+//            Object[] args);
 
     public static native void SDL_LogMessageV(
             @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
