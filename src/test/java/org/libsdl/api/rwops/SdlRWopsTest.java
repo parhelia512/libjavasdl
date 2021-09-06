@@ -20,10 +20,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.libsdl.api.SDL_SubSystem.SDL_INIT_VIDEO;
 import static org.libsdl.api.Sdl.SDL_Init;
 import static org.libsdl.api.Sdl.SDL_Quit;
+import static org.libsdl.api.error.SdlError.SDL_GetError;
 import static org.libsdl.api.rwops.SdlRWops.SDL_LoadFile;
 import static org.libsdl.api.rwops.SdlRWops.SDL_LoadFile_RW;
 import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
 import static org.libsdl.api.rwops.SdlRWops.SDL_RWclose;
+import static org.libsdl.api.stdinc.SdlStdinc.SDL_GetNumAllocations;
+import static org.libsdl.api.stdinc.SdlStdinc.SDL_free;
 
 public final class SdlRWopsTest {
 
@@ -38,7 +41,7 @@ public final class SdlRWopsTest {
         Memory buffer = new Memory(1024L);
 
         SDL_RWops ops = SDL_RWFromFile(sampleFile.toString(), "rb");
-        assertNotNull(ops, "Opening file " + sampleFile + " failed: " + SdlError.SDL_GetError());
+        assertNotNull(ops, "Opening file " + sampleFile + " failed: " + SDL_GetError());
         try {
             SDL_RWReadFunction readFunction = ops.read;
             size_t actualReadCount = readFunction.read(ops, buffer, new size_t(1L), new size_t(buffer.size()));
@@ -51,7 +54,7 @@ public final class SdlRWopsTest {
             assertEquals('s', (char) (buffer.getByte(offset++)));
             assertEquals(' ', (char) (buffer.getByte(offset++)));
             assertEquals('i', (char) (buffer.getByte(offset++)));
-            assertEquals('s', (char) (buffer.getByte(offset++)));
+            assertEquals('s', (char) (buffer.getByte(offset)));
         } finally {
             SDL_RWclose(ops);
         }
@@ -62,7 +65,7 @@ public final class SdlRWopsTest {
         Path sampleFile = getSampleFile();
 
         SDL_RWops ops = SDL_RWFromFile(sampleFile.toString(), "rb");
-        assertNotNull(ops, "Opening file " + sampleFile + " failed: " + SdlError.SDL_GetError());
+        assertNotNull(ops, "Opening file " + sampleFile + " failed: " + SDL_GetError());
         try {
             SDL_RWSizeFunction readFunction = ops.size;
             long actualFileSize = readFunction.size(ops);
@@ -78,7 +81,7 @@ public final class SdlRWopsTest {
         Path sampleFile = getSampleFile();
 
         SDL_RWops ops = SDL_RWFromFile(sampleFile.toString(), "rb");
-        assertNotNull(ops, "Opening file " + sampleFile + " failed: " + SdlError.SDL_GetError());
+        assertNotNull(ops, "Opening file " + sampleFile + " failed: " + SDL_GetError());
         size_t.Ref actualReadCount = new size_t.Ref();
         Pointer buffer = SDL_LoadFile_RW(ops, actualReadCount, 1);
 
@@ -90,15 +93,17 @@ public final class SdlRWopsTest {
         assertEquals('s', (char) (buffer.getByte(offset++)));
         assertEquals(' ', (char) (buffer.getByte(offset++)));
         assertEquals('i', (char) (buffer.getByte(offset++)));
-        assertEquals('s', (char) (buffer.getByte(offset++)));
+        assertEquals('s', (char) (buffer.getByte(offset)));
     }
 
     @Test
     public void LoadFileShouldGiveFileContent() throws Exception {
         Path sampleFile = getSampleFile();
+        int allocCount = SDL_GetNumAllocations();
 
         size_t.Ref actualReadCount = new size_t.Ref();
         Pointer buffer = SDL_LoadFile(sampleFile.toString(), actualReadCount);
+        assertNotNull(buffer, "Failed to load file " + sampleFile + ": " + SDL_GetError());
 
         assertEquals(Files.size(sampleFile), actualReadCount.getValue().longValue());
         long offset = 0L;
@@ -108,7 +113,11 @@ public final class SdlRWopsTest {
         assertEquals('s', (char) (buffer.getByte(offset++)));
         assertEquals(' ', (char) (buffer.getByte(offset++)));
         assertEquals('i', (char) (buffer.getByte(offset++)));
-        assertEquals('s', (char) (buffer.getByte(offset++)));
+        assertEquals('s', (char) (buffer.getByte(offset)));
+
+        assertEquals(allocCount+1, SDL_GetNumAllocations());
+        SDL_free(buffer);
+        assertEquals(allocCount, SDL_GetNumAllocations());
     }
 
     @NotNull

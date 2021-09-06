@@ -1,10 +1,17 @@
 package org.libsdl.api.stdinc;
 
+import com.sun.jna.Pointer;
+import org.libsdl.jna.NativeLoader;
+
 @SuppressWarnings({
         "checkstyle:MagicNumber",
         "checkstyle:AbbreviationAsWordInName"
 })
 public final class SdlStdinc {
+
+    static {
+        NativeLoader.registerNativeMethods(SdlStdinc.class);
+    }
 
     private SdlStdinc() {
     }
@@ -21,16 +28,15 @@ public final class SdlStdinc {
 
     public static native int SDL_setenv(String name, String value, int overwrite);
 
-//    // TODO: Test but disable
-//
+//    // TODO: Test and then possibly enable
 //    public static native Pointer SDL_malloc(size_t size);
 //
 //    public static native Pointer SDL_calloc(int nmemb, size_t size);
 //
 //    public static native Pointer SDL_realloc(Pointer mem, size_t size);
-//
-//    public static native void SDL_free(Pointer mem);
-//
+
+    public static native void SDL_free(Pointer mem);
+
 //    /**
 //     * Get the current set of SDL memory functions
 //     */
