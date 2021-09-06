@@ -24,9 +24,9 @@ public final class SdlStdinc {
         return a | (b << 8) | (c << 16) | (d << 24);
     }
 
-    public static native String SDL_getenv(String name);
+//    public static native String SDL_getenv(String name);
 
-    public static native int SDL_setenv(String name, String value, int overwrite);
+//    public static native int SDL_setenv(String name, String value, int overwrite);
 
 //    // TODO: Test and then possibly enable
 //    public static native Pointer SDL_malloc(size_t size);

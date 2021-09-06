@@ -1,4 +1,4 @@
-package org.libsdl.api.stdinc;
+package org.libsdl.jna;
 
 import com.sun.jna.IntegerType;
 import com.sun.jna.Native;

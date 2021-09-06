@@ -3,7 +3,7 @@ package org.libsdl.api.rwops;
 import com.sun.jna.Pointer;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.error.SdlError;
-import org.libsdl.api.stdinc.size_t;
+import org.libsdl.jna.size_t;
 import org.libsdl.jna.NativeLoader;
 
 public final class SdlRWops {

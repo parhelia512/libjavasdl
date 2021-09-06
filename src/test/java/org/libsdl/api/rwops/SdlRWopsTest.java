@@ -9,11 +9,9 @@ import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.libsdl.api.error.SdlError;
-import org.libsdl.api.stdinc.size_t;
+import org.libsdl.jna.size_t;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
