@@ -48,21 +48,27 @@ public class size_t extends IntegerType {
 
         public void setValue(size_t newValue) {
             long currentValue = newValue.longValue();
-            switch (SDL_BYTEORDER) {
-                case SDL_LIL_ENDIAN:
-                    for (long i = 0; i < SIZE; i++) {
-                        getPointer().setByte(i, (byte) (currentValue & 0xFF));
-                        currentValue = currentValue >> 8;
-                    }
-                    break;
-                case SDL_BIG_ENDIAN:
-                    for (long i = SIZE - 1; i >= 0; i--) {
-                        getPointer().setByte(i, (byte) (currentValue & 0xFF));
-                        currentValue = currentValue >> 8;
-                    }
-                    break;
-                default:
-                    throw new IllegalStateException("Endianness of the platform has not been defined");
+            if (SIZE == 4) {
+                getPointer().setInt(0L, (int) currentValue);
+            } else if (SIZE == 8) {
+                getPointer().setLong(0L, currentValue);
+            } else {
+                switch (SDL_BYTEORDER) {
+                    case SDL_LIL_ENDIAN:
+                        for (long i = 0; i < SIZE; i++) {
+                            getPointer().setByte(i, (byte) (currentValue & 0xFF));
+                            currentValue = currentValue >> 8;
+                        }
+                        break;
+                    case SDL_BIG_ENDIAN:
+                        for (long i = SIZE - 1; i >= 0; i--) {
+                            getPointer().setByte(i, (byte) (currentValue & 0xFF));
+                            currentValue = currentValue >> 8;
+                        }
+                        break;
+                    default:
+                        throw new IllegalStateException("Endianness of the platform has not been defined");
+                }
             }
         }
 
