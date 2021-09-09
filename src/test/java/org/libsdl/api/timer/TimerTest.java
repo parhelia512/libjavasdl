@@ -3,17 +3,17 @@ package org.libsdl.api.timer;
 import java.util.concurrent.atomic.AtomicInteger;
 import com.sun.jna.Pointer;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import org.libsdl.api.stdinc.SdlStdinc;
+import org.libsdl.api.SdlTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.libsdl.api.SDL_SubSystem.SDL_INIT_TIMER;
 import static org.libsdl.api.Sdl.SDL_InitSubSystem;
 import static org.libsdl.api.Sdl.SDL_QuitSubSystem;
+import static org.libsdl.api.SdlTest.assertNoMemoryLeak;
 import static org.libsdl.api.stdinc.SdlStdinc.SDL_GetNumAllocations;
 import static org.libsdl.api.timer.SdlTimer.SDL_AddTimer;
 import static org.libsdl.api.timer.SdlTimer.SDL_GetTicks;
@@ -36,7 +36,7 @@ public class TimerTest {
         int time2 = SDL_GetTicks();
         assertTrue(time2 - 2500L >= time1);
         assertTrue(time2 - 4500L < time1);
-        assertNoMemoryLeak();
+        assertNoMemoryLeak(numOfAllocationsBefore);
     }
 
     @Test
@@ -58,12 +58,7 @@ public class TimerTest {
 
         assertEquals(6, counter.get());
         // TODO: Report the leak to SDL authors and enable the assert after it is fix in the native library
-        // assertNoMemoryLeak();
-    }
-
-    private void assertNoMemoryLeak() {
-        int numOfAllocationsAfter = SDL_GetNumAllocations();
-        assertEquals(numOfAllocationsBefore, numOfAllocationsAfter, "There is a memory leak. Number of allocations before the test was " + numOfAllocationsBefore + ", after the test " + numOfAllocationsAfter);
+        // assertNoMemoryLeak(numOfAllocationsBefore);
     }
 
     @AfterEach

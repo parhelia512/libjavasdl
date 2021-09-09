@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.libsdl.api.SdlTest;
 import org.libsdl.jna.size_t;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,7 +36,7 @@ public final class SdlRWopsTest {
 
     @Test
     public void rwOpsShouldLoadFileContent() throws Exception {
-        Path sampleFile = getSampleFile();
+        Path sampleFile = SdlTest.getSampleFile(this, "sample.txt");
         Memory buffer = new Memory(1024L);
 
         SDL_RWops ops = SDL_RWFromFile(sampleFile.toString(), "rb");
@@ -60,7 +61,7 @@ public final class SdlRWopsTest {
 
     @Test
     public void rwOpsShouldReportCorrectFileSize() throws Exception {
-        Path sampleFile = getSampleFile();
+        Path sampleFile = SdlTest.getSampleFile(this, "sample.txt");
 
         SDL_RWops ops = SDL_RWFromFile(sampleFile.toString(), "rb");
         assertNotNull(ops, "Opening file " + sampleFile + " failed: " + SDL_GetError());
@@ -76,7 +77,7 @@ public final class SdlRWopsTest {
 
     @Test
     public void LoadFileUsingRwOpsShouldGiveFileContent() throws Exception {
-        Path sampleFile = getSampleFile();
+        Path sampleFile = SdlTest.getSampleFile(this, "sample.txt");
 
         SDL_RWops ops = SDL_RWFromFile(sampleFile.toString(), "rb");
         assertNotNull(ops, "Opening file " + sampleFile + " failed: " + SDL_GetError());
@@ -96,7 +97,7 @@ public final class SdlRWopsTest {
 
     @Test
     public void LoadFileShouldGiveFileContent() throws Exception {
-        Path sampleFile = getSampleFile();
+        Path sampleFile = SdlTest.getSampleFile(this, "sample.txt");
         int allocCount = SDL_GetNumAllocations();
 
         size_t.Ref actualReadCount = new size_t.Ref();
@@ -116,12 +117,6 @@ public final class SdlRWopsTest {
         assertEquals(allocCount+1, SDL_GetNumAllocations());
         SDL_free(buffer);
         assertEquals(allocCount, SDL_GetNumAllocations());
-    }
-
-    @NotNull
-    private Path getSampleFile() throws URISyntaxException {
-        URL sampleFileUrl = this.getClass().getResource("sample.txt");
-        return Paths.get(sampleFileUrl.toURI()).toAbsolutePath();
     }
 
     @AfterEach
