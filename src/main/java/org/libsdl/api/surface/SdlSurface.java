@@ -10,6 +10,7 @@ import org.libsdl.api.pixels.SDL_Palette;
 import org.libsdl.api.pixels.SDL_PixelFormat;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.rwops.SDL_RWops;
+import org.libsdl.jna.JnaUtils;
 import org.libsdl.jna.NativeLoader;
 
 import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
@@ -183,16 +184,7 @@ public final class SdlSurface {
         if (rects.length == 0) {
             return 0;
         }
-        int size = rects[0].size();
-        Memory memory = new Memory((long) rects.length * size);
-        int offset = 0;
-        for (SDL_Rect rect : rects) {
-            Pointer backup = rect.getPointer();
-            rect.useMemory(memory, offset);
-            rect.write();
-            rect.useMemory(backup, 0);
-            offset += size;
-        }
+        Memory memory = JnaUtils.writeArrayToNativeMemory(rects);
         return NativeFunctions.SDL_FillRects(dst, memory, rects.length, color);
     }
 
