@@ -8,10 +8,13 @@ import com.sun.jna.Structure;
         "b",
         "a"
 })
-public final class SDL_Color extends Structure {
+public class SDL_Color extends Structure {
 
     public byte r;
     public byte g;
     public byte b;
     public byte a;
+
+    public static class ByReference extends SDL_Color implements Structure.ByReference {
+    }
 }

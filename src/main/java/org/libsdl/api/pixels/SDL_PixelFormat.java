@@ -25,12 +25,12 @@ import org.intellij.lang.annotations.MagicConstant;
         "refcount",
         "next"
 })
-public final class SDL_PixelFormat extends Structure {
+public class SDL_PixelFormat extends Structure {
 
     // TODO: Check suspicious padding
     @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class)
     public int format;
-    public SDL_Palette palette;
+    public SDL_Palette.ByReference palette;
     public byte bitsPerPixel;
     public byte bytesPerPixel;
     public byte[] padding = new byte[2];
@@ -48,4 +48,7 @@ public final class SDL_PixelFormat extends Structure {
     public byte aShift;
     public int refcount;
     public Pointer next;
+
+    public final static class ByReference extends SDL_PixelFormat implements Structure.ByReference {
+    }
 }
