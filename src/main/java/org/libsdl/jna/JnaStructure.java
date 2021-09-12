@@ -21,11 +21,6 @@ public class JnaStructure extends Structure {
         super(alignType, mapper);
     }
 
-    /**
-     * Create a structure cast onto pre-allocated memory.
-     *
-     * @param p
-     */
     public JnaStructure(Pointer p) {
         super(p);
     }
