@@ -126,7 +126,7 @@ public final class SdlVideo {
         return NativeFunctions.SDL_GetWindowPixelFormat(window);
     }
 
-    public static SDL_Window SDL_CreateWindow(String title, int x, int y, int w, int h, int flags) {
+    public static SDL_Window SDL_CreateWindow(String title, int x, int y, int w, int h, @MagicConstant(flagsFromClass = SDL_WindowFlags.class) int flags) {
         return NativeFunctions.SDL_CreateWindow(title, x, y, w, h, flags);
     }
 
@@ -319,7 +319,7 @@ public final class SdlVideo {
         return NativeFunctions.SDL_SetWindowHitTest(window, callback, callbackData);
     }
 
-    public static int SDL_FlashWindow(SDL_Window window, int operation) {
+    public static int SDL_FlashWindow(SDL_Window window, @MagicConstant(valuesFromClass = SDL_FlashOperation.class) int operation) {
         return NativeFunctions.SDL_FlashWindow(window, operation);
     }
 
@@ -359,11 +359,11 @@ public final class SdlVideo {
         NativeFunctions.SDL_GL_ResetAttributes();
     }
 
-    public static int SDL_GL_SetAttribute(int attr, int value) {
+    public static int SDL_GL_SetAttribute(@MagicConstant(valuesFromClass = SDL_GLattr.class) int attr, int value) {
         return NativeFunctions.SDL_GL_SetAttribute(attr, value);
     }
 
-    public static int SDL_GL_GetAttribute(int attr, IntByReference value) {
+    public static int SDL_GL_GetAttribute(@MagicConstant(valuesFromClass = SDL_GLattr.class) int attr, IntByReference value) {
         return NativeFunctions.SDL_GL_GetAttribute(attr, value);
     }
 
