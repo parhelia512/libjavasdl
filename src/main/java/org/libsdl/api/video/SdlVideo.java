@@ -503,12 +503,10 @@ public final class SdlVideo {
         public static native int SDL_GetWindowFlags(
                 SDL_Window window);
 
-        // TODO: Charset UTF-8
         public static native void SDL_SetWindowTitle(
                 SDL_Window window,
                 String title);
 
-        // TODO: Charset UTF-8
         public static native String SDL_GetWindowTitle(
                 SDL_Window window);
 
