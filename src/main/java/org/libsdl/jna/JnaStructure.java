@@ -4,6 +4,9 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.TypeMapper;
 
+/**
+ * The same class as a {@link Structure}, just exposes {@link #useMemory(Pointer)}
+ */
 public class JnaStructure extends Structure {
 
     public JnaStructure() {
