@@ -5,6 +5,10 @@ import org.libsdl.jna.NativeLoader;
 
 public class SdlSysWM {
 
+    static {
+        NativeLoader.registerNativeMethods(SdlSysWM.class);
+    }
+
     /**
      * Get driver-specific information about a window.
      *
@@ -23,20 +27,7 @@ public class SdlSysWM {
      *
      * @since This function is available since SDL 2.0.0.
      */
-    public static boolean SDL_GetWindowWMInfo(
+    public static native boolean SDL_GetWindowWMInfo(
             SDL_Window window,
-            SDL_SysWMinfo info) {
-        return NativeFunctions.SDL_GetWindowWMInfo(window, info);
-    }
-
-    private static final class NativeFunctions {
-
-        static {
-            NativeLoader.registerNativeMethods(NativeFunctions.class);
-        }
-
-        public static native boolean SDL_GetWindowWMInfo(
-                SDL_Window window,
-                SDL_SysWMinfo info);
-    }
+            SDL_SysWMinfo info);
 }
