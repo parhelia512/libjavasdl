@@ -1,6 +1,7 @@
 package org.libsdl.api.render;
 
 import com.sun.jna.Structure;
+import org.libsdl.jna.JnaStructure;
 
 @SuppressWarnings("checkstyle:MagicNumber")
 @Structure.FieldOrder({
@@ -11,7 +12,7 @@ import com.sun.jna.Structure;
         "maxTextureWidth",
         "maxTextureHeight"
 })
-public final class SDL_RendererInfo extends Structure {
+public final class SDL_RendererInfo extends JnaStructure {
 
     public String name;
     public int flags;

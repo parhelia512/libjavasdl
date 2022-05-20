@@ -18,7 +18,7 @@ import static org.libsdl.api.Sdl.SDL_InitSubSystem;
 import static org.libsdl.api.Sdl.SDL_QuitSubSystem;
 import static org.libsdl.api.error.SdlError.SDL_GetError;
 import static org.libsdl.api.render.SdlRender.SDL_CreateRenderer;
-import static org.libsdl.api.render.SdlRender.SDL_RENDERER_ACCELERATED;
+import static org.libsdl.api.render.SDL_RendererFlags.SDL_RENDERER_ACCELERATED;
 import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_WINDOWS;
 import static org.libsdl.api.syswm.SdlSysWM.SDL_GetWindowWMInfo;
 import static org.libsdl.api.version.SdlVersion.SDL_GetVersion;
