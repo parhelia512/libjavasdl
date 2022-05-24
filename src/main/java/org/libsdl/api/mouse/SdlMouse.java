@@ -1,17 +1,15 @@
 package org.libsdl.api.mouse;
 
 import com.sun.jna.Pointer;
-import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.api.event.SdlEvents;
 import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.jna.NativeLoader;
 
-import static org.libsdl.api.event.SdlEvents.SDL_DISABLE;
-import static org.libsdl.api.event.SdlEvents.SDL_ENABLE;
-import static org.libsdl.api.event.SdlEvents.SDL_QUERY;
+import static org.libsdl.api.event.SdlEventsConst.SDL_DISABLE;
+import static org.libsdl.api.event.SdlEventsConst.SDL_ENABLE;
+import static org.libsdl.api.event.SdlEventsConst.SDL_QUERY;
 
 @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
 public final class SdlMouse {
@@ -103,7 +101,7 @@ public final class SdlMouse {
 
     @MagicConstant(intValues = {SDL_ENABLE, SDL_DISABLE})
     public static int SDL_ShowCursor(
-            @MagicConstant(intValues = { SDL_ENABLE, SDL_DISABLE, SDL_QUERY }) int toggle) {
+            @MagicConstant(intValues = {SDL_ENABLE, SDL_DISABLE, SDL_QUERY}) int toggle) {
         return NativeFunctions.SDL_ShowCursor(toggle);
     }
 
@@ -175,8 +173,8 @@ public final class SdlMouse {
         public static native void SDL_FreeCursor(
                 SDL_Cursor cursor);
 
-        @MagicConstant(intValues = { SDL_ENABLE, SDL_DISABLE })
+        @MagicConstant(intValues = {SDL_ENABLE, SDL_DISABLE})
         public static native int SDL_ShowCursor(
-                @MagicConstant(intValues = { SDL_ENABLE, SDL_DISABLE, SDL_QUERY }) int toggle);
+                @MagicConstant(intValues = {SDL_ENABLE, SDL_DISABLE, SDL_QUERY}) int toggle);
     }
 }

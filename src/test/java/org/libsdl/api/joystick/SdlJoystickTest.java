@@ -1,16 +1,15 @@
 package org.libsdl.api.joystick;
 
-import java.io.PrintStream;
 import com.sun.jna.ptr.ShortByReference;
 import org.junit.jupiter.api.Test;
 
-import org.libsdl.api.SDL_SubSystem;
-import org.libsdl.api.event.SdlEvents;
+import org.libsdl.api.event.SdlEventsConst;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.libsdl.api.SDL_SubSystem.SDL_INIT_EVERYTHING;
 import static org.libsdl.api.Sdl.SDL_Init;
 import static org.libsdl.api.Sdl.SDL_Quit;
+import static org.libsdl.api.event.SdlEventsConst.SDL_QUERY;
 import static org.libsdl.api.joystick.SdlJoystick.SDL_JoystickClose;
 import static org.libsdl.api.joystick.SdlJoystick.SDL_JoystickEventState;
 import static org.libsdl.api.joystick.SdlJoystick.SDL_JoystickGetAxis;
@@ -67,7 +66,7 @@ public final class SdlJoystickTest {
             int buttonsCount = SDL_JoystickNumButtons(joystick);
             System.out.println("Number of available buttons: " + buttonsCount);
 
-            SDL_JoystickEventState(SdlEvents.SDL_QUERY);
+            SDL_JoystickEventState(SDL_QUERY);
             for (int axisNumber = 0; axisNumber < axisCount; axisNumber++) {
                 ShortByReference state1 = new ShortByReference((short) 0);
                 SDL_JoystickGetAxisInitialState(joystick, axisNumber, state1);
