@@ -1,6 +1,13 @@
 package org.libsdl.api.event.events;
 
 import com.sun.jna.Structure;
+import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.jna.JnaStructure;
+
+import static org.libsdl.api.event.SDL_EventType.SDL_MOUSEWHEEL;
+import static org.libsdl.api.mouse.SDL_MouseWheelDirection.SDL_MOUSEWHEEL_FLIPPED;
+import static org.libsdl.api.mouse.SDL_MouseWheelDirection.SDL_MOUSEWHEEL_NORMAL;
+import static org.libsdl.api.touch.SdlTouch.SDL_TOUCH_MOUSEID;
 
 @Structure.FieldOrder({
         "type",
@@ -11,13 +18,18 @@ import com.sun.jna.Structure;
         "y",
         "direction"
 })
-public final class SDL_MouseWheelEvent extends Structure {
+public final class SDL_MouseWheelEvent extends JnaStructure {
 
+    @MagicConstant(intValues = SDL_MOUSEWHEEL)
     public int type;
     public int timestamp;
     public int windowID;
+
+    @MagicConstant(intValues = SDL_TOUCH_MOUSEID)
     public int which;
     public int x;
     public int y;
+
+    @MagicConstant(intValues = {SDL_MOUSEWHEEL_NORMAL, SDL_MOUSEWHEEL_FLIPPED})
     public int direction;
 }

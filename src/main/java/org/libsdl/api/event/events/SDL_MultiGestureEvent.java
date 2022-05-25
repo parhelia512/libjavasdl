@@ -1,7 +1,11 @@
 package org.libsdl.api.event.events;
 
-import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
+import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.api.touch.SDL_TouchID;
+import org.libsdl.jna.JnaStructure;
+
+import static org.libsdl.api.event.SDL_EventType.SDL_MULTIGESTURE;
 
 @Structure.FieldOrder({
         "type",
@@ -14,11 +18,12 @@ import com.sun.jna.Structure;
         "numFingers",
         "padding"
 })
-public final class SDL_MultiGestureEvent extends Structure {
+public final class SDL_MultiGestureEvent extends JnaStructure {
 
+    @MagicConstant(intValues = SDL_MULTIGESTURE)
     public int type;
     public int timestamp;
-    public NativeLong touchId;
+    public SDL_TouchID touchId;
     public float dTheta;
     public float dDist;
     public float x;

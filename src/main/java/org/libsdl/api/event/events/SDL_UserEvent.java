@@ -2,6 +2,7 @@ package org.libsdl.api.event.events;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "type",
@@ -11,7 +12,7 @@ import com.sun.jna.Structure;
         "data1",
         "data2"
 })
-public final class SDL_UserEvent extends Structure {
+public final class SDL_UserEvent extends JnaStructure {
 
     public int type;
     public int timestamp;

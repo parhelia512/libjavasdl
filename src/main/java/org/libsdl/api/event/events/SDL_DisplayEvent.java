@@ -2,34 +2,36 @@ package org.libsdl.api.event.events;
 
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.api.video.SDL_WindowEventID;
+import org.libsdl.api.video.SDL_DisplayEventID;
 import org.libsdl.jna.JnaStructure;
 
-import static org.libsdl.api.event.SDL_EventType.SDL_WINDOWEVENT;
+import static org.libsdl.api.event.SDL_EventType.SDL_DISPLAYEVENT;
 
 @Structure.FieldOrder({
         "type",
         "timestamp",
-        "windowID",
+        "display",
         "event",
         "padding1",
         "padding2",
         "padding3",
-        "data1",
-        "data2"
+        "data1"
 })
-public final class SDL_WindowEvent extends JnaStructure {
+public final class SDL_DisplayEvent extends JnaStructure {
 
-    @MagicConstant(intValues = SDL_WINDOWEVENT)
+    @MagicConstant(intValues = SDL_DISPLAYEVENT)
     public int type;
     public int timestamp;
-    public int windowID;
 
-    @MagicConstant(valuesFromClass = SDL_WindowEventID.class)
+    /**
+     * The associated display index
+     */
+    public int display;
+
+    @MagicConstant(valuesFromClass = SDL_DisplayEventID.class)
     public byte event;
     public byte padding1;
     public byte padding2;
     public byte padding3;
     public int data1;
-    public int data2;
 }

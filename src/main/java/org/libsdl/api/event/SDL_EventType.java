@@ -1,6 +1,8 @@
 package org.libsdl.api.event;
 
-public class SDL_EventType {
+import org.libsdl.jna.JnaEnum;
+
+public final class SDL_EventType implements JnaEnum {
 
     public static final int SDL_FIRSTEVENT = 0;
 
@@ -23,7 +25,7 @@ public class SDL_EventType {
     public static final int SDL_KEYUP = 0x301;
     public static final int SDL_TEXTEDITING = 0x302;
     public static final int SDL_TEXTINPUT = 0x303;
-    public static final int SDL_KEYMAPCHANGED = 0x304;
+    public static final int SDL_KEYMAPCHANGED = 0x304;          // TODO: Test
 
     public static final int SDL_MOUSEMOTION = 0x400;
     public static final int SDL_MOUSEBUTTONDOWN = 0x401;

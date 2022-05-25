@@ -38,7 +38,7 @@ public final class SdlSensor {
      *
      * <p>The axis data is not changed when the phone is rotated.</p>
      *
-     * @see org.libsdl.api.video.SdlVideo#SDL_GetDisplayOrientation()
+     * @see org.libsdl.api.video.SdlVideo#SDL_GetDisplayOrientation(int)
      */
     public static final float SDL_STANDARD_GRAVITY = 9.80665f;
 

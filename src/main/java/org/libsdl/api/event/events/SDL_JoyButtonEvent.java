@@ -1,7 +1,14 @@
 package org.libsdl.api.event.events;
 
-import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
+import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.api.joystick.SDL_JoystickID;
+import org.libsdl.jna.JnaStructure;
+
+import static org.libsdl.api.event.SDL_EventType.SDL_JOYBUTTONDOWN;
+import static org.libsdl.api.event.SDL_EventType.SDL_JOYBUTTONUP;
+import static org.libsdl.api.event.SdlEventsConst.SDL_PRESSED;
+import static org.libsdl.api.event.SdlEventsConst.SDL_RELEASED;
 
 @Structure.FieldOrder({
         "type",
@@ -12,12 +19,15 @@ import com.sun.jna.Structure;
         "padding1",
         "padding2"
 })
-public final class SDL_JoyButtonEvent extends Structure {
+public final class SDL_JoyButtonEvent extends JnaStructure {
 
+    @MagicConstant(intValues = {SDL_JOYBUTTONDOWN, SDL_JOYBUTTONUP})
     public int type;
     public int timestamp;
-    public NativeLong which;
+    public SDL_JoystickID which;
     public byte button;
+
+    @MagicConstant(intValues = {SDL_PRESSED, SDL_RELEASED})
     public byte state;
     public byte padding1;
     public byte padding2;
