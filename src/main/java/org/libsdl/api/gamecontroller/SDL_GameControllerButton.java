@@ -55,6 +55,8 @@ public final class SDL_GameControllerButton implements JnaEnum {
     public static final int SDL_CONTROLLER_BUTTON_TOUCHPAD = 20;
     public static final int SDL_CONTROLLER_BUTTON_MAX = 21;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_GameControllerButton() {
     }
 }

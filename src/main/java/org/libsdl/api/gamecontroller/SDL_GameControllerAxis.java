@@ -22,6 +22,8 @@ public final class SDL_GameControllerAxis implements JnaEnum {
     public static final int SDL_CONTROLLER_AXIS_TRIGGERRIGHT = 5;
     public static final int SDL_CONTROLLER_AXIS_MAX = 6;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_GameControllerAxis() {
     }
 }

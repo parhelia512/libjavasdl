@@ -12,6 +12,7 @@ public class SDL_GameController extends PointerType {
      * The default constructor wraps a NULL pointer.
      */
     public SDL_GameController() {
+        super();
     }
 
     /**
