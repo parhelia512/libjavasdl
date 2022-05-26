@@ -135,7 +135,7 @@ public final class SDL_Event extends Union {
     @SuppressWarnings({"checkstyle:javancss", "checkstyle:requirethis"})
     @Override
     public void read() {
-        type = (Integer) readField("type");
+        readField("type");
         switch (type) {
             case SDL_QUIT:
                 setType(SDL_QuitEvent.class);
