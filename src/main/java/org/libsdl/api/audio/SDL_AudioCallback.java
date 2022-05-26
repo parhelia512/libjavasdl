@@ -25,4 +25,5 @@ public interface SDL_AudioCallback extends Callback {
             Pointer userdata,
             ByteByReference stream,
             int len);
+    // TODO: ByteByReference stream isn't the best JNA type. What about Pointer or ByteBuffer or byte[]?
 }

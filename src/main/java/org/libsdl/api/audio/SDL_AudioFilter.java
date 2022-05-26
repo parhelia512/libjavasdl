@@ -1,8 +1,6 @@
 package org.libsdl.api.audio;
 
 import com.sun.jna.Callback;
-import com.sun.jna.Pointer;
-import com.sun.jna.ptr.ByteByReference;
 
 @FunctionalInterface
 public interface SDL_AudioFilter extends Callback {

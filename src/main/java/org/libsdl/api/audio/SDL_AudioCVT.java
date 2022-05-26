@@ -2,7 +2,7 @@ package org.libsdl.api.audio;
 
 import com.sun.jna.Structure;
 import com.sun.jna.ptr.ByteByReference;
-
+import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "needed",
@@ -17,7 +17,7 @@ import com.sun.jna.ptr.ByteByReference;
         "filters",
         "filter_index",
 })
-public class SDL_AudioCVT extends Structure {
+public class SDL_AudioCVT extends JnaStructure {
 
     /**
      * <p>Upper limit of filters in SDL_AudioCVT</p>
@@ -31,56 +31,56 @@ public class SDL_AudioCVT extends Structure {
     /**
      * Set to 1 if conversion possible
      */
-    int needed;
+    public int needed;
 
     /**
      * Source audio format
      */
-    SDL_AudioFormat src_format;
+    public SDL_AudioFormat src_format;
 
     /**
      * Target audio format
      */
-    SDL_AudioFormat dst_format;
+    public SDL_AudioFormat dst_format;
 
     /**
      * Rate conversion increment
      */
-    double rate_incr;
+    public double rate_incr;
 
     /**
      * Buffer to hold entire audio data
      */
-    ByteByReference buf;
+    public ByteByReference buf;
 
     /**
      * Length of original audio buffer
      */
-    int len;
+    public int len;
 
     /**
      * Length of converted audio buffer
      */
-    int len_cvt;
+    public int len_cvt;
 
     /**
      * buffer must be len*len_mult big
      */
-    int len_mult;
+    public int len_mult;
 
     /**
      * Given len, final size is len*len_ratio
      */
-    double len_ratio;
+    public double len_ratio;
 
     // TODO: Test sizeof and if it generally works
     /**
      * null-terminated list of filter functions
      */
-    SDL_AudioFilter[] filters = new SDL_AudioFilter[SDL_AUDIOCVT_MAX_FILTERS + 1];
+    public SDL_AudioFilter[] filters = new SDL_AudioFilter[SDL_AUDIOCVT_MAX_FILTERS + 1];
 
     /**
      * Current audio conversion function
      */
-    int filter_index;
+    public int filter_index;
 }

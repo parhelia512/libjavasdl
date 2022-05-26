@@ -16,19 +16,20 @@ import com.sun.jna.PointerType;
  *
  * <p>This is opaque to the outside world.</p>
  */
-public class SDL_AudioStream extends PointerType {
+public final class SDL_AudioStream extends PointerType {
 
     /**
      * The default constructor wraps a NULL pointer.
      */
     public SDL_AudioStream() {
+        super();
     }
 
     /**
      * This constructor is typically used by {@link #fromNative} if generating
      * a new object instance.
      *
-     * @param p
+     * @param p Native pointer to be wrapped
      */
     public SDL_AudioStream(Pointer p) {
         super(p);

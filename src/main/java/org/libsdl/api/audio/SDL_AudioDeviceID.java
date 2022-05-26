@@ -11,13 +11,13 @@ import com.sun.jna.IntegerType;
  * for backwards compatibility and when you don't care about multiple,
  * specific, or capture devices.</p>
  */
-public class SDL_AudioDeviceID extends IntegerType {
+public final class SDL_AudioDeviceID extends IntegerType {
 
     public SDL_AudioDeviceID() {
-        super(4);
+        this(0L);
     }
 
-    public SDL_AudioDeviceID(int value) {
-        super(4, value);
+    public SDL_AudioDeviceID(long value) {
+        super(4, value, true);
     }
 }

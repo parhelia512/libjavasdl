@@ -2,6 +2,7 @@ package org.libsdl.api.audio;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import org.libsdl.jna.JnaStructure;
 
 /**
  * <p>The calculated values in this structure are calculated by SDL_OpenAudio().</p>
@@ -28,50 +29,50 @@ import com.sun.jna.Structure;
         "callback",
         "userdata"
 })
-public class SDL_AudioSpec extends Structure {
+public class SDL_AudioSpec extends JnaStructure {
 
     /**
      * DSP frequency -- samples per second
      */
-    int freq;
+    public int freq;
 
     /**
      * Audio data format
      */
-    SDL_AudioFormat format;
+    public SDL_AudioFormat format;
 
     /**
      * Number of channels: 1 mono, 2 stereo
      */
-    byte channels;
+    public byte channels;
 
     /**
      * Audio buffer silence value (calculated)
      */
-    byte silence;
+    public byte silence;
 
     /**
      * Audio buffer size in sample FRAMES (total samples divided by channel count)
      */
-    short samples;
+    public short samples;
 
     /**
      * Necessary for some compile environments
      */
-    short padding;
+    public short padding;
 
     /**
      * Audio buffer size in bytes (calculated)
      */
-    int size;
+    public int size;
 
     /**
      * Callback that feeds the audio device (NULL to use SDL_QueueAudio()).
      */
-    SDL_AudioCallback callback;
+    public SDL_AudioCallback callback;
 
     /**
      * Userdata passed to callback (ignored for NULL callbacks).
      */
-    Pointer userdata;
+    public Pointer userdata;
 }
