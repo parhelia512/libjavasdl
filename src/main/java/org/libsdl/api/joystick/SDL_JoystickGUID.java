@@ -2,6 +2,7 @@ package org.libsdl.api.joystick;
 
 import java.util.UUID;
 import com.sun.jna.Structure;
+import org.libsdl.jna.JnaStructure;
 
 /**
  * A structure that encodes the stable unique id for a joystick device
@@ -11,7 +12,7 @@ import com.sun.jna.Structure;
         "leastSigBits",
         "mostSigBits"
 })
-public final class SDL_JoystickGUID extends Structure implements Structure.ByValue {
+public final class SDL_JoystickGUID extends JnaStructure implements Structure.ByValue {
 
     public long leastSigBits;
     public long mostSigBits;

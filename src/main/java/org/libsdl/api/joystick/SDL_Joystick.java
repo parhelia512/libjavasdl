@@ -18,7 +18,7 @@ public final class SDL_Joystick extends PointerType {
      * This constructor is typically used by {@link #fromNative} if generating
      * a new object instance.
      *
-     * @param p
+     * @param p Native pointer to be wrapped
      */
     public SDL_Joystick(Pointer p) {
         super(p);

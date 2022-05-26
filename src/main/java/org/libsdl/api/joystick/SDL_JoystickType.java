@@ -15,6 +15,8 @@ public final class SDL_JoystickType implements JnaEnum {
     public static final int SDL_JOYSTICK_TYPE_ARCADE_PAD = 8;
     public static final int SDL_JOYSTICK_TYPE_THROTTLE = 9;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_JoystickType() {
     }
 }

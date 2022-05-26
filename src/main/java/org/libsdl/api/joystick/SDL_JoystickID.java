@@ -9,13 +9,13 @@ import com.sun.jna.IntegerType;
  *
  * <p>The ID value starts at 0 and increments from there. The value -1 is an invalid ID.</p>
  */
-public class SDL_JoystickID extends IntegerType {
+public final class SDL_JoystickID extends IntegerType {
 
     /**
      * Create a zero-valued signed IntegerType.
      */
     public SDL_JoystickID() {
-        super(4);
+        this(0L);
     }
 
     /**
@@ -24,6 +24,6 @@ public class SDL_JoystickID extends IntegerType {
      * @param value
      */
     public SDL_JoystickID(long value) {
-        super(4, value);
+        super(4, value, false);
     }
 }

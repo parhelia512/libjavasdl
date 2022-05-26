@@ -6,15 +6,15 @@ import org.libsdl.api.joystick.SDL_JoystickID;
 import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_JOYHATMOTION;
-import static org.libsdl.api.joystick.SdlJoystick.SDL_HAT_CENTERED;
-import static org.libsdl.api.joystick.SdlJoystick.SDL_HAT_DOWN;
-import static org.libsdl.api.joystick.SdlJoystick.SDL_HAT_LEFT;
-import static org.libsdl.api.joystick.SdlJoystick.SDL_HAT_LEFTDOWN;
-import static org.libsdl.api.joystick.SdlJoystick.SDL_HAT_LEFTUP;
-import static org.libsdl.api.joystick.SdlJoystick.SDL_HAT_RIGHT;
-import static org.libsdl.api.joystick.SdlJoystick.SDL_HAT_RIGHTDOWN;
-import static org.libsdl.api.joystick.SdlJoystick.SDL_HAT_RIGHTUP;
-import static org.libsdl.api.joystick.SdlJoystick.SDL_HAT_UP;
+import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_CENTERED;
+import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_DOWN;
+import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_LEFT;
+import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_LEFTDOWN;
+import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_LEFTUP;
+import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_RIGHT;
+import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_RIGHTDOWN;
+import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_RIGHTUP;
+import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_UP;
 
 @Structure.FieldOrder({
         "type",
