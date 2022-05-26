@@ -10,6 +10,9 @@ public final class SdlGesture {
         NativeLoader.registerNativeMethods(SdlGesture.class);
     }
 
+    private SdlGesture() {
+    }
+
     public static native int SDL_RecordGesture(
             SDL_TouchID touchId);
 
@@ -23,7 +26,4 @@ public final class SdlGesture {
     public static native int SDL_LoadDollarTemplates(
             SDL_TouchID touchId,
             SDL_RWops src);
-
-    private SdlGesture() {
-    }
 }
