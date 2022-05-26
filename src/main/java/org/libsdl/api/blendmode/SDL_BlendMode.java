@@ -16,9 +16,12 @@ public final class SDL_BlendMode implements JnaEnum {
     private SDL_BlendMode() {
     }
 
+    // TODO: Generate public static String toString(int value)
+
     public static class Ref extends IntByReference {
 
         public Ref() {
+            super();
         }
 
         public Ref(int ordinal) {
@@ -26,7 +29,8 @@ public final class SDL_BlendMode implements JnaEnum {
         }
 
         @Override
-        public void setValue(@MagicConstant(valuesFromClass = SDL_BlendMode.class) int value) {
+        public void setValue(
+                @MagicConstant(valuesFromClass = SDL_BlendMode.class) int value) {
             super.setValue(value);
         }
 
