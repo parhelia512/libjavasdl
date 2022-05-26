@@ -1,6 +1,8 @@
 package org.libsdl.api.haptic;
 
 import com.sun.jna.Structure;
+import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.jna.JnaStructure;
 
 /**
  * <p>Structure that represents a haptic direction.</p>
@@ -98,10 +100,10 @@ import com.sun.jna.Structure;
  * direction.dir[0] = 9000; // Since we only have two axes we don't need more parameters.
  * </pre>
  *
- * @see SdlHaptic#SDL_HAPTIC_POLAR
- * @see SdlHaptic#SDL_HAPTIC_CARTESIAN
- * @see SdlHaptic#SDL_HAPTIC_SPHERICAL
- * @see SdlHaptic#SDL_HAPTIC_STEERING_AXIS
+ * @see SDL_HapticDirectionEncoding#SDL_HAPTIC_POLAR
+ * @see SDL_HapticDirectionEncoding#SDL_HAPTIC_CARTESIAN
+ * @see SDL_HapticDirectionEncoding#SDL_HAPTIC_SPHERICAL
+ * @see SDL_HapticDirectionEncoding#SDL_HAPTIC_STEERING_AXIS
  * @see SDL_HapticEffect
  * @see SdlHaptic#SDL_HapticNumAxes(SDL_Haptic)
  */
@@ -110,8 +112,9 @@ import com.sun.jna.Structure;
         "type",
         "dir"
 })
-public final class SDL_HapticDirection extends Structure {
+public final class SDL_HapticDirection extends JnaStructure {
 
+    @MagicConstant(valuesFromClass = SDL_HapticDirectionEncoding.class)
     public byte type;
     public int[] dir = new int[3];
 }

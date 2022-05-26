@@ -14,6 +14,7 @@ import org.libsdl.api.joystick.SDL_Joystick;
 public final class SDL_Haptic extends PointerType {
 
     public SDL_Haptic() {
+        super();
     }
 
     public SDL_Haptic(Pointer p) {

@@ -1,5 +1,6 @@
 package org.libsdl.api.haptic;
 
+import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.joystick.SDL_Joystick;
 import org.libsdl.jna.NativeLoader;
 
@@ -94,28 +95,6 @@ import org.libsdl.jna.NativeLoader;
 @SuppressWarnings("checkstyle:MagicNumber")
 public final class SdlHaptic {
 
-    public static final int SDL_HAPTIC_CONSTANT = 1;
-    public static final int SDL_HAPTIC_SINE = 1 << 1;
-    public static final int SDL_HAPTIC_LEFTRIGHT = 1 << 2;
-    public static final int SDL_HAPTIC_TRIANGLE = 1 << 3;
-    public static final int SDL_HAPTIC_SAWTOOTHUP = 1 << 4;
-    public static final int SDL_HAPTIC_SAWTOOTHDOWN = 1 << 5;
-    public static final int SDL_HAPTIC_RAMP = 1 << 6;
-    public static final int SDL_HAPTIC_SPRING = 1 << 7;
-    public static final int SDL_HAPTIC_DAMPER = 1 << 8;
-    public static final int SDL_HAPTIC_INERTIA = 1 << 9;
-    public static final int SDL_HAPTIC_FRICTION = 1 << 10;
-    public static final int SDL_HAPTIC_CUSTOM = 1 << 11;
-    public static final int SDL_HAPTIC_GAIN = 1 << 12;
-    public static final int SDL_HAPTIC_AUTOCENTER = 1 << 13;
-    public static final int SDL_HAPTIC_STATUS = 1 << 14;
-    public static final int SDL_HAPTIC_PAUSE = 1 << 15;
-    public static final int SDL_HAPTIC_POLAR = 0;
-    public static final int SDL_HAPTIC_CARTESIAN = 1;
-    public static final int SDL_HAPTIC_SPHERICAL = 2;
-    public static final int SDL_HAPTIC_STEERING_AXIS = 3;
-    public static final int SDL_HAPTIC_INFINITY = (int) 4_294_967_295L;
-
     static {
         NativeLoader.registerNativeMethods(SdlHaptic.class);
     }
@@ -137,7 +116,7 @@ public final class SdlHaptic {
     public static native int SDL_HapticIndex(
             SDL_Haptic haptic);
 
-    public static native int SDL_MouseIsHaptic();
+    public static native boolean SDL_MouseIsHaptic();
 
     public static native SDL_Haptic SDL_HapticOpenFromMouse();
 
@@ -156,6 +135,7 @@ public final class SdlHaptic {
     public static native int SDL_HapticNumEffectsPlaying(
             SDL_Haptic haptic);
 
+    @MagicConstant(flagsFromClass = SDL_HapticEffectType.class)
     public static native int SDL_HapticQuery(
             SDL_Haptic haptic);
 

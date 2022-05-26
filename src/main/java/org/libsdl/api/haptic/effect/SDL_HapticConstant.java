@@ -1,6 +1,14 @@
-package org.libsdl.api.haptic;
+package org.libsdl.api.haptic.effect;
 
 import com.sun.jna.Structure;
+import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.api.haptic.SDL_HapticEffectType;
+import org.libsdl.api.haptic.SDL_HapticDirection;
+import org.libsdl.api.haptic.SDL_HapticEffect;
+import org.libsdl.jna.JnaStructure;
+
+import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_CONSTANT;
+import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
 
 /**
  * <p>A structure containing a template for a Constant effect.</p>
@@ -10,7 +18,7 @@ import com.sun.jna.Structure;
  * <p>A constant effect applies a constant force in the specified direction
  * to the joystick.</p>
  *
- * @see SdlHaptic#SDL_HAPTIC_CONSTANT
+ * @see SDL_HapticEffectType#SDL_HAPTIC_CONSTANT
  * @see SDL_HapticEffect
  */
 @Structure.FieldOrder({
@@ -26,12 +34,9 @@ import com.sun.jna.Structure;
         "fadeLength",
         "fadeLevel"
 })
-public final class SDL_HapticConstant extends Structure {
+public final class SDL_HapticConstant extends JnaStructure {
 
-    /* Header */
-    /**
-     * SDL_HAPTIC_CONSTANT
-     */
+    @MagicConstant(intValues = SDL_HAPTIC_CONSTANT)
     public short type;
 
     /**
@@ -43,6 +48,7 @@ public final class SDL_HapticConstant extends Structure {
     /**
      * Duration of the effect.
      */
+    @MagicConstant(intValues = SDL_HAPTIC_INFINITY)
     public int length;
 
     /**

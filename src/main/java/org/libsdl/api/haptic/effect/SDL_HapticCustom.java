@@ -1,7 +1,13 @@
-package org.libsdl.api.haptic;
+package org.libsdl.api.haptic.effect;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.api.haptic.SDL_HapticDirection;
+import org.libsdl.jna.JnaStructure;
+
+import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_CUSTOM;
+import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
 
 @Structure.FieldOrder({
         "type",
@@ -19,10 +25,13 @@ import com.sun.jna.Structure;
         "fadeLength",
         "fadeLevel"
 })
-public final class SDL_HapticCustom extends Structure {
+public final class SDL_HapticCustom extends JnaStructure {
 
+    @MagicConstant(intValues = SDL_HAPTIC_CUSTOM)
     public short type;
     public SDL_HapticDirection direction;
+
+    @MagicConstant(intValues = SDL_HAPTIC_INFINITY)
     public int length;
     public short delay;
     public short button;
