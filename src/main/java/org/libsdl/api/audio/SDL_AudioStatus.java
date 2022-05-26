@@ -9,9 +9,6 @@ public final class SDL_AudioStatus implements JnaEnum {
     public static final int SDL_AUDIO_PLAYING = 1;
     public static final int SDL_AUDIO_PAUSED = 2;
 
-    private SDL_AudioStatus() {
-    }
-
     public static String toString(
             @MagicConstant(valuesFromClass = SDL_AudioStatus.class) int value) {
         switch (value) {
@@ -24,5 +21,8 @@ public final class SDL_AudioStatus implements JnaEnum {
             default:
                 return "UNKNOWN";
         }
+    }
+
+    private SDL_AudioStatus() {
     }
 }
