@@ -5,7 +5,7 @@ import java.util.List;
 import com.sun.jna.Pointer;
 import org.libsdl.jna.NativeLoader;
 
-public class SdlLocale {
+public final class SdlLocale {
 
     static {
         NativeLoader.registerNativeMethods(SdlLocale.class);
@@ -16,7 +16,7 @@ public class SdlLocale {
 
     public static List<SDL_Locale> SDL_GetPreferredLocalesList() {
         Pointer locales = SDL_GetPreferredLocales();
-        List<SDL_Locale> localesList= new ArrayList<>();
+        List<SDL_Locale> localesList = new ArrayList<>();
         while (true) {
             SDL_Locale locale = new SDL_Locale(locales);
             locale.read();
@@ -27,5 +27,10 @@ public class SdlLocale {
         return localesList;
     }
 
+    /**
+     * @deprecated Use more Java-style version {@link #SDL_GetPreferredLocalesList()}
+     */
+    @SuppressWarnings("DeprecatedIsStillUsed")
+    @Deprecated
     public static native Pointer SDL_GetPreferredLocales();
 }
