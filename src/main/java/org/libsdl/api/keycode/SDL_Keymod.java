@@ -25,6 +25,8 @@ public final class SDL_Keymod implements JnaEnum {
     public static final int KMOD_ALT = (KMOD_LALT | KMOD_RALT);
     public static final int KMOD_GUI = (KMOD_LGUI | KMOD_RGUI);
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_Keymod() {
     }
 
@@ -38,7 +40,8 @@ public final class SDL_Keymod implements JnaEnum {
         }
 
         @Override
-        public void setValue(@MagicConstant(valuesFromClass = SDL_Keymod.class) int value) {
+        public void setValue(
+                @MagicConstant(valuesFromClass = SDL_Keymod.class) int value) {
             super.setValue(value);
         }
 

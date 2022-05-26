@@ -269,6 +269,8 @@ public final class SDL_Keycode implements JnaEnum {
     public static final int SDLK_AUDIOREWIND = SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_AUDIOREWIND);
     public static final int SDLK_AUDIOFASTFORWARD = SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_AUDIOFASTFORWARD);
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_Keycode() {
     }
 
@@ -282,7 +284,8 @@ public final class SDL_Keycode implements JnaEnum {
         }
 
         @Override
-        public void setValue(@MagicConstant(valuesFromClass = SDL_Keycode.class) int value) {
+        public void setValue(
+                @MagicConstant(valuesFromClass = SDL_Keycode.class) int value) {
             super.setValue(value);
         }
 
