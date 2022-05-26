@@ -7,19 +7,25 @@ import org.libsdl.jna.NativeLoader;
 public final class SdlFilesystem {
 
     public static String SDL_GetBasePath() {
-        Pointer path = NativeFunctions.SDL_GetBasePath();
+        Pointer path = InternalNativeFunctions.SDL_GetBasePath();
         return JnaUtils.extractStringAndReleaseNativeMemory(path);
     }
 
     public static String SDL_GetPrefPath(String org, String app) {
-        Pointer path = NativeFunctions.SDL_GetPrefPath(org, app);
+        Pointer path = InternalNativeFunctions.SDL_GetPrefPath(org, app);
         return JnaUtils.extractStringAndReleaseNativeMemory(path);
     }
 
-    private static final class NativeFunctions {
+    private SdlFilesystem() {
+    }
+
+    private static final class InternalNativeFunctions {
 
         static {
-            NativeLoader.registerNativeMethods(NativeFunctions.class);
+            NativeLoader.registerNativeMethods(InternalNativeFunctions.class);
+        }
+
+        private InternalNativeFunctions() {
         }
 
         public static native Pointer SDL_GetBasePath();
