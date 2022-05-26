@@ -3,12 +3,12 @@ package org.libsdl.api.endian;
 import java.nio.ByteOrder;
 import org.intellij.lang.annotations.MagicConstant;
 
-public class SdlEndianConst {
+public final class SdlEndianConst {
 
     public static final int SDL_LIL_ENDIAN = 1234;
     public static final int SDL_BIG_ENDIAN = 4321;
 
-    @MagicConstant(valuesFromClass = SdlEndianConst.class)
+    @MagicConstant(intValues = {SDL_LIL_ENDIAN, SDL_BIG_ENDIAN})
     public static final int SDL_BYTEORDER;
 
     static {
@@ -17,5 +17,20 @@ public class SdlEndianConst {
         } else {
             SDL_BYTEORDER = SDL_LIL_ENDIAN;
         }
+    }
+
+    public static String toString(
+            @MagicConstant(intValues = {SDL_LIL_ENDIAN, SDL_BIG_ENDIAN}) int value) {
+        switch (value) {
+            case SDL_LIL_ENDIAN:
+                return "SDL_LIL_ENDIAN";
+            case SDL_BIG_ENDIAN:
+                return "SDL_BIG_ENDIAN";
+            default:
+                return "UNKNOWN";
+        }
+    }
+
+    private SdlEndianConst() {
     }
 }
