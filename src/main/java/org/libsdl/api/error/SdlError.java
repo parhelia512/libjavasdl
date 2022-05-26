@@ -19,7 +19,7 @@ public final class SdlError {
 //            String fmt,
 //            Object[] args);
 
-    // TODO: Test if Java threads work
+    // TODO: Test if Java and SDL threads work
     public static native String SDL_GetError();
 
     public static native Pointer SDL_GetErrorMsg(Pointer errstr, int maxlen);
