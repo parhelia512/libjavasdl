@@ -87,16 +87,16 @@ import static org.libsdl.api.event.SDL_EventType.SDL_USEREVENT;
 import static org.libsdl.api.event.SDL_EventType.SDL_WINDOWEVENT;
 
 /**
- * This class is a union of all event info objects from SDL.
+ * <p>This class is a union of all event info objects from SDL.
  * You can pass an empty instance to methods such as {@link SdlEvents#SDL_PollEvent(SDL_Event)}
- * and have it populated with event info.
- * <p>
- * Although it is as close a mapping of a C union as possible, Java does not really support that kind of thing.
+ * and have it populated with event info.</p>
+ *
+ * <p>Although it is as close a mapping of a C union as possible, Java does not really support that kind of thing.
  * Therefore, unlike in C where you can read from any union member and use it as a view to the raw data,
  * in JNA union, it must be selected which union member is the active field.
  * When the object is populated in a native method, it is done automatically (by {@link #read()})
  * If you populate the object in Java, always remember to select the active member field
- * using {@link #setType(Class)}.
+ * using {@link #setType(Class)}.</p>
  */
 @SuppressWarnings({"checkstyle:classfanoutcomplexity", "checkstyle:cyclomaticcomplexity", "checkstyle:avoidstaticimport"})
 public final class SDL_Event extends Union {

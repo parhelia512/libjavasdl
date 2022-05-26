@@ -19,6 +19,9 @@ public final class SdlEvents {
         NativeLoader.registerNativeMethods(SdlEvents.class);
     }
 
+    private SdlEvents() {
+    }
+
     public static native void SDL_PumpEvents();
 
     // TODO: Test

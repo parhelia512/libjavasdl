@@ -73,4 +73,9 @@ public final class SDL_EventType implements JnaEnum {
     public static final int SDL_RENDER_DEVICE_RESET = 0x2001;
     public static final int SDL_USEREVENT = 0x8000;
     public static final int SDL_LASTEVENT = 0xFFFF;
+
+    // TODO: Generate public static String toString(int value)
+
+    private SDL_EventType() {
+    }
 }
