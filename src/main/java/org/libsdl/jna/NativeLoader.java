@@ -2,6 +2,7 @@ package org.libsdl.jna;
 
 import java.util.HashMap;
 import java.util.Map;
+import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.NativeLibrary;
 
@@ -23,5 +24,12 @@ public final class NativeLoader {
         options.put(OPTION_STRING_ENCODING, "UTF-8");
         options.put(OPTION_CLASSLOADER, NativeLoader.class.getClassLoader());
         return NativeLibrary.getInstance("sdl2", options);
+    }
+
+    public static <T extends Library> T loadSdl2LibraryInstance(Class<T> libraryInterface) {
+        Map<String, Object> options = new HashMap<>();
+        options.put(OPTION_STRING_ENCODING, "UTF-8");
+        options.put(OPTION_CLASSLOADER, NativeLoader.class.getClassLoader());
+        return (T) Native.load("sdl2", libraryInterface, options);
     }
 }

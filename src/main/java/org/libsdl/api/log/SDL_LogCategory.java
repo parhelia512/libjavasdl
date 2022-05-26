@@ -29,6 +29,8 @@ public final class SDL_LogCategory implements JnaEnum {
     /* Beyond this point is reserved for application use, e.g. 19, 20, 21, ... */
     public static final int SDL_LOG_CATEGORY_CUSTOM = 19;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_LogCategory() {
     }
 }

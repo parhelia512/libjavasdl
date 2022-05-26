@@ -12,6 +12,8 @@ public final class SDL_LogPriority implements JnaEnum {
     public static final int SDL_LOG_PRIORITY_CRITICAL = 6;
     public static final int SDL_NUM_LOG_PRIORITIES = 7;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_LogPriority() {
     }
 }
