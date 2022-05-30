@@ -18,6 +18,8 @@ public final class SDL_SystemCursor implements JnaEnum {
     public static final int SDL_SYSTEM_CURSOR_HAND = 11;
     public static final int SDL_NUM_SYSTEM_CURSORS = 12;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_SystemCursor() {
     }
 }
