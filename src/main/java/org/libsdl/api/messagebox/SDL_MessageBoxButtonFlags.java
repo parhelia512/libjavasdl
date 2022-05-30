@@ -7,18 +7,25 @@ public final class SDL_MessageBoxButtonFlags implements JnaEnum {
     public static final int SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT = 0x00000001;
     public static final int SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT = 0x00000002;
 
-    public static String toString(int value) {
-        StringBuilder result = new StringBuilder(39*2 + 3);
-        if ((value & SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT) > 0) {
-            result.append("SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT");
+    public static String toString(int type) {
+        StringBuilder result = new StringBuilder(39 * 2 + 3);
+        if ((type & SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT) > 0) {
+            append(result, "SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT");
         }
-        if ((value & SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT) > 0) {
-            if (result.length() > 0) {
-                result.append(" | ");
-            }
-            result.append("SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT");
+        if ((type & SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT) > 0) {
+            append(result, "SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT");
+        }
+        if (result.length() == 0) {
+            result.append("0");
         }
         return result.toString();
+    }
+
+    private static void append(StringBuilder result, String name) {
+        if (result.length() > 0) {
+            result.append(" | ");
+        }
+        result.append(name);
     }
 
     private SDL_MessageBoxButtonFlags() {
