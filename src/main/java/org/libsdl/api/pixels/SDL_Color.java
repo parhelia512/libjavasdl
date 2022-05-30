@@ -16,6 +16,6 @@ public class SDL_Color extends JnaStructure {
     public byte b;
     public byte a;
 
-    public static class ByReference extends SDL_Color implements Structure.ByReference {
+    public static class Ref extends SDL_Color implements Structure.ByReference {
     }
 }

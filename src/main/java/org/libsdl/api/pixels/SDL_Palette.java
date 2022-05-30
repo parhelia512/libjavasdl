@@ -12,10 +12,10 @@ import org.libsdl.jna.JnaStructure;
 public class SDL_Palette extends JnaStructure {
 
     public int ncolors;
-    public SDL_Color.ByReference colors;
+    public SDL_Color.Ref colors;
     public int version;
     public int refcount;
 
-    public static class ByReference extends SDL_Palette implements Structure.ByReference {
+    public static class Ref extends SDL_Palette implements Structure.ByReference {
     }
 }

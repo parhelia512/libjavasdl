@@ -1,6 +1,5 @@
 package org.libsdl.api.pixels;
 
-import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaStructure;
@@ -30,7 +29,7 @@ public class SDL_PixelFormat extends JnaStructure {
 
     @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class)
     public int format;
-    public SDL_Palette.ByReference palette;
+    public SDL_Palette.Ref palette;
     public byte bitsPerPixel;
     public byte bytesPerPixel;
     public byte[] padding = new byte[2];
@@ -47,8 +46,8 @@ public class SDL_PixelFormat extends JnaStructure {
     public byte bShift;
     public byte aShift;
     public int refcount;
-    public SDL_PixelFormat.ByReference next;
+    public SDL_PixelFormat.Ref next;
 
-    public final static class ByReference extends SDL_PixelFormat implements Structure.ByReference {
+    public final static class Ref extends SDL_PixelFormat implements Structure.ByReference {
     }
 }
