@@ -12,6 +12,8 @@ public final class SDL_ArrayOrder implements JnaEnum {
     public static final int SDL_ARRAYORDER_BGRA = 5;
     public static final int SDL_ARRAYORDER_ABGR = 6;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_ArrayOrder() {
     }
 }

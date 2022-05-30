@@ -3,6 +3,7 @@ package org.libsdl.api.pixels;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "format",
@@ -25,9 +26,8 @@ import org.intellij.lang.annotations.MagicConstant;
         "refcount",
         "next"
 })
-public class SDL_PixelFormat extends Structure {
+public class SDL_PixelFormat extends JnaStructure {
 
-    // TODO: Check suspicious padding
     @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class)
     public int format;
     public SDL_Palette.ByReference palette;
@@ -47,7 +47,7 @@ public class SDL_PixelFormat extends Structure {
     public byte bShift;
     public byte aShift;
     public int refcount;
-    public Pointer next;
+    public SDL_PixelFormat.ByReference next;
 
     public final static class ByReference extends SDL_PixelFormat implements Structure.ByReference {
     }

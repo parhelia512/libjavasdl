@@ -14,6 +14,8 @@ public final class SDL_PackedLayout implements JnaEnum {
     public static final int SDL_PACKEDLAYOUT_2101010 = 7;
     public static final int SDL_PACKEDLAYOUT_1010102 = 8;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_PackedLayout() {
     }
 }

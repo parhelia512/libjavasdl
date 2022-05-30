@@ -1,6 +1,7 @@
 package org.libsdl.api.pixels;
 
 import com.sun.jna.Structure;
+import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "r",
@@ -8,7 +9,7 @@ import com.sun.jna.Structure;
         "b",
         "a"
 })
-public class SDL_Color extends Structure {
+public class SDL_Color extends JnaStructure {
 
     public byte r;
     public byte g;

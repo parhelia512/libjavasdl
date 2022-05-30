@@ -138,7 +138,8 @@ public final class SDL_PixelFormatEnum implements JnaEnum {
         return (x >> 24) & 0x0F;
     }
 
-    public static int SDL_PIXELORDER(final int x) {
+    public static int SDL_PIXELORDER(
+            final int x) {
         return (x >> 20) & 0x0F;
     }
 
@@ -147,7 +148,8 @@ public final class SDL_PixelFormatEnum implements JnaEnum {
         return (x >> 16) & 0x0F;
     }
 
-    public static int SDL_BITSPERPIXEL(final int x) {
+    public static int SDL_BITSPERPIXEL(
+            final int x) {
         return (x >> 8) & 0xFF;
     }
 
@@ -204,5 +206,103 @@ public final class SDL_PixelFormatEnum implements JnaEnum {
     public static boolean SDL_ISPIXELFORMAT_FOURCC(
             int format) {
         return (format != 0) && (SDL_PIXELFLAG(format) != 1);
+    }
+
+    public static String toString(int value) {
+        if (value == SDL_PIXELFORMAT_UNKNOWN) {
+            return "SDL_PIXELFORMAT_UNKNOWN";
+        } else if (value == SDL_PIXELFORMAT_INDEX1LSB) {
+            return "SDL_PIXELFORMAT_INDEX1LSB";
+        } else if (value == SDL_PIXELFORMAT_INDEX1MSB) {
+            return "SDL_PIXELFORMAT_INDEX1MSB";
+        } else if (value == SDL_PIXELFORMAT_INDEX4LSB) {
+            return "SDL_PIXELFORMAT_INDEX4LSB";
+        } else if (value == SDL_PIXELFORMAT_INDEX4MSB) {
+            return "SDL_PIXELFORMAT_INDEX4MSB";
+        } else if (value == SDL_PIXELFORMAT_INDEX8) {
+            return "SDL_PIXELFORMAT_INDEX8";
+        } else if (value == SDL_PIXELFORMAT_RGB332) {
+            return "SDL_PIXELFORMAT_RGB332";
+        } else if (value == SDL_PIXELFORMAT_XRGB4444) {
+            return "SDL_PIXELFORMAT_XRGB4444";
+        } else if (value == SDL_PIXELFORMAT_RGB444) {
+            return "SDL_PIXELFORMAT_RGB444";
+        } else if (value == SDL_PIXELFORMAT_XBGR4444) {
+            return "SDL_PIXELFORMAT_XBGR4444";
+        } else if (value == SDL_PIXELFORMAT_BGR444) {
+            return "SDL_PIXELFORMAT_BGR444";
+        } else if (value == SDL_PIXELFORMAT_XRGB1555) {
+            return "SDL_PIXELFORMAT_XRGB1555";
+        } else if (value == SDL_PIXELFORMAT_RGB555) {
+            return "SDL_PIXELFORMAT_RGB555";
+        } else if (value == SDL_PIXELFORMAT_XBGR1555) {
+            return "SDL_PIXELFORMAT_XBGR1555";
+        } else if (value == SDL_PIXELFORMAT_BGR555) {
+            return "SDL_PIXELFORMAT_BGR555";
+        } else if (value == SDL_PIXELFORMAT_ARGB4444) {
+            return "SDL_PIXELFORMAT_ARGB4444";
+        } else if (value == SDL_PIXELFORMAT_RGBA4444) {
+            return "SDL_PIXELFORMAT_RGBA4444";
+        } else if (value == SDL_PIXELFORMAT_ABGR4444) {
+            return "SDL_PIXELFORMAT_ABGR4444";
+        } else if (value == SDL_PIXELFORMAT_BGRA4444) {
+            return "SDL_PIXELFORMAT_BGRA4444";
+        } else if (value == SDL_PIXELFORMAT_ARGB1555) {
+            return "SDL_PIXELFORMAT_ARGB1555";
+        } else if (value == SDL_PIXELFORMAT_RGBA5551) {
+            return "SDL_PIXELFORMAT_RGBA5551";
+        } else if (value == SDL_PIXELFORMAT_ABGR1555) {
+            return "SDL_PIXELFORMAT_ABGR1555";
+        } else if (value == SDL_PIXELFORMAT_BGRA5551) {
+            return "SDL_PIXELFORMAT_BGRA5551";
+        } else if (value == SDL_PIXELFORMAT_RGB565) {
+            return "SDL_PIXELFORMAT_RGB565";
+        } else if (value == SDL_PIXELFORMAT_BGR565) {
+            return "SDL_PIXELFORMAT_BGR565";
+        } else if (value == SDL_PIXELFORMAT_RGB24) {
+            return "SDL_PIXELFORMAT_RGB24";
+        } else if (value == SDL_PIXELFORMAT_BGR24) {
+            return "SDL_PIXELFORMAT_BGR24";
+        } else if (value == SDL_PIXELFORMAT_XRGB8888) {
+            return "SDL_PIXELFORMAT_XRGB8888";
+        } else if (value == SDL_PIXELFORMAT_RGB888) {
+            return "SDL_PIXELFORMAT_RGB888";
+        } else if (value == SDL_PIXELFORMAT_RGBX8888) {
+            return "SDL_PIXELFORMAT_RGBX8888";
+        } else if (value == SDL_PIXELFORMAT_XBGR8888) {
+            return "SDL_PIXELFORMAT_XBGR8888";
+        } else if (value == SDL_PIXELFORMAT_BGR888) {
+            return "SDL_PIXELFORMAT_BGR888";
+        } else if (value == SDL_PIXELFORMAT_BGRX8888) {
+            return "SDL_PIXELFORMAT_BGRX8888";
+        } else if (value == SDL_PIXELFORMAT_ARGB8888) {
+            return "SDL_PIXELFORMAT_ARGB8888";
+        } else if (value == SDL_PIXELFORMAT_RGBA8888) {
+            return "SDL_PIXELFORMAT_RGBA8888";
+        } else if (value == SDL_PIXELFORMAT_ABGR8888) {
+            return "SDL_PIXELFORMAT_ABGR8888";
+        } else if (value == SDL_PIXELFORMAT_BGRA8888) {
+            return "SDL_PIXELFORMAT_BGRA8888";
+        } else if (value == SDL_PIXELFORMAT_ARGB2101010) {
+            return "SDL_PIXELFORMAT_ARGB2101010";
+        } else if (value == SDL_PIXELFORMAT_YV12) {
+            return "SDL_PIXELFORMAT_YV12";
+        } else if (value == SDL_PIXELFORMAT_IYUV) {
+            return "SDL_PIXELFORMAT_IYUV";
+        } else if (value == SDL_PIXELFORMAT_YUY2) {
+            return "SDL_PIXELFORMAT_YUY2";
+        } else if (value == SDL_PIXELFORMAT_UYVY) {
+            return "SDL_PIXELFORMAT_UYVY";
+        } else if (value == SDL_PIXELFORMAT_YVYU) {
+            return "SDL_PIXELFORMAT_YVYU";
+        } else if (value == SDL_PIXELFORMAT_NV12) {
+            return "SDL_PIXELFORMAT_NV12";
+        } else if (value == SDL_PIXELFORMAT_NV21) {
+            return "SDL_PIXELFORMAT_NV21";
+        } else if (value == SDL_PIXELFORMAT_EXTERNAL_OES) {
+            return "SDL_PIXELFORMAT_EXTERNAL_OES";
+        } else {
+            return "UNKNOWN(" + value + ")";
+        }
     }
 }

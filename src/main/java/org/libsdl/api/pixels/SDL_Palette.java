@@ -1,6 +1,7 @@
 package org.libsdl.api.pixels;
 
 import com.sun.jna.Structure;
+import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "ncolors",
@@ -8,7 +9,7 @@ import com.sun.jna.Structure;
         "version",
         "refcount"
 })
-public class SDL_Palette extends Structure {
+public class SDL_Palette extends JnaStructure {
 
     public int ncolors;
     public SDL_Color.ByReference colors;

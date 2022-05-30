@@ -17,6 +17,8 @@ public final class SDL_PixelType implements JnaEnum {
     public static final int SDL_PIXELTYPE_ARRAYF16 = 10;
     public static final int SDL_PIXELTYPE_ARRAYF32 = 11;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_PixelType() {
     }
 }
