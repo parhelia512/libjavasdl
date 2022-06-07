@@ -31,48 +31,30 @@ import org.libsdl.jna.JnaStructure;
 })
 public class SDL_AudioSpec extends JnaStructure {
 
-    /**
-     * DSP frequency -- samples per second
-     */
+    /** DSP frequency -- samples per second */
     public int freq;
 
-    /**
-     * Audio data format
-     */
+    /** Audio data format */
     public SDL_AudioFormat format;
 
-    /**
-     * Number of channels: 1 mono, 2 stereo
-     */
+    /** Number of channels: 1 mono, 2 stereo */
     public byte channels;
 
-    /**
-     * Audio buffer silence value (calculated)
-     */
+    /** Audio buffer silence value (calculated) */
     public byte silence;
 
-    /**
-     * Audio buffer size in sample FRAMES (total samples divided by channel count)
-     */
+    /** Audio buffer size in sample FRAMES (total samples divided by channel count) */
     public short samples;
 
-    /**
-     * Necessary for some compile environments
-     */
+    /** Necessary for some compile environments */
     public short padding;
 
-    /**
-     * Audio buffer size in bytes (calculated)
-     */
+    /** Audio buffer size in bytes (calculated) */
     public int size;
 
-    /**
-     * Callback that feeds the audio device (NULL to use SDL_QueueAudio()).
-     */
+    /** Callback that feeds the audio device (NULL to use SDL_QueueAudio()). */
     public SDL_AudioCallback callback;
 
-    /**
-     * Userdata passed to callback (ignored for NULL callbacks).
-     */
+    /** Userdata passed to callback (ignored for NULL callbacks). */
     public Pointer userdata;
 }

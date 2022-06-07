@@ -28,59 +28,37 @@ public class SDL_AudioCVT extends JnaStructure {
      */
     public static final int SDL_AUDIOCVT_MAX_FILTERS = 9;
 
-    /**
-     * Set to 1 if conversion possible
-     */
+    /** Set to 1 if conversion possible */
     public int needed;
 
-    /**
-     * Source audio format
-     */
+    /** Source audio format */
     public SDL_AudioFormat src_format;
 
-    /**
-     * Target audio format
-     */
+    /** Target audio format */
     public SDL_AudioFormat dst_format;
 
-    /**
-     * Rate conversion increment
-     */
+    /** Rate conversion increment */
     public double rate_incr;
 
-    /**
-     * Buffer to hold entire audio data
-     */
+    /** Buffer to hold entire audio data */
     public ByteByReference buf;
 
-    /**
-     * Length of original audio buffer
-     */
+    /** Length of original audio buffer */
     public int len;
 
-    /**
-     * Length of converted audio buffer
-     */
+    /** Length of converted audio buffer */
     public int len_cvt;
 
-    /**
-     * buffer must be len*len_mult big
-     */
+    /** buffer must be len*len_mult big */
     public int len_mult;
 
-    /**
-     * Given len, final size is len*len_ratio
-     */
+    /** Given len, final size is len*len_ratio */
     public double len_ratio;
 
     // TODO: Test sizeof and if it generally works
-    /**
-     * null-terminated list of filter functions
-     */
+    /** null-terminated list of filter functions*/
     public SDL_AudioFilter[] filters = new SDL_AudioFilter[SDL_AUDIOCVT_MAX_FILTERS + 1];
 
-    /**
-     * Current audio conversion function
-     */
+    /** Current audio conversion function */
     public int filter_index;
 }

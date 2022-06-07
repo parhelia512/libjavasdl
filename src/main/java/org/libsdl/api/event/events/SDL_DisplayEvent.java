@@ -23,9 +23,7 @@ public final class SDL_DisplayEvent extends JnaStructure {
     public int type;
     public int timestamp;
 
-    /**
-     * The associated display index
-     */
+    /** The associated display index */
     public int display;
 
     @MagicConstant(valuesFromClass = SDL_DisplayEventID.class)

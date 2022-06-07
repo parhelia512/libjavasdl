@@ -39,58 +39,38 @@ public final class SDL_HapticConstant extends JnaStructure {
     @MagicConstant(intValues = SDL_HAPTIC_CONSTANT)
     public short type;
 
-    /**
-     * Direction of the effect.
-     */
+    /** Direction of the effect. */
     public SDL_HapticDirection direction;
 
     /* Replay */
-    /**
-     * Duration of the effect.
-     */
+    /** Duration of the effect. */
     @MagicConstant(intValues = SDL_HAPTIC_INFINITY)
     public int length;
 
-    /**
-     * Delay before starting the effect.
-     */
+    /** Delay before starting the effect. */
     public short delay;
 
     /* Trigger */
-    /**
-     * Button that triggers the effect.
-     */
+    /** Button that triggers the effect. */
     public short button;
 
-    /**
-     * How soon it can be triggered again after button.
-     */
+    /** How soon it can be triggered again after button. */
     public short interval;
 
     /* Constant */
-    /**
-     * Strength of the constant effect.
-     */
+    /** Strength of the constant effect. */
     public short level;
 
     /* Envelope */
-    /**
-     * Duration of the attack.
-     */
+    /** Duration of the attack. */
     public short attackLength;
 
-    /**
-     * Level at the start of the attack.
-     */
+    /** Level at the start of the attack. */
     public short attackLevel;
 
-    /**
-     * Duration of the fade.
-     */
+    /** Duration of the fade. */
     public short fadeLength;
 
-    /**
-     * Level at the end of the fade.
-     */
+    /** Level at the end of the fade. */
     public short fadeLevel;
 }

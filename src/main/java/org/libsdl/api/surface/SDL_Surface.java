@@ -2,10 +2,8 @@ package org.libsdl.api.surface;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import com.sun.jna.ptr.PointerByReference;
 import org.libsdl.api.pixels.SDL_PixelFormat;
 import org.libsdl.api.rect.SDL_Rect;
-import org.libsdl.api.video.SDL_Window;
 import org.libsdl.jna.JnaStructure;
 
 /**
@@ -31,40 +29,28 @@ import org.libsdl.jna.JnaStructure;
 public class SDL_Surface extends JnaStructure {
 
     public int flags;
-    public SDL_PixelFormat.ByReference format;
+    public SDL_PixelFormat.Ref format;
     public int w;
     public int h;
     public int pitch;
     public Pointer pixels;
 
-    /**
-     * Application data associated with the surface
-     */
+    /** Application data associated with the surface */
     public Pointer userdata;
 
-    /**
-     * information needed for surfaces requiring locks
-     */
+    /** information needed for surfaces requiring locks */
     public int locked;
 
-    /**
-     * list of BlitMap that hold a reference to this surface
-     */
+    /** list of BlitMap that hold a reference to this surface */
     public Pointer lockData;
 
-    /**
-     * clipping information
-     */
+    /** clipping information */
     public SDL_Rect clipRect;
 
-    /**
-     * info for fast blit mapping to other surfaces
-     */
+    /** info for fast blit mapping to other surfaces */
     public Pointer map;
 
-    /**
-     * Reference count -- used when freeing surface
-     */
+    /** Reference count -- used when freeing surface */
     public int refcount;
 
     public SDL_Surface() {
@@ -74,17 +60,13 @@ public class SDL_Surface extends JnaStructure {
         super(p);
     }
 
-    public static final class Ref extends PointerByReference {
+    public static class Ref extends SDL_Surface implements Structure.ByReference {
 
         public Ref() {
         }
 
-        public Ref(Pointer value) {
-            super(value);
-        }
-
-        public SDL_Surface getSurface() {
-            return new SDL_Surface(getPointer());
+        public Ref(Pointer p) {
+            super(p);
         }
     }
 }
