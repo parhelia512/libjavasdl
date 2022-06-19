@@ -29,4 +29,15 @@ public class JnaUtils {
         }
         return memory;
     }
+
+    public static void append(StringBuilder result, String name) {
+        if (result.length() > 0) {
+            result.append(" | ");
+        }
+        result.append(name);
+    }
+
+    public static String flagsUnknown(int value) {
+        return "UNKNOWN("+Integer.toBinaryString(value)+")";
+    }
 }

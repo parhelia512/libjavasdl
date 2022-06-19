@@ -6,9 +6,11 @@ import org.libsdl.jna.JnaEnum;
 
 public class SDL_ScaleMode implements JnaEnum {
 
-    public static final int SDL_SCALE_MODE_NEAREST = 0;
-    public static final int SDL_SCALE_MODE_LINEAR = 1;
-    public static final int SDL_SCALE_MODE_BEST = 2;
+    public static final int SDL_ScaleModeNearest = 0;
+    public static final int SDL_ScaleModeLinear = 1;
+    public static final int SDL_ScaleModeBest = 2;
+
+    // TODO: Generate public static String toString(int value)
 
     private SDL_ScaleMode() {
     }
@@ -23,7 +25,8 @@ public class SDL_ScaleMode implements JnaEnum {
         }
 
         @Override
-        public void setValue(@MagicConstant(valuesFromClass = SDL_ScaleMode.class) int value) {
+        public void setValue(
+                @MagicConstant(valuesFromClass = SDL_ScaleMode.class) int value) {
             super.setValue(value);
         }
 

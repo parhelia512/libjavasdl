@@ -14,6 +14,7 @@ import org.libsdl.api.rect.SDL_Point;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_Window;
+import org.libsdl.api.video.SDL_WindowFlags;
 import org.libsdl.jna.JnaUtils;
 import org.libsdl.jna.NativeLoader;
 
@@ -35,13 +36,14 @@ public final class SdlRender {
     public static native int SDL_CreateWindowAndRenderer(
             int width,
             int height,
-            int windowFlags,
+            @MagicConstant(flagsFromClass = SDL_WindowFlags.class) int windowFlags,
             SDL_Window.Ref window,
             SDL_Renderer.Ref renderer);
 
     public static native SDL_Renderer SDL_CreateRenderer(
             SDL_Window window,
             int index,
+            @MagicConstant(valuesFromClass = SDL_RendererFlags.class)
             int flags);
 
     public static native SDL_Renderer SDL_CreateSoftwareRenderer(
@@ -133,8 +135,10 @@ public final class SdlRender {
     public static native int SDL_UpdateNVTexture(
             SDL_Texture texture,
             SDL_Rect rect,
-            Pointer yPlane, int yPitch,
-            Pointer uvPlane, int uvPitch);
+            Pointer yPlane,
+            int yPitch,
+            Pointer uvPlane,
+            int uvPitch);
 
     public static native int SDL_LockTexture(
             SDL_Texture texture,
@@ -142,6 +146,7 @@ public final class SdlRender {
             PointerByReference pixels,
             IntByReference pitch);
 
+    // TODO: Test
     public static native int SDL_LockTextureToSurface(
             SDL_Texture texture,
             SDL_Rect rect,
