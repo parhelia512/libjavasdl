@@ -14,22 +14,13 @@ public class SDL_SensorID extends IntegerType {
      * Create a zero-valued signed IntegerType.
      */
     public SDL_SensorID() {
-        super(4);
+        this(0L);
     }
 
     /**
      * Create a signed IntegerType with the given value.
      */
-    public SDL_SensorID(int value) {
-        super(4, value);
-    }
-
-    /**
-     * Change the value for this data.
-     *
-     * @param value value to set
-     */
-    public void setValue(int value) {
-        super.setValue(value);
+    public SDL_SensorID(long value) {
+        super(4, value, false);
     }
 }

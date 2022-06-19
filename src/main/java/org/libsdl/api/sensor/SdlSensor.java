@@ -5,13 +5,20 @@ import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.NativeLoader;
 
 /**
- *  <p>Adapted from SDL_sensor.h</p>
+ * <p>Adapted from SDL_sensor.h</p>
  *
- *  <p>In order to use these functions, SDL_Init() must have been called
- *  with the {@code SDL_INIT_SENSOR} flag. This causes SDL to scan the system
- *  for sensors, and load appropriate drivers.</p>
+ * <p>In order to use these functions, SDL_Init() must have been called
+ * with the {@code SDL_INIT_SENSOR} flag. This causes SDL to scan the system
+ * for sensors, and load appropriate drivers.</p>
  */
 public final class SdlSensor {
+
+    static {
+        NativeLoader.registerNativeMethods(SdlSensor.class);
+    }
+
+    private SdlSensor() {
+    }
 
     /**
      * <p>Accelerometer sensor</p>
@@ -52,22 +59,16 @@ public final class SdlSensor {
      * API functions that take a sensor index will be valid, and sensor events
      * will not be delivered.</p>
      */
-    public static void SDL_LockSensors() {
-        NativeFunctions.SDL_LockSensors();
-    }
+    public static native void SDL_LockSensors();
 
-    public static void SDL_UnlockSensors() {
-        NativeFunctions.SDL_UnlockSensors();
-    }
+    public static native void SDL_UnlockSensors();
 
     /**
      * <p>Count the number of sensors attached to the system right now.</p>
      *
      * @return the number of sensors detected.
      */
-    public static int SDL_NumSensors() {
-        return NativeFunctions.SDL_NumSensors();
-    }
+    public static native int SDL_NumSensors();
 
     /**
      * <p>Get the implementation dependent name of a sensor.</p>
@@ -75,9 +76,7 @@ public final class SdlSensor {
      * @param deviceIndex The sensor to obtain name from
      * @return the sensor name, or {@code null} if {@code deviceIndex} is out of range.
      */
-    public static String SDL_SensorGetDeviceName(int deviceIndex) {
-        return NativeFunctions.SDL_SensorGetDeviceName(deviceIndex);
-    }
+    public static native String SDL_SensorGetDeviceName(int deviceIndex);
 
     /**
      * <p>Get the type of a sensor.</p>
@@ -87,9 +86,7 @@ public final class SdlSensor {
      * out of range.
      */
     @MagicConstant(valuesFromClass = SDL_SensorType.class)
-    public static int SDL_SensorGetDeviceType(int deviceIndex) {
-        return NativeFunctions.SDL_SensorGetDeviceType(deviceIndex);
-    }
+    public static native int SDL_SensorGetDeviceType(int deviceIndex);
 
     /**
      * <p>Get the platform dependent type of a sensor.</p>
@@ -98,9 +95,7 @@ public final class SdlSensor {
      * @return the sensor platform dependent type, or {@code -1} if {@code deviceIndex} is out
      * of range.
      */
-    public static int SDL_SensorGetDeviceNonPortableType(int deviceIndex) {
-        return NativeFunctions.SDL_SensorGetDeviceNonPortableType(deviceIndex);
-    }
+    public static native int SDL_SensorGetDeviceNonPortableType(int deviceIndex);
 
     /**
      * <p>Get the instance ID of a sensor.</p>
@@ -108,9 +103,7 @@ public final class SdlSensor {
      * @param deviceIndex The sensor to get instance ID from
      * @return the sensor instance ID, or {@code -1} if {@code deviceIndex} is out of range.
      */
-    public static SDL_SensorID SDL_SensorGetDeviceInstanceID(int deviceIndex) {
-        return NativeFunctions.SDL_SensorGetDeviceInstanceID(deviceIndex);
-    }
+    public static native SDL_SensorID SDL_SensorGetDeviceInstanceID(int deviceIndex);
 
     /**
      * <p>Open a sensor for use.</p>
@@ -118,9 +111,7 @@ public final class SdlSensor {
      * @param deviceIndex The sensor to open
      * @return an SDL_Sensor sensor object, or {@code null} if an error occurred.
      */
-    public static SDL_Sensor SDL_SensorOpen(int deviceIndex) {
-        return NativeFunctions.SDL_SensorOpen(deviceIndex);
-    }
+    public static native SDL_Sensor SDL_SensorOpen(int deviceIndex);
 
     /**
      * <p>Return the SDL_Sensor associated with an instance ID.</p>
@@ -128,9 +119,7 @@ public final class SdlSensor {
      * @param instanceId The sensor from instance ID
      * @return an SDL_Sensor object.
      */
-    public static SDL_Sensor SDL_SensorFromInstanceID(SDL_SensorID instanceId) {
-        return NativeFunctions.SDL_SensorFromInstanceID(instanceId);
-    }
+    public static native SDL_Sensor SDL_SensorFromInstanceID(SDL_SensorID instanceId);
 
     /**
      * <p>Get the implementation dependent name of a sensor</p>
@@ -138,9 +127,7 @@ public final class SdlSensor {
      * @param sensor The SDL_Sensor object
      * @return the sensor name, or {@code null} if {@code sensor} is {@code null}.
      */
-    public static String SDL_SensorGetName(SDL_Sensor sensor) {
-        return NativeFunctions.SDL_SensorGetName(sensor);
-    }
+    public static native String SDL_SensorGetName(SDL_Sensor sensor);
 
     /**
      * <p>Get the type of a sensor.</p>
@@ -150,9 +137,7 @@ public final class SdlSensor {
      * {@code null}.
      */
     @MagicConstant(valuesFromClass = SDL_SensorType.class)
-    public static int SDL_SensorGetType(SDL_Sensor sensor) {
-        return NativeFunctions.SDL_SensorGetType(sensor);
-    }
+    public static native int SDL_SensorGetType(SDL_Sensor sensor);
 
     /**
      * <p>Get the platform dependent type of a sensor.</p>
@@ -160,9 +145,7 @@ public final class SdlSensor {
      * @param sensor The SDL_Sensor object to inspect
      * @return the sensor platform dependent type, or {@code -1} if {@code sensor} is {@code null}.
      */
-    public static int SDL_SensorGetNonPortableType(SDL_Sensor sensor) {
-        return NativeFunctions.SDL_SensorGetNonPortableType(sensor);
-    }
+    public static native int SDL_SensorGetNonPortableType(SDL_Sensor sensor);
 
     /**
      * <p>Get the instance ID of a sensor.</p>
@@ -170,9 +153,7 @@ public final class SdlSensor {
      * @param sensor The SDL_Sensor object to inspect
      * @return the sensor instance ID, or {@code -1} if {@code sensor} is {@code null}.
      */
-    public static SDL_SensorID SDL_SensorGetInstanceID(SDL_Sensor sensor) {
-        return NativeFunctions.SDL_SensorGetInstanceID(sensor);
-    }
+    public static native SDL_SensorID SDL_SensorGetInstanceID(SDL_Sensor sensor);
 
     /**
      * <p>Get the current state of an opened sensor.</p>
@@ -184,18 +165,14 @@ public final class SdlSensor {
      * @param numValues The number of values to write to data
      * @return 0 or -1 if an error occurred.
      */
-    public static int SDL_SensorGetData(SDL_Sensor sensor, Pointer data, int numValues) {
-        return NativeFunctions.SDL_SensorGetData(sensor, data, numValues);
-    }
+    public static native int SDL_SensorGetData(SDL_Sensor sensor, Pointer data, int numValues);
 
     /**
      * <p>Close a sensor previously opened with SDL_SensorOpen().</p>
      *
      * @param sensor The SDL_Sensor object to close
      */
-    public static void SDL_SensorClose(SDL_Sensor sensor) {
-        NativeFunctions.SDL_SensorClose(sensor);
-    }
+    public static native void SDL_SensorClose(SDL_Sensor sensor);
 
     /**
      * <p>Update the current state of the open sensors.</p>
@@ -206,46 +183,5 @@ public final class SdlSensor {
      * <p>This needs to be called from the thread that initialized the sensor
      * subsystem.</p>
      */
-    public static void SDL_SensorUpdate() {
-        NativeFunctions.SDL_SensorUpdate();
-    }
-
-    private static final class NativeFunctions {
-
-        static {
-            NativeLoader.registerNativeMethods(NativeFunctions.class);
-        }
-
-        public static native void SDL_LockSensors();
-
-        public static native void SDL_UnlockSensors();
-
-        public static native int SDL_NumSensors();
-
-        public static native String SDL_SensorGetDeviceName(int deviceIndex);
-
-        public static native int SDL_SensorGetDeviceType(int deviceIndex);
-
-        public static native int SDL_SensorGetDeviceNonPortableType(int deviceIndex);
-
-        public static native SDL_SensorID SDL_SensorGetDeviceInstanceID(int deviceIndex);
-
-        public static native SDL_Sensor SDL_SensorOpen(int deviceIndex);
-
-        public static native SDL_Sensor SDL_SensorFromInstanceID(SDL_SensorID instanceId);
-
-        public static native String SDL_SensorGetName(SDL_Sensor sensor);
-
-        public static native int SDL_SensorGetType(SDL_Sensor sensor);
-
-        public static native int SDL_SensorGetNonPortableType(SDL_Sensor sensor);
-
-        public static native SDL_SensorID SDL_SensorGetInstanceID(SDL_Sensor sensor);
-
-        public static native int SDL_SensorGetData(SDL_Sensor sensor, Pointer data, int numValues);
-
-        public static native void SDL_SensorClose(SDL_Sensor sensor);
-
-        public static native void SDL_SensorUpdate();
-    }
+    public static native void SDL_SensorUpdate();
 }
