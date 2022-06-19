@@ -9,5 +9,5 @@ public interface SDL_RWSeekFunction extends Callback {
     long size(
             SDL_RWops context,
             long offset,
-            @MagicConstant(valuesFromClass = SdlRWopsConst.class) int whence);
+            @MagicConstant(valuesFromClass = SdlRWopsSeekType.class) int whence);
 }

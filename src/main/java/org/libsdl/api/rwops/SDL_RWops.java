@@ -3,6 +3,15 @@ package org.libsdl.api.rwops;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.jna.JnaStructure;
+
+import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_JNIFILE;
+import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_MEMORY;
+import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_MEMORY_RO;
+import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_STDFILE;
+import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_UNKNOWN;
+import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_VITAFILE;
+import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_WINFILE;
 
 @Structure.FieldOrder({
         "size",
@@ -13,62 +22,20 @@ import org.intellij.lang.annotations.MagicConstant;
         "type",
         "hidden"
 })
-public final class SDL_RWops extends Structure {
-
-    /**
-     * Unknown stream type
-     */
-    public static final int SDL_RWOPS_UNKNOWN = 0;
-
-    /**
-     * Win32 file
-     */
-    public static final int SDL_RWOPS_WINFILE = 1;
-
-    /**
-     * Stdio file
-     */
-    public static final int SDL_RWOPS_STDFILE = 2;
-
-    /**
-     * Android asset
-     */
-    public static final int SDL_RWOPS_JNIFILE = 3;
-
-    /**
-     * Memory stream
-     */
-    public static final int SDL_RWOPS_MEMORY = 4;
-
-    /**
-     * Read-Only memory stream
-     */
-    public static final int SDL_RWOPS_MEMORY_RO = 5;
-
-    /**
-     * Vita file
-     */
-    public static final int SDL_RWOPS_VITAFILE = 6;
-
-    public SDL_RWops() {
-    }
-
-    public SDL_RWops(Pointer p) {
-        super(p);
-    }
+public final class SDL_RWops extends JnaStructure {
 
     public SDL_RWSizeFunction size;
     public SDL_RWSeekFunction seek;
     public SDL_RWReadFunction read;
     public SDL_RWWriteFunction write;
     public SDL_RWCloseFunction close;
-    @MagicConstant(valuesFromClass = SDL_RWops.class)
+    @MagicConstant(valuesFromClass = SDL_RWopsType.class)
     public int type;
     public SDL_RWopsPlatformSpecific hidden;
 
     @Override
     public void read() {
-        super.readField("type");
+        readField("type");
         switch (type) {
             case SDL_RWOPS_UNKNOWN:
             default:

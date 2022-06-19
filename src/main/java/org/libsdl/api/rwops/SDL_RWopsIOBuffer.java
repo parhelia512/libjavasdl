@@ -2,6 +2,7 @@ package org.libsdl.api.rwops;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import org.libsdl.jna.JnaStructure;
 import org.libsdl.jna.size_t;
 
 @Structure.FieldOrder({
@@ -9,7 +10,7 @@ import org.libsdl.jna.size_t;
         "size",
         "left"
 })
-public final class SDL_RWopsIOBuffer extends Structure {
+public final class SDL_RWopsIOBuffer extends JnaStructure {
 
     public Pointer data;
     public size_t size;

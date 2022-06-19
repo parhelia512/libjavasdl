@@ -1,6 +1,6 @@
 package org.libsdl.api.rwops;
 
-public final class SdlRWopsConst {
+public final class SdlRWopsSeekType {
 
     /**
      * Seek from the beginning of data
@@ -17,6 +17,6 @@ public final class SdlRWopsConst {
      */
     public static final int RW_SEEK_END = 2;
 
-    private SdlRWopsConst() {
+    private SdlRWopsSeekType() {
     }
 }
