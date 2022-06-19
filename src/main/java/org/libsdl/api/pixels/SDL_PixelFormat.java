@@ -1,5 +1,6 @@
 package org.libsdl.api.pixels;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaStructure;
@@ -48,6 +49,20 @@ public class SDL_PixelFormat extends JnaStructure {
     public int refcount;
     public SDL_PixelFormat.Ref next;
 
+    public SDL_PixelFormat() {
+    }
+
+    public SDL_PixelFormat(Pointer p) {
+        super(p);
+    }
+
     public final static class Ref extends SDL_PixelFormat implements Structure.ByReference {
+
+        public Ref() {
+        }
+
+        public Ref(Pointer p) {
+            super(p);
+        }
     }
 }
