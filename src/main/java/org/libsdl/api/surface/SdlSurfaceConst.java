@@ -1,6 +1,6 @@
 package org.libsdl.api.surface;
 
-public class SdlSurfaceConst {
+public final class SdlSurfaceConst {
 
     /**
      * Just here for compatibility
@@ -26,4 +26,7 @@ public class SdlSurfaceConst {
      * Surface uses aligned memory
      */
     public static final int SDL_SIMD_ALIGNED = 0x00000008;
+
+    private SdlSurfaceConst() {
+    }
 }

@@ -21,8 +21,8 @@ import org.libsdl.jna.JnaStructure;
         "pixels",
         "userdata",
         "locked",
-        "lockData",
-        "clipRect",
+        "list_blitmap",
+        "clip_rect",
         "map",
         "refcount"
 })
@@ -42,10 +42,10 @@ public class SDL_Surface extends JnaStructure {
     public int locked;
 
     /** list of BlitMap that hold a reference to this surface */
-    public Pointer lockData;
+    public Pointer list_blitmap;
 
     /** clipping information */
-    public SDL_Rect clipRect;
+    public SDL_Rect clip_rect;
 
     /** info for fast blit mapping to other surfaces */
     public Pointer map;
