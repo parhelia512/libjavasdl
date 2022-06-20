@@ -53,6 +53,7 @@ public class size_t extends IntegerType {
             } else if (SIZE == 8) {
                 getPointer().setLong(0L, currentValue);
             } else {
+                // Very unlikely case of size_t not being 4 or 8 bytes long.
                 switch (SDL_BYTEORDER) {
                     case SDL_LIL_ENDIAN:
                         for (long i = 0; i < SIZE; i++) {
@@ -73,25 +74,32 @@ public class size_t extends IntegerType {
         }
 
         public size_t getValue() {
-            long currentValue = 0L;
-            int rotation = 0;
-            switch (SDL_BYTEORDER) {
-                case SDL_LIL_ENDIAN:
-                    for (long i = 0; i < SIZE; i++) {
-                        currentValue += (getPointer().getByte(i) & 0xFFL) << rotation;
-                        rotation = rotation + 8;
-                    }
-                    break;
-                case SDL_BIG_ENDIAN:
-                    for (long i = SIZE - 1; i >= 0; i--) {
-                        currentValue += (getPointer().getByte(i) & 0xFFL) << rotation;
-                        rotation = rotation + 8;
-                    }
-                    break;
-                default:
-                    throw new IllegalStateException("Endianness of the platform has not been defined");
+            if (SIZE == 4) {
+                return new size_t(getPointer().getInt(0L));
+            } else if (SIZE == 8) {
+                return new size_t(getPointer().getLong(0L));
+            } else {
+                // Very unlikely case of size_t not being 4 or 8 bytes long.
+                long currentValue = 0L;
+                int rotation = 0;
+                switch (SDL_BYTEORDER) {
+                    case SDL_LIL_ENDIAN:
+                        for (long i = 0; i < SIZE; i++) {
+                            currentValue += (getPointer().getByte(i) & 0xFFL) << rotation;
+                            rotation = rotation + 8;
+                        }
+                        break;
+                    case SDL_BIG_ENDIAN:
+                        for (long i = SIZE - 1; i >= 0; i--) {
+                            currentValue += (getPointer().getByte(i) & 0xFFL) << rotation;
+                            rotation = rotation + 8;
+                        }
+                        break;
+                    default:
+                        throw new IllegalStateException("Endianness of the platform has not been defined");
+                }
+                return new size_t(currentValue);
             }
-            return new size_t(currentValue);
         }
     }
 }
