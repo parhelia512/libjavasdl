@@ -5,31 +5,34 @@ import org.libsdl.jna.NativeLoader;
 
 public final class SdlTimer {
 
-    /**
-     * Get the number of milliseconds since SDL library initialization.
-     *
-     * This value wraps if the program runs for more than ~49 days.
-     *
-     * \returns an unsigned 32-bit value representing the number of milliseconds
-     *          since the SDL library initialized.
-     *
-     * \sa SDL_TICKS_PASSED
-     */
-    public static int SDL_GetTicks() {
-        return NativeFunctions.SDL_GetTicks();
+    static {
+        NativeLoader.registerNativeMethods(SdlTimer.class);
+    }
+
+    private SdlTimer() {
     }
 
     /**
-     * Compare SDL ticks values, and return true if `A` has passed `B`.
+     * Get the number of milliseconds since SDL library initialization.
      *
-     * For example, if you want to wait 100 ms, you could do this:
+     * <p>This value wraps if the program runs for more than ~49 days.</p>
      *
-     * ```java
+     * @return an unsigned 32-bit value representing the number of milliseconds
+     * since the SDL library initialized.
+     * @see #SDL_TICKS_PASSED(int, int)
+     */
+    public static native int SDL_GetTicks();
+
+    /**
+     * Compare SDL ticks values, and return true if {@code A} has passed {@code B}.
+     *
+     * <p>For example, if you want to wait 100 ms, you could do this:</p>
+     *
+     * <blockquote><pre>
      * int timeout = SDL_GetTicks() + 100;
      * while (!SDL_TICKS_PASSED(SDL_GetTicks(), timeout)) {
      *     // ... do work until timeout has elapsed
-     * }
-     * ```
+     * }</pre></blockquote>
      */
     public static boolean SDL_TICKS_PASSED(int ticksCountA, int ticksCountB) {
         return (ticksCountB - ticksCountA) <= 0;
@@ -38,112 +41,78 @@ public final class SdlTimer {
     /**
      * Get the current value of the high resolution counter.
      *
-     * This function is typically used for profiling.
+     * <p>This function is typically used for profiling.</p>
      *
-     * The counter values are only meaningful relative to each other. Differences
+     * <p>The counter values are only meaningful relative to each other. Differences
      * between values can be converted to times by using
-     * SDL_GetPerformanceFrequency().
+     * SDL_GetPerformanceFrequency().</p>
      *
-     * \returns the current counter value.
-     *
-     * \sa SDL_GetPerformanceFrequency
+     * @return the current counter value.
+     * @see #SDL_GetPerformanceFrequency()
      */
-    public static long SDL_GetPerformanceCounter() {
-        return NativeFunctions.SDL_GetPerformanceCounter();
-    }
+    public static native long SDL_GetPerformanceCounter();
 
     /**
      * Get the count per second of the high resolution counter.
      *
-     * \returns a platform-specific count per second.
-     *
-     * \since This function is available since SDL 2.0.0.
-     *
-     * \sa SDL_GetPerformanceCounter
+     * @return a platform-specific count per second.
+     * @see #SDL_GetPerformanceCounter()
+     * @since This function is available since SDL 2.0.0.
      */
-    public static long SDL_GetPerformanceFrequency() {
-        return NativeFunctions.SDL_GetPerformanceFrequency();
-    }
+    public static native long SDL_GetPerformanceFrequency();
 
     /**
      * Wait a specified number of milliseconds before returning.
      *
-     * This function waits a specified number of milliseconds before returning. It
+     * <p>This function waits a specified number of milliseconds before returning. It
      * waits at least the specified time, but possibly longer due to OS
-     * scheduling.
+     * scheduling.</p>
      *
-     * \param ms the number of milliseconds to delay
+     * @param ms the number of milliseconds to delay
      */
-    public static void SDL_Delay(int ms) {
-        NativeFunctions.SDL_Delay(ms);
-    }
+    public static native void SDL_Delay(int ms);
 
     /**
      * Call a callback function at a future time.
      *
-     * If you use this function, you must pass `SDL_INIT_TIMER` to SDL_Init().
+     * <p>If you use this function, you must pass {@code SDL_INIT_TIMER} to SDL_Init().</p>
      *
-     * The callback function is passed the current timer interval and the user
+     * <p>The callback function is passed the current timer interval and the user
      * supplied parameter from the SDL_AddTimer() call and should return the next
      * timer interval. If the value returned from the callback is 0, the timer is
-     * canceled.
+     * canceled.</p>
      *
-     * The callback is run on a separate thread.
+     * <p>The callback is run on a separate thread.</p>
      *
-     * Timers take into account the amount of time it took to execute the
+     * <p>Timers take into account the amount of time it took to execute the
      * callback. For example, if the callback took 250 ms to execute and returned
      * 1000 (ms), the timer would only wait another 750 ms before its next
-     * iteration.
+     * iteration.</p>
      *
-     * Timing may be inexact due to OS scheduling. Be sure to note the current
+     * <p>Timing may be inexact due to OS scheduling. Be sure to note the current
      * time with SDL_GetTicks() or SDL_GetPerformanceCounter() in case your
-     * callback needs to adjust for variances.
+     * callback needs to adjust for variances.</p>
      *
-     * \param interval the timer delay, in milliseconds, passed to `callback`
-     * \param callback the SDL_TimerCallback function to call when the specified
-     *                 `interval` elapses
-     * \param param a pointer that is passed to `callback`
-     * \returns a timer ID or 0 if an error occurs; call SDL_GetError() for more
-     *          information.
-     *
-     * \sa SDL_RemoveTimer
+     * @param interval the timer delay, in milliseconds, passed to {@code callback}
+     * @param callback the SDL_TimerCallback function to call when the specified
+     *                 {@code interval} elapses
+     * @param param    a pointer that is passed to {@code callback}
+     * @return a timer ID or 0 if an error occurs; call SDL_GetError() for more
+     * information.
+     * @see #SDL_RemoveTimer(SDL_TimerID)
      */
-    public static SDL_TimerID SDL_AddTimer(int interval, SDL_TimerCallback callback, Pointer param) {
-        return NativeFunctions.SDL_AddTimer(interval, callback, param);
-    }
+    public static native SDL_TimerID SDL_AddTimer(
+            int interval,
+            SDL_TimerCallback callback,
+            Pointer param);
 
     /**
      * Remove a timer created with SDL_AddTimer().
      *
-     * \param id the ID of the timer to remove
-     * \returns SDL_TRUE if the timer is removed or SDL_FALSE if the timer wasn't
-     *          found.
-     *
-     * \sa SDL_AddTimer
+     * @param id the ID of the timer to remove
+     * @return SDL_TRUE if the timer is removed or SDL_FALSE if the timer wasn't
+     * found.
+     * @see #SDL_AddTimer(int, SDL_TimerCallback, Pointer)
      */
-    public static boolean SDL_RemoveTimer(SDL_TimerID id) {
-        return NativeFunctions.SDL_RemoveTimer(id);
-    }
-
-    private static final class NativeFunctions {
-
-        static {
-            NativeLoader.registerNativeMethods(NativeFunctions.class);
-        }
-
-        public static native int SDL_GetTicks();
-
-        public static native long SDL_GetPerformanceCounter();
-
-        public static native long SDL_GetPerformanceFrequency();
-
-        public static native void SDL_Delay(int ms);
-
-        public static native SDL_TimerID SDL_AddTimer(
-                int interval,
-                SDL_TimerCallback callback,
-                Pointer param);
-
-        public static native boolean SDL_RemoveTimer(SDL_TimerID id);
-    }
+    public static native boolean SDL_RemoveTimer(SDL_TimerID id);
 }

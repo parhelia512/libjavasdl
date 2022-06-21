@@ -2,17 +2,16 @@ package org.libsdl.api.timer;
 
 import com.sun.jna.IntegerType;
 
+/**
+ * Definition of the timer ID type.
+ */
 public class SDL_TimerID extends IntegerType {
 
     public SDL_TimerID() {
-        super(4);
+        this(0L);
     }
 
-    public SDL_TimerID(int value) {
-        super(4, value);
-    }
-
-    public void setValue(int value) {
-        super.setValue(value);
+    public SDL_TimerID(long value) {
+        super(4, value, false);
     }
 }
