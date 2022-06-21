@@ -1,6 +1,5 @@
-package org.libsdl.api.syswm;
+package org.libsdl.api.syswm.event;
 
-import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.libsdl.jna.JnaStructure;
 
@@ -10,5 +9,5 @@ import org.libsdl.jna.JnaStructure;
 })
 public class SDL_SysWMmsgDummy extends JnaStructure {
 
-    public Pointer dummy;
+    public int dummy;
 }

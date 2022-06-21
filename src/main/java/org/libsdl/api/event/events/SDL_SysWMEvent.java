@@ -1,7 +1,7 @@
 package org.libsdl.api.event.events;
 
 import com.sun.jna.Structure;
-import org.libsdl.api.syswm.SDL_SysWMmsg;
+import org.libsdl.api.syswm.event.SDL_SysWMmsg;
 import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({

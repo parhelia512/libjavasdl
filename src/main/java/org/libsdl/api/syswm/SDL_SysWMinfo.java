@@ -40,7 +40,7 @@ public class SDL_SysWMinfo extends JnaStructure {
 
     @Override
     public void read() {
-        super.readField("subsystem");
+        readField("subsystem");
         switch (subsystem) {
             case SDL_SYSWM_WINDOWS:
                 info.setType(SDL_SysWMInfoWindows.class);

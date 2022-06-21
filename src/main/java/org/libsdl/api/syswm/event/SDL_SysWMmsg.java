@@ -1,8 +1,9 @@
-package org.libsdl.api.syswm;
+package org.libsdl.api.syswm.event;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.api.syswm.SDL_SYSWM_TYPE;
 import org.libsdl.api.version.SDL_version;
 import org.libsdl.jna.JnaStructure;
 
@@ -36,7 +37,7 @@ public class SDL_SysWMmsg extends JnaStructure {
 
     @Override
     public void read() {
-        super.readField("subsystem");
+        readField("subsystem");
         switch (subsystem) {
             case SDL_SYSWM_WINDOWS:
                 msg.setType(SDL_SysWMmsgWindows.class);

@@ -1,4 +1,4 @@
-package org.libsdl.api.syswm;
+package org.libsdl.api.syswm.event;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
