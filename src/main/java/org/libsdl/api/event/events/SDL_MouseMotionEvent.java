@@ -5,7 +5,7 @@ import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_MOUSEMOTION;
-import static org.libsdl.api.touch.SdlTouch.SDL_TOUCH_MOUSEID;
+import static org.libsdl.api.touch.SdlTouchConst.SDL_TOUCH_MOUSEID;
 
 @Structure.FieldOrder({
         "type",

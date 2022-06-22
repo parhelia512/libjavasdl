@@ -5,7 +5,7 @@ import com.sun.jna.IntegerType;
 public class SDL_TouchID extends IntegerType {
 
     public SDL_TouchID() {
-        super(8, false);
+        this(0L);
     }
 
     public SDL_TouchID(long value) {

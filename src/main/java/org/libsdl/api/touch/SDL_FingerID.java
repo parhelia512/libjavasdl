@@ -5,7 +5,7 @@ import com.sun.jna.IntegerType;
 public class SDL_FingerID extends IntegerType {
 
     public SDL_FingerID() {
-        super(8, false);
+        this(0L);
     }
 
     public SDL_FingerID(long value) {

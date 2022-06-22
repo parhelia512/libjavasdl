@@ -272,6 +272,8 @@ public final class SDL_Scancode implements JnaEnum {
     public static final int SDL_SCANCODE_AUDIOREWIND = 285;
     public static final int SDL_SCANCODE_AUDIOFASTFORWARD = 286;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_Scancode() {
     }
 

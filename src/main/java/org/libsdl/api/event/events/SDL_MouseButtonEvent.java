@@ -8,7 +8,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_MOUSEBUTTONDOWN;
 import static org.libsdl.api.event.SDL_EventType.SDL_MOUSEBUTTONUP;
 import static org.libsdl.api.event.SdlEventsConst.SDL_PRESSED;
 import static org.libsdl.api.event.SdlEventsConst.SDL_RELEASED;
-import static org.libsdl.api.touch.SdlTouch.SDL_TOUCH_MOUSEID;
+import static org.libsdl.api.touch.SdlTouchConst.SDL_TOUCH_MOUSEID;
 
 @Structure.FieldOrder({
         "type",

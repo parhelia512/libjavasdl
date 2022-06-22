@@ -7,7 +7,7 @@ import org.libsdl.jna.JnaStructure;
 import static org.libsdl.api.event.SDL_EventType.SDL_MOUSEWHEEL;
 import static org.libsdl.api.mouse.SDL_MouseWheelDirection.SDL_MOUSEWHEEL_FLIPPED;
 import static org.libsdl.api.mouse.SDL_MouseWheelDirection.SDL_MOUSEWHEEL_NORMAL;
-import static org.libsdl.api.touch.SdlTouch.SDL_TOUCH_MOUSEID;
+import static org.libsdl.api.touch.SdlTouchConst.SDL_TOUCH_MOUSEID;
 
 @Structure.FieldOrder({
         "type",
