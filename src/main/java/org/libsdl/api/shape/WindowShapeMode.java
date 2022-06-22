@@ -9,6 +9,8 @@ public final class WindowShapeMode implements JnaEnum {
     public static final int ShapeModeReverseBinarizeAlpha = 2;
     public static final int ShapeModeColorKey = 4;
 
+    // TODO: Generate public static String toString(int value)
+
     private WindowShapeMode() {
     }
 }

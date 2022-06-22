@@ -5,10 +5,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import org.libsdl.api.event.SDL_Event;
-import org.libsdl.api.pixels.SDL_Color;
-import org.libsdl.api.shape.SDL_WindowShapeMode;
 
 import static org.libsdl.api.SDL_SubSystem.SDL_INIT_VIDEO;
 import static org.libsdl.api.Sdl.SDL_InitSubSystem;
@@ -19,12 +16,6 @@ import static org.libsdl.api.event.SDL_EventType.SDL_QUIT;
 import static org.libsdl.api.event.SDL_EventType.SDL_WINDOWEVENT;
 import static org.libsdl.api.event.SdlEvents.SDL_PollEvent;
 import static org.libsdl.api.keycode.SDL_Keycode.SDLK_SPACE;
-import static org.libsdl.api.shape.SdlShape.SDL_GetShapedWindowMode;
-import static org.libsdl.api.shape.SdlShape.SDL_INVALID_SHAPE_ARGUMENT;
-import static org.libsdl.api.shape.SdlShape.SDL_NONSHAPEABLE_WINDOW;
-import static org.libsdl.api.shape.SdlShape.SDL_SetWindowShape;
-import static org.libsdl.api.shape.SdlShape.SDL_WINDOW_LACKS_SHAPE;
-import static org.libsdl.api.shape.WindowShapeMode.ShapeModeColorKey;
 import static org.libsdl.api.video.SDL_WindowFlags.SDL_WINDOW_SHOWN;
 import static org.libsdl.api.video.SdlVideo.SDL_CreateWindow;
 import static org.libsdl.api.video.SdlVideo.SDL_DestroyWindow;

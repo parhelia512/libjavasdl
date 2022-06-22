@@ -13,74 +13,39 @@ import static org.libsdl.api.shape.WindowShapeMode.ShapeModeReverseBinarizeAlpha
 
 public final class SdlShape {
 
-    public static final int SDL_NONSHAPEABLE_WINDOW = -1;
-    public static final int SDL_INVALID_SHAPE_ARGUMENT = -2;
-    public static final int SDL_WINDOW_LACKS_SHAPE = -3;
+    static {
+        NativeLoader.registerNativeMethods(SdlShape.class);
+    }
+
+
+    private SdlShape() {
+    }
 
     public static boolean SDL_SHAPEMODEALPHA(
             @MagicConstant(valuesFromClass = WindowShapeMode.class) int mode) {
         return mode == ShapeModeDefault || mode == ShapeModeBinarizeAlpha || mode == ShapeModeReverseBinarizeAlpha;
     }
 
-    @MagicConstant(intValues = {0, SDL_INVALID_SHAPE_ARGUMENT, SDL_NONSHAPEABLE_WINDOW})
-    public static int SDL_SetWindowShape(
+    @MagicConstant(intValues = {0, SdlShapeConst.SDL_INVALID_SHAPE_ARGUMENT, SdlShapeConst.SDL_NONSHAPEABLE_WINDOW})
+    public static native int SDL_SetWindowShape(
             SDL_Window window,
             SDL_Surface shape,
-            SDL_WindowShapeMode shapeMode) {
-        return NativeFunctions.SDL_SetWindowShape(window, shape, shapeMode);
-    }
+            SDL_WindowShapeMode shapeMode);
 
-    @MagicConstant(intValues = {0, SDL_NONSHAPEABLE_WINDOW, SDL_WINDOW_LACKS_SHAPE})
-    public static int SDL_GetShapedWindowMode(
+
+    @MagicConstant(intValues = {0, SdlShapeConst.SDL_NONSHAPEABLE_WINDOW, SdlShapeConst.SDL_WINDOW_LACKS_SHAPE})
+    public static native int SDL_GetShapedWindowMode(
             SDL_Window window,
-            SDL_WindowShapeMode shapeMode) {
-        return NativeFunctions.SDL_GetShapedWindowMode(window, shapeMode);
-    }
+            SDL_WindowShapeMode shapeMode);
 
-    public static SDL_Window SDL_CreateShapedWindow(
+    public static native SDL_Window SDL_CreateShapedWindow(
             String title,
             int x,
             int y,
             int w,
             int h,
-            @MagicConstant(flagsFromClass = SDL_WindowFlags.class) int flags) {
-        return NativeFunctions.SDL_CreateShapedWindow(title, x, y, w, h, flags);
-    }
+            @MagicConstant(flagsFromClass = SDL_WindowFlags.class) int flags);
 
-    public static boolean SDL_IsShapedWindow(
-            SDL_Window window) {
-        return NativeFunctions.SDL_IsShapedWindow(window);
-    }
-
-    private static final class NativeFunctions {
-
-        static {
-            NativeLoader.registerNativeMethods(NativeFunctions.class);
-        }
-
-        private NativeFunctions() {
-        }
-
-        public static native SDL_Window SDL_CreateShapedWindow(
-                String title,
-                int x,
-                int y,
-                int w,
-                int h,
-                @MagicConstant(flagsFromClass = SDL_WindowFlags.class) int flags);
-
-        public static native boolean SDL_IsShapedWindow(
-                SDL_Window window);
-
-        @MagicConstant(intValues = {0, SDL_INVALID_SHAPE_ARGUMENT, SDL_NONSHAPEABLE_WINDOW})
-        public static native int SDL_SetWindowShape(
-                SDL_Window window,
-                SDL_Surface shape,
-                SDL_WindowShapeMode shapeMode);
-
-        @MagicConstant(intValues = {0, SDL_NONSHAPEABLE_WINDOW, SDL_WINDOW_LACKS_SHAPE})
-        public static native int SDL_GetShapedWindowMode(
-                SDL_Window window,
-                SDL_WindowShapeMode shapeMode);
-    }
+    public static native boolean SDL_IsShapedWindow(
+            SDL_Window window);
 }
