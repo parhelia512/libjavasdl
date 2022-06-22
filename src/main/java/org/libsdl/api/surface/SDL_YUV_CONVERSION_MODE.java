@@ -24,6 +24,8 @@ public final class SDL_YUV_CONVERSION_MODE implements JnaEnum {
      */
     public static final int SDL_YUV_CONVERSION_AUTOMATIC = 3;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_YUV_CONVERSION_MODE() {
     }
 }

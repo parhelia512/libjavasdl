@@ -27,6 +27,8 @@ public final class SdlSurfaceConst {
      */
     public static final int SDL_SIMD_ALIGNED = 0x00000008;
 
+    // TODO: Generate public static String toString(int value)
+
     private SdlSurfaceConst() {
     }
 }
