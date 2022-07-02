@@ -145,6 +145,10 @@ public final class SdlLog {
             SDL_LogOutputFunction callback,
             Pointer userdata);
 
+    public static native void SDL_LogSetOutputFunction(
+            Pointer callback,
+            Pointer userdata);
+
     /**
      * <p>Log message handler that will route all SDL internal logging to Java's SLF4J.</p>
      *

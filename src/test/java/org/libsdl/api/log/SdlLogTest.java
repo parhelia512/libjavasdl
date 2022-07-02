@@ -1,6 +1,7 @@
 package org.libsdl.api.log;
 
 import com.sun.jna.Pointer;
+import com.sun.jna.ptr.PointerByReference;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import static org.libsdl.api.error.SdlError.SDL_GetError;
 import static org.libsdl.api.log.SDL_LogCategory.SDL_LOG_CATEGORY_ASSERT;
 import static org.libsdl.api.log.SDL_LogPriority.SDL_LOG_PRIORITY_INFO;
 import static org.libsdl.api.log.SDL_LogPriority.SDL_LOG_PRIORITY_VERBOSE;
+import static org.libsdl.api.log.SdlLog.SDL_LogGetOutputFunction;
 import static org.libsdl.api.log.SdlLog.SDL_LogMessage;
 import static org.libsdl.api.log.SdlLog.SDL_LogSetAllPriority;
 import static org.libsdl.api.log.SdlLog.SDL_LogSetOutputFunction;
@@ -29,6 +31,9 @@ public final class SdlLogTest {
 
     @Test
     public void registerLogCallback() {
+        PointerByReference originalLogFunction = new PointerByReference();
+        PointerByReference originalUserData = new PointerByReference();
+        SDL_LogGetOutputFunction(originalLogFunction, originalUserData);
         SDL_LogSetOutputFunction(SdlLog::routeSdlLoggingToSlf4j, Pointer.NULL);
         SDL_LogSetAllPriority(SDL_LOG_PRIORITY_VERBOSE);
 
@@ -40,6 +45,8 @@ public final class SdlLogTest {
         SDL_LogMessage(SDL_LOG_CATEGORY_ASSERT, SDL_LOG_PRIORITY_INFO, "Sample message %d, %d", 10, 20);
 
         SDL_DestroyWindow(window);
+
+        SDL_LogSetOutputFunction(originalLogFunction.getValue(), originalUserData.getValue());
     }
 
     @AfterEach
