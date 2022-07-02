@@ -52,7 +52,7 @@ public class TimerTest {
         assertTrue(result);
         boolean result2 = SDL_RemoveTimer(timerID2);
         assertTrue(result2);
-        Thread.sleep(1000L);
+        Thread.sleep(2000L);
 
         assertEquals(6, counter.get());
         // TODO: Report the leak to SDL authors and enable the assert after it is fix in the native library
