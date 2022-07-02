@@ -16,11 +16,12 @@ public class SdlStdincTest {
 
     @Test
     public void allocationShouldNotCauseMemoryLeak() {
-        int allocationCount = SDL_GetNumAllocations();
+        int allocationCountBefore = SDL_GetNumAllocations();
         for (int i = 0; i < MAX; i++) {
             Pointer memoryBlob = SDL_malloc(new size_t(65536));
             SDL_free(memoryBlob);
         }
-        assertEquals(0, allocationCount);
+        int allocationCountAfter = SDL_GetNumAllocations();
+        assertEquals(0, allocationCountAfter - allocationCountBefore);
     }
 }
