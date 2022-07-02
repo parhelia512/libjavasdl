@@ -2,16 +2,12 @@ package org.libsdl.api.vulkan;
 
 import java.util.Arrays;
 import java.util.List;
-import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.StringArray;
-import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.jna.NativeLoader;
-
-import static org.libsdl.api.error.SdlError.SDL_GetError;
 
 public class SdlVulkan {
 
