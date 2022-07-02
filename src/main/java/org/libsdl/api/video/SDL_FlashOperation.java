@@ -8,6 +8,8 @@ public final class SDL_FlashOperation implements JnaEnum {
     public static final int SDL_FLASH_BRIEFLY = 1;
     public static final int SDL_FLASH_UNTIL_FOCUSED = 2;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_FlashOperation() {
     }
 }

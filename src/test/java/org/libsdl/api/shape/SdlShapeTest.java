@@ -33,7 +33,7 @@ import static org.libsdl.api.surface.SdlSurface.SDL_FreeSurface;
 import static org.libsdl.api.surface.SdlSurface.SDL_LoadBMP;
 import static org.libsdl.api.video.SDL_WindowFlags.SDL_WINDOW_SHOWN;
 import static org.libsdl.api.video.SdlVideo.SDL_DestroyWindow;
-import static org.libsdl.api.video.SdlVideo.SDL_WINDOWPOS_CENTERED;
+import static org.libsdl.api.video.SdlVideoConst.SDL_WINDOWPOS_CENTERED;
 
 public class SdlShapeTest {
 

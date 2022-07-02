@@ -15,6 +15,8 @@ public final class SDL_HitTestResult implements JnaEnum {
     public static final int SDL_HITTEST_RESIZE_BOTTOMLEFT = 8;
     public static final int SDL_HITTEST_RESIZE_LEFT = 9;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_HitTestResult() {
     }
 }

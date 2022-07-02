@@ -1,6 +1,7 @@
 package org.libsdl.api.video;
 
 import org.libsdl.jna.JnaEnum;
+import org.libsdl.jna.JnaUtils;
 
 public final class SDL_WindowFlags implements JnaEnum {
 
@@ -28,6 +29,82 @@ public final class SDL_WindowFlags implements JnaEnum {
     public static final int SDL_WINDOW_KEYBOARD_GRABBED = 0x00100000;
     public static final int SDL_WINDOW_VULKAN = 0x10000000;
     public static final int SDL_WINDOW_METAL = 0x20000000;
+
+    public static String toString(int type) {
+        StringBuilder result = new StringBuilder(36);
+        if ((type & SDL_WINDOW_FULLSCREEN_DESKTOP) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_FULLSCREEN_DESKTOP");
+        } else if ((type & SDL_WINDOW_FULLSCREEN) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_FULLSCREEN");
+        }
+        if ((type & SDL_WINDOW_OPENGL) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_OPENGL");
+        }
+        if ((type & SDL_WINDOW_SHOWN) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_SHOWN");
+        }
+        if ((type & SDL_WINDOW_HIDDEN) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_HIDDEN");
+        }
+        if ((type & SDL_WINDOW_BORDERLESS) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_BORDERLESS");
+        }
+        if ((type & SDL_WINDOW_RESIZABLE) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_RESIZABLE");
+        }
+        if ((type & SDL_WINDOW_MINIMIZED) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_MINIMIZED");
+        }
+        if ((type & SDL_WINDOW_MAXIMIZED) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_MAXIMIZED");
+        }
+        if ((type & SDL_WINDOW_MOUSE_GRABBED) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_MOUSE_GRABBED");
+        }
+        if ((type & SDL_WINDOW_INPUT_FOCUS) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_INPUT_FOCUS");
+        }
+        if ((type & SDL_WINDOW_MOUSE_FOCUS) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_MOUSE_FOCUS");
+        }
+        if ((type & SDL_WINDOW_FOREIGN) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_FOREIGN");
+        }
+        if ((type & SDL_WINDOW_ALLOW_HIGHDPI) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_ALLOW_HIGHDPI");
+        }
+        if ((type & SDL_WINDOW_MOUSE_CAPTURE) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_MOUSE_CAPTURE");
+        }
+        if ((type & SDL_WINDOW_ALWAYS_ON_TOP) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_ALWAYS_ON_TOP");
+        }
+        if ((type & SDL_WINDOW_SKIP_TASKBAR) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_SKIP_TASKBAR");
+        }
+        if ((type & SDL_WINDOW_UTILITY) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_UTILITY");
+        }
+        if ((type & SDL_WINDOW_TOOLTIP) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_TOOLTIP");
+        }
+        if ((type & SDL_WINDOW_POPUP_MENU) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_POPUP_MENU");
+        }
+        if ((type & SDL_WINDOW_KEYBOARD_GRABBED) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_KEYBOARD_GRABBED");
+        }
+        if ((type & SDL_WINDOW_VULKAN) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_VULKAN");
+        }
+        if ((type & SDL_WINDOW_METAL) > 0) {
+            JnaUtils.append(result, "SDL_WINDOW_METAL");
+        }
+        if (result.length() == 0) {
+            result.append("0");
+        }
+        return result.toString();
+    }
 
     private SDL_WindowFlags() {
     }
