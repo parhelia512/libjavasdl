@@ -13,7 +13,7 @@ import org.libsdl.api.pixels.SDL_Color;
 import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_Window;
 
-import static org.libsdl.api.SDL_SubSystem.SDL_INIT_VIDEO;
+import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_VIDEO;
 import static org.libsdl.api.Sdl.SDL_Init;
 import static org.libsdl.api.Sdl.SDL_Quit;
 import static org.libsdl.api.error.SdlError.SDL_GetError;

@@ -4,6 +4,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.FloatByReference;
 import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.api.SdlSubSystemConst;
 import org.libsdl.api.joystick.SDL_Joystick;
 import org.libsdl.api.joystick.SDL_JoystickGUID;
 import org.libsdl.api.joystick.SDL_JoystickID;
@@ -20,7 +21,7 @@ import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
  * <p>Function definitions for SDL game controller event handling.</p>
  *
  * <p>In order to use these functions, SDL_Init() must have been called
- * with the {@link org.libsdl.api.SDL_SubSystem#SDL_INIT_GAMECONTROLLER SDL_INIT_GAMECONTROLLER} flag.
+ * with the {@link SdlSubSystemConst#SDL_INIT_GAMECONTROLLER SDL_INIT_GAMECONTROLLER} flag.
  * This causes SDL to scan the system
  * for game controllers, and load appropriate drivers.</p>
  *

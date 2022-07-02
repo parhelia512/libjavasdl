@@ -1,15 +1,7 @@
 package org.libsdl.api.vulkan;
 
-import java.util.Arrays;
 import java.util.List;
-import com.sun.jna.Memory;
-import com.sun.jna.Pointer;
-import com.sun.jna.StringArray;
-import com.sun.jna.ptr.ByteByReference;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +9,7 @@ import org.libsdl.api.video.SDL_Window;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.libsdl.api.SDL_SubSystem.SDL_INIT_VIDEO;
+import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_VIDEO;
 import static org.libsdl.api.Sdl.SDL_InitSubSystem;
 import static org.libsdl.api.Sdl.SDL_QuitSubSystem;
 import static org.libsdl.api.error.SdlError.SDL_GetError;

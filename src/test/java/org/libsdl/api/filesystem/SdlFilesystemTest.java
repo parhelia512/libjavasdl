@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.libsdl.api.SDL_SubSystem.SDL_INIT_VIDEO;
+import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_VIDEO;
 import static org.libsdl.api.Sdl.SDL_Init;
 import static org.libsdl.api.Sdl.SDL_Quit;
 import static org.libsdl.api.filesystem.SdlFilesystem.SDL_GetBasePath;

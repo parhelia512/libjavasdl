@@ -1,27 +1,17 @@
 package org.libsdl.api.render;
 
-import com.sun.jna.Pointer;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.libsdl.api.Sdl;
-import org.libsdl.api.SDL_SubSystem;
-import org.libsdl.api.log.SdlLog;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.video.SDL_Window;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.libsdl.api.SDL_SubSystem.SDL_INIT_EVERYTHING;
+import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
 import static org.libsdl.api.Sdl.SDL_InitSubSystem;
 import static org.libsdl.api.Sdl.SDL_QuitSubSystem;
 import static org.libsdl.api.error.SdlError.SDL_GetError;
-import static org.libsdl.api.log.SDL_LogCategory.SDL_LOG_CATEGORY_ASSERT;
-import static org.libsdl.api.log.SDL_LogPriority.SDL_LOG_PRIORITY_INFO;
-import static org.libsdl.api.log.SDL_LogPriority.SDL_LOG_PRIORITY_VERBOSE;
-import static org.libsdl.api.log.SdlLog.SDL_LogMessage;
-import static org.libsdl.api.log.SdlLog.SDL_LogSetAllPriority;
 import static org.libsdl.api.log.SdlLog.SDL_LogSetOutputFunction;
 import static org.libsdl.api.render.SDL_RendererFlags.SDL_RENDERER_ACCELERATED;
 import static org.libsdl.api.render.SdlRender.SDL_CreateRenderer;

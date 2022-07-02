@@ -6,11 +6,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import org.libsdl.api.SdlTest;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.libsdl.api.SDL_SubSystem.SDL_INIT_TIMER;
+import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_TIMER;
 import static org.libsdl.api.Sdl.SDL_InitSubSystem;
 import static org.libsdl.api.Sdl.SDL_QuitSubSystem;
 import static org.libsdl.api.SdlTest.assertNoMemoryLeak;

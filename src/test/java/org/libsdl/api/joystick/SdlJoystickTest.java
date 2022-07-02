@@ -3,10 +3,8 @@ package org.libsdl.api.joystick;
 import com.sun.jna.ptr.ShortByReference;
 import org.junit.jupiter.api.Test;
 
-import org.libsdl.api.event.SdlEventsConst;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.libsdl.api.SDL_SubSystem.SDL_INIT_EVERYTHING;
+import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
 import static org.libsdl.api.Sdl.SDL_Init;
 import static org.libsdl.api.Sdl.SDL_Quit;
 import static org.libsdl.api.event.SdlEventsConst.SDL_QUERY;

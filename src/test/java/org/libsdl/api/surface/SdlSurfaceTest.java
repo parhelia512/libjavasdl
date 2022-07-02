@@ -13,7 +13,7 @@ import org.libsdl.api.rect.SDL_Rect;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.libsdl.api.SDL_SubSystem.SDL_INIT_VIDEO;
+import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
 import static org.libsdl.api.Sdl.SDL_InitSubSystem;
 import static org.libsdl.api.Sdl.SDL_QuitSubSystem;
 import static org.libsdl.api.SdlTest.assertNoMemoryLeak;
@@ -31,7 +31,7 @@ public final class SdlSurfaceTest {
 
     @BeforeEach
     public void setUp() {
-        SDL_InitSubSystem(SDL_INIT_VIDEO);
+        SDL_InitSubSystem(SDL_INIT_EVERYTHING);
         numOfAllocationsBefore = SDL_GetNumAllocations();
     }
 
@@ -131,6 +131,6 @@ public final class SdlSurfaceTest {
 
     @AfterEach
     public void tearDown() {
-        SDL_QuitSubSystem(SDL_INIT_VIDEO);
+        SDL_QuitSubSystem(SDL_INIT_EVERYTHING);
     }
 }

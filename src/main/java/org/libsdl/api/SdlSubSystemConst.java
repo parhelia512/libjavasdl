@@ -2,7 +2,7 @@ package org.libsdl.api;
 
 import org.libsdl.jna.JnaEnum;
 
-public final class SDL_SubSystem implements JnaEnum {
+public final class SdlSubSystemConst implements JnaEnum {
 
     public static final int SDL_INIT_TIMER = 0x00000001;
     public static final int SDL_INIT_AUDIO = 0x00000010;
@@ -22,6 +22,6 @@ public final class SDL_SubSystem implements JnaEnum {
             | SDL_INIT_GAMECONTROLLER
             | SDL_INIT_SENSOR;
 
-    private SDL_SubSystem() {
+    private SdlSubSystemConst() {
     }
 }
