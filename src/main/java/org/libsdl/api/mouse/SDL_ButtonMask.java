@@ -2,6 +2,7 @@ package org.libsdl.api.mouse;
 
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaEnum;
+import org.libsdl.jna.JnaUtils;
 
 import static org.libsdl.api.mouse.SDL_Button.SDL_BUTTON_LEFT;
 import static org.libsdl.api.mouse.SDL_Button.SDL_BUTTON_MIDDLE;
@@ -26,31 +27,24 @@ public final class SDL_ButtonMask implements JnaEnum {
             @MagicConstant(flagsFromClass = SDL_ButtonMask.class) int value) {
         StringBuilder result = new StringBuilder(17);
         if ((value & SDL_BUTTON_LMASK) > 0) {
-            append(result, "SDL_BUTTON_LMASK");
+            JnaUtils.append(result, "SDL_BUTTON_LMASK");
         }
         if ((value & SDL_BUTTON_MMASK) > 0) {
-            append(result, "SDL_BUTTON_MMASK");
+            JnaUtils.append(result, "SDL_BUTTON_MMASK");
         }
         if ((value & SDL_BUTTON_RMASK) > 0) {
-            append(result, "SDL_BUTTON_RMASK");
+            JnaUtils.append(result, "SDL_BUTTON_RMASK");
         }
         if ((value & SDL_BUTTON_X1MASK) > 0) {
-            append(result, "SDL_BUTTON_X1MASK");
+            JnaUtils.append(result, "SDL_BUTTON_X1MASK");
         }
         if ((value & SDL_BUTTON_X2MASK) > 0) {
-            append(result, "SDL_BUTTON_X2MASK");
+            JnaUtils.append(result, "SDL_BUTTON_X2MASK");
         }
         if (result.length() == 0) {
             result.append("0");
         }
         return result.toString();
-    }
-
-    private static void append(StringBuilder result, String name) {
-        if (result.length() > 0) {
-            result.append(" | ");
-        }
-        result.append(name);
     }
 
     private SDL_ButtonMask() {

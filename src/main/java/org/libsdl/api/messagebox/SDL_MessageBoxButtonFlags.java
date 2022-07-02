@@ -1,6 +1,7 @@
 package org.libsdl.api.messagebox;
 
 import org.libsdl.jna.JnaEnum;
+import org.libsdl.jna.JnaUtils;
 
 public final class SDL_MessageBoxButtonFlags implements JnaEnum {
 
@@ -10,22 +11,15 @@ public final class SDL_MessageBoxButtonFlags implements JnaEnum {
     public static String toString(int type) {
         StringBuilder result = new StringBuilder(39 * 2 + 3);
         if ((type & SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT) > 0) {
-            append(result, "SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT");
+            JnaUtils.append(result, "SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT");
         }
         if ((type & SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT) > 0) {
-            append(result, "SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT");
+            JnaUtils.append(result, "SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT");
         }
         if (result.length() == 0) {
             result.append("0");
         }
         return result.toString();
-    }
-
-    private static void append(StringBuilder result, String name) {
-        if (result.length() > 0) {
-            result.append(" | ");
-        }
-        result.append(name);
     }
 
     private SDL_MessageBoxButtonFlags() {
