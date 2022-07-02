@@ -1,38 +1,33 @@
 package org.libsdl.api.surface;
 
+import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
+import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.api.blendmode.SDL_BlendMode;
 import org.libsdl.api.pixels.SDL_Palette;
 import org.libsdl.api.pixels.SDL_PixelFormat;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.rwops.SDL_RWops;
-import org.libsdl.api.rwops.SdlRWops;
+import org.libsdl.jna.JnaUtils;
 import org.libsdl.jna.NativeLoader;
 
+import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
+
 public final class SdlSurface {
-
-    public static final int SDL_SWSURFACE = 0;
-    public static final int SDL_PREALLOC = 0x00000001;
-    public static final int SDL_RLEACCEL = 0x00000002;
-    public static final int SDL_DONTFREE = 0x00000004;
-
-    public static final int SDL_YUV_CONVERSION_JPEG = 0;
-    public static final int SDL_YUV_CONVERSION_BT601 = 1;
-    public static final int SDL_YUV_CONVERSION_BT709 = 2;
-    public static final int SDL_YUV_CONVERSION_AUTOMATIC = 3;
 
     static {
         NativeLoader.registerNativeMethods(SdlSurface.class);
     }
 
-    private SdlSurface() {
-    }
-
+    /**
+     * Evaluates to true if the surface needs to be locked before access.
+     */
     @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
     public static boolean SDL_MUSTLOCK(
             SDL_Surface s) {
-        return ((s.flags & SDL_RLEACCEL) != 0);
+        return ((s.flags & SdlSurfaceConst.SDL_RLEACCEL) != 0);
     }
 
     @SuppressWarnings("checkstyle:ParameterNumber")
@@ -73,8 +68,14 @@ public final class SdlSurface {
             int pitch,
             int format);
 
+    public static void SDL_FreeSurface(
+            SDL_Surface surface) {
+        Pointer mem = surface.getPointer();
+        SDL_FreeSurface(mem);
+    }
+
     public static native void SDL_FreeSurface(
-            SDL_Surface surface);
+            Pointer surface);
 
     public static native int SDL_SetSurfacePalette(
             SDL_Surface surface,
@@ -92,7 +93,7 @@ public final class SdlSurface {
 
     public static SDL_Surface SDL_LoadBMP(
             String file) {
-        return SDL_LoadBMP_RW(SdlRWops.SDL_RWFromFile(file, "rb"), 1);
+        return SDL_LoadBMP_RW(SDL_RWFromFile(file, "rb"), 1);
     }
 
     public static native int SDL_SaveBMP_RW(
@@ -105,7 +106,7 @@ public final class SdlSurface {
             String file) {
         return SDL_SaveBMP_RW(
                 surface,
-                SdlRWops.SDL_RWFromFile(file, "wb"),
+                SDL_RWFromFile(file, "wb"),
                 1);
     }
 
@@ -113,10 +114,16 @@ public final class SdlSurface {
             SDL_Surface surface,
             int flag);
 
+    public static native boolean SDL_HasSurfaceRLE(
+            SDL_Surface surface);
+
     public static native int SDL_SetColorKey(
             SDL_Surface surface,
             int flag,
             int key);
+
+    public static native boolean SDL_HasColorKey(
+            SDL_Surface surface);
 
     public static native int SDL_GetColorKey(
             SDL_Surface surface,
@@ -144,11 +151,11 @@ public final class SdlSurface {
 
     public static native int SDL_SetSurfaceBlendMode(
             SDL_Surface surface,
-            int blendMode);
+            @MagicConstant(valuesFromClass = SDL_BlendMode.class) int blendMode);
 
     public static native int SDL_GetSurfaceBlendMode(
             SDL_Surface surface,
-            IntByReference blendMode);
+            SDL_BlendMode.Ref blendMode);
 
     public static native boolean SDL_SetClipRect(
             SDL_Surface surface,
@@ -187,24 +194,37 @@ public final class SdlSurface {
             SDL_Rect rect,
             int color);
 
+    public static int SDL_FillRects(
+            SDL_Surface dst,
+            SDL_Rect[] rects,
+            int color) {
+        if (rects.length == 0) {
+            return 0;
+        }
+        Memory memory = JnaUtils.writeArrayToNativeMemory(rects);
+        return SDL_FillRects(dst, memory, rects.length, color);
+    }
+
     public static native int SDL_FillRects(
             SDL_Surface dst,
-            SDL_Rect rects,
+            Pointer rects,
             int count,
             int color);
 
     public static int SDL_BlitSurface(
             SDL_Surface src,
-            SDL_Rect srcrect,
+            SDL_Rect srcRect,
             SDL_Surface dst,
-            SDL_Rect dstrect) {
+            SDL_Rect dstRect) {
         return SDL_UpperBlit(
                 src,
-                srcrect,
+                srcRect,
                 dst,
-                dstrect);
+                dstRect);
     }
 
+    @Deprecated
+    @SuppressWarnings("DeprecatedIsStillUsed")
     public static native int SDL_UpperBlit(
             SDL_Surface src,
             SDL_Rect srcrect,
@@ -223,35 +243,45 @@ public final class SdlSurface {
             SDL_Surface dst,
             SDL_Rect dstrect);
 
-    public static int SDL_BlitScaled(
-            SDL_Surface src,
-            SDL_Rect srcrect,
-            SDL_Surface dst,
-            SDL_Rect dstrect) {
-        return SDL_UpperBlitScaled(
-                src,
-                srcrect,
-                dst,
-                dstrect);
-    }
-
-    public static native int SDL_UpperBlitScaled(
+    public static native int SDL_SoftStretchLinear(
             SDL_Surface src,
             SDL_Rect srcrect,
             SDL_Surface dst,
             SDL_Rect dstrect);
+
+    public static int SDL_BlitScaled(
+            SDL_Surface src,
+            SDL_Rect srcRect,
+            SDL_Surface dst,
+            SDL_Rect dstRect) {
+        return SDL_UpperBlitScaled(
+                src,
+                srcRect,
+                dst,
+                dstRect);
+    }
+
+    @Deprecated
+    @SuppressWarnings("DeprecatedIsStillUsed")
+    public static native int SDL_UpperBlitScaled(
+            SDL_Surface src,
+            SDL_Rect srcRect,
+            SDL_Surface dst,
+            SDL_Rect dstRect);
 
     public static native int SDL_LowerBlitScaled(
             SDL_Surface src,
-            SDL_Rect srcrect,
+            SDL_Rect srcRect,
             SDL_Surface dst,
-            SDL_Rect dstrect);
+            SDL_Rect dstRect);
 
     public static native void SDL_SetYUVConversionMode(
-            int mode);
+            @MagicConstant(valuesFromClass = SDL_YUV_CONVERSION_MODE.class) int mode);
 
+    @MagicConstant(valuesFromClass = SDL_YUV_CONVERSION_MODE.class)
     public static native int SDL_GetYUVConversionMode();
 
+    @MagicConstant(valuesFromClass = SDL_YUV_CONVERSION_MODE.class)
     public static native int SDL_GetYUVConversionModeForResolution(
             int width,
             int height);

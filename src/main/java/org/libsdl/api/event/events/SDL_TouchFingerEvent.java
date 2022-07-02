@@ -1,7 +1,14 @@
 package org.libsdl.api.event.events;
 
-import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
+import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.api.touch.SDL_FingerID;
+import org.libsdl.api.touch.SDL_TouchID;
+import org.libsdl.jna.JnaStructure;
+
+import static org.libsdl.api.event.SDL_EventType.SDL_FINGERDOWN;
+import static org.libsdl.api.event.SDL_EventType.SDL_FINGERMOTION;
+import static org.libsdl.api.event.SDL_EventType.SDL_FINGERUP;
 
 @Structure.FieldOrder({
         "type",
@@ -12,17 +19,20 @@ import com.sun.jna.Structure;
         "y",
         "dx",
         "dy",
-        "pressure"
+        "pressure",
+        "windowID"
 })
-public final class SDL_TouchFingerEvent extends Structure {
+public final class SDL_TouchFingerEvent extends JnaStructure {
 
+    @MagicConstant(intValues = {SDL_FINGERDOWN, SDL_FINGERUP, SDL_FINGERMOTION})
     public int type;
     public int timestamp;
-    public NativeLong touchId;
-    public NativeLong fingerId;
+    public SDL_TouchID touchId;
+    public SDL_FingerID fingerId;
     public float x;
     public float y;
     public float dx;
     public float dy;
     public float pressure;
+    public int windowID;
 }

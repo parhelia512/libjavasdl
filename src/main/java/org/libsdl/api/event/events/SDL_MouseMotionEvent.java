@@ -1,6 +1,11 @@
 package org.libsdl.api.event.events;
 
 import com.sun.jna.Structure;
+import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.jna.JnaStructure;
+
+import static org.libsdl.api.event.SDL_EventType.SDL_MOUSEMOTION;
+import static org.libsdl.api.touch.SdlTouchConst.SDL_TOUCH_MOUSEID;
 
 @Structure.FieldOrder({
         "type",
@@ -13,11 +18,14 @@ import com.sun.jna.Structure;
         "xrel",
         "yrel"
 })
-public final class SDL_MouseMotionEvent extends Structure {
+public final class SDL_MouseMotionEvent extends JnaStructure {
 
+    @MagicConstant(intValues = SDL_MOUSEMOTION)
     public int type;
     public int timestamp;
     public int windowID;
+
+    @MagicConstant(intValues = SDL_TOUCH_MOUSEID)
     public int which;
     public int state;
     public int x;

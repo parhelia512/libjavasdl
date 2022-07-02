@@ -1,7 +1,7 @@
-LibJSDL
-=======
+LibSDL4J
+========
 
-LibJSDL is a mapping of SDL2 APIs to Java. There are two goals for LibJSDL:
+LibSDL4J is a mapping of SDL2 APIs to Java. There are two goals for LibSDL4J:
 * Provide as direct of a mapping of SDL APIs as possible.
 * Provide as performant of a mapping as possible.
 

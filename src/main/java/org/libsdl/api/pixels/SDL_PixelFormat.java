@@ -2,6 +2,8 @@ package org.libsdl.api.pixels;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "format",
@@ -24,10 +26,11 @@ import com.sun.jna.Structure;
         "refcount",
         "next"
 })
-public final class SDL_PixelFormat extends Structure {
+public class SDL_PixelFormat extends JnaStructure {
 
+    @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class)
     public int format;
-    public SDL_Palette palette;
+    public SDL_Palette.Ref palette;
     public byte bitsPerPixel;
     public byte bytesPerPixel;
     public byte[] padding = new byte[2];
@@ -44,5 +47,22 @@ public final class SDL_PixelFormat extends Structure {
     public byte bShift;
     public byte aShift;
     public int refcount;
-    public Pointer next;
+    public SDL_PixelFormat.Ref next;
+
+    public SDL_PixelFormat() {
+    }
+
+    public SDL_PixelFormat(Pointer p) {
+        super(p);
+    }
+
+    public final static class Ref extends SDL_PixelFormat implements Structure.ByReference {
+
+        public Ref() {
+        }
+
+        public Ref(Pointer p) {
+            super(p);
+        }
+    }
 }

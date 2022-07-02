@@ -1,11 +1,18 @@
 package org.libsdl.api.video;
 
+import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
+import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.api.pixels.SDL_PixelFormatEnum;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.surface.SDL_Surface;
+import org.libsdl.jna.JnaUtils;
 import org.libsdl.jna.NativeLoader;
+
+import static org.libsdl.api.video.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN;
+import static org.libsdl.api.video.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN_DESKTOP;
 
 @SuppressWarnings({
         "checkstyle:MagicNumber",
@@ -13,136 +20,11 @@ import org.libsdl.jna.NativeLoader;
 })
 public final class SdlVideo {
 
-    public static final int SDL_WINDOW_FULLSCREEN = 0x00000001;
-    public static final int SDL_WINDOW_OPENGL = 0x00000002;
-    public static final int SDL_WINDOW_SHOWN = 0x00000004;
-    public static final int SDL_WINDOW_HIDDEN = 0x00000008;
-    public static final int SDL_WINDOW_BORDERLESS = 0x00000010;
-    public static final int SDL_WINDOW_RESIZABLE = 0x00000020;
-    public static final int SDL_WINDOW_MINIMIZED = 0x00000040;
-    public static final int SDL_WINDOW_MAXIMIZED = 0x00000080;
-    public static final int SDL_WINDOW_INPUT_GRABBED = 0x00000100;
-    public static final int SDL_WINDOW_INPUT_FOCUS = 0x00000200;
-    public static final int SDL_WINDOW_MOUSE_FOCUS = 0x00000400;
-    public static final int SDL_WINDOW_FULLSCREEN_DESKTOP = SDL_WINDOW_FULLSCREEN + 0x00001000;
-    public static final int SDL_WINDOW_FOREIGN = 0x00000800;
-    public static final int SDL_WINDOW_ALLOW_HIGHDPI = 0x00002000;
-    public static final int SDL_WINDOW_MOUSE_CAPTURE = 0x00004000;
-    public static final int SDL_WINDOW_ALWAYS_ON_TOP = 0x00008000;
-    public static final int SDL_WINDOW_SKIP_TASKBAR = 0x00010000;
-    public static final int SDL_WINDOW_UTILITY = 0x00020000;
-    public static final int SDL_WINDOW_TOOLTIP = 0x00040000;
-    public static final int SDL_WINDOW_POPUP_MENU = 0x00080000;
-    public static final int SDL_WINDOW_VULKAN = 0x10000000;
-
-    public static final int SDL_WINDOWPOS_UNDEFINED_MASK = 0x1FFF0000;
-    public static final int SDL_WINDOWPOS_CENTERED_MASK = 0x2FFF0000;
-
-    public static final int SDL_WINDOWEVENT_NONE = 1;
-    public static final int SDL_WINDOWEVENT_SHOWN = 2;
-    public static final int SDL_WINDOWEVENT_HIDDEN = 3;
-    public static final int SDL_WINDOWEVENT_EXPOSED = 4;
-    public static final int SDL_WINDOWEVENT_MOVED = 5;
-    public static final int SDL_WINDOWEVENT_RESIZED = 6;
-    public static final int SDL_WINDOWEVENT_SIZE_CHANGED = 7;
-    public static final int SDL_WINDOWEVENT_MINIMIZED = 8;
-    public static final int SDL_WINDOWEVENT_MAXIMIZED = 9;
-    public static final int SDL_WINDOWEVENT_RESTORED = 10;
-    public static final int SDL_WINDOWEVENT_ENTER = 11;
-    public static final int SDL_WINDOWEVENT_LEAVE = 12;
-    public static final int SDL_WINDOWEVENT_FOCUS_GAINED = 13;
-    public static final int SDL_WINDOWEVENT_FOCUS_LOST = 14;
-    public static final int SDL_WINDOWEVENT_CLOSE = 15;
-    public static final int SDL_WINDOWEVENT_TAKE_FOCUS = 16;
-    public static final int SDL_WINDOWEVENT_HIT_TEST = 17;
-
-    public static final int SDL_GL_RED_SIZE = 1;
-    public static final int SDL_GL_GREEN_SIZE = 2;
-    public static final int SDL_GL_BLUE_SIZE = 3;
-    public static final int SDL_GL_ALPHA_SIZE = 4;
-    public static final int SDL_GL_BUFFER_SIZE = 5;
-    public static final int SDL_GL_DOUBLEBUFFER = 6;
-    public static final int SDL_GL_DEPTH_SIZE = 7;
-    public static final int SDL_GL_STENCIL_SIZE = 8;
-    public static final int SDL_GL_ACCUM_RED_SIZE = 9;
-    public static final int SDL_GL_ACCUM_GREEN_SIZE = 10;
-    public static final int SDL_GL_ACCUM_BLUE_SIZE = 11;
-    public static final int SDL_GL_ACCUM_ALPHA_SIZE = 12;
-    public static final int SDL_GL_STEREO = 13;
-    public static final int SDL_GL_MULTISAMPLEBUFFERS = 14;
-    public static final int SDL_GL_MULTISAMPLESAMPLES = 15;
-    public static final int SDL_GL_ACCELERATED_VISUAL = 16;
-    public static final int SDL_GL_RETAINED_BACKING = 17;
-    public static final int SDL_GL_CONTEXT_MAJOR_VERSION = 18;
-    public static final int SDL_GL_CONTEXT_MINOR_VERSION = 19;
-    public static final int SDL_GL_CONTEXT_EGL = 20;
-    public static final int SDL_GL_CONTEXT_FLAGS = 21;
-    public static final int SDL_GL_CONTEXT_PROFILE_MASK = 22;
-    public static final int SDL_GL_SHARE_WITH_CURRENT_CONTEXT = 23;
-    public static final int SDL_GL_FRAMEBUFFER_SRGB_CAPABLE = 24;
-    public static final int SDL_GL_CONTEXT_RELEASE_BEHAVIOR = 25;
-    public static final int SDL_GL_CONTEXT_RESET_NOTIFICATION = 26;
-    public static final int SDL_GL_CONTEXT_NO_ERROR = 27;
-
-    public static final int SDL_GL_CONTEXT_PROFILE_CORE = 0x0001;
-    public static final int SDL_GL_CONTEXT_PROFILE_COMPATIBILITY = 0x0002;
-    public static final int SDL_GL_CONTEXT_PROFILE_ES = 0x0004;
-
-    public static final int SDL_GL_CONTEXT_DEBUG_FLAG = 0x0001;
-    public static final int SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG = 0x0002;
-    public static final int SDL_GL_CONTEXT_ROBUST_ACCESS_FLAG = 0x0004;
-    public static final int SDL_GL_CONTEXT_RESET_ISOLATION_FLAG = 0x0008;
-
-    public static final int SDL_GL_CONTEXT_RELEASE_BEHAVIOR_NONE = 0x0000;
-    public static final int SDL_GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH = 0x0001;
-
-    public static final int SDL_GL_CONTEXT_RESET_NO_NOTIFICATION = 0x0000;
-    public static final int SDL_GL_CONTEXT_RESET_LOSE_CONTEXT = 0x0001;
-
-    public static final int SDL_HITTEST_NORMAL = 0;
-    public static final int SDL_HITTEST_DRAGGABLE = 1;
-    public static final int SDL_HITTEST_RESIZE_TOPLEFT = 2;
-    public static final int SDL_HITTEST_RESIZE_TOP = 3;
-    public static final int SDL_HITTEST_RESIZE_TOPRIGHT = 4;
-    public static final int SDL_HITTEST_RESIZE_RIGHT = 5;
-    public static final int SDL_HITTEST_RESIZE_BOTTOMRIGHT = 6;
-    public static final int SDL_HITTEST_RESIZE_BOTTOM = 7;
-    public static final int SDL_HITTEST_RESIZE_BOTTOMLEFT = 8;
-    public static final int SDL_HITTEST_RESIZE_LEFT = 9;
-
     static {
         NativeLoader.registerNativeMethods(SdlVideo.class);
     }
 
     private SdlVideo() {
-    }
-
-    public static int SDL_WINDOWPOS_UNDEFINED_DISPLAY(
-            int x) {
-        return SDL_WINDOWPOS_UNDEFINED_MASK | x;
-    }
-
-    public static int SDL_WINDOWPOS_UNDEFINED() {
-        return SDL_WINDOWPOS_UNDEFINED_DISPLAY(0);
-    }
-
-    public static boolean SDL_WINDOWPOS_ISUNDEFINED(
-            int x) {
-        return (((x) & 0xFFFF0000) == SDL_WINDOWPOS_UNDEFINED_MASK);
-    }
-
-    public static int SDL_WINDOWPOS_CENTERED_DISPLAY(
-            int x) {
-        return SDL_WINDOWPOS_CENTERED_MASK | x;
-    }
-
-    public static int SDL_WINDOWPOS_CENTERED() {
-        return SDL_WINDOWPOS_CENTERED_DISPLAY(0);
-    }
-
-    public static boolean SDL_WINDOWPOS_ISCENTERED(
-            int x) {
-        return (((x) & 0xFFFF0000) == SDL_WINDOWPOS_CENTERED_MASK);
     }
 
     public static native int SDL_GetNumVideoDrivers();
@@ -166,15 +48,19 @@ public final class SdlVideo {
             int displayIndex,
             SDL_Rect rect);
 
+    public static native int SDL_GetDisplayUsableBounds(
+            int displayIndex,
+            SDL_Rect rect);
+
     public static native int SDL_GetDisplayDPI(
             int displayIndex,
             FloatByReference ddpi,
             FloatByReference hdpi,
             FloatByReference vdpi);
 
-    public static native int SDL_GetDisplayUsableBounds(
-            int displayIndex,
-            SDL_Rect rect);
+    @MagicConstant(valuesFromClass = SDL_DisplayOrientation.class)
+    public static native int SDL_GetDisplayOrientation(
+            int displayIndex);
 
     public static native int SDL_GetNumDisplayModes(
             int displayIndex);
@@ -208,6 +94,7 @@ public final class SdlVideo {
             SDL_Window window,
             SDL_DisplayMode mode);
 
+    @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class)
     public static native int SDL_GetWindowPixelFormat(
             SDL_Window window);
 
@@ -217,7 +104,7 @@ public final class SdlVideo {
             int y,
             int w,
             int h,
-            int flags);
+            @MagicConstant(flagsFromClass = SDL_WindowFlags.class) int flags);
 
     public static native SDL_Window SDL_CreateWindowFrom(
             Pointer data);
@@ -228,6 +115,7 @@ public final class SdlVideo {
     public static native SDL_Window SDL_GetWindowFromID(
             int id);
 
+    @MagicConstant(flagsFromClass = SDL_WindowFlags.class)
     public static native int SDL_GetWindowFlags(
             SDL_Window window);
 
@@ -250,7 +138,6 @@ public final class SdlVideo {
     public static native Pointer SDL_GetWindowData(
             SDL_Window window,
             String name);
-
 
     public static native void SDL_SetWindowPosition(
             SDL_Window window,
@@ -289,7 +176,6 @@ public final class SdlVideo {
             IntByReference w,
             IntByReference h);
 
-
     public static native void SDL_SetWindowMaximumSize(
             SDL_Window window,
             int maxW,
@@ -307,6 +193,10 @@ public final class SdlVideo {
     public static native void SDL_SetWindowResizable(
             SDL_Window window,
             boolean resizable);
+
+    public static native void SDL_SetWindowAlwaysOnTop(
+            SDL_Window window,
+            boolean on_top);
 
     public static native void SDL_ShowWindow(
             SDL_Window window);
@@ -328,7 +218,7 @@ public final class SdlVideo {
 
     public static native int SDL_SetWindowFullscreen(
             SDL_Window window,
-            int flags);
+            @MagicConstant(flags = {SDL_WINDOW_FULLSCREEN, SDL_WINDOW_FULLSCREEN_DESKTOP, 0}) int flags);
 
     public static native SDL_Surface SDL_GetWindowSurface(
             SDL_Window window);
@@ -336,6 +226,17 @@ public final class SdlVideo {
     public static native int SDL_UpdateWindowSurface(
             SDL_Window window);
 
+    public static int SDL_UpdateWindowSurfaceRects(
+            SDL_Window window,
+            SDL_Rect[] rects) {
+        Memory memory = JnaUtils.writeArrayToNativeMemory(rects);
+        return SDL_UpdateWindowSurfaceRects(window, memory, rects.length);
+    }
+
+    /**
+     * @deprecated Use more Java-style {@link #SDL_UpdateWindowSurfaceRects(SDL_Window, SDL_Rect[])}
+     */
+    @Deprecated
     public static native int SDL_UpdateWindowSurfaceRects(
             SDL_Window window,
             Pointer rects,
@@ -345,7 +246,21 @@ public final class SdlVideo {
             SDL_Window window,
             boolean grabbed);
 
+    public static native void SDL_SetWindowKeyboardGrab(
+            SDL_Window window,
+            boolean grabbed);
+
+    public static native void SDL_SetWindowMouseGrab(
+            SDL_Window window,
+            boolean grabbed);
+
     public static native boolean SDL_GetWindowGrab(
+            SDL_Window window);
+
+    public static native boolean SDL_GetWindowKeyboardGrab(
+            SDL_Window window);
+
+    public static native boolean SDL_GetWindowMouseGrab(
             SDL_Window window);
 
     public static native SDL_Window SDL_GetGrabbedWindow();
@@ -372,12 +287,55 @@ public final class SdlVideo {
     public static native int SDL_SetWindowInputFocus(
             SDL_Window window);
 
+    public static int SDL_SetWindowGammaRamp(
+            SDL_Window window,
+            short[] red,
+            short[] green,
+            short[] blue) {
+        if (red != null && red.length != 256) {
+            throw new IllegalArgumentException("Red array length must be 256 but was " + red.length);
+        }
+        if (green != null && green.length != 256) {
+            throw new IllegalArgumentException("Green array length must be 256 but was " + green.length);
+        }
+        if (blue != null && blue.length != 256) {
+            throw new IllegalArgumentException("Blue array length must be 256 but was " + blue.length);
+        }
+        Pointer redMemory = JnaUtils.writeArrayToNativeMemoryOrNull(red);
+        Pointer greenMemory = JnaUtils.writeArrayToNativeMemoryOrNull(green);
+        Pointer blueMemory = JnaUtils.writeArrayToNativeMemoryOrNull(blue);
+        return SDL_SetWindowGammaRamp(window, redMemory, greenMemory, blueMemory);
+    }
+
+    /**
+     * @deprecated Use more Java-style {@link #SDL_SetWindowGammaRamp(SDL_Window, short[], short[], short[])}
+     */
+    @Deprecated
     public static native int SDL_SetWindowGammaRamp(
             SDL_Window window,
             Pointer red,
             Pointer green,
             Pointer blue);
 
+    public static int SDL_GetWindowGammaRamp(
+            SDL_Window window,
+            short[] red,
+            short[] green,
+            short[] blue) {
+        Memory redMemory = new Memory(256 * 2L);
+        Memory greenMemory = new Memory(256 * 2L);
+        Memory blueMemory = new Memory(256 * 2L);
+        int result = SDL_GetWindowGammaRamp(window, redMemory, greenMemory, blueMemory);
+        redMemory.read(0L, red, 0, 256);
+        greenMemory.read(0L, green, 0, 256);
+        blueMemory.read(0L, blue, 0, 256);
+        return result;
+    }
+
+    /**
+     * @deprecated Use more Java-style {@link #SDL_GetWindowGammaRamp(SDL_Window, short[], short[], short[])}
+     */
+    @Deprecated
     public static native int SDL_GetWindowGammaRamp(
             SDL_Window window,
             Pointer red,
@@ -388,6 +346,10 @@ public final class SdlVideo {
             SDL_Window window,
             SDL_HitTest callback,
             Pointer callbackData);
+
+    public static native int SDL_FlashWindow(
+            SDL_Window window,
+            @MagicConstant(valuesFromClass = SDL_FlashOperation.class) int operation);
 
     public static native void SDL_DestroyWindow(
             SDL_Window window);
@@ -412,11 +374,11 @@ public final class SdlVideo {
     public static native void SDL_GL_ResetAttributes();
 
     public static native int SDL_GL_SetAttribute(
-            int attr,
+            @MagicConstant(valuesFromClass = SDL_GLattr.class) int attr,
             int value);
 
     public static native int SDL_GL_GetAttribute(
-            int attr,
+            @MagicConstant(valuesFromClass = SDL_GLattr.class) int attr,
             IntByReference value);
 
     public static native SDL_GLContext SDL_GL_CreateContext(
