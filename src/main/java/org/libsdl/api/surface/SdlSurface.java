@@ -68,8 +68,14 @@ public final class SdlSurface {
             int pitch,
             int format);
 
+    public static void SDL_FreeSurface(
+            SDL_Surface surface) {
+        Pointer mem = surface.getPointer();
+        SDL_FreeSurface(mem);
+    }
+
     public static native void SDL_FreeSurface(
-            SDL_Surface surface);
+            Pointer surface);
 
     public static native int SDL_SetSurfacePalette(
             SDL_Surface surface,

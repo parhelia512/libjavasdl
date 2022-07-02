@@ -1,5 +1,6 @@
 package org.libsdl.api.pixels;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
@@ -42,8 +43,14 @@ public final class SdlPixels {
     public static native SDL_PixelFormat SDL_AllocFormat(
             @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class) int pixelFormat);
 
+    public static void SDL_FreeFormat(
+            SDL_PixelFormat format) {
+        Pointer mem = format.getPointer();
+        SDL_FreeFormat(mem);
+    }
+
     public static native void SDL_FreeFormat(
-            SDL_PixelFormat format);
+            Pointer format);
 
     public static native SDL_Palette SDL_AllocPalette(
             int ncolors);
@@ -58,8 +65,14 @@ public final class SdlPixels {
             int firstcolor,
             int ncolors);
 
+    public static void SDL_FreePalette(
+            SDL_Palette palette) {
+        Pointer mem = palette.getPointer();
+        SDL_FreePalette(mem);
+    }
+
     public static native void SDL_FreePalette(
-            SDL_Palette palette);
+            Pointer palette);
 
     public static native int SDL_MapRGB(
             SDL_PixelFormat format,

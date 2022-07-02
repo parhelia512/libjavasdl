@@ -44,8 +44,14 @@ public final class SdlRWops {
 
     public static native SDL_RWops SDL_AllocRW();
 
+    public static void SDL_FreeRW(
+            SDL_RWops area) {
+        Pointer mem = area.getPointer();
+        SDL_FreeRW(mem);
+    }
+
     public static native void SDL_FreeRW(
-            SDL_RWops area);
+            Pointer area);
 
     public static native long SDL_RWsize(
             SDL_RWops context);
