@@ -8,12 +8,12 @@ public final class SdlFilesystem {
 
     public static String SDL_GetBasePath() {
         Pointer path = InternalNativeFunctions.SDL_GetBasePath();
-        return JnaUtils.extractStringAndReleaseNativeMemory(path);
+        return JnaUtils.extractStringAndReleaseNativeSdlMemory(path);
     }
 
     public static String SDL_GetPrefPath(String org, String app) {
         Pointer path = InternalNativeFunctions.SDL_GetPrefPath(org, app);
-        return JnaUtils.extractStringAndReleaseNativeMemory(path);
+        return JnaUtils.extractStringAndReleaseNativeSdlMemory(path);
     }
 
     private SdlFilesystem() {
