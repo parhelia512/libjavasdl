@@ -2,6 +2,7 @@ package org.libsdl.api.messagebox;
 
 import com.sun.jna.ptr.IntByReference;
 import org.libsdl.api.error.SdlError;
+import org.libsdl.jna.ContiguousArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.libsdl.api.messagebox.SDL_MessageBoxButtonFlags.SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT;
@@ -20,7 +21,7 @@ class SdlMessageboxTest {
 
     // This class does not contain proper @Test methods because it isn't easy to close the message box programatically
     // in an OS portable fashion.
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         SdlMessageboxTest testObject = new SdlMessageboxTest();
         testObject.simpleMessageBoxShouldBeDisplayedEvenWithoutSdlInit();
         testObject.fullMessageBoxShouldBeDisplayedEvenWithoutSdlInit();
@@ -31,22 +32,13 @@ class SdlMessageboxTest {
         assertEquals(result, 0);
     }
 
-    public void fullMessageBoxShouldBeDisplayedEvenWithoutSdlInit() {
+    public void fullMessageBoxShouldBeDisplayedEvenWithoutSdlInit() throws InterruptedException {
         SDL_MessageBoxData data = new SDL_MessageBoxData();
         data.flags = SDL_MESSAGEBOX_WARNING;
         data.window = null;
         data.title = "Test title 2";
         data.message = "Test message 2";
-        SDL_MessageBoxButtonData button1 = new SDL_MessageBoxButtonData(
-                SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT,
-                999,
-                "Yes");
-        SDL_MessageBoxButtonData button2 = new SDL_MessageBoxButtonData();
-        button2.flags = SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT;
-        button2.buttonid = 5555;
-        button2.text = "No";
-
-        data.setButtons(new SDL_MessageBoxButtonData[]{button1, button2});
+        prepareButtons(data);
         data.colorScheme = new SDL_MessageBoxColorScheme();
         data.colorScheme.setColorFor(SDL_MESSAGEBOX_COLOR_BACKGROUND, new SDL_MessageBoxColor(255, 255, 255));
         data.colorScheme.setColorFor(SDL_MESSAGEBOX_COLOR_TEXT, 0, 0, 0);
@@ -65,5 +57,16 @@ class SdlMessageboxTest {
         } else {
             throw new AssertionError("Failed to check which button was clicked on the message box (" + clickedButtonRef.getValue() + ")");
         }
+    }
+
+    private void prepareButtons(SDL_MessageBoxData data) {
+        ContiguousArrayList<SDL_MessageBoxButtonData> buttons = new ContiguousArrayList<>(SDL_MessageBoxButtonData.class, 2);
+        buttons.get(0).flags = SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT;
+        buttons.get(0).buttonid = 999;
+        buttons.get(0).text = "Yes";
+        buttons.get(1).flags = SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT;
+        buttons.get(1).buttonid = 5555;
+        buttons.get(1).text = "No";
+        data.setButtons(buttons);
     }
 }

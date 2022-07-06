@@ -5,6 +5,7 @@ import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
 import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.jna.ContiguousArrayList;
 import org.libsdl.jna.NativeLoader;
 
 @SuppressWarnings({
@@ -64,9 +65,24 @@ public final class SdlPixels {
             SDL_PixelFormat format,
             SDL_Palette palette);
 
+    public static int SDL_SetPaletteColors(
+            SDL_Palette palette,
+            ContiguousArrayList<SDL_Color> colors,
+            int firstcolor,
+            int ncolors) {
+        if (ncolors > colors.size()) {
+            throw new IllegalArgumentException("ncolors [" + ncolors + "] is greater than the size of the list of colors [" + colors.size() + "]");
+        }
+        return SDL_SetPaletteColors(palette, colors.autoWriteAndGetPointer(), firstcolor, ncolors);
+    }
+
+    /**
+     * @deprecated Use more Java-style {@link #SDL_SetPaletteColors(SDL_Palette, ContiguousArrayList, int, int)}
+     */
+    @Deprecated
     public static native int SDL_SetPaletteColors(
             SDL_Palette palette,
-            SDL_Color colors,
+            Pointer colors,
             int firstcolor,
             int ncolors);
 
