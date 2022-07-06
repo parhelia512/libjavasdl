@@ -32,14 +32,4 @@ public class SDL_MessageBoxButtonData extends JnaStructure {
         this.buttonid = buttonid;
         this.text = text;
     }
-
-    public static class Ref extends SDL_MessageBoxButtonData implements ByReference{
-
-        public Ref() {
-        }
-
-        public Ref(Pointer p) {
-            super(p);
-        }
-    }
 }
