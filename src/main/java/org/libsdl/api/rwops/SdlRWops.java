@@ -46,10 +46,15 @@ public final class SdlRWops {
 
     public static void SDL_FreeRW(
             SDL_RWops area) {
+        // Actual deallocation must always be called with a pointer, so extract it and re-call the raw native method. Reason: When a native method has an argument of type Structure, JNA calls Structure.read() to refresh the Java object after the native call. In case of deallocation, this would end up reading from a deallocated memory.
         Pointer mem = area.getPointer();
         SDL_FreeRW(mem);
     }
 
+    /**
+     * @deprecated Use more Java-style {@link #SDL_FreeRW(SDL_RWops)}
+     */
+    @Deprecated
     public static native void SDL_FreeRW(
             Pointer area);
 

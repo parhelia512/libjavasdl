@@ -72,10 +72,15 @@ public final class SdlSurface {
 
     public static void SDL_FreeSurface(
             SDL_Surface surface) {
+        // Actual deallocation must always be called with a pointer, so extract it and re-call the raw native method. Reason: When a native method has an argument of type Structure, JNA calls Structure.read() to refresh the Java object after the native call. In case of deallocation, this would end up reading from a deallocated memory.
         Pointer mem = surface.getPointer();
         SDL_FreeSurface(mem);
     }
 
+    /**
+     * @deprecated Use the Java-style {@link #SDL_FreeSurface(SDL_Surface)}
+     */
+    @Deprecated
     public static native void SDL_FreeSurface(
             Pointer surface);
 

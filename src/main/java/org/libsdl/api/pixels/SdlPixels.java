@@ -45,10 +45,15 @@ public final class SdlPixels {
 
     public static void SDL_FreeFormat(
             SDL_PixelFormat format) {
+        // Actual deallocation must always be called with a pointer, so extract it and re-call the raw native method. Reason: When a native method has an argument of type Structure, JNA calls Structure.read() to refresh the Java object after the native call. In case of deallocation, this would end up reading from a deallocated memory.
         Pointer mem = format.getPointer();
         SDL_FreeFormat(mem);
     }
 
+    /**
+     * @deprecated Use more Java-style {@link #SDL_FreeFormat(SDL_PixelFormat)}
+     */
+    @Deprecated
     public static native void SDL_FreeFormat(
             Pointer format);
 
@@ -67,10 +72,15 @@ public final class SdlPixels {
 
     public static void SDL_FreePalette(
             SDL_Palette palette) {
+        // Actual deallocation must always be called with a pointer, so extract it and re-call the raw native method. Reason: When a native method has an argument of type Structure, JNA calls Structure.read() to refresh the Java object after the native call. In case of deallocation, this would end up reading from a deallocated memory.
         Pointer mem = palette.getPointer();
         SDL_FreePalette(mem);
     }
 
+    /**
+     * @deprecated Use more Java-style {@link #SDL_FreePalette(SDL_Palette)}
+     */
+    @Deprecated
     public static native void SDL_FreePalette(
             Pointer palette);
 
