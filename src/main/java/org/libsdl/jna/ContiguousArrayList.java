@@ -82,6 +82,8 @@ public class ContiguousArrayList<T extends Structure> implements List<T> {
         this.array = array;
     }
 
+    // TODO: How about introducing an additional constructor: ContiguousArrayList(Class<T> structureClass, int size, existingPointer);
+
     @Override
     public T get(int index) {
         return array[index];
