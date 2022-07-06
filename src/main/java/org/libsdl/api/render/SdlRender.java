@@ -8,6 +8,7 @@ import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.blendmode.SDL_BlendMode;
+import org.libsdl.api.pixels.SDL_PixelFormatEnum;
 import org.libsdl.api.rect.SDL_FPoint;
 import org.libsdl.api.rect.SDL_FRect;
 import org.libsdl.api.rect.SDL_Point;

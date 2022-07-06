@@ -2,6 +2,7 @@ package org.libsdl.api.surface;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.pixels.SDL_PixelFormat;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.jna.JnaStructure;
@@ -30,7 +31,7 @@ public class SDL_Surface extends JnaStructure {
 
     @MagicConstant(flagsFromClass = SDL_SurfaceFlags.class)
     public int flags;
-    public SDL_PixelFormat.Ref format;
+    public SDL_PixelFormat format;
     public int w;
     public int h;
     public int pitch;

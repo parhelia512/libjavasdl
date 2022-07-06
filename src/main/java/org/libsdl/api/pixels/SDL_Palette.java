@@ -10,10 +10,10 @@ import org.libsdl.jna.JnaStructure;
         "version",
         "refcount"
 })
-public class SDL_Palette extends JnaStructure {
+public class SDL_Palette extends JnaStructure implements Structure.ByReference {
 
     public int ncolors;
-    public SDL_Color.Ref colors;
+    public Pointer colors;
     public int version;
     public int refcount;
 
@@ -22,15 +22,5 @@ public class SDL_Palette extends JnaStructure {
 
     public SDL_Palette(Pointer p) {
         super(p);
-    }
-
-    public static class Ref extends SDL_Palette implements Structure.ByReference {
-
-        public Ref() {
-        }
-
-        public Ref(Pointer p) {
-            super(p);
-        }
     }
 }

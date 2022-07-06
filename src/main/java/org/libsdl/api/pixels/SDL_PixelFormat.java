@@ -26,11 +26,11 @@ import org.libsdl.jna.JnaStructure;
         "refcount",
         "next"
 })
-public class SDL_PixelFormat extends JnaStructure {
+public class SDL_PixelFormat extends JnaStructure implements Structure.ByReference {
 
     @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class)
     public int format;
-    public SDL_Palette.Ref palette;
+    public SDL_Palette palette;
     public byte bitsPerPixel;
     public byte bytesPerPixel;
     public byte[] padding = new byte[2];
@@ -47,22 +47,12 @@ public class SDL_PixelFormat extends JnaStructure {
     public byte bShift;
     public byte aShift;
     public int refcount;
-    public SDL_PixelFormat.Ref next;
+    public SDL_PixelFormat next;
 
     public SDL_PixelFormat() {
     }
 
     public SDL_PixelFormat(Pointer p) {
         super(p);
-    }
-
-    public final static class Ref extends SDL_PixelFormat implements Structure.ByReference {
-
-        public Ref() {
-        }
-
-        public Ref(Pointer p) {
-            super(p);
-        }
     }
 }

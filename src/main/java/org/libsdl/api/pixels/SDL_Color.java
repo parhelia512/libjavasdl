@@ -23,14 +23,4 @@ public class SDL_Color extends JnaStructure {
     public SDL_Color(Pointer p) {
         super(p);
     }
-
-    public static class Ref extends SDL_Color implements Structure.ByReference {
-
-        public Ref() {
-        }
-
-        public Ref(Pointer p) {
-            super(p);
-        }
-    }
 }
