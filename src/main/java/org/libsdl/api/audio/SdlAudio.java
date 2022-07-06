@@ -2,6 +2,7 @@ package org.libsdl.api.audio;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
+import com.sun.jna.ptr.PointerByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.rwops.SDL_RWops;
 import org.libsdl.jna.NativeLoader;
@@ -53,14 +54,14 @@ public final class SdlAudio {
     public static native void SDL_PauseAudioDevice(SDL_AudioDeviceID dev, int pause_on);
 
     // TODO: Test
-    public static native SDL_AudioSpec SDL_LoadWAV_RW(SDL_RWops src, int freesrc, SDL_AudioSpec spec, Pointer audio_buf, IntByReference audio_len);
+    public static native SDL_AudioSpec SDL_LoadWAV_RW(SDL_RWops src, int freesrc, SDL_AudioSpec spec, PointerByReference audio_buf, IntByReference audio_len);
 
     /**
      * <p>Loads a WAV from a file.</p>
      *
      * <p>Compatibility convenience function.</p>
      */
-    public static SDL_AudioSpec SDL_LoadWAV(String file, SDL_AudioSpec spec, Pointer audio_buf, IntByReference audio_len) {
+    public static SDL_AudioSpec SDL_LoadWAV(String file, SDL_AudioSpec spec, PointerByReference audio_buf, IntByReference audio_len) {
         return SDL_LoadWAV_RW(SDL_RWFromFile(file, "rb"), 1, spec, audio_buf, audio_len);
     }
 
