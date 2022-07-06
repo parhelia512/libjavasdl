@@ -301,9 +301,9 @@ public final class SdlVideo {
         if (blue != null && blue.length != 256) {
             throw new IllegalArgumentException("Blue array length must be 256 but was " + blue.length);
         }
-        Pointer redMemory = JnaUtils.writeArrayToNativeMemoryOrNull(red);
-        Pointer greenMemory = JnaUtils.writeArrayToNativeMemoryOrNull(green);
-        Pointer blueMemory = JnaUtils.writeArrayToNativeMemoryOrNull(blue);
+        Pointer redMemory = JnaUtils.writeArrayToNativeMemory(red);
+        Pointer greenMemory = JnaUtils.writeArrayToNativeMemory(green);
+        Pointer blueMemory = JnaUtils.writeArrayToNativeMemory(blue);
         return SDL_SetWindowGammaRamp(window, redMemory, greenMemory, blueMemory);
     }
 
