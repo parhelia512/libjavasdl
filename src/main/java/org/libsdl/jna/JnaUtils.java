@@ -13,23 +13,6 @@ public class JnaUtils {
         return result;
     }
 
-    public static Memory writeArrayToNativeMemory(JnaStructure[] objects) {
-        if (objects == null || objects.length == 0) {
-            throw new IllegalArgumentException("Array of objects must not be empty or null.");
-        }
-        int size = objects[0].size();
-        Memory memory = new Memory((long) objects.length * size);
-        int offset = 0;
-        for (JnaStructure singleObject : objects) {
-            Pointer backup = singleObject.getPointer();
-            singleObject.useMemory(memory, offset);
-            singleObject.write();
-            singleObject.useMemory(backup, 0);
-            offset += size;
-        }
-        return memory;
-    }
-
     public static Memory writeArrayToNativeMemory(byte[] data) {
         if (data == null) {
             return null;

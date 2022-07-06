@@ -1,9 +1,8 @@
 package org.libsdl.api.rect;
 
-import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
-import org.libsdl.jna.JnaUtils;
+import org.libsdl.jna.ContiguousArrayList;
 import org.libsdl.jna.NativeLoader;
 
 public final class SdlRect {
@@ -50,14 +49,13 @@ public final class SdlRect {
             SDL_Rect result);
 
     public static boolean SDL_EnclosePoints(
-            SDL_Point[] points,
+            ContiguousArrayList<SDL_Point> points,
             SDL_Rect clip,
             SDL_Rect result) {
-        if (points.length == 0) {
+        if (points.size() == 0) {
             return true;
         }
-        Memory memory = JnaUtils.writeArrayToNativeMemory(points);
-        return SDL_EnclosePoints(memory, points.length, clip, result);
+        return SDL_EnclosePoints(points.autoWriteAndGetPointer(), points.size(), clip, result);
     }
 
     public static native boolean SDL_EnclosePoints(

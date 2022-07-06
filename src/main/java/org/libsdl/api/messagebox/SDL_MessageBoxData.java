@@ -1,12 +1,11 @@
 package org.libsdl.api.messagebox;
 
-import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.video.SDL_Window;
+import org.libsdl.jna.ContiguousArrayList;
 import org.libsdl.jna.JnaStructure;
-import org.libsdl.jna.JnaUtils;
 
 @Structure.FieldOrder({
         "flags",
@@ -35,8 +34,8 @@ public class SDL_MessageBoxData extends JnaStructure {
         super(p);
     }
 
-    public void setButtons(SDL_MessageBoxButtonData[] buttonsArray) {
-        buttons = JnaUtils.writeArrayToNativeMemory(buttonsArray);
-        numbuttons = buttonsArray.length;
+    public void setButtons(ContiguousArrayList<SDL_MessageBoxButtonData> buttonsArray) {
+        numbuttons = buttonsArray.size();
+        buttons = buttonsArray.autoWriteAndGetPointer();
     }
 }

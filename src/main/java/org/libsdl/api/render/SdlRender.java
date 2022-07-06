@@ -1,6 +1,5 @@
 package org.libsdl.api.render;
 
-import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.FloatByReference;
@@ -8,6 +7,7 @@ import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.blendmode.SDL_BlendMode;
+import org.libsdl.api.pixels.SDL_PixelFormatEnum;
 import org.libsdl.api.rect.SDL_FPoint;
 import org.libsdl.api.rect.SDL_FRect;
 import org.libsdl.api.rect.SDL_Point;
@@ -15,7 +15,7 @@ import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.api.video.SDL_WindowFlags;
-import org.libsdl.jna.JnaUtils;
+import org.libsdl.jna.ContiguousArrayList;
 import org.libsdl.jna.NativeLoader;
 
 public final class SdlRender {
@@ -43,8 +43,7 @@ public final class SdlRender {
     public static native SDL_Renderer SDL_CreateRenderer(
             SDL_Window window,
             int index,
-            @MagicConstant(valuesFromClass = SDL_RendererFlags.class)
-            int flags);
+            @MagicConstant(valuesFromClass = SDL_RendererFlags.class) int flags);
 
     public static native SDL_Renderer SDL_CreateSoftwareRenderer(
             SDL_Surface surface);
@@ -243,12 +242,11 @@ public final class SdlRender {
 
     public static int SDL_RenderDrawPoints(
             SDL_Renderer renderer,
-            SDL_Point[] points) {
-        if (points.length == 0) {
+            ContiguousArrayList<SDL_Point> points) {
+        if (points.size() == 0) {
             return 0;
         }
-        Memory memory = JnaUtils.writeArrayToNativeMemory(points);
-        return SDL_RenderDrawPoints(renderer, memory, points.length);
+        return SDL_RenderDrawPoints(renderer, points.autoWriteAndGetPointer(), points.size());
     }
 
     public static native int SDL_RenderDrawPoints(
@@ -265,9 +263,11 @@ public final class SdlRender {
 
     public static int SDL_RenderDrawLines(
             SDL_Renderer renderer,
-            SDL_Point[] points) {
-        Memory memory = JnaUtils.writeArrayToNativeMemory(points);
-        return SDL_RenderDrawLines(renderer, memory, points.length);
+            ContiguousArrayList<SDL_Point> points) {
+        if (points.size() == 0) {
+            return 0;
+        }
+        return SDL_RenderDrawLines(renderer, points.autoWriteAndGetPointer(), points.size());
     }
 
     public static native int SDL_RenderDrawLines(
@@ -281,9 +281,11 @@ public final class SdlRender {
 
     public static int SDL_RenderDrawRects(
             SDL_Renderer renderer,
-            SDL_Rect[] rects) {
-        Memory memory = JnaUtils.writeArrayToNativeMemory(rects);
-        return SDL_RenderDrawRects(renderer, memory, rects.length);
+            ContiguousArrayList<SDL_Rect> rects) {
+        if (rects.size() == 0) {
+            return 0;
+        }
+        return SDL_RenderDrawRects(renderer, rects.autoWriteAndGetPointer(), rects.size());
     }
 
     public static native int SDL_RenderDrawRects(
@@ -297,9 +299,11 @@ public final class SdlRender {
 
     public static int SDL_RenderFillRects(
             SDL_Renderer renderer,
-            SDL_Rect[] rects) {
-        Memory memory = JnaUtils.writeArrayToNativeMemory(rects);
-        return SDL_RenderFillRects(renderer, memory, rects.length);
+            ContiguousArrayList<SDL_Rect> rects) {
+        if (rects.size() == 0) {
+            return 0;
+        }
+        return SDL_RenderFillRects(renderer, rects.autoWriteAndGetPointer(), rects.size());
     }
 
     public static native int SDL_RenderFillRects(
@@ -329,9 +333,11 @@ public final class SdlRender {
 
     public static int SDL_RenderDrawPointsF(
             SDL_Renderer renderer,
-            SDL_FPoint[] fPoints) {
-        Memory memory = JnaUtils.writeArrayToNativeMemory(fPoints);
-        return SDL_RenderDrawPointsF(renderer, memory, fPoints.length);
+            ContiguousArrayList<SDL_FPoint> fPoints) {
+        if (fPoints.size() == 0) {
+            return 0;
+        }
+        return SDL_RenderDrawPointsF(renderer, fPoints.autoWriteAndGetPointer(), fPoints.size());
     }
 
     public static native int SDL_RenderDrawPointsF(
@@ -348,9 +354,11 @@ public final class SdlRender {
 
     public static int SDL_RenderDrawLinesF(
             SDL_Renderer renderer,
-            SDL_FPoint[] fPoints) {
-        Memory memory = JnaUtils.writeArrayToNativeMemory(fPoints);
-        return SDL_RenderDrawLinesF(renderer, memory, fPoints.length);
+            ContiguousArrayList<SDL_FPoint> fPoints) {
+        if (fPoints.size() == 0) {
+            return 0;
+        }
+        return SDL_RenderDrawLinesF(renderer, fPoints.autoWriteAndGetPointer(), fPoints.size());
     }
 
     public static native int SDL_RenderDrawLinesF(
@@ -364,9 +372,11 @@ public final class SdlRender {
 
     public static int SDL_RenderDrawRectsF(
             SDL_Renderer renderer,
-            SDL_FRect[] fRects) {
-        Memory memory = JnaUtils.writeArrayToNativeMemory(fRects);
-        return SDL_RenderDrawRectsF(renderer, memory, fRects.length);
+            ContiguousArrayList<SDL_FRect> fRects) {
+        if (fRects.size() == 0) {
+            return 0;
+        }
+        return SDL_RenderDrawRectsF(renderer, fRects.autoWriteAndGetPointer(), fRects.size());
     }
 
     public static native int SDL_RenderDrawRectsF(
@@ -380,9 +390,11 @@ public final class SdlRender {
 
     public static int SDL_RenderFillRectsF(
             SDL_Renderer renderer,
-            SDL_FRect[] fRects) {
-        Memory memory = JnaUtils.writeArrayToNativeMemory(fRects);
-        return SDL_RenderFillRectsF(renderer, memory, fRects.length);
+            ContiguousArrayList<SDL_FRect> fRects) {
+        if (fRects.size() == 0) {
+            return 0;
+        }
+        return SDL_RenderFillRectsF(renderer, fRects.autoWriteAndGetPointer(), fRects.size());
     }
 
     public static native int SDL_RenderFillRectsF(

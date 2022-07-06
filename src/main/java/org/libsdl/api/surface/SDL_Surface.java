@@ -2,6 +2,8 @@ package org.libsdl.api.surface;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import com.sun.jna.ptr.PointerByReference;
+import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.pixels.SDL_PixelFormat;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.jna.JnaStructure;
@@ -30,7 +32,7 @@ public class SDL_Surface extends JnaStructure {
 
     @MagicConstant(flagsFromClass = SDL_SurfaceFlags.class)
     public int flags;
-    public SDL_PixelFormat.Ref format;
+    public SDL_PixelFormat format;
     public int w;
     public int h;
     public int pitch;
@@ -61,13 +63,19 @@ public class SDL_Surface extends JnaStructure {
         super(p);
     }
 
-    public static class Ref extends SDL_Surface implements Structure.ByReference {
+    public static class Ref extends PointerByReference {
 
         public Ref() {
         }
 
         public Ref(Pointer p) {
             super(p);
+        }
+
+        public SDL_Surface getSurface() {
+            SDL_Surface surface = new SDL_Surface(getValue());
+            surface.read();
+            return surface;
         }
     }
 }

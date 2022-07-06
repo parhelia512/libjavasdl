@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.libsdl.api.SdlTest;
 import org.libsdl.api.rect.SDL_Rect;
+import org.libsdl.jna.ContiguousArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -68,22 +69,19 @@ public final class SdlSurfaceTest {
         backgroundRect.w = 500;
         backgroundRect.h = 500;
 
-        SDL_Rect[] rectangles1 = new SDL_Rect[3];
-        rectangles1[0] = new SDL_Rect();
-        rectangles1[0].x = 10;
-        rectangles1[0].y = 20;
-        rectangles1[0].w = 50;
-        rectangles1[0].h = 60;
-        rectangles1[1] = new SDL_Rect();
-        rectangles1[1].x = 110;
-        rectangles1[1].y = 120;
-        rectangles1[1].w = 150;
-        rectangles1[1].h = 160;
-        rectangles1[2] = new SDL_Rect();
-        rectangles1[2].x = 210;
-        rectangles1[2].y = 220;
-        rectangles1[2].w = 250;
-        rectangles1[2].h = 260;
+        ContiguousArrayList<SDL_Rect> rectangles1 = new ContiguousArrayList<>(SDL_Rect.class, 3);
+        rectangles1.get(0).x = 10;
+        rectangles1.get(0).y = 20;
+        rectangles1.get(0).w = 50;
+        rectangles1.get(0).h = 60;
+        rectangles1.get(1).x = 110;
+        rectangles1.get(1).y = 120;
+        rectangles1.get(1).w = 150;
+        rectangles1.get(1).h = 160;
+        rectangles1.get(2).x = 210;
+        rectangles1.get(2).y = 220;
+        rectangles1.get(2).w = 250;
+        rectangles1.get(2).h = 260;
 
         SDL_FillRect(surface, backgroundRect, 0x00FFFFFF);
         SDL_FillRects(surface, rectangles1, 0x00FFFF00);
