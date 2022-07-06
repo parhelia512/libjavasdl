@@ -2,13 +2,12 @@ package org.libsdl.api.audio;
 
 import com.sun.jna.Callback;
 import com.sun.jna.Pointer;
-import com.sun.jna.ptr.ByteByReference;
 
 @FunctionalInterface
 public interface SDL_AudioCallback extends Callback {
 
     /**
-     *  <p>This function is called when the audio device needs more data.</p>
+     *  This function is called when the audio device needs more data.
      *
      *  <p>Once the callback returns, the buffer will no longer be valid.
      *  Stereo samples are stored in a LRLRLR ordering.</p>
@@ -23,7 +22,6 @@ public interface SDL_AudioCallback extends Callback {
      */
     void callback(
             Pointer userdata,
-            ByteByReference stream,
+            Pointer stream,
             int len);
-    // TODO: ByteByReference stream isn't the best JNA type. What about Pointer or ByteBuffer or byte[]?
 }
