@@ -30,9 +30,18 @@ public class JnaUtils {
         return memory;
     }
 
-    public static Pointer writeArrayToNativeMemoryOrNull(short[] data) {
+    public static Memory writeArrayToNativeMemory(byte[] data) {
         if (data == null) {
-            return Pointer.NULL;
+            return null;
+        }
+        Memory memory = new Memory(data.length);
+        memory.write(0L, data, 0, data.length);
+        return memory;
+    }
+
+    public static Memory writeArrayToNativeMemory(short[] data) {
+        if (data == null) {
+            return null;
         }
         Memory memory = new Memory(data.length * 2L);
         memory.write(0L, data, 0, data.length);

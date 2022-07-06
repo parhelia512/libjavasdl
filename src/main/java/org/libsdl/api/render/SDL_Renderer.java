@@ -23,7 +23,7 @@ public final class SDL_Renderer extends PointerType {
         }
 
         public SDL_Renderer getRenderer() {
-            return new SDL_Renderer(getPointer());
+            return new SDL_Renderer(getValue());
         }
     }
 }

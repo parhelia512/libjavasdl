@@ -23,7 +23,7 @@ public final class SDL_Window extends PointerType {
         }
 
         public SDL_Window getWindow() {
-            return new SDL_Window(getPointer());
+            return new SDL_Window(getValue());
         }
     }
 }
