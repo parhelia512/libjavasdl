@@ -305,4 +305,7 @@ public final class SDL_PixelFormatEnum implements JnaEnum {
             return "UNKNOWN(" + value + ")";
         }
     }
+
+    private SDL_PixelFormatEnum() {
+    }
 }

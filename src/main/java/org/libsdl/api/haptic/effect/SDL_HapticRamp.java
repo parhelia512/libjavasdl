@@ -4,6 +4,7 @@ import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.haptic.SDL_HapticDirection;
 import org.libsdl.api.haptic.SDL_HapticEffectType;
+import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_RAMP;
 import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
@@ -22,7 +23,7 @@ import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
         "fadeLength",
         "fadeLevel"
 })
-public final class SDL_HapticRamp extends Structure {
+public final class SDL_HapticRamp extends JnaStructure {
 
     @MagicConstant(intValues = SDL_HAPTIC_RAMP)
     public short type;

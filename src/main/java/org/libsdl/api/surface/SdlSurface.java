@@ -14,6 +14,8 @@ import org.libsdl.jna.JnaUtils;
 import org.libsdl.jna.NativeLoader;
 
 import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
+import static org.libsdl.api.surface.SDL_SurfaceFlags.SDL_RLEACCEL;
+import static org.libsdl.api.surface.SDL_SurfaceFlags.SDL_SWSURFACE;
 
 public final class SdlSurface {
 
@@ -27,12 +29,12 @@ public final class SdlSurface {
     @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
     public static boolean SDL_MUSTLOCK(
             SDL_Surface s) {
-        return ((s.flags & SdlSurfaceConst.SDL_RLEACCEL) != 0);
+        return ((s.flags & SDL_RLEACCEL) != 0);
     }
 
     @SuppressWarnings("checkstyle:ParameterNumber")
     public static native SDL_Surface SDL_CreateRGBSurface(
-            int flags,
+            @MagicConstant(intValues = {0}) int flags,
             int width,
             int height,
             int depth,
@@ -42,7 +44,7 @@ public final class SdlSurface {
             int aMask);
 
     public static native SDL_Surface SDL_CreateRGBSurfaceWithFormat(
-            int flags,
+            @MagicConstant(intValues = {0}) int flags,
             int width,
             int height,
             int depth,

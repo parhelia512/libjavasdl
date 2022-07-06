@@ -28,6 +28,7 @@ import org.libsdl.jna.JnaStructure;
 })
 public class SDL_Surface extends JnaStructure {
 
+    @MagicConstant(flagsFromClass = SDL_SurfaceFlags.class)
     public int flags;
     public SDL_PixelFormat.Ref format;
     public int w;

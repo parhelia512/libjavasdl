@@ -63,8 +63,8 @@ public final class SdlRender {
 
     public static native SDL_Texture SDL_CreateTexture(
             SDL_Renderer renderer,
-            int format,
-            int access,
+            @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class) int format,
+            @MagicConstant(valuesFromClass = SDL_TextureAccess.class) int access,
             int w,
             int h);
 
@@ -74,8 +74,8 @@ public final class SdlRender {
 
     public static native int SDL_QueryTexture(
             SDL_Texture texture,
-            IntByReference format,
-            IntByReference access,
+            @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class) IntByReference format,
+            @MagicConstant(valuesFromClass = SDL_TextureAccess.class) IntByReference access,
             IntByReference w,
             IntByReference h);
 
