@@ -70,6 +70,9 @@ public final class SdlPixels {
             ContiguousArrayList<SDL_Color> colors,
             int firstcolor,
             int ncolors) {
+        if (colors.size() == 0) {
+            return 0;
+        }
         if (ncolors > colors.size()) {
             throw new IllegalArgumentException("ncolors [" + ncolors + "] is greater than the size of the list of colors [" + colors.size() + "]");
         }
