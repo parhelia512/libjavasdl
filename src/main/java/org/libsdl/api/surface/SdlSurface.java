@@ -1,6 +1,5 @@
 package org.libsdl.api.surface;
 
-import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
@@ -10,12 +9,11 @@ import org.libsdl.api.pixels.SDL_Palette;
 import org.libsdl.api.pixels.SDL_PixelFormat;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.rwops.SDL_RWops;
-import org.libsdl.jna.JnaUtils;
+import org.libsdl.jna.ContiguousArrayList;
 import org.libsdl.jna.NativeLoader;
 
 import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
 import static org.libsdl.api.surface.SDL_SurfaceFlags.SDL_RLEACCEL;
-import static org.libsdl.api.surface.SDL_SurfaceFlags.SDL_SWSURFACE;
 
 public final class SdlSurface {
 
@@ -203,13 +201,12 @@ public final class SdlSurface {
 
     public static int SDL_FillRects(
             SDL_Surface dst,
-            SDL_Rect[] rects,
+            ContiguousArrayList<SDL_Rect> rects,
             int color) {
-        if (rects.length == 0) {
+        if (rects.size() == 0) {
             return 0;
         }
-        Memory memory = JnaUtils.writeArrayToNativeMemory(rects);
-        return SDL_FillRects(dst, memory, rects.length, color);
+        return SDL_FillRects(dst, rects.autoWriteAndGetPointer(), rects.size(), color);
     }
 
     public static native int SDL_FillRects(

@@ -8,6 +8,7 @@ import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.pixels.SDL_PixelFormatEnum;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.surface.SDL_Surface;
+import org.libsdl.jna.ContiguousArrayList;
 import org.libsdl.jna.JnaUtils;
 import org.libsdl.jna.NativeLoader;
 
@@ -228,13 +229,12 @@ public final class SdlVideo {
 
     public static int SDL_UpdateWindowSurfaceRects(
             SDL_Window window,
-            SDL_Rect[] rects) {
-        Memory memory = JnaUtils.writeArrayToNativeMemory(rects);
-        return SDL_UpdateWindowSurfaceRects(window, memory, rects.length);
+            ContiguousArrayList<SDL_Rect> rects) {
+        return SDL_UpdateWindowSurfaceRects(window, rects.autoWriteAndGetPointer(), rects.size());
     }
 
     /**
-     * @deprecated Use more Java-style {@link #SDL_UpdateWindowSurfaceRects(SDL_Window, SDL_Rect[])}
+     * @deprecated Use more Java-style {@link #SDL_UpdateWindowSurfaceRects(SDL_Window, ContiguousArrayList)}
      */
     @Deprecated
     public static native int SDL_UpdateWindowSurfaceRects(
