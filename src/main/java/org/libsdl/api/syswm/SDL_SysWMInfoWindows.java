@@ -18,4 +18,11 @@ public final class SDL_SysWMInfoWindows extends Structure {
 
     /** The instance handle */
     public Pointer hinstance;
+
+    public SDL_SysWMInfoWindows() {
+    }
+
+    public SDL_SysWMInfoWindows(Pointer p) {
+        super(p);
+    }
 }
