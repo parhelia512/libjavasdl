@@ -5,7 +5,6 @@ import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.gamecontroller.SDL_GameControllerAxis;
 import org.libsdl.api.joystick.SDL_JoystickID;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_CONTROLLERAXISMOTION;
 
@@ -20,7 +19,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_CONTROLLERAXISMOTION;
         "value",
         "padding4"
 })
-public final class SDL_ControllerAxisEvent extends JnaStructure {
+public final class SDL_ControllerAxisEvent extends Structure {
 
     @MagicConstant(intValues = SDL_CONTROLLERAXISMOTION)
     public int type;

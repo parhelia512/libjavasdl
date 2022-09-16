@@ -4,7 +4,6 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.joystick.SDL_JoystickID;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_JOYAXISMOTION;
 
@@ -19,7 +18,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_JOYAXISMOTION;
         "value",
         "padding4"
 })
-public final class SDL_JoyAxisEvent extends JnaStructure {
+public final class SDL_JoyAxisEvent extends Structure {
 
     @MagicConstant(intValues = SDL_JOYAXISMOTION)
     public int type;

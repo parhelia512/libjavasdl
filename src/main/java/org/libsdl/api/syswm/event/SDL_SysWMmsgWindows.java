@@ -2,7 +2,6 @@ package org.libsdl.api.syswm.event;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "hwnd",
@@ -10,7 +9,7 @@ import org.libsdl.jna.JnaStructure;
         "wParam",
         "lParam"
 })
-public class SDL_SysWMmsgWindows extends JnaStructure {
+public class SDL_SysWMmsgWindows extends Structure {
 
     /** The window for the message */
     public Pointer hwnd;

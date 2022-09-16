@@ -4,7 +4,6 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.joystick.SDL_JoystickID;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_JOYBUTTONDOWN;
 import static org.libsdl.api.event.SDL_EventType.SDL_JOYBUTTONUP;
@@ -20,7 +19,7 @@ import static org.libsdl.api.event.SdlEventsConst.SDL_RELEASED;
         "padding1",
         "padding2"
 })
-public final class SDL_JoyButtonEvent extends JnaStructure {
+public final class SDL_JoyButtonEvent extends Structure {
 
     @MagicConstant(intValues = {SDL_JOYBUTTONDOWN, SDL_JOYBUTTONUP})
     public int type;

@@ -2,14 +2,13 @@ package org.libsdl.api.messagebox;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "r",
         "g",
         "b"
 })
-public class SDL_MessageBoxColor extends JnaStructure implements Structure.ByValue {
+public class SDL_MessageBoxColor extends Structure implements Structure.ByValue {
 
     public byte r;
     public byte g;

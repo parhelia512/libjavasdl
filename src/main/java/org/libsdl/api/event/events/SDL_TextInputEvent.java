@@ -3,7 +3,6 @@ package org.libsdl.api.event.events;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_TEXTINPUT;
 
@@ -13,7 +12,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_TEXTINPUT;
         "windowID",
         "text"
 })
-public final class SDL_TextInputEvent extends JnaStructure {
+public final class SDL_TextInputEvent extends Structure {
 
     private static final int SDL_TEXTINPUTEVENT_TEXT_SIZE = 32;
 

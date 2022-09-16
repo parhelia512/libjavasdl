@@ -3,7 +3,6 @@ package org.libsdl.api.event.events;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_MOUSEMOTION;
 import static org.libsdl.api.touch.SdlTouchConst.SDL_TOUCH_MOUSEID;
@@ -19,7 +18,7 @@ import static org.libsdl.api.touch.SdlTouchConst.SDL_TOUCH_MOUSEID;
         "xrel",
         "yrel"
 })
-public final class SDL_MouseMotionEvent extends JnaStructure {
+public final class SDL_MouseMotionEvent extends Structure {
 
     @MagicConstant(intValues = SDL_MOUSEMOTION)
     public int type;

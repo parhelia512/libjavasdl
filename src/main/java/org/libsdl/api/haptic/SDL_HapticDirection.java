@@ -3,7 +3,6 @@ package org.libsdl.api.haptic;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.JnaStructure;
 
 /**
  * <p>Structure that represents a haptic direction.</p>
@@ -113,7 +112,7 @@ import org.libsdl.jna.JnaStructure;
         "type",
         "dir"
 })
-public final class SDL_HapticDirection extends JnaStructure {
+public final class SDL_HapticDirection extends Structure {
 
     @MagicConstant(valuesFromClass = SDL_HapticDirectionEncoding.class)
     public byte type;

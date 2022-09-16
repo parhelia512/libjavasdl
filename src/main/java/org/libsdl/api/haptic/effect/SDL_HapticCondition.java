@@ -4,7 +4,6 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.haptic.SDL_HapticDirection;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_DAMPER;
 import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_FRICTION;
@@ -27,7 +26,7 @@ import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
         "deadband",
         "center"
 })
-public final class SDL_HapticCondition extends JnaStructure {
+public final class SDL_HapticCondition extends Structure {
 
     @MagicConstant(intValues = {
             SDL_HAPTIC_SPRING,

@@ -3,7 +3,6 @@ package org.libsdl.api.audio;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.ptr.ByteByReference;
-import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "needed",
@@ -18,7 +17,7 @@ import org.libsdl.jna.JnaStructure;
         "filters",
         "filter_index",
 })
-public class SDL_AudioCVT extends JnaStructure {
+public class SDL_AudioCVT extends Structure {
 
     /**
      * <p>Upper limit of filters in SDL_AudioCVT</p>

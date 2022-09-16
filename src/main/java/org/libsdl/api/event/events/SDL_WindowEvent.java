@@ -4,7 +4,6 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.video.SDL_WindowEventID;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_WINDOWEVENT;
 
@@ -19,7 +18,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_WINDOWEVENT;
         "data1",
         "data2"
 })
-public final class SDL_WindowEvent extends JnaStructure {
+public final class SDL_WindowEvent extends Structure {
 
     @MagicConstant(intValues = SDL_WINDOWEVENT)
     public int type;

@@ -5,7 +5,6 @@ import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.touch.SDL_FingerID;
 import org.libsdl.api.touch.SDL_TouchID;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_FINGERDOWN;
 import static org.libsdl.api.event.SDL_EventType.SDL_FINGERMOTION;
@@ -23,7 +22,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_FINGERUP;
         "pressure",
         "windowID"
 })
-public final class SDL_TouchFingerEvent extends JnaStructure {
+public final class SDL_TouchFingerEvent extends Structure {
 
     @MagicConstant(intValues = {SDL_FINGERDOWN, SDL_FINGERUP, SDL_FINGERMOTION})
     public int type;

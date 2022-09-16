@@ -5,7 +5,6 @@ import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.joystick.SDL_JoystickID;
 import org.libsdl.api.sensor.SDL_SensorType;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_CONTROLLERSENSORUPDATE;
 
@@ -16,7 +15,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_CONTROLLERSENSORUPDATE;
         "sensor",
         "data"
 })
-public final class SDL_ControllerSensorEvent extends JnaStructure {
+public final class SDL_ControllerSensorEvent extends Structure {
 
     @MagicConstant(intValues = SDL_CONTROLLERSENSORUPDATE)
     public int type;

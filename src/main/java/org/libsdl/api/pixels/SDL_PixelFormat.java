@@ -3,7 +3,6 @@ package org.libsdl.api.pixels;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "format",
@@ -26,7 +25,7 @@ import org.libsdl.jna.JnaStructure;
         "refcount",
         "next"
 })
-public class SDL_PixelFormat extends JnaStructure implements Structure.ByReference {
+public class SDL_PixelFormat extends Structure implements Structure.ByReference {
 
     @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class)
     public int format;

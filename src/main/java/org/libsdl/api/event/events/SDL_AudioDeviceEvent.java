@@ -3,7 +3,6 @@ package org.libsdl.api.event.events;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_AUDIODEVICEADDED;
 import static org.libsdl.api.event.SDL_EventType.SDL_AUDIODEVICEREMOVED;
@@ -17,7 +16,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_AUDIODEVICEREMOVED;
         "padding2",
         "padding3"
 })
-public final class SDL_AudioDeviceEvent extends JnaStructure {
+public final class SDL_AudioDeviceEvent extends Structure {
 
     @MagicConstant(intValues = {SDL_AUDIODEVICEADDED, SDL_AUDIODEVICEREMOVED})
     public int type;

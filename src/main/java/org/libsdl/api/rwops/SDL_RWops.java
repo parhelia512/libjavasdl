@@ -3,7 +3,6 @@ package org.libsdl.api.rwops;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_JNIFILE;
 import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_MEMORY;
@@ -22,7 +21,7 @@ import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_WINFILE;
         "type",
         "hidden"
 })
-public final class SDL_RWops extends JnaStructure {
+public final class SDL_RWops extends Structure {
 
     public SDL_RWSizeFunction size;
     public SDL_RWSeekFunction seek;

@@ -4,7 +4,6 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.version.SDL_version;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_ANDROID;
 import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_COCOA;
@@ -22,7 +21,7 @@ import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_X11;
         "subsystem",
         "info"
 })
-public class SDL_SysWMinfo extends JnaStructure {
+public class SDL_SysWMinfo extends Structure {
 
     public SDL_version version;
     @MagicConstant(valuesFromClass = SDL_SYSWM_TYPE.class)

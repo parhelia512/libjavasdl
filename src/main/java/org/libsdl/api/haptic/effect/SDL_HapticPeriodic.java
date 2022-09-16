@@ -5,7 +5,6 @@ import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 
 import org.libsdl.api.haptic.SDL_HapticDirection;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_SAWTOOTHDOWN;
 import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_SAWTOOTHUP;
@@ -29,7 +28,7 @@ import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
         "fadeLength",
         "fadeLevel"
 })
-public final class SDL_HapticPeriodic extends JnaStructure {
+public final class SDL_HapticPeriodic extends Structure {
 
     @MagicConstant(intValues = {
             SDL_HAPTIC_SINE,

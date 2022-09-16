@@ -4,7 +4,6 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.pixels.SDL_PixelFormatEnum;
-import org.libsdl.jna.JnaStructure;
 
 @SuppressWarnings("checkstyle:MagicNumber")
 @Structure.FieldOrder({
@@ -15,7 +14,7 @@ import org.libsdl.jna.JnaStructure;
         "maxTextureWidth",
         "maxTextureHeight"
 })
-public final class SDL_RendererInfo extends JnaStructure {
+public final class SDL_RendererInfo extends Structure {
 
     public String name;
 

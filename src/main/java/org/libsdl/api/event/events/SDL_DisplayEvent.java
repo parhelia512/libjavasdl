@@ -4,7 +4,6 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.video.SDL_DisplayEventID;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_DISPLAYEVENT;
 
@@ -18,7 +17,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_DISPLAYEVENT;
         "padding3",
         "data1"
 })
-public final class SDL_DisplayEvent extends JnaStructure {
+public final class SDL_DisplayEvent extends Structure {
 
     @MagicConstant(intValues = SDL_DISPLAYEVENT)
     public int type;

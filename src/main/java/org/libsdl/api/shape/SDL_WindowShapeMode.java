@@ -4,8 +4,6 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 
-import org.libsdl.jna.JnaStructure;
-
 import static org.libsdl.api.shape.WindowShapeMode.ShapeModeBinarizeAlpha;
 import static org.libsdl.api.shape.WindowShapeMode.ShapeModeColorKey;
 import static org.libsdl.api.shape.WindowShapeMode.ShapeModeDefault;
@@ -15,7 +13,7 @@ import static org.libsdl.api.shape.WindowShapeMode.ShapeModeReverseBinarizeAlpha
         "mode",
         "parameters"
 })
-public class SDL_WindowShapeMode extends JnaStructure {
+public class SDL_WindowShapeMode extends Structure {
 
     @MagicConstant(valuesFromClass = WindowShapeMode.class)
     public int mode;

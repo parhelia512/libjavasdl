@@ -3,14 +3,13 @@ package org.libsdl.api.messagebox;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "flags",
         "buttonid",
         "text"
 })
-public class SDL_MessageBoxButtonData extends JnaStructure {
+public class SDL_MessageBoxButtonData extends Structure {
 
     @MagicConstant(flagsFromClass = SDL_MessageBoxButtonFlags.class)
     public int flags;

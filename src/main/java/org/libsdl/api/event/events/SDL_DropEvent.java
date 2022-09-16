@@ -3,7 +3,6 @@ package org.libsdl.api.event.events;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_DROPBEGIN;
 import static org.libsdl.api.event.SDL_EventType.SDL_DROPCOMPLETE;
@@ -16,7 +15,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_DROPTEXT;
         "file",
         "windowID"
 })
-public final class SDL_DropEvent extends JnaStructure {
+public final class SDL_DropEvent extends Structure {
 
     @MagicConstant(intValues = {SDL_DROPBEGIN, SDL_DROPFILE, SDL_DROPTEXT, SDL_DROPCOMPLETE})
     public int type;

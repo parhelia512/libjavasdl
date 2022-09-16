@@ -5,7 +5,6 @@ import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.gesture.SDL_GestureID;
 import org.libsdl.api.touch.SDL_TouchID;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_DOLLARGESTURE;
 import static org.libsdl.api.event.SDL_EventType.SDL_DOLLARRECORD;
@@ -20,7 +19,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_DOLLARRECORD;
         "x",
         "y"
 })
-public final class SDL_DollarGestureEvent extends JnaStructure {
+public final class SDL_DollarGestureEvent extends Structure {
 
     @MagicConstant(intValues = {SDL_DOLLARGESTURE, SDL_DOLLARRECORD})
     public int type;

@@ -2,14 +2,13 @@ package org.libsdl.api.syswm;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "dfb",
         "window",
         "surface"
 })
-public class SDL_SysWMInfoDirectFB extends JnaStructure {
+public class SDL_SysWMInfoDirectFB extends Structure {
 
     /** The directfb main interface */
     public Pointer dfb;

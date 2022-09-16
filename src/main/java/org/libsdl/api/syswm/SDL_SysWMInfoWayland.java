@@ -2,7 +2,6 @@ package org.libsdl.api.syswm;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "display",
@@ -11,7 +10,7 @@ import org.libsdl.jna.JnaStructure;
         "egl_window",
         "xdg_surface"
 })
-public class SDL_SysWMInfoWayland extends JnaStructure {
+public class SDL_SysWMInfoWayland extends Structure {
 
     /** Wayland display */
     public Pointer display;

@@ -2,7 +2,6 @@ package org.libsdl.api.syswm;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "window",
@@ -10,7 +9,7 @@ import org.libsdl.jna.JnaStructure;
         "colorbuffer",
         "resolveFramebuffer"
 })
-public class SDL_SysWMInfoUIKit extends JnaStructure {
+public class SDL_SysWMInfoUIKit extends Structure {
 
     /** The UIKit window */
     public Pointer window;

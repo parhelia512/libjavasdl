@@ -4,7 +4,6 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.event.SDL_EventType;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_TEXTEDITING;
 
@@ -16,7 +15,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_TEXTEDITING;
         "start",
         "length"
 })
-public final class SDL_TextEditingEvent extends JnaStructure {
+public final class SDL_TextEditingEvent extends Structure {
 
     private static final int SDL_TEXTEDITINGEVENT_TEXT_SIZE = 32;
 
