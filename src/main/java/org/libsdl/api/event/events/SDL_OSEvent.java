@@ -24,7 +24,8 @@ public final class SDL_OSEvent extends JnaStructure {
             SDL_APP_WILLENTERBACKGROUND,
             SDL_APP_DIDENTERBACKGROUND,
             SDL_APP_WILLENTERFOREGROUND,
-            SDL_APP_DIDENTERFOREGROUND})
+            SDL_APP_DIDENTERFOREGROUND
+    })
     public int type;
     public int timestamp;
 

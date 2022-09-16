@@ -35,7 +35,8 @@ public final class SDL_HapticPeriodic extends JnaStructure {
             SDL_HAPTIC_SINE,
             SDL_HAPTIC_TRIANGLE,
             SDL_HAPTIC_SAWTOOTHUP,
-            SDL_HAPTIC_SAWTOOTHDOWN})
+            SDL_HAPTIC_SAWTOOTHDOWN
+    })
     public short type;
     public SDL_HapticDirection direction;
 

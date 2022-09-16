@@ -19,7 +19,11 @@ public class SDL_SysWMInfoWayland extends JnaStructure {
     /** Wayland surface */
     public Pointer surface;
 
-    /** DEPRECATED Wayland shell_surface (window manager handle) */
+    /**
+     * Wayland shell_surface (window manager handle)
+     *
+     * @deprecated
+     */
     public Pointer shell_surface;
 
     /** Wayland EGL window (native window) */
