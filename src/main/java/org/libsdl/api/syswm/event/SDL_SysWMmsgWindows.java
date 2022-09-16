@@ -9,7 +9,7 @@ import com.sun.jna.Structure;
         "wParam",
         "lParam"
 })
-public class SDL_SysWMmsgWindows extends Structure {
+public final class SDL_SysWMmsgWindows extends Structure {
 
     /** The window for the message */
     public Pointer hwnd;

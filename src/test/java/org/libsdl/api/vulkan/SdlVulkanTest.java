@@ -4,14 +4,12 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import org.libsdl.api.video.SDL_Window;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_VIDEO;
 import static org.libsdl.api.Sdl.SDL_InitSubSystem;
 import static org.libsdl.api.Sdl.SDL_QuitSubSystem;
+import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_VIDEO;
 import static org.libsdl.api.error.SdlError.SDL_GetError;
 import static org.libsdl.api.video.SDL_WindowFlags.SDL_WINDOW_SHOWN;
 import static org.libsdl.api.video.SDL_WindowFlags.SDL_WINDOW_VULKAN;

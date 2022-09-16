@@ -8,7 +8,7 @@ import com.sun.jna.Structure;
         "g",
         "b"
 })
-public class SDL_MessageBoxColor extends Structure implements Structure.ByValue {
+public final class SDL_MessageBoxColor extends Structure implements Structure.ByValue {
 
     public byte r;
     public byte g;

@@ -6,7 +6,7 @@ import com.sun.jna.Structure;
 @Structure.FieldOrder({
         "event"
 })
-public class SDL_SysWMmsgDirectFB extends Structure {
+public final class SDL_SysWMmsgDirectFB extends Structure {
 
     /** DFBEvent */
     public Pointer event;

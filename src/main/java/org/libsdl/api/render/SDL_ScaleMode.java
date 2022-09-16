@@ -4,7 +4,7 @@ import com.sun.jna.ptr.IntByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaEnum;
 
-public class SDL_ScaleMode implements JnaEnum {
+public final class SDL_ScaleMode implements JnaEnum {
 
     public static final int SDL_ScaleModeNearest = 0;
     public static final int SDL_ScaleModeLinear = 1;
@@ -15,7 +15,7 @@ public class SDL_ScaleMode implements JnaEnum {
     private SDL_ScaleMode() {
     }
 
-    public static class Ref extends IntByReference {
+    public static final class Ref extends IntByReference {
 
         public Ref() {
         }

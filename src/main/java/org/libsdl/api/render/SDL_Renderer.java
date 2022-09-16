@@ -13,7 +13,7 @@ public final class SDL_Renderer extends PointerType {
         super(p);
     }
 
-    public static class Ref extends PointerByReference {
+    public static final class Ref extends PointerByReference {
 
         public Ref() {
         }

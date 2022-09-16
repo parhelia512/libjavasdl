@@ -6,7 +6,7 @@ import com.sun.jna.Structure;
 @Structure.FieldOrder({
         "window"
 })
-public class SDL_SysWMInfoWinRT extends Structure {
+public final class SDL_SysWMInfoWinRT extends Structure {
 
     /** The WinRT CoreWindow */
     public Pointer window;

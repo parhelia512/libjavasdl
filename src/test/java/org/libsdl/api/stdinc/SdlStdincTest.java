@@ -2,10 +2,9 @@ package org.libsdl.api.stdinc;
 
 import com.sun.jna.Pointer;
 import org.junit.jupiter.api.Test;
-
 import org.libsdl.jna.size_t;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.libsdl.api.stdinc.SdlStdinc.SDL_GetNumAllocations;
 import static org.libsdl.api.stdinc.SdlStdinc.SDL_free;
 import static org.libsdl.api.stdinc.SdlStdinc.SDL_malloc;

@@ -15,8 +15,8 @@ public final class SDL_BlendFactor implements JnaEnum {
     public static final int SDL_BLENDFACTOR_DST_ALPHA = 0x9;
     public static final int SDL_BLENDFACTOR_ONE_MINUS_DST_ALPHA = 0xA;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_BlendFactor() {
     }
-
-    // TODO: Generate public static String toString(int value)
 }

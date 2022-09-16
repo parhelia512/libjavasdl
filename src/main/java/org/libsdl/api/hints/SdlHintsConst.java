@@ -1,6 +1,6 @@
 package org.libsdl.api.hints;
 
-public class SdlHintsConst {
+public final class SdlHintsConst {
 
     public static final String SDL_HINT_ACCELEROMETER_AS_JOYSTICK = "SDL_ACCELEROMETER_AS_JOYSTICK";
     public static final String SDL_HINT_ALLOW_ALT_TAB_WHILE_GRABBED = "SDL_ALLOW_ALT_TAB_WHILE_GRABBED";
@@ -123,4 +123,7 @@ public class SdlHintsConst {
     public static final String SDL_HINT_XINPUT_ENABLED = "SDL_XINPUT_ENABLED";
     public static final String SDL_HINT_XINPUT_USE_OLD_JOYSTICK_MAPPING = "SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING";
     public static final String SDL_HINT_AUDIO_INCLUDE_MONITORS = "SDL_AUDIO_INCLUDE_MONITORS";
+
+    private SdlHintsConst() {
+    }
 }

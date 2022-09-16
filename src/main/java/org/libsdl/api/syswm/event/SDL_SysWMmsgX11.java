@@ -6,7 +6,7 @@ import com.sun.jna.Structure;
 @Structure.FieldOrder({
         "event"
 })
-public class SDL_SysWMmsgX11 extends Structure {
+public final class SDL_SysWMmsgX11 extends Structure {
 
     /** XEvent */
     public Pointer event;

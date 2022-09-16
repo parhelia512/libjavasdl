@@ -2,7 +2,7 @@ package org.libsdl.api.syswm.event;
 
 import com.sun.jna.Union;
 
-public class SDL_SysWMmsgPlatformSpecific extends Union {
+public final class SDL_SysWMmsgPlatformSpecific extends Union {
 
     public SDL_SysWMmsgWindows win;
     public SDL_SysWMmsgX11 x11;

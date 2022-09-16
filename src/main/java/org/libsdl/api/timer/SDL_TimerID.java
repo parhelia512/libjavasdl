@@ -5,7 +5,7 @@ import com.sun.jna.IntegerType;
 /**
  * Definition of the timer ID type.
  */
-public class SDL_TimerID extends IntegerType {
+public final class SDL_TimerID extends IntegerType {
 
     public SDL_TimerID() {
         this(0L);

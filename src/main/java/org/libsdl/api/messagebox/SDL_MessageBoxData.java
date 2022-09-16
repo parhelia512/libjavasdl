@@ -15,7 +15,7 @@ import org.libsdl.jna.ContiguousArrayList;
         "buttons",
         "colorScheme"
 })
-public class SDL_MessageBoxData extends Structure {
+public final class SDL_MessageBoxData extends Structure {
 
     @MagicConstant(flagsFromClass = SDL_MessageBoxFlags.class)
     public int flags;

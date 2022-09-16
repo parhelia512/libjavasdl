@@ -7,9 +7,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.libsdl.api.video.SDL_Window;
 
-import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
 import static org.libsdl.api.Sdl.SDL_InitSubSystem;
 import static org.libsdl.api.Sdl.SDL_QuitSubSystem;
+import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
 import static org.libsdl.api.error.SdlError.SDL_GetError;
 import static org.libsdl.api.log.SDL_LogCategory.SDL_LOG_CATEGORY_ASSERT;
 import static org.libsdl.api.log.SDL_LogPriority.SDL_LOG_PRIORITY_INFO;

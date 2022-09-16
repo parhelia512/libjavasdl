@@ -6,7 +6,7 @@ import com.sun.jna.PointerType;
 /**
  * <p>The gamecontroller structure used to identify an SDL game controller.</p>
  */
-public class SDL_GameController extends PointerType {
+public final class SDL_GameController extends PointerType {
 
     /**
      * The default constructor wraps a NULL pointer.

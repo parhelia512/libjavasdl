@@ -8,7 +8,7 @@ import com.sun.jna.Structure;
         "display",
         "window"
 })
-public class SDL_SysWMInfoX11 extends Structure {
+public final class SDL_SysWMInfoX11 extends Structure {
 
     /** The X11 display */
     public Pointer display;

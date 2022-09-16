@@ -14,9 +14,9 @@ import org.libsdl.jna.ContiguousArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
 import static org.libsdl.api.Sdl.SDL_InitSubSystem;
 import static org.libsdl.api.Sdl.SDL_QuitSubSystem;
+import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
 import static org.libsdl.api.SdlTest.assertNoMemoryLeak;
 import static org.libsdl.api.stdinc.SdlStdinc.SDL_GetNumAllocations;
 import static org.libsdl.api.surface.SdlSurface.SDL_CreateRGBSurface;
@@ -37,7 +37,7 @@ public final class SdlSurfaceTest {
     }
 
     @Test
-    public void createSurfaceShouldFillSDL_Surface() {
+    public void createSurfaceShouldFillSDLSurface() {
         SDL_Surface s = SDL_CreateRGBSurface(
                 0,
                 400,

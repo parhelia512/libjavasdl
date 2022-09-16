@@ -8,7 +8,7 @@ import com.sun.jna.Structure;
         "drmFd",
         "gbmDev"
 })
-public class SDL_SysWMInfoKmsDrm extends Structure {
+public final class SDL_SysWMInfoKmsDrm extends Structure {
 
     /** Device index (ex: the X in /dev/dri/cardX) */
     public int devIndex;

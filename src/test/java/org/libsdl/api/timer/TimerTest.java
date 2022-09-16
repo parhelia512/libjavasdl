@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_TIMER;
 import static org.libsdl.api.Sdl.SDL_InitSubSystem;
 import static org.libsdl.api.Sdl.SDL_QuitSubSystem;
+import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_TIMER;
 import static org.libsdl.api.SdlTest.assertNoMemoryLeak;
 import static org.libsdl.api.stdinc.SdlStdinc.SDL_GetNumAllocations;
 import static org.libsdl.api.timer.SdlTimer.SDL_AddTimer;

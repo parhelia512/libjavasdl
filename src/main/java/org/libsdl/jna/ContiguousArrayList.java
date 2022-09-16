@@ -44,7 +44,7 @@ import com.sun.jna.Structure;
  *
  * @param <T> type of the Structure. Such as {@link org.libsdl.api.pixels.SDL_Color} or {@link org.libsdl.api.messagebox.SDL_MessageBoxButtonData}.
  */
-public class ContiguousArrayList<T extends Structure> implements List<T> {
+public final class ContiguousArrayList<T extends Structure> implements List<T> {
 
     private final T[] array;
 

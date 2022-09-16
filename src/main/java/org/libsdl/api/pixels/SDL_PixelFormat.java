@@ -25,7 +25,7 @@ import org.intellij.lang.annotations.MagicConstant;
         "refcount",
         "next"
 })
-public class SDL_PixelFormat extends Structure implements Structure.ByReference {
+public final class SDL_PixelFormat extends Structure implements Structure.ByReference {
 
     @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class)
     public int format;

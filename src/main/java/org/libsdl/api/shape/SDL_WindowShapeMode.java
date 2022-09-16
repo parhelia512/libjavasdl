@@ -13,7 +13,7 @@ import static org.libsdl.api.shape.WindowShapeMode.ShapeModeReverseBinarizeAlpha
         "mode",
         "parameters"
 })
-public class SDL_WindowShapeMode extends Structure {
+public final class SDL_WindowShapeMode extends Structure {
 
     @MagicConstant(valuesFromClass = WindowShapeMode.class)
     public int mode;

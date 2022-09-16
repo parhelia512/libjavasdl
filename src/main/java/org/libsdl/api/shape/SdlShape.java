@@ -16,7 +16,6 @@ public final class SdlShape {
         NativeLoader.registerNativeMethods(SdlShape.class);
     }
 
-
     private SdlShape() {
     }
 

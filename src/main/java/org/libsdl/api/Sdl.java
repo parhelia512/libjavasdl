@@ -21,38 +21,44 @@ import org.libsdl.jna.NativeLoader;
  */
 public final class Sdl {
 
+    private Sdl() {
+    }
+
     public static int SDL_Init(
             @MagicConstant(flagsFromClass = SdlSubSystemConst.class) int flags) {
         NativeLoader.loadSdl2Library();
-        return NativeFunctions.SDL_Init(flags);
+        return InternalNativeFunctions.SDL_Init(flags);
     }
 
     public static int SDL_InitSubSystem(
             @MagicConstant(flagsFromClass = SdlSubSystemConst.class) int flags) {
         NativeLoader.loadSdl2Library();
-        return NativeFunctions.SDL_InitSubSystem(flags);
+        return InternalNativeFunctions.SDL_InitSubSystem(flags);
     }
 
     @MagicConstant(flagsFromClass = SdlSubSystemConst.class)
     public static int SDL_WasInit(
             @MagicConstant(flagsFromClass = SdlSubSystemConst.class) int flags) {
         NativeLoader.loadSdl2Library();
-        return NativeFunctions.SDL_WasInit(flags);
+        return InternalNativeFunctions.SDL_WasInit(flags);
     }
 
     public static void SDL_Quit() {
-        NativeFunctions.SDL_Quit();
+        InternalNativeFunctions.SDL_Quit();
     }
 
     public static void SDL_QuitSubSystem(
             @MagicConstant(flagsFromClass = SdlSubSystemConst.class) int flags) {
-        NativeFunctions.SDL_QuitSubSystem(flags);
+        InternalNativeFunctions.SDL_QuitSubSystem(flags);
     }
 
-    private static final class NativeFunctions {
+    private static final class InternalNativeFunctions {
 
         static {
-            NativeLoader.registerNativeMethods(NativeFunctions.class);
+            NativeLoader.registerNativeMethods(InternalNativeFunctions.class);
+        }
+
+        private InternalNativeFunctions() {
         }
 
         static native int SDL_Init(

@@ -12,9 +12,9 @@ import org.libsdl.jna.size_t;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_VIDEO;
 import static org.libsdl.api.Sdl.SDL_Init;
 import static org.libsdl.api.Sdl.SDL_Quit;
+import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_VIDEO;
 import static org.libsdl.api.error.SdlError.SDL_GetError;
 import static org.libsdl.api.rwops.SdlRWops.SDL_LoadFile;
 import static org.libsdl.api.rwops.SdlRWops.SDL_LoadFile_RW;
@@ -110,7 +110,7 @@ public final class SdlRWopsTest {
         assertEquals('i', (char) (buffer.getByte(offset++)));
         assertEquals('s', (char) (buffer.getByte(offset)));
 
-        assertEquals(allocCount+1, SDL_GetNumAllocations());
+        assertEquals(allocCount + 1, SDL_GetNumAllocations());
         SDL_free(buffer);
         assertEquals(allocCount, SDL_GetNumAllocations());
     }

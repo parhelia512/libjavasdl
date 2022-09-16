@@ -10,7 +10,7 @@ import com.sun.jna.Structure;
         "eglWindow",
         "xdgSurface"
 })
-public class SDL_SysWMInfoWayland extends Structure {
+public final class SDL_SysWMInfoWayland extends Structure {
 
     /** Wayland display */
     public Pointer display;

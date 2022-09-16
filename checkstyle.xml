@@ -8,7 +8,7 @@
     <module name="UniqueProperties"/>
     <module name="FileLength"/>
     <module name="FileTabCharacter"/>
-    <module name="SuppressWarningsFilter" />
+    <module name="SuppressWarningsFilter"/>
     <module name="LineLength">
         <property name="max" value="150"/>
     </module>
@@ -22,12 +22,12 @@
 
     <module name="TreeWalker">
         <!-- Annotations -->
-        <module name="AnnotationLocation" />
+        <module name="AnnotationLocation"/>
         <module name="AnnotationUseStyle"/>
         <module name="MissingDeprecated"/>
         <module name="MissingOverride"/>
         <module name="PackageAnnotation"/>
-        <module name="SuppressWarningsHolder" />
+        <module name="SuppressWarningsHolder"/>
 
         <!-- Blocks -->
         <module name="AvoidNestedBlocks"/>
@@ -108,7 +108,9 @@
         <module name="ClassDataAbstractionCoupling"/>
         <module name="ClassFanOutComplexity"/>
         <module name="CyclomaticComplexity"/>
-        <module name="JavaNCSS"/>
+        <module name="JavaNCSS">
+            <property name="methodMaximum" value="64"/>
+        </module>
         <module name="NPathComplexity"/>
 
         <!-- Miscellaneous -->
@@ -149,8 +151,10 @@
         </module>
 
         <!-- Size Violations -->
-        <module name="AnonInnerLength" />
-        <module name="ExecutableStatementCount"/>
+        <module name="AnonInnerLength"/>
+        <module name="ExecutableStatementCount">
+            <property name="max" value="63"/>
+        </module>
         <module name="MethodCount"/>
         <module name="MethodLength"/>
         <module name="OuterTypeNumber"/>
