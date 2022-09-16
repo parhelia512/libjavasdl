@@ -43,10 +43,6 @@ public final class SDL_RWops extends Structure {
     public void read() {
         readField("type");
         switch (type) {
-            case SDL_RWOPS_UNKNOWN:
-            default:
-                hidden.setType(SDL_RWopsUnknownIO.class);
-                break;
             case SDL_RWOPS_WINFILE:
                 hidden.setType(SDL_RWopsWindowsIO.class);
                 break;
@@ -62,6 +58,10 @@ public final class SDL_RWops extends Structure {
                 break;
             case SDL_RWOPS_VITAFILE:
                 hidden.setType(SDL_RWopsVitaIO.class);
+                break;
+            case SDL_RWOPS_UNKNOWN:
+            default:
+                hidden.setType(SDL_RWopsUnknownIO.class);
                 break;
         }
         super.read();
