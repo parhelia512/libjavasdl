@@ -11,6 +11,8 @@ import static com.sun.jna.Library.OPTION_STRING_ENCODING;
 
 public final class NativeLoader {
 
+    public static final String SDL_LIBRARY_NAME = "SDL2";
+
     private NativeLoader() {
     }
 
@@ -23,13 +25,13 @@ public final class NativeLoader {
         Map<String, Object> options = new HashMap<>();
         options.put(OPTION_STRING_ENCODING, "UTF-8");
         options.put(OPTION_CLASSLOADER, NativeLoader.class.getClassLoader());
-        return NativeLibrary.getInstance("sdl2", options);
+        return NativeLibrary.getInstance(SDL_LIBRARY_NAME, options);
     }
 
     public static <T extends Library> T loadSdl2LibraryInstance(Class<T> libraryInterface) {
         Map<String, Object> options = new HashMap<>();
         options.put(OPTION_STRING_ENCODING, "UTF-8");
         options.put(OPTION_CLASSLOADER, NativeLoader.class.getClassLoader());
-        return (T) Native.load("sdl2", libraryInterface, options);
+        return Native.load(SDL_LIBRARY_NAME, libraryInterface, options);
     }
 }
