@@ -2,7 +2,6 @@ package org.libsdl.api.audio;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.libsdl.jna.JnaStructure;
 
 /**
  * <p>The calculated values in this structure are calculated by SDL_OpenAudio().</p>
@@ -29,7 +28,7 @@ import org.libsdl.jna.JnaStructure;
         "callback",
         "userdata"
 })
-public class SDL_AudioSpec extends JnaStructure {
+public class SDL_AudioSpec extends Structure {
 
     /** DSP frequency -- samples per second */
     public int freq;
@@ -57,4 +56,11 @@ public class SDL_AudioSpec extends JnaStructure {
 
     /** Userdata passed to callback (ignored for NULL callbacks). */
     public Pointer userdata;
+
+    public SDL_AudioSpec() {
+    }
+
+    public SDL_AudioSpec(Pointer p) {
+        super(p);
+    }
 }

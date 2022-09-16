@@ -2,14 +2,13 @@ package org.libsdl.api.version;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "major",
         "minor",
         "patch"
 })
-public final class SDL_version extends JnaStructure {
+public final class SDL_version extends Structure {
 
     public byte major;
     public byte minor;

@@ -1,10 +1,10 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.gamecontroller.SDL_GameControllerAxis;
 import org.libsdl.api.joystick.SDL_JoystickID;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_CONTROLLERAXISMOTION;
 
@@ -19,7 +19,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_CONTROLLERAXISMOTION;
         "value",
         "padding4"
 })
-public final class SDL_ControllerAxisEvent extends JnaStructure {
+public final class SDL_ControllerAxisEvent extends Structure {
 
     @MagicConstant(intValues = SDL_CONTROLLERAXISMOTION)
     public int type;
@@ -33,4 +33,11 @@ public final class SDL_ControllerAxisEvent extends JnaStructure {
     public byte padding3;
     public short value;
     public short padding4;
+
+    public SDL_ControllerAxisEvent() {
+    }
+
+    public SDL_ControllerAxisEvent(Pointer p) {
+        super(p);
+    }
 }

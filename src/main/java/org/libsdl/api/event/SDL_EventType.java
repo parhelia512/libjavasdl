@@ -16,7 +16,7 @@ public final class SDL_EventType implements JnaEnum {
 
     public static final int SDL_LOCALECHANGED = 0x107;
 
-    public static final int SDL_DISPLAYEVENT   = 0x150;
+    public static final int SDL_DISPLAYEVENT = 0x150;
 
     public static final int SDL_WINDOWEVENT = 0x200;
     public static final int SDL_SYSWMEVENT = 0x201;

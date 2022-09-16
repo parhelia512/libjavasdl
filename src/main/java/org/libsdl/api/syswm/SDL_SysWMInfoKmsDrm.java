@@ -2,14 +2,13 @@ package org.libsdl.api.syswm;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "dev_index",
         "drm_fd",
         "gbm_dev"
 })
-public class SDL_SysWMInfoKmsDrm extends JnaStructure {
+public class SDL_SysWMInfoKmsDrm extends Structure {
 
     /** Device index (ex: the X in /dev/dri/cardX) */
     public int dev_index;
@@ -19,4 +18,11 @@ public class SDL_SysWMInfoKmsDrm extends JnaStructure {
 
     /** GBM device (unavailable on Vulkan windows) */
     public Pointer gbm_dev;
+
+    public SDL_SysWMInfoKmsDrm() {
+    }
+
+    public SDL_SysWMInfoKmsDrm(Pointer p) {
+        super(p);
+    }
 }

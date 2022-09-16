@@ -1,10 +1,9 @@
 package org.libsdl.api.gamecontroller;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.Union;
 import org.intellij.lang.annotations.MagicConstant;
-
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.gamecontroller.SDL_GameControllerBindType.SDL_CONTROLLER_BINDTYPE_AXIS;
 import static org.libsdl.api.gamecontroller.SDL_GameControllerBindType.SDL_CONTROLLER_BINDTYPE_BUTTON;
@@ -17,11 +16,18 @@ import static org.libsdl.api.gamecontroller.SDL_GameControllerBindType.SDL_CONTR
         "bindType",
         "value"
 })
-public class SDL_GameControllerButtonBind extends JnaStructure {
+public class SDL_GameControllerButtonBind extends Structure {
 
     @MagicConstant(valuesFromClass = SDL_GameControllerBindType.class)
     public int bindType;
     public Value value;
+
+    public SDL_GameControllerButtonBind() {
+    }
+
+    public SDL_GameControllerButtonBind(Pointer p) {
+        super(p);
+    }
 
     @Override
     public void read() {
@@ -51,9 +57,16 @@ public class SDL_GameControllerButtonBind extends JnaStructure {
             "hat",
             "hatMask"
     })
-    public static final class Hat extends JnaStructure {
+    public static final class Hat extends Structure {
 
         public int hat;
         public int hatMask;
+
+        public Hat() {
+        }
+
+        public Hat(Pointer p) {
+            super(p);
+        }
     }
 }

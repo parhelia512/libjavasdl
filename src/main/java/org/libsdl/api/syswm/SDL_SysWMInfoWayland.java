@@ -2,7 +2,6 @@ package org.libsdl.api.syswm;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "display",
@@ -11,7 +10,7 @@ import org.libsdl.jna.JnaStructure;
         "egl_window",
         "xdg_surface"
 })
-public class SDL_SysWMInfoWayland extends JnaStructure {
+public class SDL_SysWMInfoWayland extends Structure {
 
     /** Wayland display */
     public Pointer display;
@@ -19,7 +18,11 @@ public class SDL_SysWMInfoWayland extends JnaStructure {
     /** Wayland surface */
     public Pointer surface;
 
-    /** DEPRECATED Wayland shell_surface (window manager handle) */
+    /**
+     * Wayland shell_surface (window manager handle)
+     *
+     * @deprecated
+     */
     public Pointer shell_surface;
 
     /** Wayland EGL window (native window) */
@@ -27,4 +30,11 @@ public class SDL_SysWMInfoWayland extends JnaStructure {
 
     /** Wayland xdg surface (window manager handle) */
     public Pointer xdg_surface;
+
+    public SDL_SysWMInfoWayland() {
+    }
+
+    public SDL_SysWMInfoWayland(Pointer p) {
+        super(p);
+    }
 }

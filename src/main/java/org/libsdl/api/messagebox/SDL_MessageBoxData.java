@@ -5,7 +5,6 @@ import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.jna.ContiguousArrayList;
-import org.libsdl.jna.JnaStructure;
 
 @Structure.FieldOrder({
         "flags",
@@ -16,7 +15,7 @@ import org.libsdl.jna.JnaStructure;
         "buttons",
         "colorScheme"
 })
-public class SDL_MessageBoxData extends JnaStructure {
+public class SDL_MessageBoxData extends Structure {
 
     @MagicConstant(flagsFromClass = SDL_MessageBoxFlags.class)
     public int flags;

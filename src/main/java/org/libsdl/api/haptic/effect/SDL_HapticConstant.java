@@ -1,11 +1,11 @@
 package org.libsdl.api.haptic.effect;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.api.haptic.SDL_HapticEffectType;
 import org.libsdl.api.haptic.SDL_HapticDirection;
 import org.libsdl.api.haptic.SDL_HapticEffect;
-import org.libsdl.jna.JnaStructure;
+import org.libsdl.api.haptic.SDL_HapticEffectType;
 
 import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_CONSTANT;
 import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
@@ -34,7 +34,7 @@ import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
         "fadeLength",
         "fadeLevel"
 })
-public final class SDL_HapticConstant extends JnaStructure {
+public final class SDL_HapticConstant extends Structure {
 
     @MagicConstant(intValues = SDL_HAPTIC_CONSTANT)
     public short type;
@@ -73,4 +73,11 @@ public final class SDL_HapticConstant extends JnaStructure {
 
     /** Level at the end of the fade. */
     public short fadeLevel;
+
+    public SDL_HapticConstant() {
+    }
+
+    public SDL_HapticConstant(Pointer p) {
+        super(p);
+    }
 }

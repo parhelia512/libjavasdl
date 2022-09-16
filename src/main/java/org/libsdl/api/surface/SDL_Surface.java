@@ -6,7 +6,6 @@ import com.sun.jna.ptr.PointerByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.pixels.SDL_PixelFormat;
 import org.libsdl.api.rect.SDL_Rect;
-import org.libsdl.jna.JnaStructure;
 
 /**
  * <p>A collection of pixels used in software blitting.</p>
@@ -28,7 +27,7 @@ import org.libsdl.jna.JnaStructure;
         "map",
         "refcount"
 })
-public class SDL_Surface extends JnaStructure {
+public class SDL_Surface extends Structure {
 
     @MagicConstant(flagsFromClass = SDL_SurfaceFlags.class)
     public int flags;

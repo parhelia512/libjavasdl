@@ -5,7 +5,6 @@ import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.syswm.SDL_SYSWM_TYPE;
 import org.libsdl.api.version.SDL_version;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_WINDOWS;
 import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_X11;
@@ -21,7 +20,7 @@ import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_X11;
         "subsystem",
         "msg"
 })
-public class SDL_SysWMmsg extends JnaStructure {
+public class SDL_SysWMmsg extends Structure {
 
     public SDL_version version;
     @MagicConstant(valuesFromClass = SDL_SYSWM_TYPE.class)

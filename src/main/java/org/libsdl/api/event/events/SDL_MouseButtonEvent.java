@@ -1,8 +1,8 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_MOUSEBUTTONDOWN;
 import static org.libsdl.api.event.SDL_EventType.SDL_MOUSEBUTTONUP;
@@ -22,7 +22,7 @@ import static org.libsdl.api.touch.SdlTouchConst.SDL_TOUCH_MOUSEID;
         "x",
         "y"
 })
-public final class SDL_MouseButtonEvent extends JnaStructure {
+public final class SDL_MouseButtonEvent extends Structure {
 
     @MagicConstant(intValues = {SDL_MOUSEBUTTONDOWN, SDL_MOUSEBUTTONUP})
     public int type;
@@ -39,4 +39,11 @@ public final class SDL_MouseButtonEvent extends JnaStructure {
     public byte padding1;
     public int x;
     public int y;
+
+    public SDL_MouseButtonEvent() {
+    }
+
+    public SDL_MouseButtonEvent(Pointer p) {
+        super(p);
+    }
 }

@@ -1,9 +1,8 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.api.event.SDL_EventType;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_TEXTEDITING;
 
@@ -15,7 +14,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_TEXTEDITING;
         "start",
         "length"
 })
-public final class SDL_TextEditingEvent extends JnaStructure {
+public final class SDL_TextEditingEvent extends Structure {
 
     private static final int SDL_TEXTEDITINGEVENT_TEXT_SIZE = 32;
 
@@ -26,4 +25,11 @@ public final class SDL_TextEditingEvent extends JnaStructure {
     public byte[] text = new byte[SDL_TEXTEDITINGEVENT_TEXT_SIZE];      // TODO: byte, char or String?
     public int start;
     public int length;
+
+    public SDL_TextEditingEvent() {
+    }
+
+    public SDL_TextEditingEvent(Pointer p) {
+        super(p);
+    }
 }

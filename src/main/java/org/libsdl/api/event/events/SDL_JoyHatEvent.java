@@ -1,9 +1,9 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.joystick.SDL_JoystickID;
-import org.libsdl.jna.JnaStructure;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_JOYHATMOTION;
 import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_CENTERED;
@@ -25,7 +25,7 @@ import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_UP;
         "padding1",
         "padding2"
 })
-public final class SDL_JoyHatEvent extends JnaStructure {
+public final class SDL_JoyHatEvent extends Structure {
 
     @MagicConstant(intValues = SDL_JOYHATMOTION)
     public int type;
@@ -46,4 +46,11 @@ public final class SDL_JoyHatEvent extends JnaStructure {
     public byte value;
     public byte padding1;
     public byte padding2;
+
+    public SDL_JoyHatEvent() {
+    }
+
+    public SDL_JoyHatEvent(Pointer p) {
+        super(p);
+    }
 }
