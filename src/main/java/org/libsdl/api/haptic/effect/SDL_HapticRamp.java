@@ -4,7 +4,6 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.haptic.SDL_HapticDirection;
-import org.libsdl.api.haptic.SDL_HapticEffectType;
 
 import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_RAMP;
 import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;

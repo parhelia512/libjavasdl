@@ -1,7 +1,6 @@
 package org.libsdl.api.shape;
 
 import org.intellij.lang.annotations.MagicConstant;
-
 import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.api.video.SDL_WindowFlags;

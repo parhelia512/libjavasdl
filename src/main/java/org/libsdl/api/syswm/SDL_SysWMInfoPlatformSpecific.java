@@ -1,7 +1,5 @@
 package org.libsdl.api.syswm;
 
-import com.sun.jna.Pointer;
-import com.sun.jna.TypeMapper;
 import com.sun.jna.Union;
 
 /**

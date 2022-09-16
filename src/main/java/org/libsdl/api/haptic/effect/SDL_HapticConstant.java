@@ -3,9 +3,9 @@ package org.libsdl.api.haptic.effect;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.api.haptic.SDL_HapticEffectType;
 import org.libsdl.api.haptic.SDL_HapticDirection;
 import org.libsdl.api.haptic.SDL_HapticEffect;
+import org.libsdl.api.haptic.SDL_HapticEffectType;
 
 import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_CONSTANT;
 import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;

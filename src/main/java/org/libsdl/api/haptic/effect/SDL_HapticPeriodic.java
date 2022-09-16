@@ -3,7 +3,6 @@ package org.libsdl.api.haptic.effect;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
-
 import org.libsdl.api.haptic.SDL_HapticDirection;
 
 import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_SAWTOOTHDOWN;
