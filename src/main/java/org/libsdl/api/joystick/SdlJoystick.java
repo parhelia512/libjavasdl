@@ -14,13 +14,13 @@ import org.libsdl.jna.NativeLoader;
  *
  * <p>Include file for SDL joystick event handling</p>
  *
- * <p>The term "device_index" identifies currently plugged in joystick devices between 0 and SDL_NumJoysticks(), with the exact joystick
- * behind a device_index changing as joysticks are plugged and unplugged.</p>
+ * <p>The term "deviceIndex" identifies currently plugged in joystick devices between 0 and SDL_NumJoysticks(), with the exact joystick
+ * behind a deviceIndex changing as joysticks are plugged and unplugged.</p>
  *
- * <p>The term "instance_id" is the current instantiation of a joystick device in the system, if the joystick is removed and then re-inserted
- * then it will get a new instance_id, instance_id's are monotonically increasing identifiers of a joystick plugged in.</p>
+ * <p>The term "instanceId" is the current instantiation of a joystick device in the system, if the joystick is removed and then re-inserted
+ * then it will get a new instanceId, instanceId's are monotonically increasing identifiers of a joystick plugged in.</p>
  *
- * <p>The term "player_index" is the number assigned to a player on a specific
+ * <p>The term "playerIndex" is the number assigned to a player on a specific
  * controller. For XInput controllers this returns the XInput user index.
  * Many joysticks will not be able to supply this information.</p>
  *
@@ -208,15 +208,15 @@ public final class SdlJoystick {
 
     public static native int SDL_JoystickRumble(
             SDL_Joystick joystick,
-            short low_frequency_rumble,
-            short high_frequency_rumble,
-            int duration_ms);
+            short lowFrequencyRumble,
+            short highFrequencyRumble,
+            int durationMs);
 
     public static native int SDL_JoystickRumbleTriggers(
             SDL_Joystick joystick,
-            short left_rumble,
-            short right_rumble,
-            int duration_ms);
+            short leftRumble,
+            short rightRumble,
+            int durationMs);
 
     public static native boolean SDL_JoystickHasLED(
             SDL_Joystick joystick);

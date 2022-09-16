@@ -22,8 +22,8 @@ import org.libsdl.api.rect.SDL_Rect;
         "pixels",
         "userdata",
         "locked",
-        "list_blitmap",
-        "clip_rect",
+        "listBlitmap",
+        "clipRect",
         "map",
         "refcount"
 })
@@ -44,10 +44,10 @@ public class SDL_Surface extends Structure {
     public int locked;
 
     /** list of BlitMap that hold a reference to this surface */
-    public Pointer list_blitmap;
+    public Pointer listBlitmap;
 
     /** clipping information */
-    public SDL_Rect clip_rect;
+    public SDL_Rect clipRect;
 
     /** info for fast blit mapping to other surfaces */
     public Pointer map;
