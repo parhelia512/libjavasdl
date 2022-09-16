@@ -17,10 +17,10 @@ import static org.libsdl.api.endian.SdlEndianConst.SDL_LIL_ENDIAN;
  */
 public final class size_t extends IntegerType {
 
-	private static final long serialVersionUID = 2398288011955445078L;
+    private static final long serialVersionUID = 2398288011955445078L;
 
-	/** Size of a size_t integer, in bytes. */
-    public static int SIZE = Native.SIZE_T_SIZE;    //Platform.is64Bit() ? 8 : 4;
+    /** Size of a size_t integer, in bytes. */
+    public static int SIZE = Native.SIZE_T_SIZE;    // Internally something like: Platform.is64Bit() ? 8 : 4;
 
     /** Create a zero-valued Size. */
     public size_t() {
