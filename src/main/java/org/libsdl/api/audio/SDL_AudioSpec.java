@@ -57,4 +57,11 @@ public class SDL_AudioSpec extends JnaStructure {
 
     /** Userdata passed to callback (ignored for NULL callbacks). */
     public Pointer userdata;
+
+    public SDL_AudioSpec() {
+    }
+
+    public SDL_AudioSpec(Pointer p) {
+        super(p);
+    }
 }

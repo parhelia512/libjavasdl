@@ -1,5 +1,6 @@
 package org.libsdl.api.haptic.effect;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaStructure;
@@ -22,4 +23,11 @@ public final class SDL_HapticLeftRight extends JnaStructure {
     public int length;
     public short largeMagnitude;
     public short smallMagnitude;
+
+    public SDL_HapticLeftRight() {
+    }
+
+    public SDL_HapticLeftRight(Pointer p) {
+        super(p);
+    }
 }

@@ -1,5 +1,6 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.joystick.SDL_JoystickID;
@@ -25,4 +26,11 @@ public final class SDL_ControllerSensorEvent extends JnaStructure {
     @MagicConstant(valuesFromClass = SDL_SensorType.class)
     public int sensor;
     public float[] data = new float[3];
+
+    public SDL_ControllerSensorEvent() {
+    }
+
+    public SDL_ControllerSensorEvent(Pointer p) {
+        super(p);
+    }
 }

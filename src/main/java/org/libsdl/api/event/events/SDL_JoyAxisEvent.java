@@ -1,5 +1,6 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.joystick.SDL_JoystickID;
@@ -30,4 +31,11 @@ public final class SDL_JoyAxisEvent extends JnaStructure {
     public byte padding3;
     public short value;
     public short padding4;
+
+    public SDL_JoyAxisEvent() {
+    }
+
+    public SDL_JoyAxisEvent(Pointer p) {
+        super(p);
+    }
 }

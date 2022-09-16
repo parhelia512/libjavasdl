@@ -1,5 +1,6 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaStructure;
@@ -21,4 +22,11 @@ public final class SDL_TextInputEvent extends JnaStructure {
     public int timestamp;
     public int windowID;
     public byte[] text = new byte[SDL_TEXTINPUTEVENT_TEXT_SIZE];        // TODO: byte, char or String?
+
+    public SDL_TextInputEvent() {
+    }
+
+    public SDL_TextInputEvent(Pointer p) {
+        super(p);
+    }
 }

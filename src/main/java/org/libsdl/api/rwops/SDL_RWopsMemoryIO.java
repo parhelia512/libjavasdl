@@ -1,5 +1,6 @@
 package org.libsdl.api.rwops;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.ptr.ByteByReference;
 import org.libsdl.jna.JnaStructure;
@@ -14,4 +15,11 @@ public final class SDL_RWopsMemoryIO extends JnaStructure {
     public ByteByReference base;
     public ByteByReference here;
     public ByteByReference stop;
+
+    public SDL_RWopsMemoryIO() {
+    }
+
+    public SDL_RWopsMemoryIO(Pointer p) {
+        super(p);
+    }
 }

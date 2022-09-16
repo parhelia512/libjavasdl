@@ -12,4 +12,11 @@ public final class SDL_RWopsStdIO extends JnaStructure {
 
     public boolean autoclose;
     public Pointer fp;
+
+    public SDL_RWopsStdIO() {
+    }
+
+    public SDL_RWopsStdIO(Pointer p) {
+        super(p);
+    }
 }

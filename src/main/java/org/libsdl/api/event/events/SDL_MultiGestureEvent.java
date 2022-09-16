@@ -1,5 +1,6 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.touch.SDL_TouchID;
@@ -30,4 +31,11 @@ public final class SDL_MultiGestureEvent extends JnaStructure {
     public float y;
     public short numFingers;
     public short padding;
+
+    public SDL_MultiGestureEvent() {
+    }
+
+    public SDL_MultiGestureEvent(Pointer p) {
+        super(p);
+    }
 }

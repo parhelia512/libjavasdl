@@ -1,5 +1,6 @@
 package org.libsdl.api.keyboard;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.keycode.SDL_Keycode;
@@ -23,4 +24,11 @@ public final class SDL_Keysym extends JnaStructure {
     public short mod;
 
     public int unused;
+
+    public SDL_Keysym() {
+    }
+
+    public SDL_Keysym(Pointer p) {
+        super(p);
+    }
 }

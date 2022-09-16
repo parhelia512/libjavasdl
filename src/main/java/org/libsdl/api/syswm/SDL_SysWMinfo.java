@@ -29,6 +29,9 @@ public class SDL_SysWMinfo extends JnaStructure {
     public int subsystem;
     public SDL_SysWMInfoPlatformSpecific info;
 
+    public SDL_SysWMinfo() {
+    }
+
     public SDL_SysWMinfo(SDL_version version) {
         this.version = version;
     }

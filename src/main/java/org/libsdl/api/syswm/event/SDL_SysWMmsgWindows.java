@@ -23,4 +23,11 @@ public class SDL_SysWMmsgWindows extends JnaStructure {
 
     /** LONG message parameter */
     public Pointer lParam;
+
+    public SDL_SysWMmsgWindows() {
+    }
+
+    public SDL_SysWMmsgWindows(Pointer p) {
+        super(p);
+    }
 }

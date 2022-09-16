@@ -44,4 +44,11 @@ public final class SDL_HapticCustom extends JnaStructure {
     public short attackLevel;
     public short fadeLength;
     public short fadeLevel;
+
+    public SDL_HapticCustom() {
+    }
+
+    public SDL_HapticCustom(Pointer p) {
+        super(p);
+    }
 }

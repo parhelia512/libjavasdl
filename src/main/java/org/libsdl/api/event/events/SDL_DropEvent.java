@@ -23,4 +23,11 @@ public final class SDL_DropEvent extends JnaStructure {
     public int timestamp;
     public Pointer file;            // TODO: Test how to read file name to a Java String
     public int windowID;
+
+    public SDL_DropEvent() {
+    }
+
+    public SDL_DropEvent(Pointer p) {
+        super(p);
+    }
 }

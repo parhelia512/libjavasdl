@@ -1,5 +1,6 @@
 package org.libsdl.api.haptic.effect;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.haptic.SDL_HapticDirection;
@@ -47,4 +48,11 @@ public final class SDL_HapticCondition extends JnaStructure {
     public short[] leftCSoeff = new short[3];
     public short[] deadband = new short[3];
     public short[] center = new short[3];
+
+    public SDL_HapticCondition() {
+    }
+
+    public SDL_HapticCondition(Pointer p) {
+        super(p);
+    }
 }

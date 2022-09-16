@@ -1,5 +1,6 @@
 package org.libsdl.api.shape;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 
@@ -19,6 +20,13 @@ public class SDL_WindowShapeMode extends JnaStructure {
     @MagicConstant(valuesFromClass = WindowShapeMode.class)
     public int mode;
     public SDL_WindowShapeParams parameters;
+
+    public SDL_WindowShapeMode() {
+    }
+
+    public SDL_WindowShapeMode(Pointer p) {
+        super(p);
+    }
 
     /**
      * Reads the fields of the struct from native memory

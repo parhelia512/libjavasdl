@@ -16,4 +16,11 @@ public class SDL_SysWMInfoX11 extends JnaStructure {
 
     /** The X11 window */
     public NativeLong window;
+
+    public SDL_SysWMInfoX11() {
+    }
+
+    public SDL_SysWMInfoX11(Pointer p) {
+        super(p);
+    }
 }

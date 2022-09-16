@@ -19,4 +19,11 @@ public class SDL_SysWMInfoKmsDrm extends JnaStructure {
 
     /** GBM device (unavailable on Vulkan windows) */
     public Pointer gbm_dev;
+
+    public SDL_SysWMInfoKmsDrm() {
+    }
+
+    public SDL_SysWMInfoKmsDrm(Pointer p) {
+        super(p);
+    }
 }

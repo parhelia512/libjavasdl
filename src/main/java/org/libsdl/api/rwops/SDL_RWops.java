@@ -33,6 +33,13 @@ public final class SDL_RWops extends JnaStructure {
     public int type;
     public SDL_RWopsPlatformSpecific hidden;
 
+    public SDL_RWops() {
+    }
+
+    public SDL_RWops(Pointer p) {
+        super(p);
+    }
+
     @Override
     public void read() {
         readField("type");

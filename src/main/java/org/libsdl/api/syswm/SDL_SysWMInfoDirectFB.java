@@ -20,4 +20,10 @@ public class SDL_SysWMInfoDirectFB extends JnaStructure {
     /** The directfb client surface */
     public Pointer surface;
 
+    public SDL_SysWMInfoDirectFB() {
+    }
+
+    public SDL_SysWMInfoDirectFB(Pointer p) {
+        super(p);
+    }
 }

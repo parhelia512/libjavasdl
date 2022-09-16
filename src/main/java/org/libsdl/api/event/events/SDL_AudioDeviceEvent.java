@@ -1,5 +1,6 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaStructure;
@@ -26,4 +27,11 @@ public final class SDL_AudioDeviceEvent extends JnaStructure {
     public byte padding1;
     public byte padding2;
     public byte padding3;
+
+    public SDL_AudioDeviceEvent() {
+    }
+
+    public SDL_AudioDeviceEvent(Pointer p) {
+        super(p);
+    }
 }

@@ -20,4 +20,11 @@ public final class SDL_UserEvent extends JnaStructure {
     public int code;
     public Pointer data1;
     public Pointer data2;
+
+    public SDL_UserEvent() {
+    }
+
+    public SDL_UserEvent(Pointer p) {
+        super(p);
+    }
 }

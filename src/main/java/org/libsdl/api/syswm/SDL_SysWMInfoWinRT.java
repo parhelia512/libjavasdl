@@ -11,4 +11,11 @@ public class SDL_SysWMInfoWinRT extends JnaStructure {
 
     /** The WinRT CoreWindow */
     public Pointer window;
+
+    public SDL_SysWMInfoWinRT() {
+    }
+
+    public SDL_SysWMInfoWinRT(Pointer p) {
+        super(p);
+    }
 }

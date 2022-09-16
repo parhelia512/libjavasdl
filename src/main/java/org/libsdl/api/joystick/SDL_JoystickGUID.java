@@ -1,6 +1,7 @@
 package org.libsdl.api.joystick;
 
 import java.util.UUID;
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.libsdl.jna.JnaStructure;
 
@@ -16,6 +17,13 @@ public final class SDL_JoystickGUID extends JnaStructure implements Structure.By
 
     public long leastSigBits;
     public long mostSigBits;
+
+    public SDL_JoystickGUID() {
+    }
+
+    public SDL_JoystickGUID(Pointer p) {
+        super(p);
+    }
 
     @Override
     public String toString() {

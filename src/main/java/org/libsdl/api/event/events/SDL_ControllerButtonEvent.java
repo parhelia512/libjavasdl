@@ -1,5 +1,6 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.gamecontroller.SDL_GameControllerButton;
@@ -34,4 +35,11 @@ public final class SDL_ControllerButtonEvent extends JnaStructure {
     public byte state;
     public byte padding1;
     public byte padding2;
+
+    public SDL_ControllerButtonEvent() {
+    }
+
+    public SDL_ControllerButtonEvent(Pointer p) {
+        super(p);
+    }
 }

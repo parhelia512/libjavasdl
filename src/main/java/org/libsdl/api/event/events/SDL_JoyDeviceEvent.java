@@ -1,5 +1,6 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaStructure;
@@ -18,4 +19,11 @@ public final class SDL_JoyDeviceEvent extends JnaStructure {
     public int type;
     public int timestamp;
     public int which;           // TODO: Shouldn't it be SDL_JoystickID?
+
+    public SDL_JoyDeviceEvent() {
+    }
+
+    public SDL_JoyDeviceEvent(Pointer p) {
+        super(p);
+    }
 }

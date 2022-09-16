@@ -1,5 +1,6 @@
 package org.libsdl.api.haptic.effect;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 
@@ -51,4 +52,11 @@ public final class SDL_HapticPeriodic extends JnaStructure {
     public short attackLevel;
     public short fadeLength;
     public short fadeLevel;
+
+    public SDL_HapticPeriodic() {
+    }
+
+    public SDL_HapticPeriodic(Pointer p) {
+        super(p);
+    }
 }

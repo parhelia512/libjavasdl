@@ -27,4 +27,11 @@ public class SDL_SysWMInfoWayland extends JnaStructure {
 
     /** Wayland xdg surface (window manager handle) */
     public Pointer xdg_surface;
+
+    public SDL_SysWMInfoWayland() {
+    }
+
+    public SDL_SysWMInfoWayland(Pointer p) {
+        super(p);
+    }
 }

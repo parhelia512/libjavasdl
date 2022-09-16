@@ -1,5 +1,6 @@
 package org.libsdl.api.audio;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.ptr.ByteByReference;
 import org.libsdl.jna.JnaStructure;
@@ -61,4 +62,11 @@ public class SDL_AudioCVT extends JnaStructure {
 
     /** Current audio conversion function */
     public int filter_index;
+
+    public SDL_AudioCVT() {
+    }
+
+    public SDL_AudioCVT(Pointer p) {
+        super(p);
+    }
 }

@@ -1,5 +1,6 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.keyboard.SDL_Keysym;
@@ -33,4 +34,11 @@ public final class SDL_KeyboardEvent extends JnaStructure {
     public byte padding2;
     public byte padding3;
     public SDL_Keysym keysym;
+
+    public SDL_KeyboardEvent() {
+    }
+
+    public SDL_KeyboardEvent(Pointer p) {
+        super(p);
+    }
 }

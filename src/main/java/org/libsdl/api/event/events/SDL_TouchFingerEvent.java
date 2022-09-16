@@ -1,5 +1,6 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.touch.SDL_FingerID;
@@ -35,4 +36,11 @@ public final class SDL_TouchFingerEvent extends JnaStructure {
     public float dy;
     public float pressure;
     public int windowID;
+
+    public SDL_TouchFingerEvent() {
+    }
+
+    public SDL_TouchFingerEvent(Pointer p) {
+        super(p);
+    }
 }

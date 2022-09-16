@@ -12,4 +12,11 @@ public class SDL_SysWMInfoAndroid extends JnaStructure {
 
     public Pointer window;
     public Pointer surface;
+
+    public SDL_SysWMInfoAndroid() {
+    }
+
+    public SDL_SysWMInfoAndroid(Pointer p) {
+        super(p);
+    }
 }

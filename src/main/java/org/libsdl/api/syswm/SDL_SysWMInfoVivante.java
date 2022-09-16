@@ -12,4 +12,11 @@ public class SDL_SysWMInfoVivante extends JnaStructure {
 
     public Pointer display;
     public Pointer window;
+
+    public SDL_SysWMInfoVivante() {
+    }
+
+    public SDL_SysWMInfoVivante(Pointer p) {
+        super(p);
+    }
 }

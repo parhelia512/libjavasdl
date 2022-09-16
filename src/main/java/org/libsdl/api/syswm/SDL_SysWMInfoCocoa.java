@@ -11,4 +11,11 @@ public class SDL_SysWMInfoCocoa extends JnaStructure {
 
     /** The Cocoa window */
     public Pointer window;
+
+    public SDL_SysWMInfoCocoa() {
+    }
+
+    public SDL_SysWMInfoCocoa(Pointer p) {
+        super(p);
+    }
 }

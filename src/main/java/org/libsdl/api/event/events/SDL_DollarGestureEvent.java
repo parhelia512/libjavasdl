@@ -1,5 +1,6 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.gesture.SDL_GestureID;
@@ -30,4 +31,11 @@ public final class SDL_DollarGestureEvent extends JnaStructure {
     public float error;
     public float x;
     public float y;
+
+    public SDL_DollarGestureEvent() {
+    }
+
+    public SDL_DollarGestureEvent(Pointer p) {
+        super(p);
+    }
 }

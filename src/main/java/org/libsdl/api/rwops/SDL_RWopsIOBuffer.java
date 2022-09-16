@@ -15,4 +15,11 @@ public final class SDL_RWopsIOBuffer extends JnaStructure {
     public Pointer data;
     public size_t size;
     public size_t left;
+
+    public SDL_RWopsIOBuffer() {
+    }
+
+    public SDL_RWopsIOBuffer(Pointer p) {
+        super(p);
+    }
 }

@@ -1,5 +1,6 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaStructure;
@@ -32,4 +33,11 @@ public final class SDL_MouseWheelEvent extends JnaStructure {
 
     @MagicConstant(intValues = {SDL_MOUSEWHEEL_NORMAL, SDL_MOUSEWHEEL_FLIPPED})
     public int direction;
+
+    public SDL_MouseWheelEvent() {
+    }
+
+    public SDL_MouseWheelEvent(Pointer p) {
+        super(p);
+    }
 }

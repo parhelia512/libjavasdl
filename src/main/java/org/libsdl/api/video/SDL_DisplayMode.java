@@ -18,4 +18,11 @@ public final class SDL_DisplayMode extends JnaStructure {
     public int h;
     public int refreshRate;
     public Pointer driverdata;
+
+    public SDL_DisplayMode() {
+    }
+
+    public SDL_DisplayMode(Pointer p) {
+        super(p);
+    }
 }

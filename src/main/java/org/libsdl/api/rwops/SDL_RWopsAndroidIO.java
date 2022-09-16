@@ -10,4 +10,11 @@ import org.libsdl.jna.JnaStructure;
 public final class SDL_RWopsAndroidIO extends JnaStructure {
 
     public Pointer asset;
+
+    public SDL_RWopsAndroidIO() {
+    }
+
+    public SDL_RWopsAndroidIO(Pointer p) {
+        super(p);
+    }
 }

@@ -1,5 +1,6 @@
 package org.libsdl.api.render;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.pixels.SDL_PixelFormatEnum;
@@ -29,4 +30,11 @@ public final class SDL_RendererInfo extends JnaStructure {
     public int maxTextureWidth;
 
     public int maxTextureHeight;
+
+    public SDL_RendererInfo() {
+    }
+
+    public SDL_RendererInfo(Pointer p) {
+        super(p);
+    }
 }

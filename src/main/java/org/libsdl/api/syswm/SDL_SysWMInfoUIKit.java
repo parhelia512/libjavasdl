@@ -23,4 +23,11 @@ public class SDL_SysWMInfoUIKit extends JnaStructure {
 
     /** The Framebuffer Object which holds the resolve color Renderbuffer, when MSAA is used. */
     public int resolveFramebuffer;
+
+    public SDL_SysWMInfoUIKit() {
+    }
+
+    public SDL_SysWMInfoUIKit(Pointer p) {
+        super(p);
+    }
 }

@@ -11,4 +11,11 @@ public class SDL_SysWMmsgDirectFB extends JnaStructure {
 
     /** DFBEvent */
     public Pointer event;
+
+    public SDL_SysWMmsgDirectFB() {
+    }
+
+    public SDL_SysWMmsgDirectFB(Pointer p) {
+        super(p);
+    }
 }

@@ -1,5 +1,6 @@
 package org.libsdl.api.haptic.effect;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.haptic.SDL_HapticDirection;
@@ -40,4 +41,11 @@ public final class SDL_HapticRamp extends JnaStructure {
     public short attackLevel;
     public short fadeLength;
     public short fadeLevel;
+
+    public SDL_HapticRamp() {
+    }
+
+    public SDL_HapticRamp(Pointer p) {
+        super(p);
+    }
 }

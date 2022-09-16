@@ -1,5 +1,6 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.video.SDL_WindowEventID;
@@ -32,4 +33,11 @@ public final class SDL_WindowEvent extends JnaStructure {
     public byte padding3;
     public int data1;
     public int data2;
+
+    public SDL_WindowEvent() {
+    }
+
+    public SDL_WindowEvent(Pointer p) {
+        super(p);
+    }
 }

@@ -1,5 +1,6 @@
 package org.libsdl.api.event.events;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaStructure;
@@ -39,4 +40,11 @@ public final class SDL_MouseButtonEvent extends JnaStructure {
     public byte padding1;
     public int x;
     public int y;
+
+    public SDL_MouseButtonEvent() {
+    }
+
+    public SDL_MouseButtonEvent(Pointer p) {
+        super(p);
+    }
 }
