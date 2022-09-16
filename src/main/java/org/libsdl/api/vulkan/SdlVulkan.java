@@ -15,6 +15,9 @@ public final class SdlVulkan {
         NativeLoader.registerNativeMethods(SdlVulkan.class);
     }
 
+    private SdlVulkan() {
+    }
+
     public static native int SDL_Vulkan_LoadLibrary(
             String path);
 

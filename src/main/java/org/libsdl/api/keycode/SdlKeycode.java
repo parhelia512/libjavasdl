@@ -8,4 +8,7 @@ public final class SdlKeycode {
             int x) {
         return x | SDLK_SCANCODE_MASK;
     }
+
+    private SdlKeycode() {
+    }
 }

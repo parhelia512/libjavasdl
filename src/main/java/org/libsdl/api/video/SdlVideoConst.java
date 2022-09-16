@@ -1,6 +1,7 @@
 package org.libsdl.api.video;
 
 public final class SdlVideoConst {
+
     public static final int SDL_WINDOWPOS_UNDEFINED_MASK = 0x1FFF0000;
     public static final int SDL_WINDOWPOS_CENTERED_MASK = 0x2FFF0000;
 
@@ -30,5 +31,8 @@ public final class SdlVideoConst {
     public static boolean SDL_WINDOWPOS_ISCENTERED(
             int x) {
         return (((x) & 0xFFFF0000) == SDL_WINDOWPOS_CENTERED_MASK);
+    }
+
+    private SdlVideoConst() {
     }
 }

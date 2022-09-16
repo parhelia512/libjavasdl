@@ -13,10 +13,10 @@ public final class SDL_BlendMode implements JnaEnum {
     public static final int SDL_BLENDMODE_MUL = 0x00000008;
     public static final int SDL_BLENDMODE_INVALID = 0x7FFFFFFF;
 
+    // TODO: Generate public static String toString(int value)
+
     private SDL_BlendMode() {
     }
-
-    // TODO: Generate public static String toString(int value)
 
     public static final class Ref extends IntByReference {
 

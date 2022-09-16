@@ -9,6 +9,9 @@ public final class SdlSysWM {
         NativeLoader.registerNativeMethods(SdlSysWM.class);
     }
 
+    private SdlSysWM() {
+    }
+
     /**
      * Get driver-specific information about a window.
      *

@@ -29,4 +29,6 @@ public final class SDL_Button implements JnaEnum {
         }
     }
 
+    private SDL_Button() {
+    }
 }

@@ -21,6 +21,9 @@ public final class SdlSurface {
         NativeLoader.registerNativeMethods(SdlSurface.class);
     }
 
+    private SdlSurface() {
+    }
+
     /**
      * Evaluates to true if the surface needs to be locked before access.
      */
