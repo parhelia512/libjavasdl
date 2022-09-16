@@ -4,9 +4,9 @@ import com.sun.jna.ptr.ShortByReference;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
 import static org.libsdl.api.Sdl.SDL_Init;
 import static org.libsdl.api.Sdl.SDL_Quit;
+import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
 import static org.libsdl.api.event.SdlEventsConst.SDL_QUERY;
 import static org.libsdl.api.joystick.SdlJoystick.SDL_JoystickClose;
 import static org.libsdl.api.joystick.SdlJoystick.SDL_JoystickEventState;
