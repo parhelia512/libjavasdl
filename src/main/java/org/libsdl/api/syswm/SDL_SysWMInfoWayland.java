@@ -6,9 +6,9 @@ import com.sun.jna.Structure;
 @Structure.FieldOrder({
         "display",
         "surface",
-        "shell_surface",
-        "egl_window",
-        "xdg_surface"
+        "shellSurface",
+        "eglWindow",
+        "xdgSurface"
 })
 public class SDL_SysWMInfoWayland extends Structure {
 
@@ -19,17 +19,17 @@ public class SDL_SysWMInfoWayland extends Structure {
     public Pointer surface;
 
     /**
-     * Wayland shell_surface (window manager handle)
+     * Wayland shell surface (window manager handle)
      *
      * @deprecated
      */
-    public Pointer shell_surface;
+    public Pointer shellSurface;
 
     /** Wayland EGL window (native window) */
-    public Pointer egl_window;
+    public Pointer eglWindow;
 
     /** Wayland xdg surface (window manager handle) */
-    public Pointer xdg_surface;
+    public Pointer xdgSurface;
 
     public SDL_SysWMInfoWayland() {
     }
