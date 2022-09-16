@@ -274,7 +274,7 @@ public final class SDL_Keycode implements JnaEnum {
     private SDL_Keycode() {
     }
 
-    public static class Ref extends IntByReference {
+    public static final class Ref extends IntByReference {
 
         public Ref() {
         }

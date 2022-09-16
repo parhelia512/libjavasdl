@@ -9,7 +9,7 @@ import com.sun.jna.Structure;
         "version",
         "refcount"
 })
-public class SDL_Palette extends Structure implements Structure.ByReference {
+public final class SDL_Palette extends Structure implements Structure.ByReference {
 
     public int ncolors;
     public Pointer colors;

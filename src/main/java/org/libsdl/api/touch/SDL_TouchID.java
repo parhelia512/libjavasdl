@@ -2,7 +2,7 @@ package org.libsdl.api.touch;
 
 import com.sun.jna.IntegerType;
 
-public class SDL_TouchID extends IntegerType {
+public final class SDL_TouchID extends IntegerType {
 
     public SDL_TouchID() {
         this(0L);

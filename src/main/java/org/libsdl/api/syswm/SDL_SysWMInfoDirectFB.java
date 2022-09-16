@@ -8,7 +8,7 @@ import com.sun.jna.Structure;
         "window",
         "surface"
 })
-public class SDL_SysWMInfoDirectFB extends Structure {
+public final class SDL_SysWMInfoDirectFB extends Structure {
 
     /** The directfb main interface */
     public Pointer dfb;

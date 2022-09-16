@@ -277,7 +277,7 @@ public final class SDL_Scancode implements JnaEnum {
     private SDL_Scancode() {
     }
 
-    public static class Ref extends IntByReference {
+    public static final class Ref extends IntByReference {
 
         public Ref() {
         }

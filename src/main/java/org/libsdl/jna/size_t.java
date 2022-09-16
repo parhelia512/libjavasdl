@@ -15,7 +15,7 @@ import static org.libsdl.api.endian.SdlEndianConst.SDL_LIL_ENDIAN;
  *
  * <p>Note: Taken from com.sun.jna.Structure.FFIType.size_t</p>
  */
-public class size_t extends IntegerType {
+public final class size_t extends IntegerType {
 
 	private static final long serialVersionUID = 2398288011955445078L;
 

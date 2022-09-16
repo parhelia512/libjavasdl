@@ -18,7 +18,7 @@ public final class SDL_BlendMode implements JnaEnum {
 
     // TODO: Generate public static String toString(int value)
 
-    public static class Ref extends IntByReference {
+    public static final class Ref extends IntByReference {
 
         public Ref() {
             super();

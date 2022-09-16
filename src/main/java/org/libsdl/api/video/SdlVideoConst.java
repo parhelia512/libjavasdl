@@ -1,6 +1,6 @@
 package org.libsdl.api.video;
 
-public class SdlVideoConst {
+public final class SdlVideoConst {
     public static final int SDL_WINDOWPOS_UNDEFINED_MASK = 0x1FFF0000;
     public static final int SDL_WINDOWPOS_CENTERED_MASK = 0x2FFF0000;
 

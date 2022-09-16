@@ -9,7 +9,7 @@ import com.sun.jna.ptr.PointerByReference;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.jna.NativeLoader;
 
-public class SdlVulkan {
+public final class SdlVulkan {
 
     static {
         NativeLoader.registerNativeMethods(SdlVulkan.class);

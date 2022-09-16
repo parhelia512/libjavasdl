@@ -7,7 +7,7 @@ import com.sun.jna.Structure;
 @Structure.FieldOrder({
         "dummy"
 })
-public class SDL_SysWMmsgDummy extends Structure {
+public final class SDL_SysWMmsgDummy extends Structure {
 
     public int dummy;
 

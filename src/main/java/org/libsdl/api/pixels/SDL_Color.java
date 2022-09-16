@@ -9,7 +9,7 @@ import com.sun.jna.Structure;
         "b",
         "a"
 })
-public class SDL_Color extends Structure {
+public final class SDL_Color extends Structure {
 
     public byte r;
     public byte g;

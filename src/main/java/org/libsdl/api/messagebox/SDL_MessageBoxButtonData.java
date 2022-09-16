@@ -9,7 +9,7 @@ import org.intellij.lang.annotations.MagicConstant;
         "buttonid",
         "text"
 })
-public class SDL_MessageBoxButtonData extends Structure {
+public final class SDL_MessageBoxButtonData extends Structure {
 
     @MagicConstant(flagsFromClass = SDL_MessageBoxButtonFlags.class)
     public int flags;

@@ -21,7 +21,7 @@ import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_X11;
         "subsystem",
         "info"
 })
-public class SDL_SysWMinfo extends Structure {
+public final class SDL_SysWMinfo extends Structure {
 
     public SDL_version version;
     @MagicConstant(valuesFromClass = SDL_SYSWM_TYPE.class)

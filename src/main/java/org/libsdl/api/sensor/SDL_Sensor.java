@@ -8,7 +8,7 @@ import com.sun.jna.PointerType;
  *
  * Treat it as an opaque pointer.
  */
-public class SDL_Sensor extends PointerType {
+public final class SDL_Sensor extends PointerType {
 
     /**
      * The default constructor wraps a NULL pointer.

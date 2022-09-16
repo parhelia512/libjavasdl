@@ -28,7 +28,7 @@ import com.sun.jna.Structure;
         "callback",
         "userdata"
 })
-public class SDL_AudioSpec extends Structure {
+public final class SDL_AudioSpec extends Structure {
 
     /** DSP frequency -- samples per second */
     public int freq;

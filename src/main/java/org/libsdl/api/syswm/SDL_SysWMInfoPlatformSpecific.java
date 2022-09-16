@@ -5,7 +5,7 @@ import com.sun.jna.Union;
 /**
  * The structure field sizes are converted according to the JNA\contrib\platform project. Hopefully it is correct.
  */
-public class SDL_SysWMInfoPlatformSpecific extends Union {
+public final class SDL_SysWMInfoPlatformSpecific extends Union {
 
     public SDL_SysWMInfoWindows win;
     public SDL_SysWMInfoWinRT winrt;

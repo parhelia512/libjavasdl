@@ -8,7 +8,7 @@ import com.sun.jna.IntegerType;
  *
  * The ID value starts at 0 and increments from there. The value -1 is an invalid ID.
  */
-public class SDL_SensorID extends IntegerType {
+public final class SDL_SensorID extends IntegerType {
 
     /**
      * Create a zero-valued signed IntegerType.

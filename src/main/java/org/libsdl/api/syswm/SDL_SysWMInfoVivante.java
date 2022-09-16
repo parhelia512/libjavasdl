@@ -7,7 +7,7 @@ import com.sun.jna.Structure;
         "display",
         "window"
 })
-public class SDL_SysWMInfoVivante extends Structure {
+public final class SDL_SysWMInfoVivante extends Structure {
 
     public Pointer display;
     public Pointer window;

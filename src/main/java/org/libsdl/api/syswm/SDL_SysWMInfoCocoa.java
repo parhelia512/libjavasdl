@@ -6,7 +6,7 @@ import com.sun.jna.Structure;
 @Structure.FieldOrder({
         "window"
 })
-public class SDL_SysWMInfoCocoa extends Structure {
+public final class SDL_SysWMInfoCocoa extends Structure {
 
     /** The Cocoa window */
     public Pointer window;

@@ -7,7 +7,7 @@ import com.sun.jna.Structure;
         "window",
         "surface"
 })
-public class SDL_SysWMInfoAndroid extends Structure {
+public final class SDL_SysWMInfoAndroid extends Structure {
 
     public Pointer window;
     public Pointer surface;

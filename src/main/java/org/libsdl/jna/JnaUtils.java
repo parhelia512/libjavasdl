@@ -5,7 +5,7 @@ import com.sun.jna.Pointer;
 
 import static org.libsdl.api.stdinc.SdlStdinc.SDL_free;
 
-public class JnaUtils {
+public final class JnaUtils {
 
     public static String extractStringAndReleaseNativeSdlMemory(Pointer pointer) {
         String result = pointer.getString(0L);

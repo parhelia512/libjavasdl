@@ -17,7 +17,7 @@ import com.sun.jna.ptr.ByteByReference;
         "filters",
         "filterIndex",
 })
-public class SDL_AudioCVT extends Structure {
+public final class SDL_AudioCVT extends Structure {
 
     /**
      * <p>Upper limit of filters in SDL_AudioCVT</p>

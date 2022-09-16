@@ -27,7 +27,7 @@ import org.libsdl.api.rect.SDL_Rect;
         "map",
         "refcount"
 })
-public class SDL_Surface extends Structure {
+public final class SDL_Surface extends Structure {
 
     @MagicConstant(flagsFromClass = SDL_SurfaceFlags.class)
     public int flags;
@@ -62,7 +62,7 @@ public class SDL_Surface extends Structure {
         super(p);
     }
 
-    public static class Ref extends PointerByReference {
+    public static final class Ref extends PointerByReference {
 
         public Ref() {
         }

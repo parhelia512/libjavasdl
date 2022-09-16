@@ -8,7 +8,7 @@ import com.sun.jna.Structure;
         "hdc",
         "hinstance"
 })
-public class SDL_SysWMInfoWindows extends Structure {
+public final class SDL_SysWMInfoWindows extends Structure {
 
     /** The window handle (HWND) */
     public Pointer window;

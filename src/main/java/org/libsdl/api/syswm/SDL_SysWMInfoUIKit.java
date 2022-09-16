@@ -9,7 +9,7 @@ import com.sun.jna.Structure;
         "colorbuffer",
         "resolveFramebuffer"
 })
-public class SDL_SysWMInfoUIKit extends Structure {
+public final class SDL_SysWMInfoUIKit extends Structure {
 
     /** The UIKit window */
     public Pointer window;

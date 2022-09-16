@@ -9,7 +9,7 @@ import com.sun.jna.Structure;
         "y",
         "pressure"
 })
-public class SDL_Finger extends Structure {
+public final class SDL_Finger extends Structure {
 
     public SDL_FingerID id;
     public float x;

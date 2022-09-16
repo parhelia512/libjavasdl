@@ -9,7 +9,7 @@ import static org.libsdl.api.messagebox.SDL_MessageBoxColorType.SDL_MESSAGEBOX_C
 @Structure.FieldOrder({
         "colors"
 })
-public class SDL_MessageBoxColorScheme extends Structure implements Structure.ByReference {
+public final class SDL_MessageBoxColorScheme extends Structure implements Structure.ByReference {
 
     public SDL_MessageBoxColor[] colors = new SDL_MessageBoxColor[SDL_MESSAGEBOX_COLOR_MAX];
 
