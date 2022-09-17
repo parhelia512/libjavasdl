@@ -1,5 +1,6 @@
 package org.libsdl.api.haptic;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Union;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.haptic.effect.SDL_HapticCondition;
@@ -32,6 +33,13 @@ public final class SDL_HapticEffect extends Union {
     public SDL_HapticRamp ramp;
     public SDL_HapticLeftRight leftright;
     public SDL_HapticCustom custom;
+
+    public SDL_HapticEffect() {
+    }
+
+    public SDL_HapticEffect(Pointer p) {
+        super(p);
+    }
 
     @Override
     public void read() {

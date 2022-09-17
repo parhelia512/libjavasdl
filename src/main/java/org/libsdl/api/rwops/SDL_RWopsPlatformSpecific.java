@@ -1,5 +1,6 @@
 package org.libsdl.api.rwops;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Union;
 
 public final class SDL_RWopsPlatformSpecific extends Union {
@@ -10,4 +11,11 @@ public final class SDL_RWopsPlatformSpecific extends Union {
     public SDL_RWopsAndroidIO androidio;
     public SDL_RWopsMemoryIO mem;
     public SDL_RWopsVitaIO vitaio;
+
+    public SDL_RWopsPlatformSpecific() {
+    }
+
+    public SDL_RWopsPlatformSpecific(Pointer p) {
+        super(p);
+    }
 }
