@@ -1,5 +1,6 @@
 package org.libsdl.api.syswm;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Union;
 
 /**
@@ -18,4 +19,11 @@ public final class SDL_SysWMInfoPlatformSpecific extends Union {
     public SDL_SysWMInfoVivante vivante;
     public SDL_SysWMInfoKmsDrm kmsdrm;
     public SDL_SysWMInfoDummy dummy;
+
+    public SDL_SysWMInfoPlatformSpecific() {
+    }
+
+    public SDL_SysWMInfoPlatformSpecific(Pointer p) {
+        super(p);
+    }
 }

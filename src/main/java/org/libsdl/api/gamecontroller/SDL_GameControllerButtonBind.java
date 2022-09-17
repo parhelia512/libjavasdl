@@ -53,6 +53,13 @@ public final class SDL_GameControllerButtonBind extends Structure {
         public int button;
         public int axis;
         public Hat hat;
+
+        public Value() {
+        }
+
+        public Value(Pointer p) {
+            super(p);
+        }
     }
 
     @Structure.FieldOrder({

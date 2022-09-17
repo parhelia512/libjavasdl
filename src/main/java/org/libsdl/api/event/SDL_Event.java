@@ -1,5 +1,6 @@
 package org.libsdl.api.event;
 
+import com.sun.jna.Pointer;
 import com.sun.jna.Union;
 import org.libsdl.api.event.events.SDL_AudioDeviceEvent;
 import org.libsdl.api.event.events.SDL_CommonEvent;
@@ -131,6 +132,13 @@ public final class SDL_Event extends Union {
     public SDL_OSEvent os;
     public SDL_UserEvent user;
     public SDL_SysWMEvent syswm;
+
+    public SDL_Event() {
+    }
+
+    public SDL_Event(Pointer p) {
+        super(p);
+    }
 
     @SuppressWarnings({"checkstyle:javancss", "checkstyle:requirethis"})
     @Override
