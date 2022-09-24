@@ -53,17 +53,20 @@ public final class SdlGamecontroller {
 
     public static native int SDL_GameControllerNumMappings();
 
-    public static String SDL_GameControllerMappingForIndex(int mappingIndex) {
+    public static String SDL_GameControllerMappingForIndex(
+            int mappingIndex) {
         Pointer pointer = InternalNativeFunctions.SDL_GameControllerMappingForIndex(mappingIndex);
         return JnaUtils.extractStringAndReleaseNativeSdlMemory(pointer);
     }
 
-    public static String SDL_GameControllerMappingForGUID(SDL_JoystickGUID guid) {
+    public static String SDL_GameControllerMappingForGUID(
+            SDL_JoystickGUID guid) {
         Pointer pointer = InternalNativeFunctions.SDL_GameControllerMappingForGUID(guid);
         return JnaUtils.extractStringAndReleaseNativeSdlMemory(pointer);
     }
 
-    public static String SDL_GameControllerMapping(SDL_GameController gamecontroller) {
+    public static String SDL_GameControllerMapping(
+            SDL_GameController gamecontroller) {
         Pointer pointer = InternalNativeFunctions.SDL_GameControllerMapping(gamecontroller);
         return JnaUtils.extractStringAndReleaseNativeSdlMemory(pointer);
     }
@@ -78,7 +81,8 @@ public final class SdlGamecontroller {
     public static native int SDL_GameControllerTypeForIndex(
             int joystickIndex);
 
-    public static String SDL_GameControllerMappingForDeviceIndex(int joystickIndex) {
+    public static String SDL_GameControllerMappingForDeviceIndex(
+            int joystickIndex) {
         Pointer pointer = InternalNativeFunctions.SDL_GameControllerMappingForDeviceIndex(joystickIndex);
         return JnaUtils.extractStringAndReleaseNativeSdlMemory(pointer);
     }

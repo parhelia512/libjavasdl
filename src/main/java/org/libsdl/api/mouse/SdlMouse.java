@@ -50,7 +50,8 @@ public final class SdlMouse {
     public static native int SDL_SetRelativeMouseMode(
             boolean enabled);
 
-    public static native int SDL_CaptureMouse(boolean enabled);
+    public static native int SDL_CaptureMouse(
+            boolean enabled);
 
     public static native boolean SDL_GetRelativeMouseMode();
 

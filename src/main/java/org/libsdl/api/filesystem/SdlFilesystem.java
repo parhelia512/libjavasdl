@@ -11,7 +11,9 @@ public final class SdlFilesystem {
         return JnaUtils.extractStringAndReleaseNativeSdlMemory(path);
     }
 
-    public static String SDL_GetPrefPath(String org, String app) {
+    public static String SDL_GetPrefPath(
+            String org,
+            String app) {
         Pointer path = InternalNativeFunctions.SDL_GetPrefPath(org, app);
         return JnaUtils.extractStringAndReleaseNativeSdlMemory(path);
     }

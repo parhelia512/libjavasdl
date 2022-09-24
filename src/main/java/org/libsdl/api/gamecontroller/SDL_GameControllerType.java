@@ -13,7 +13,7 @@ public final class SDL_GameControllerType implements JnaEnum {
     public static final int SDL_CONTROLLER_TYPE_VIRTUAL = 6;
     public static final int SDL_CONTROLLER_TYPE_PS5 = 7;
     public static final int SDL_CONTROLLER_TYPE_AMAZON_LUNA = 8;
-    public static final int SDL_CONTROLLER_TYPE_GOOGLE_STADI = 9;
+    public static final int SDL_CONTROLLER_TYPE_GOOGLE_STADIA = 9;
 
     // TODO: Generate public static String toString(int value)
 

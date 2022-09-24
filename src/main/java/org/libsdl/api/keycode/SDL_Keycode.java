@@ -1,7 +1,5 @@
 package org.libsdl.api.keycode;
 
-import com.sun.jna.ptr.IntByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaEnum;
 
 import static org.libsdl.api.keycode.SdlKeycode.SDL_SCANCODE_TO_KEYCODE;
@@ -272,28 +270,5 @@ public final class SDL_Keycode implements JnaEnum {
     // TODO: Generate public static String toString(int value)
 
     private SDL_Keycode() {
-    }
-
-    public static final class Ref extends IntByReference {
-
-        public Ref() {
-        }
-
-        public Ref(int ordinal) {
-            super(ordinal);
-        }
-
-        @Override
-        public void setValue(
-                @MagicConstant(valuesFromClass = SDL_Keycode.class) int value) {
-            super.setValue(value);
-        }
-
-        @Override
-        @SuppressWarnings("MagicConstant")
-        @MagicConstant(valuesFromClass = SDL_Keycode.class)
-        public int getValue() {
-            return super.getValue();
-        }
     }
 }

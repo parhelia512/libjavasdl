@@ -34,7 +34,9 @@ public final class SdlTimer {
      *     // ... do work until timeout has elapsed
      * }</pre></blockquote>
      */
-    public static boolean SDL_TICKS_PASSED(int ticksCountA, int ticksCountB) {
+    public static boolean SDL_TICKS_PASSED(
+            int ticksCountA,
+            int ticksCountB) {
         return (ticksCountB - ticksCountA) <= 0;
     }
 
@@ -70,7 +72,8 @@ public final class SdlTimer {
      *
      * @param ms the number of milliseconds to delay
      */
-    public static native void SDL_Delay(int ms);
+    public static native void SDL_Delay(
+            int ms);
 
     /**
      * Call a callback function at a future time.
@@ -114,5 +117,6 @@ public final class SdlTimer {
      * found.
      * @see #SDL_AddTimer(int, SDL_TimerCallback, Pointer)
      */
-    public static native boolean SDL_RemoveTimer(SDL_TimerID id);
+    public static native boolean SDL_RemoveTimer(
+            SDL_TimerID id);
 }

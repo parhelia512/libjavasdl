@@ -141,7 +141,8 @@ public final class SdlJoystick {
     public static native int SDL_JoystickGetType(
             SDL_Joystick joystick);
 
-    public static String SDL_JoystickGetGUIDString(SDL_JoystickGUID guid) {
+    public static String SDL_JoystickGetGUIDString(
+            SDL_JoystickGUID guid) {
         Memory textBuffer = new Memory(33L);
         SDL_JoystickGetGUIDString(guid, textBuffer, (int) textBuffer.size());
         return textBuffer.getString(0L, StandardCharsets.US_ASCII.toString());

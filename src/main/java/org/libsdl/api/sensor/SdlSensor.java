@@ -76,7 +76,8 @@ public final class SdlSensor {
      * @param deviceIndex The sensor to obtain name from
      * @return the sensor name, or {@code null} if {@code deviceIndex} is out of range.
      */
-    public static native String SDL_SensorGetDeviceName(int deviceIndex);
+    public static native String SDL_SensorGetDeviceName(
+            int deviceIndex);
 
     /**
      * <p>Get the type of a sensor.</p>
@@ -86,7 +87,8 @@ public final class SdlSensor {
      * out of range.
      */
     @MagicConstant(valuesFromClass = SDL_SensorType.class)
-    public static native int SDL_SensorGetDeviceType(int deviceIndex);
+    public static native int SDL_SensorGetDeviceType(
+            int deviceIndex);
 
     /**
      * <p>Get the platform dependent type of a sensor.</p>
@@ -95,7 +97,8 @@ public final class SdlSensor {
      * @return the sensor platform dependent type, or {@code -1} if {@code deviceIndex} is out
      * of range.
      */
-    public static native int SDL_SensorGetDeviceNonPortableType(int deviceIndex);
+    public static native int SDL_SensorGetDeviceNonPortableType(
+            int deviceIndex);
 
     /**
      * <p>Get the instance ID of a sensor.</p>
@@ -103,7 +106,8 @@ public final class SdlSensor {
      * @param deviceIndex The sensor to get instance ID from
      * @return the sensor instance ID, or {@code -1} if {@code deviceIndex} is out of range.
      */
-    public static native SDL_SensorID SDL_SensorGetDeviceInstanceID(int deviceIndex);
+    public static native SDL_SensorID SDL_SensorGetDeviceInstanceID(
+            int deviceIndex);
 
     /**
      * <p>Open a sensor for use.</p>
@@ -111,7 +115,8 @@ public final class SdlSensor {
      * @param deviceIndex The sensor to open
      * @return an SDL_Sensor sensor object, or {@code null} if an error occurred.
      */
-    public static native SDL_Sensor SDL_SensorOpen(int deviceIndex);
+    public static native SDL_Sensor SDL_SensorOpen(
+            int deviceIndex);
 
     /**
      * <p>Return the SDL_Sensor associated with an instance ID.</p>
@@ -119,7 +124,8 @@ public final class SdlSensor {
      * @param instanceId The sensor from instance ID
      * @return an SDL_Sensor object.
      */
-    public static native SDL_Sensor SDL_SensorFromInstanceID(SDL_SensorID instanceId);
+    public static native SDL_Sensor SDL_SensorFromInstanceID(
+            SDL_SensorID instanceId);
 
     /**
      * <p>Get the implementation dependent name of a sensor</p>
@@ -127,7 +133,8 @@ public final class SdlSensor {
      * @param sensor The SDL_Sensor object
      * @return the sensor name, or {@code null} if {@code sensor} is {@code null}.
      */
-    public static native String SDL_SensorGetName(SDL_Sensor sensor);
+    public static native String SDL_SensorGetName(
+            SDL_Sensor sensor);
 
     /**
      * <p>Get the type of a sensor.</p>
@@ -137,7 +144,8 @@ public final class SdlSensor {
      * {@code null}.
      */
     @MagicConstant(valuesFromClass = SDL_SensorType.class)
-    public static native int SDL_SensorGetType(SDL_Sensor sensor);
+    public static native int SDL_SensorGetType(
+            SDL_Sensor sensor);
 
     /**
      * <p>Get the platform dependent type of a sensor.</p>
@@ -145,7 +153,8 @@ public final class SdlSensor {
      * @param sensor The SDL_Sensor object to inspect
      * @return the sensor platform dependent type, or {@code -1} if {@code sensor} is {@code null}.
      */
-    public static native int SDL_SensorGetNonPortableType(SDL_Sensor sensor);
+    public static native int SDL_SensorGetNonPortableType(
+            SDL_Sensor sensor);
 
     /**
      * <p>Get the instance ID of a sensor.</p>
@@ -153,7 +162,8 @@ public final class SdlSensor {
      * @param sensor The SDL_Sensor object to inspect
      * @return the sensor instance ID, or {@code -1} if {@code sensor} is {@code null}.
      */
-    public static native SDL_SensorID SDL_SensorGetInstanceID(SDL_Sensor sensor);
+    public static native SDL_SensorID SDL_SensorGetInstanceID(
+            SDL_Sensor sensor);
 
     /**
      * <p>Get the current state of an opened sensor.</p>
@@ -165,14 +175,18 @@ public final class SdlSensor {
      * @param numValues The number of values to write to data
      * @return 0 or -1 if an error occurred.
      */
-    public static native int SDL_SensorGetData(SDL_Sensor sensor, Pointer data, int numValues);
+    public static native int SDL_SensorGetData(
+            SDL_Sensor sensor,
+            Pointer data,
+            int numValues);
 
     /**
      * <p>Close a sensor previously opened with SDL_SensorOpen().</p>
      *
      * @param sensor The SDL_Sensor object to close
      */
-    public static native void SDL_SensorClose(SDL_Sensor sensor);
+    public static native void SDL_SensorClose(
+            SDL_Sensor sensor);
 
     /**
      * <p>Update the current state of the open sensors.</p>
