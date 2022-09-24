@@ -26,7 +26,8 @@ public final class SdlKeyboard {
 
     public static native SDL_Window SDL_GetKeyboardFocus();
 
-    public static native ByteByReference SDL_GetKeyboardState(
+    // TODO: Test and make more Java friendly. i.e. introduce a new Java class encapsulating the returned byte array
+    public static native Pointer SDL_GetKeyboardState(
             IntByReference numkeys);
 
     @MagicConstant(valuesFromClass = SDL_Keymod.class)
