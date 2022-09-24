@@ -197,6 +197,16 @@ public final class SdlSurface {
             Pointer dst,
             int dstPitch);
 
+    public static native int SDL_PremultiplyAlpha(
+            int width,
+            int height,
+            int srcFormat,
+            Pointer src,
+            int srcPitch,
+            int dstFormat,
+            Pointer dst,
+            int dstPitch);
+
     public static native int SDL_FillRect(
             SDL_Surface dst,
             SDL_Rect rect,
