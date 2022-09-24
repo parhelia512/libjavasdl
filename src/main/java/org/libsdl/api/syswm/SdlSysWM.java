@@ -21,11 +21,10 @@ public final class SdlSysWM {
      * of the structure with information about the given window.
      *
      * @param window the window about which information is being requested
-     * @param info an SDL_SysWMinfo structure filled in with window information
+     * @param info   an SDL_SysWMinfo structure filled in with window information
      * @return SDL_TRUE if the function is implemented and the `version` member
-     *         of the `info` struct is valid, or SDL_FALSE if the information
-     *         could not be retrieved; call SDL_GetError() for more information.
-     *
+     * of the `info` struct is valid, or SDL_FALSE if the information
+     * could not be retrieved; call SDL_GetError() for more information.
      * @since This function is available since SDL 2.0.0.
      */
     public static native boolean SDL_GetWindowWMInfo(

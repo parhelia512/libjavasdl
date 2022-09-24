@@ -56,7 +56,7 @@ public final class SDL_AudioCVT extends Structure {
     public double lenRatio;
 
     // TODO: Test sizeof and if it generally works
-    /** null-terminated list of filter functions*/
+    /** null-terminated list of filter functions */
     public SDL_AudioFilter[] filters = new SDL_AudioFilter[SDL_AUDIOCVT_MAX_FILTERS + 1];
 
     /** Current audio conversion function */
