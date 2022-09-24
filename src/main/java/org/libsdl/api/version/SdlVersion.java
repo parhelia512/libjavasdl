@@ -32,10 +32,13 @@ public final class SdlVersion {
         return ver;
     }
 
-    public static void SDL_EnsureLinkedLibraryMatchesAtLeastJavaBindingsVersion() {
+    public static boolean SDL_CheckLinkedLibraryMatchesAtLeastJavaBindingsVersion() {
         SDL_version linkedLibraryVersion = SDL_GetLinkedLibraryVersion();
         if (!SDL_VERSION_ATLEAST(linkedLibraryVersion.major, linkedLibraryVersion.minor, linkedLibraryVersion.patch)) {
-            throw new IllegalStateException("Minimum version of the SDL library found (" + linkedLibraryVersion + ") is older than the application requires (" + SDL_GetJavaBindingsVersion() + ")");
+            // "Minimum version of the SDL library found (" + linkedLibraryVersion + ") is older than the application requires (" + SDL_GetJavaBindingsVersion() + ")"
+            return false;
+        } else {
+            return true;
         }
     }
 
