@@ -1,7 +1,5 @@
 package org.libsdl.api.scancode;
 
-import com.sun.jna.ptr.IntByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaEnum;
 
 public final class SDL_Scancode implements JnaEnum {
@@ -275,27 +273,5 @@ public final class SDL_Scancode implements JnaEnum {
     // TODO: Generate public static String toString(int value)
 
     private SDL_Scancode() {
-    }
-
-    public static final class Ref extends IntByReference {
-
-        public Ref() {
-        }
-
-        public Ref(int ordinal) {
-            super(ordinal);
-        }
-
-        @Override
-        public void setValue(@MagicConstant(valuesFromClass = SDL_Scancode.class) int value) {
-            super.setValue(value);
-        }
-
-        @Override
-        @SuppressWarnings("MagicConstant")
-        @MagicConstant(valuesFromClass = SDL_Scancode.class)
-        public int getValue() {
-            return super.getValue();
-        }
     }
 }
