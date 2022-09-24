@@ -9,7 +9,6 @@ import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_MEMORY;
 import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_MEMORY_RO;
 import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_STDFILE;
 import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_UNKNOWN;
-import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_VITAFILE;
 import static org.libsdl.api.rwops.SDL_RWopsType.SDL_RWOPS_WINFILE;
 
 @Structure.FieldOrder({
@@ -55,9 +54,6 @@ public final class SDL_RWops extends Structure {
             case SDL_RWOPS_MEMORY:
             case SDL_RWOPS_MEMORY_RO:
                 hidden.setType(SDL_RWopsMemoryIO.class);
-                break;
-            case SDL_RWOPS_VITAFILE:
-                hidden.setType(SDL_RWopsVitaIO.class);
                 break;
             case SDL_RWOPS_UNKNOWN:
             default:
