@@ -1,6 +1,5 @@
 package org.libsdl.api.keyboard;
 
-import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.keycode.SDL_Keycode;
