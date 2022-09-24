@@ -6,36 +6,43 @@ import static org.libsdl.api.endian.SdlEndianConst.SDL_LIL_ENDIAN;
 
 public final class SdlAudioConst {
 
-    public static final int SDL_AUDIO_MASK_BITSIZE = (0xFF);
-    public static final int SDL_AUDIO_MASK_DATATYPE = (1 << 8);
-    public static final int SDL_AUDIO_MASK_ENDIAN = (1 << 12);
-    public static final int SDL_AUDIO_MASK_SIGNED = (1 << 15);
+    public static final int SDL_AUDIO_MASK_BITSIZE = 0xFF;
+    public static final int SDL_AUDIO_MASK_DATATYPE = 1 << 8;
+    public static final int SDL_AUDIO_MASK_ENDIAN = 1 << 12;
+    public static final int SDL_AUDIO_MASK_SIGNED = 1 << 15;
 
-    public static int SDL_AUDIO_BITSIZE(int x) {
+    public static int SDL_AUDIO_BITSIZE(
+            int x) {
         return (x & SDL_AUDIO_MASK_BITSIZE);
     }
 
-    public static boolean SDL_AUDIO_ISFLOAT(int x) {
+    public static boolean SDL_AUDIO_ISFLOAT(
+            int x) {
         return (x & SDL_AUDIO_MASK_DATATYPE) != 0;
     }
 
-    public static boolean SDL_AUDIO_ISBIGENDIAN(int x) {
+    public static boolean SDL_AUDIO_ISBIGENDIAN(
+            int x) {
         return (x & SDL_AUDIO_MASK_ENDIAN) != 0;
     }
 
-    public static boolean SDL_AUDIO_ISSIGNED(int x) {
+    public static boolean SDL_AUDIO_ISSIGNED(
+            int x) {
         return (x & SDL_AUDIO_MASK_SIGNED) != 0;
     }
 
-    public static boolean SDL_AUDIO_ISINT(int x) {
+    public static boolean SDL_AUDIO_ISINT(
+            int x) {
         return (!SDL_AUDIO_ISFLOAT(x));
     }
 
-    public static boolean SDL_AUDIO_ISLITTLEENDIAN(int x) {
+    public static boolean SDL_AUDIO_ISLITTLEENDIAN(
+            int x) {
         return (!SDL_AUDIO_ISBIGENDIAN(x));
     }
 
-    public static boolean SDL_AUDIO_ISUNSIGNED(int x) {
+    public static boolean SDL_AUDIO_ISUNSIGNED(
+            int x) {
         return (!SDL_AUDIO_ISSIGNED(x));
     }
 

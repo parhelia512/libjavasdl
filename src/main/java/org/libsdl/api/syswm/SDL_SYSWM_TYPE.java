@@ -24,7 +24,8 @@ public final class SDL_SYSWM_TYPE implements JnaEnum {
     private SDL_SYSWM_TYPE() {
     }
 
-    public static String toString(@MagicConstant(valuesFromClass = SDL_SYSWM_TYPE.class) int value) {
+    public static String toString(
+            @MagicConstant(valuesFromClass = SDL_SYSWM_TYPE.class) int value) {
         String subsystemName;
         switch (value) {
             case SDL_SYSWM_UNKNOWN:

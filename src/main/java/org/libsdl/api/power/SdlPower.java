@@ -14,5 +14,7 @@ public final class SdlPower {
     }
 
     @MagicConstant(valuesFromClass = SDL_PowerState.class)
-    public static native int SDL_GetPowerInfo(IntByReference secs, IntByReference pct);
+    public static native int SDL_GetPowerInfo(
+            IntByReference secs,
+            IntByReference pct);
 }

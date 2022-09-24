@@ -25,87 +25,160 @@ public final class SdlAudio {
 
     public static native int SDL_GetNumAudioDrivers();
 
-    public static native String SDL_GetAudioDriver(int index);
+    public static native String SDL_GetAudioDriver(
+            int index);
 
-    public static native int SDL_AudioInit(String driverName);
+    public static native int SDL_AudioInit(
+            String driverName);
 
     public static native void SDL_AudioQuit();
 
     public static native String SDL_GetCurrentAudioDriver();
 
-    public static native int SDL_OpenAudio(SDL_AudioSpec desired, SDL_AudioSpec obtained);
+    public static native int SDL_OpenAudio(
+            SDL_AudioSpec desired,
+            SDL_AudioSpec obtained);
 
-    public static native int SDL_GetNumAudioDevices(int iscapture);
+    public static native int SDL_GetNumAudioDevices(
+            int iscapture);
 
-    public static native String SDL_GetAudioDeviceName(int index, int iscapture);
+    public static native String SDL_GetAudioDeviceName(
+            int index,
+            int iscapture);
 
-    public static native int SDL_GetAudioDeviceSpec(int index, int iscapture, SDL_AudioSpec spec);
+    public static native int SDL_GetAudioDeviceSpec(
+            int index,
+            int iscapture,
+            SDL_AudioSpec spec);
 
-    public static native SDL_AudioDeviceID SDL_OpenAudioDevice(String device, int iscapture, SDL_AudioSpec desired, SDL_AudioSpec obtained, int allowedChanges);
+    public static native SDL_AudioDeviceID SDL_OpenAudioDevice(
+            String device,
+            int iscapture,
+            SDL_AudioSpec desired,
+            SDL_AudioSpec obtained,
+            int allowedChanges);
 
     @MagicConstant(valuesFromClass = SDL_AudioStatus.class)
     public static native int SDL_GetAudioStatus();
 
     @MagicConstant(valuesFromClass = SDL_AudioStatus.class)
-    public static native int SDL_GetAudioDeviceStatus(SDL_AudioDeviceID dev);
+    public static native int SDL_GetAudioDeviceStatus(
+            SDL_AudioDeviceID dev);
 
-    public static native void SDL_PauseAudio(int pauseOn);
+    public static native void SDL_PauseAudio(
+            int pauseOn);
 
-    public static native void SDL_PauseAudioDevice(SDL_AudioDeviceID dev, int pauseOn);
+    public static native void SDL_PauseAudioDevice(
+            SDL_AudioDeviceID dev,
+            int pauseOn);
 
     // TODO: Test
-    public static native SDL_AudioSpec SDL_LoadWAV_RW(SDL_RWops src, int freesrc, SDL_AudioSpec spec, PointerByReference audioBuf, IntByReference audioLen);
+    public static native SDL_AudioSpec SDL_LoadWAV_RW(
+            SDL_RWops src,
+            int freesrc,
+            SDL_AudioSpec spec,
+            PointerByReference audioBuf,
+            IntByReference audioLen);
 
     /**
      * <p>Loads a WAV from a file.</p>
      *
      * <p>Compatibility convenience function.</p>
      */
-    public static SDL_AudioSpec SDL_LoadWAV(String file, SDL_AudioSpec spec, PointerByReference audioBuf, IntByReference audioLen) {
+    public static SDL_AudioSpec SDL_LoadWAV(
+            String file,
+            SDL_AudioSpec spec,
+            PointerByReference audioBuf,
+            IntByReference audioLen) {
         return SDL_LoadWAV_RW(SDL_RWFromFile(file, "rb"), 1, spec, audioBuf, audioLen);
     }
 
-    public static native void SDL_FreeWAV(Pointer audioBuf);
+    public static native void SDL_FreeWAV(
+            Pointer audioBuf);
 
-    public static native int SDL_BuildAudioCVT(SDL_AudioCVT cvt, SDL_AudioFormat srcFormat, byte srcChannels, int srcRate, SDL_AudioFormat dstFormat, byte dstChannels, int dstRate);
+    public static native int SDL_BuildAudioCVT(
+            SDL_AudioCVT cvt,
+            SDL_AudioFormat srcFormat,
+            byte srcChannels,
+            int srcRate,
+            SDL_AudioFormat dstFormat,
+            byte dstChannels,
+            int dstRate);
 
-    public static native int SDL_ConvertAudio(SDL_AudioCVT cvt);
+    public static native int SDL_ConvertAudio(
+            SDL_AudioCVT cvt);
 
-    public static native SDL_AudioStream SDL_NewAudioStream(SDL_AudioFormat srcFormat, byte srcChannels, int srcRate, SDL_AudioFormat dstFormat, byte dstChannels, int dstRate);
+    public static native SDL_AudioStream SDL_NewAudioStream(
+            SDL_AudioFormat srcFormat,
+            byte srcChannels,
+            int srcRate,
+            SDL_AudioFormat dstFormat,
+            byte dstChannels,
+            int dstRate);
 
-    public static native int SDL_AudioStreamPut(SDL_AudioStream stream, Pointer buf, int len);
+    public static native int SDL_AudioStreamPut(
+            SDL_AudioStream stream,
+            Pointer buf,
+            int len);
 
-    public static native int SDL_AudioStreamGet(SDL_AudioStream stream, Pointer buf, int len);
+    public static native int SDL_AudioStreamGet(
+            SDL_AudioStream stream,
+            Pointer buf,
+            int len);
 
-    public static native int SDL_AudioStreamAvailable(SDL_AudioStream stream);
+    public static native int SDL_AudioStreamAvailable(
+            SDL_AudioStream stream);
 
-    public static native int SDL_AudioStreamFlush(SDL_AudioStream stream);
+    public static native int SDL_AudioStreamFlush(
+            SDL_AudioStream stream);
 
-    public static native void SDL_AudioStreamClear(SDL_AudioStream stream);
+    public static native void SDL_AudioStreamClear(
+            SDL_AudioStream stream);
 
-    public static native void SDL_FreeAudioStream(SDL_AudioStream stream);
+    public static native void SDL_FreeAudioStream(
+            SDL_AudioStream stream);
 
-    public static native void SDL_MixAudio(Pointer dst, Pointer src, int len, int volume);
+    public static native void SDL_MixAudio(
+            Pointer dst,
+            Pointer src,
+            int len,
+            int volume);
 
-    public static native void SDL_MixAudioFormat(Pointer dst, Pointer src, SDL_AudioFormat format, int len, int volume);
+    public static native void SDL_MixAudioFormat(
+            Pointer dst,
+            Pointer src,
+            SDL_AudioFormat format,
+            int len,
+            int volume);
 
-    public static native int SDL_QueueAudio(SDL_AudioDeviceID dev, Pointer data, int len);
+    public static native int SDL_QueueAudio(
+            SDL_AudioDeviceID dev,
+            Pointer data,
+            int len);
 
-    public static native int SDL_DequeueAudio(SDL_AudioDeviceID dev, Pointer data, int len);
+    public static native int SDL_DequeueAudio(
+            SDL_AudioDeviceID dev,
+            Pointer data,
+            int len);
 
-    public static native int SDL_GetQueuedAudioSize(SDL_AudioDeviceID dev);
+    public static native int SDL_GetQueuedAudioSize(
+            SDL_AudioDeviceID dev);
 
-    public static native void SDL_ClearQueuedAudio(SDL_AudioDeviceID dev);
+    public static native void SDL_ClearQueuedAudio(
+            SDL_AudioDeviceID dev);
 
     public static native void SDL_LockAudio();
 
-    public static native void SDL_LockAudioDevice(SDL_AudioDeviceID dev);
+    public static native void SDL_LockAudioDevice(
+            SDL_AudioDeviceID dev);
 
     public static native void SDL_UnlockAudio();
 
-    public static native void SDL_UnlockAudioDevice(SDL_AudioDeviceID dev);
+    public static native void SDL_UnlockAudioDevice(
+            SDL_AudioDeviceID dev);
 
     public static native void SDL_CloseAudio();
 
-    public static native void SDL_CloseAudioDevice(SDL_AudioDeviceID dev);
+    public static native void SDL_CloseAudioDevice(
+            SDL_AudioDeviceID dev);
 }
