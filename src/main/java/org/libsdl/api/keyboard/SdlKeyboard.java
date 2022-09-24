@@ -30,6 +30,8 @@ public final class SdlKeyboard {
     public static native Pointer SDL_GetKeyboardState(
             IntByReference numkeys);
 
+    public static native void SDL_ResetKeyboard();
+
     @MagicConstant(valuesFromClass = SDL_Keymod.class)
     public static native int SDL_GetModState();
 
