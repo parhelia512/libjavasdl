@@ -157,19 +157,9 @@ public final class SdlJoystick {
     public static String SDL_JoystickGetGUIDString(
             SDL_JoystickGUID guid) {
         Memory textBuffer = new Memory(33L);
-        SDL_JoystickGetGUIDString(guid, textBuffer, (int) textBuffer.size());
+        InternalNativeFunctions.SDL_JoystickGetGUIDString(guid, textBuffer, (int) textBuffer.size());
         return textBuffer.getString(0L, StandardCharsets.US_ASCII.toString());
     }
-
-    /**
-     * @deprecated Use more Java-style version {@link #SDL_JoystickGetGUIDString(SDL_JoystickGUID)}
-     */
-    @Deprecated
-    @SuppressWarnings("DeprecatedIsStillUsed")
-    public static native void SDL_JoystickGetGUIDString(
-            SDL_JoystickGUID guid,
-            Pointer pszGUID,
-            int cbGUID);
 
     public static native SDL_JoystickGUID SDL_JoystickGetGUIDFromString(
             String pchGUID);
@@ -258,4 +248,19 @@ public final class SdlJoystick {
     @MagicConstant(valuesFromClass = SDL_JoystickPowerLevel.class)
     public static native int SDL_JoystickCurrentPowerLevel(
             SDL_Joystick joystick);
+
+    private static final class InternalNativeFunctions {
+
+        static {
+            NativeLoader.registerNativeMethods(InternalNativeFunctions.class);
+        }
+
+        private InternalNativeFunctions() {
+        }
+
+        public static native void SDL_JoystickGetGUIDString(
+                SDL_JoystickGUID guid,
+                Pointer pszGUID,
+                int cbGUID);
+    }
 }
