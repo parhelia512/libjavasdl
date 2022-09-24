@@ -20,6 +20,7 @@ public final class SDL_SYSWM_TYPE implements JnaEnum {
     public static final int SDL_SYSWM_OS2 = 11;
     public static final int SDL_SYSWM_HAIKU = 12;
     public static final int SDL_SYSWM_KMSDRM = 13;
+    public static final int SDL_SYSWM_RISCOS = 14;
 
     private SDL_SYSWM_TYPE() {
     }
@@ -68,6 +69,9 @@ public final class SDL_SYSWM_TYPE implements JnaEnum {
                 break;
             case SDL_SYSWM_KMSDRM:
                 subsystemName = "Linux KMS/DRM";
+                break;
+            case SDL_SYSWM_RISCOS:
+                subsystemName = "ARM RISC OS";
                 break;
             default:
                 throw new IllegalArgumentException("Unknown window subsystem");

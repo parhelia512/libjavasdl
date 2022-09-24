@@ -8,7 +8,10 @@ import com.sun.jna.Structure;
         "surface",
         "shellSurface",
         "eglWindow",
-        "xdgSurface"
+        "xdgSurface",
+        "xdgToplevel",
+        "xdgPopup",
+        "xdgPositioner"
 })
 public final class SDL_SysWMInfoWayland extends Structure {
 
@@ -30,6 +33,15 @@ public final class SDL_SysWMInfoWayland extends Structure {
 
     /** Wayland xdg surface (window manager handle) */
     public Pointer xdgSurface;
+
+    /** Wayland xdg toplevel role */
+    public Pointer xdgToplevel;
+
+    /** Wayland xdg popup role */
+    public Pointer xdgPopup;
+
+    /** Wayland xdg positioner, for popup */
+    public Pointer xdgPositioner;
 
     public SDL_SysWMInfoWayland() {
     }
