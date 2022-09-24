@@ -20,7 +20,7 @@ import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_X11;
         "subsystem",
         "msg"
 })
-public final class SDL_SysWMmsg extends Structure {
+public final class SDL_SysWMmsg extends Structure implements Structure.ByReference {
 
     public SDL_version version;
     @MagicConstant(valuesFromClass = SDL_SYSWM_TYPE.class)
