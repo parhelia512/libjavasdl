@@ -6,9 +6,6 @@ import static org.libsdl.api.version.SdlVersionConst.SDL_MAJOR_VERSION;
 import static org.libsdl.api.version.SdlVersionConst.SDL_MINOR_VERSION;
 import static org.libsdl.api.version.SdlVersionConst.SDL_PATCHLEVEL;
 
-@SuppressWarnings({
-        "checkstyle:MagicNumber",
-        "AbbreviationAsWordInName"})
 public final class SdlVersion {
 
     static {

@@ -92,7 +92,6 @@ import org.libsdl.jna.NativeLoader;
  * }
  * </pre>
  */
-@SuppressWarnings("checkstyle:MagicNumber")
 public final class SdlHaptic {
 
     static {

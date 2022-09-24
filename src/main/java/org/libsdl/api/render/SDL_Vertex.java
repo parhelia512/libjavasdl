@@ -5,7 +5,6 @@ import com.sun.jna.Structure;
 import org.libsdl.api.pixels.SDL_Color;
 import org.libsdl.api.rect.SDL_FPoint;
 
-@SuppressWarnings("checkstyle:MagicNumber")
 @Structure.FieldOrder({
         "position",
         "color",

@@ -104,7 +104,6 @@ import static org.libsdl.api.event.SDL_EventType.SDL_WINDOWEVENT;
  * If you populate the object in Java, always remember to select the active member field
  * using {@link #setType(Class)}.</p>
  */
-@SuppressWarnings({"checkstyle:classfanoutcomplexity", "checkstyle:cyclomaticcomplexity", "checkstyle:avoidstaticimport"})
 public final class SDL_Event extends Union {
 
     public int type;
@@ -147,7 +146,6 @@ public final class SDL_Event extends Union {
         super(p);
     }
 
-    @SuppressWarnings({"checkstyle:javancss", "checkstyle:requirethis"})
     @Override
     public void read() {
         readField("type");

@@ -107,7 +107,6 @@ import org.intellij.lang.annotations.MagicConstant;
  * @see SDL_HapticEffect
  * @see SdlHaptic#SDL_HapticNumAxes(SDL_Haptic)
  */
-@SuppressWarnings("checkstyle:MagicNumber")
 @Structure.FieldOrder({
         "type",
         "dir"

@@ -6,10 +6,6 @@ import com.sun.jna.ptr.PointerByReference;
 import org.libsdl.jna.NativeLoader;
 import org.libsdl.jna.size_t;
 
-@SuppressWarnings({
-        "checkstyle:MagicNumber",
-        "checkstyle:AbbreviationAsWordInName"
-})
 public final class SdlStdinc {
 
     static {

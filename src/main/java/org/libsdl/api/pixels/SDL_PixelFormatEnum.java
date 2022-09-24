@@ -118,7 +118,6 @@ public final class SDL_PixelFormatEnum implements JnaEnum {
         return SdlStdinc.SDL_FOURCC(a, b, c, d);
     }
 
-    @SuppressWarnings("checkstyle:BooleanExpressionComplexity")
     public static int SDL_DEFINE_PIXELFORMAT(
             int type,
             int order,
@@ -177,7 +176,6 @@ public final class SDL_PixelFormatEnum implements JnaEnum {
                 || (SDL_PIXELTYPE(format) == SDL_PIXELTYPE_PACKED32)));
     }
 
-    @SuppressWarnings("checkstyle:BooleanExpressionComplexity")
     public static boolean SDL_ISPIXELFORMAT_ARRAY(
             int format) {
         return (!SDL_ISPIXELFORMAT_FOURCC(format)
@@ -188,7 +186,6 @@ public final class SDL_PixelFormatEnum implements JnaEnum {
                 || (SDL_PIXELTYPE(format) == SDL_PIXELTYPE_ARRAYF32)));
     }
 
-    @SuppressWarnings("checkstyle:BooleanExpressionComplexity")
     public static boolean SDL_ISPIXELFORMAT_ALPHA(
             int format) {
         return ((SDL_ISPIXELFORMAT_PACKED(format)

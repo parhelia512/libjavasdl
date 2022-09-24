@@ -29,7 +29,6 @@ import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
  * is in the background, you should set the following hint before calling
  * SDL_Init(): SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS</p>
  */
-@SuppressWarnings("checkstyle:AbbreviationAsWordInName")
 public final class SdlGamecontroller {
 
     static {

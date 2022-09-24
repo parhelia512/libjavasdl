@@ -5,7 +5,6 @@ import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.pixels.SDL_PixelFormatEnum;
 
-@SuppressWarnings("checkstyle:MagicNumber")
 @Structure.FieldOrder({
         "name",
         "flags",

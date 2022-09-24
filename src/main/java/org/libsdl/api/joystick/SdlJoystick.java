@@ -36,7 +36,6 @@ import org.libsdl.jna.NativeLoader;
  * is in the background, you should set the following hint before calling
  * SDL_Init(): SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS</p>
  */
-@SuppressWarnings("checkstyle:AbbreviationAsWordInName")
 public final class SdlJoystick {
 
     static {

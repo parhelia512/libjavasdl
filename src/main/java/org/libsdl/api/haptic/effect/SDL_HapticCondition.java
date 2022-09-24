@@ -11,7 +11,6 @@ import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_INERTIA;
 import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_SPRING;
 import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
 
-@SuppressWarnings("checkstyle:MagicNumber")
 @Structure.FieldOrder({
         "type",
         "direction",

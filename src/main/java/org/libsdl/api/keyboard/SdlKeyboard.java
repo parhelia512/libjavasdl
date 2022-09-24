@@ -10,11 +10,6 @@ import org.libsdl.api.scancode.SDL_Scancode;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.jna.NativeLoader;
 
-@SuppressWarnings({
-        "checkstyle:MagicNumber",
-        "checkstyle:ConstantName",
-        "checkstyle:AbbreviationAsWordInName"
-})
 public final class SdlKeyboard {
 
     static {
