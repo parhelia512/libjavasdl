@@ -8,11 +8,6 @@ import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.ContiguousArrayList;
 import org.libsdl.jna.NativeLoader;
 
-@SuppressWarnings({
-        "checkstyle:LineLength",
-        "checkstyle:MagicNumber",
-        "checkstyle:AbbreviationAsWordInName"
-})
 public final class SdlPixels {
 
     static {

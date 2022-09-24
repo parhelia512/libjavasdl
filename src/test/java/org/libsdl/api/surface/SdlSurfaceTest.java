@@ -25,7 +25,6 @@ import static org.libsdl.api.surface.SdlSurface.SDL_FillRects;
 import static org.libsdl.api.surface.SdlSurface.SDL_FreeSurface;
 import static org.libsdl.api.surface.SdlSurface.SDL_SaveBMP;
 
-@SuppressWarnings("checkstyle:MagicNumber")
 public final class SdlSurfaceTest {
 
     private int numOfAllocationsBefore;

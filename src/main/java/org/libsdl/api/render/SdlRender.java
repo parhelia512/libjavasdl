@@ -130,7 +130,6 @@ public final class SdlRender {
             Pointer pixels,
             int pitch);
 
-    @SuppressWarnings("checkstyle:ParameterNumber")
     public static native int SDL_UpdateYUVTexture(
             SDL_Texture texture,
             SDL_Rect rect,

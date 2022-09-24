@@ -27,13 +27,11 @@ public final class SdlSurface {
     /**
      * Evaluates to true if the surface needs to be locked before access.
      */
-    @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
     public static boolean SDL_MUSTLOCK(
             SDL_Surface s) {
         return ((s.flags & SDL_RLEACCEL) != 0);
     }
 
-    @SuppressWarnings("checkstyle:ParameterNumber")
     public static native SDL_Surface SDL_CreateRGBSurface(
             @MagicConstant(intValues = {0}) int flags,
             int width,
@@ -51,7 +49,6 @@ public final class SdlSurface {
             int depth,
             int format);
 
-    @SuppressWarnings("checkstyle:ParameterNumber")
     public static native SDL_Surface SDL_CreateRGBSurfaceFrom(
             Pointer pixels,
             int width,
@@ -186,7 +183,6 @@ public final class SdlSurface {
             int pixelFormat,
             int flags);
 
-    @SuppressWarnings("checkstyle:ParameterNumber")
     public static native int SDL_ConvertPixels(
             int width,
             int height,

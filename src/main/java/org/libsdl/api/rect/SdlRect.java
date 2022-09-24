@@ -29,7 +29,6 @@ public final class SdlRect {
         return r == null || r.w <= 0 || r.h <= 0;
     }
 
-    @SuppressWarnings("checkstyle:BooleanExpressionComplexity")
     public static boolean SDL_RectEquals(
             SDL_Rect a,
             SDL_Rect b) {

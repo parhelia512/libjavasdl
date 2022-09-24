@@ -11,7 +11,6 @@ import static org.libsdl.api.event.SdlEventsConst.SDL_DISABLE;
 import static org.libsdl.api.event.SdlEventsConst.SDL_ENABLE;
 import static org.libsdl.api.event.SdlEventsConst.SDL_QUERY;
 
-@SuppressWarnings("checkstyle:AbbreviationAsWordInName")
 public final class SdlMouse {
 
     static {

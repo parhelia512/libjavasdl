@@ -12,7 +12,6 @@ import static org.libsdl.api.event.SdlEventsConst.SDL_ENABLE;
 import static org.libsdl.api.event.SdlEventsConst.SDL_IGNORE;
 import static org.libsdl.api.event.SdlEventsConst.SDL_QUERY;
 
-@SuppressWarnings("checkstyle:DeclarationOrder")
 public final class SdlEvents {
 
     static {

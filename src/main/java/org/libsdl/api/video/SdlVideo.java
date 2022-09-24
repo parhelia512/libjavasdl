@@ -18,10 +18,6 @@ import static org.libsdl.api.stdinc.SdlStdinc.SDL_free;
 import static org.libsdl.api.video.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN;
 import static org.libsdl.api.video.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN_DESKTOP;
 
-@SuppressWarnings({
-        "checkstyle:MagicNumber",
-        "checkstyle:AbbreviationAsWordInName"
-})
 public final class SdlVideo {
 
     static {
