@@ -16,7 +16,9 @@ import static org.libsdl.api.touch.SdlTouchConst.SDL_TOUCH_MOUSEID;
         "which",
         "x",
         "y",
-        "direction"
+        "direction",
+        "preciseX",
+        "preciseY"
 })
 public final class SDL_MouseWheelEvent extends Structure {
 
@@ -32,6 +34,8 @@ public final class SDL_MouseWheelEvent extends Structure {
 
     @MagicConstant(intValues = {SDL_MOUSEWHEEL_NORMAL, SDL_MOUSEWHEEL_FLIPPED})
     public int direction;
+    public float preciseX;
+    public float preciseY;
 
     public SDL_MouseWheelEvent() {
     }
