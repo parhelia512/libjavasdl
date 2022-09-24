@@ -50,8 +50,7 @@ public final class SDL_SYSWM_TYPE implements JnaEnum {
                 subsystemName = "Wayland";
                 break;
             case SDL_SYSWM_MIR:
-                subsystemName = "Mir display server";
-                break;
+                throw new IllegalArgumentException("Mir display server is not supported anymore");
             case SDL_SYSWM_WINRT:
                 subsystemName = "WinRT";
                 break;
