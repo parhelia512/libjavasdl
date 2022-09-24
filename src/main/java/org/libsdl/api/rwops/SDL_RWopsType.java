@@ -22,9 +22,6 @@ public final class SDL_RWopsType implements JnaEnum {
     /** Read-Only memory stream */
     public static final int SDL_RWOPS_MEMORY_RO = 5;
 
-    /** Vita file */
-    public static final int SDL_RWOPS_VITAFILE = 6;
-
     // TODO: Generate public static String toString(int value)
 
     private SDL_RWopsType() {

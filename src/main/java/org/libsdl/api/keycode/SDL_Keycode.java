@@ -267,6 +267,11 @@ public final class SDL_Keycode implements JnaEnum {
     public static final int SDLK_AUDIOREWIND = SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_AUDIOREWIND);
     public static final int SDLK_AUDIOFASTFORWARD = SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_AUDIOFASTFORWARD);
 
+    public static final int SDLK_SOFTLEFT = SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_SOFTLEFT);
+    public static final int SDLK_SOFTRIGHT = SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_SOFTRIGHT);
+    public static final int SDLK_CALL = SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_CALL);
+    public static final int SDLK_ENDCALL = SDL_SCANCODE_TO_KEYCODE(SDL_SCANCODE_ENDCALL);
+
     // TODO: Generate public static String toString(int value)
 
     private SDL_Keycode() {

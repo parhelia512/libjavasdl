@@ -77,6 +77,9 @@ public final class SdlGamecontroller {
     public static native String SDL_GameControllerNameForIndex(
             int joystickIndex);
 
+    public static native String SDL_GameControllerPathForIndex(
+            int joystick_index);
+
     @MagicConstant(valuesFromClass = SDL_GameControllerType.class)
     public static native int SDL_GameControllerTypeForIndex(
             int joystickIndex);
@@ -99,6 +102,9 @@ public final class SdlGamecontroller {
     public static native String SDL_GameControllerName(
             SDL_GameController gamecontroller);
 
+    public static native String SDL_GameControllerPath(
+            SDL_GameController gamecontroller);
+
     @MagicConstant(valuesFromClass = SDL_GameControllerType.class)
     public static native int SDL_GameControllerGetType(
             SDL_GameController gamecontroller);
@@ -117,6 +123,9 @@ public final class SdlGamecontroller {
             SDL_GameController gamecontroller);
 
     public static native short SDL_GameControllerGetProductVersion(
+            SDL_GameController gamecontroller);
+
+    public static native short SDL_GameControllerGetFirmwareVersion(
             SDL_GameController gamecontroller);
 
     public static native String SDL_GameControllerGetSerial(
@@ -226,6 +235,12 @@ public final class SdlGamecontroller {
     public static native boolean SDL_GameControllerHasLED(
             SDL_GameController gamecontroller);
 
+    public static native boolean SDL_GameControllerHasRumble(
+            SDL_GameController gamecontroller);
+
+    public static native boolean SDL_GameControllerHasRumbleTriggers(
+            SDL_GameController gamecontroller);
+
     public static native int SDL_GameControllerSetLED(
             SDL_GameController gamecontroller,
             byte red,
@@ -239,6 +254,14 @@ public final class SdlGamecontroller {
 
     public static native void SDL_GameControllerClose(
             SDL_GameController gamecontroller);
+
+    public static native String SDL_GameControllerGetAppleSFSymbolsNameForButton(
+            SDL_GameController gamecontroller,
+            @MagicConstant(valuesFromClass = SDL_GameControllerButton.class) int button);
+
+    public static native String SDL_GameControllerGetAppleSFSymbolsNameForAxis(
+            SDL_GameController gamecontroller,
+            @MagicConstant(valuesFromClass = SDL_GameControllerAxis.class) int axis);
 
     private static final class InternalNativeFunctions {
 

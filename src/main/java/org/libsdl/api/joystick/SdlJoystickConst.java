@@ -10,6 +10,8 @@ public final class SdlJoystickConst {
      */
     public static final double SDL_IPHONE_MAX_GFORCE = 5.0;
 
+    public static final int SDL_VIRTUAL_JOYSTICK_DESC_VERSION = 1;
+
     public static final int SDL_JOYSTICK_AXIS_MAX = 32767;
     public static final int SDL_JOYSTICK_AXIS_MIN = -32768;
 

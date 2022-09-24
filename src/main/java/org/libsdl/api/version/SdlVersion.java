@@ -2,6 +2,10 @@ package org.libsdl.api.version;
 
 import org.libsdl.jna.NativeLoader;
 
+import static org.libsdl.api.version.SdlVersionConst.SDL_MAJOR_VERSION;
+import static org.libsdl.api.version.SdlVersionConst.SDL_MINOR_VERSION;
+import static org.libsdl.api.version.SdlVersionConst.SDL_PATCHLEVEL;
+
 @SuppressWarnings({
         "checkstyle:MagicNumber",
         "AbbreviationAsWordInName"})
@@ -37,9 +41,9 @@ public final class SdlVersion {
 
     public static void SDL_VERSION(
             SDL_version ver) {
-        ver.major = SdlVersionConst.SDL_MAJOR_VERSION;
-        ver.minor = SdlVersionConst.SDL_MINOR_VERSION;
-        ver.patch = SdlVersionConst.SDL_PATCHLEVEL;
+        ver.major = SDL_MAJOR_VERSION;
+        ver.minor = SDL_MINOR_VERSION;
+        ver.patch = SDL_PATCHLEVEL;
     }
 
     public static int SDL_VERSIONNUM(
@@ -50,14 +54,16 @@ public final class SdlVersion {
     }
 
     public static int SDL_COMPILEDVERSION() {
-        return SDL_VERSIONNUM(SdlVersionConst.SDL_MAJOR_VERSION, SdlVersionConst.SDL_MINOR_VERSION, SdlVersionConst.SDL_PATCHLEVEL);
+        return SDL_VERSIONNUM(SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_PATCHLEVEL);
     }
 
     public static boolean SDL_VERSION_ATLEAST(
             int x,
             int y,
             int z) {
-        return SDL_COMPILEDVERSION() >= SDL_VERSIONNUM(x, y, z);
+        return (SDL_MAJOR_VERSION >= x) &&
+                (SDL_MAJOR_VERSION > x || SDL_MINOR_VERSION >= y) &&
+                (SDL_MAJOR_VERSION > x || SDL_MINOR_VERSION > y || SDL_PATCHLEVEL >= z);
     }
 
     public static native void SDL_GetVersion(

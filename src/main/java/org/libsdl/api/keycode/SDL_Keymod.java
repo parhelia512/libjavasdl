@@ -18,12 +18,14 @@ public final class SDL_Keymod implements JnaEnum {
     public static final int KMOD_NUM = 0x1000;
     public static final int KMOD_CAPS = 0x2000;
     public static final int KMOD_MODE = 0x4000;
-    public static final int KMOD_RESERVED = 0x8000;
+    public static final int KMOD_SCROLL = 0x8000;
 
     public static final int KMOD_CTRL = (KMOD_LCTRL | KMOD_RCTRL);
     public static final int KMOD_SHIFT = (KMOD_LSHIFT | KMOD_RSHIFT);
     public static final int KMOD_ALT = (KMOD_LALT | KMOD_RALT);
     public static final int KMOD_GUI = (KMOD_LGUI | KMOD_RGUI);
+
+    public static final int KMOD_RESERVED = KMOD_SCROLL;
 
     // TODO: Generate public static String toString(int value)
 

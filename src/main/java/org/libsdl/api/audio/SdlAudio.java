@@ -5,7 +5,9 @@ import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.rwops.SDL_RWops;
+import org.libsdl.jna.JnaUtils;
 import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.StringRef;
 
 import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
 
@@ -50,6 +52,20 @@ public final class SdlAudio {
             int index,
             int iscapture,
             SDL_AudioSpec spec);
+
+    public static int SDL_GetDefaultAudioInfo(
+            StringRef name,
+            SDL_AudioSpec spec,
+            int iscapture) {
+        Pointer namePointer = new Pointer(0L);
+        int result = InternalNativeFunctions.SDL_GetDefaultAudioInfo(namePointer, spec, iscapture);
+        if (Pointer.nativeValue(namePointer) == 0L) {
+            return result;
+        }
+        String nameString = JnaUtils.extractStringAndReleaseNativeSdlMemory(namePointer);
+        name.setValue(nameString);
+        return result;
+    }
 
     public static native SDL_AudioDeviceID SDL_OpenAudioDevice(
             String device,
@@ -181,4 +197,19 @@ public final class SdlAudio {
 
     public static native void SDL_CloseAudioDevice(
             SDL_AudioDeviceID dev);
+
+    private static final class InternalNativeFunctions {
+
+        static {
+            NativeLoader.registerNativeMethods(InternalNativeFunctions.class);
+        }
+
+        private InternalNativeFunctions() {
+        }
+
+        public static native int SDL_GetDefaultAudioInfo(
+                Pointer name,
+                SDL_AudioSpec spec,
+                int iscapture);
+    }
 }

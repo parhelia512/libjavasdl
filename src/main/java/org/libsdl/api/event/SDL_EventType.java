@@ -26,11 +26,13 @@ public final class SDL_EventType implements JnaEnum {
     public static final int SDL_TEXTEDITING = 0x302;
     public static final int SDL_TEXTINPUT = 0x303;
     public static final int SDL_KEYMAPCHANGED = 0x304;
+    public static final int SDL_TEXTEDITING_EXT = 0x305;
 
     public static final int SDL_MOUSEMOTION = 0x400;
     public static final int SDL_MOUSEBUTTONDOWN = 0x401;
     public static final int SDL_MOUSEBUTTONUP = 0x402;
     public static final int SDL_MOUSEWHEEL = 0x403;
+
     public static final int SDL_JOYAXISMOTION = 0x600;
     public static final int SDL_JOYBALLMOTION = 0x601;
     public static final int SDL_JOYHATMOTION = 0x602;
@@ -38,6 +40,8 @@ public final class SDL_EventType implements JnaEnum {
     public static final int SDL_JOYBUTTONUP = 0x604;
     public static final int SDL_JOYDEVICEADDED = 0x605;
     public static final int SDL_JOYDEVICEREMOVED = 0x606;
+    public static final int SDL_JOYBATTERYUPDATED = 0x607;
+
     public static final int SDL_CONTROLLERAXISMOTION = 0x650;
     public static final int SDL_CONTROLLERBUTTONDOWN = 0x651;
     public static final int SDL_CONTROLLERBUTTONUP = 0x652;
@@ -71,6 +75,9 @@ public final class SDL_EventType implements JnaEnum {
 
     public static final int SDL_RENDER_TARGETS_RESET = 0x2000;
     public static final int SDL_RENDER_DEVICE_RESET = 0x2001;
+
+    public static final int SDL_POLLSENTINEL = 0x7F00;
+
     public static final int SDL_USEREVENT = 0x8000;
     public static final int SDL_LASTEVENT = 0xFFFF;
 

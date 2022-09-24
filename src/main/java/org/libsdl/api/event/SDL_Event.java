@@ -14,6 +14,7 @@ import org.libsdl.api.event.events.SDL_DollarGestureEvent;
 import org.libsdl.api.event.events.SDL_DropEvent;
 import org.libsdl.api.event.events.SDL_JoyAxisEvent;
 import org.libsdl.api.event.events.SDL_JoyBallEvent;
+import org.libsdl.api.event.events.SDL_JoyBatteryEvent;
 import org.libsdl.api.event.events.SDL_JoyButtonEvent;
 import org.libsdl.api.event.events.SDL_JoyDeviceEvent;
 import org.libsdl.api.event.events.SDL_JoyHatEvent;
@@ -27,6 +28,7 @@ import org.libsdl.api.event.events.SDL_QuitEvent;
 import org.libsdl.api.event.events.SDL_SensorEvent;
 import org.libsdl.api.event.events.SDL_SysWMEvent;
 import org.libsdl.api.event.events.SDL_TextEditingEvent;
+import org.libsdl.api.event.events.SDL_TextEditingExtEvent;
 import org.libsdl.api.event.events.SDL_TextInputEvent;
 import org.libsdl.api.event.events.SDL_TouchFingerEvent;
 import org.libsdl.api.event.events.SDL_UserEvent;
@@ -63,9 +65,11 @@ import static org.libsdl.api.event.SDL_EventType.SDL_FINGERMOTION;
 import static org.libsdl.api.event.SDL_EventType.SDL_FINGERUP;
 import static org.libsdl.api.event.SDL_EventType.SDL_JOYAXISMOTION;
 import static org.libsdl.api.event.SDL_EventType.SDL_JOYBALLMOTION;
+import static org.libsdl.api.event.SDL_EventType.SDL_JOYBATTERYUPDATED;
 import static org.libsdl.api.event.SDL_EventType.SDL_JOYBUTTONDOWN;
 import static org.libsdl.api.event.SDL_EventType.SDL_JOYBUTTONUP;
 import static org.libsdl.api.event.SDL_EventType.SDL_JOYDEVICEADDED;
+import static org.libsdl.api.event.SDL_EventType.SDL_JOYDEVICEREMOVED;
 import static org.libsdl.api.event.SDL_EventType.SDL_JOYHATMOTION;
 import static org.libsdl.api.event.SDL_EventType.SDL_KEYDOWN;
 import static org.libsdl.api.event.SDL_EventType.SDL_KEYMAPCHANGED;
@@ -83,6 +87,7 @@ import static org.libsdl.api.event.SDL_EventType.SDL_RENDER_TARGETS_RESET;
 import static org.libsdl.api.event.SDL_EventType.SDL_SENSORUPDATE;
 import static org.libsdl.api.event.SDL_EventType.SDL_SYSWMEVENT;
 import static org.libsdl.api.event.SDL_EventType.SDL_TEXTEDITING;
+import static org.libsdl.api.event.SDL_EventType.SDL_TEXTEDITING_EXT;
 import static org.libsdl.api.event.SDL_EventType.SDL_TEXTINPUT;
 import static org.libsdl.api.event.SDL_EventType.SDL_USEREVENT;
 import static org.libsdl.api.event.SDL_EventType.SDL_WINDOWEVENT;
@@ -109,6 +114,7 @@ public final class SDL_Event extends Union {
     public SDL_KeyboardEvent key;
     public SDL_TextEditingEvent edit;
     public SDL_TextInputEvent text;
+    public SDL_TextEditingExtEvent editExt;
     public SDL_MouseMotionEvent motion;
     public SDL_MouseButtonEvent button;
     public SDL_MouseWheelEvent wheel;
@@ -117,6 +123,7 @@ public final class SDL_Event extends Union {
     public SDL_JoyHatEvent jhat;
     public SDL_JoyButtonEvent jbutton;
     public SDL_JoyDeviceEvent jdevice;
+    public SDL_JoyBatteryEvent jbattery;
     public SDL_ControllerAxisEvent caxis;
     public SDL_ControllerButtonEvent cbutton;
     public SDL_ControllerDeviceEvent cdevice;
@@ -181,6 +188,9 @@ public final class SDL_Event extends Union {
             case SDL_KEYMAPCHANGED:
                 setType(SDL_CommonEvent.class);
                 break;
+            case SDL_TEXTEDITING_EXT:
+                setType(SDL_TextEditingExtEvent.class);
+                break;
             case SDL_MOUSEMOTION:
                 setType(SDL_MouseMotionEvent.class);
                 break;
@@ -205,7 +215,11 @@ public final class SDL_Event extends Union {
                 setType(SDL_JoyButtonEvent.class);
                 break;
             case SDL_JOYDEVICEADDED:
+            case SDL_JOYDEVICEREMOVED:
                 setType(SDL_JoyDeviceEvent.class);
+                break;
+            case SDL_JOYBATTERYUPDATED:
+                setType(SDL_JoyBatteryEvent.class);
                 break;
             case SDL_CONTROLLERAXISMOTION:
                 setType(SDL_ControllerAxisEvent.class);

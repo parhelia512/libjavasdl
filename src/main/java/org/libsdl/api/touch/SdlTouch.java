@@ -17,6 +17,9 @@ public final class SdlTouch {
     public static native SDL_TouchID SDL_GetTouchDevice(
             int index);
 
+    public static native String SDL_GetTouchName(
+            int index);
+
     @MagicConstant(valuesFromClass = SDL_TouchDeviceType.class)
     public static native int SDL_GetTouchDeviceType(
             SDL_TouchID touchID);

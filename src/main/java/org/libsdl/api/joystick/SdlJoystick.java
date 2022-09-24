@@ -6,6 +6,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
 import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.api.joystick.virtual.SDL_VirtualJoystickDesc;
 import org.libsdl.jna.NativeLoader;
 
 
@@ -54,6 +55,9 @@ public final class SdlJoystick {
     public static native String SDL_JoystickNameForIndex(
             int deviceIndex);
 
+    public static native String SDL_JoystickPathForIndex(
+            int deviceIndex);
+
     public static native int SDL_JoystickGetDevicePlayerIndex(
             int deviceIndex);
 
@@ -91,6 +95,9 @@ public final class SdlJoystick {
             int nbuttons,
             int nhats);
 
+    public static native int SDL_JoystickAttachVirtualEx(
+            SDL_VirtualJoystickDesc desc);
+
     public static native int SDL_JoystickDetachVirtual(
             int deviceIndex);
 
@@ -115,6 +122,9 @@ public final class SdlJoystick {
     public static native String SDL_JoystickName(
             SDL_Joystick joystick);
 
+    public static native String SDL_JoystickPath(
+            SDL_Joystick joystick);
+
     public static native int SDL_JoystickGetPlayerIndex(
             SDL_Joystick joystick);
 
@@ -134,6 +144,9 @@ public final class SdlJoystick {
     public static native short SDL_JoystickGetProductVersion(
             SDL_Joystick joystick);
 
+    public static native short SDL_JoystickGetFirmwareVersion(
+            SDL_Joystick joystick);
+
     public static native String SDL_JoystickGetSerial(
             SDL_Joystick joystick);
 
@@ -144,19 +157,9 @@ public final class SdlJoystick {
     public static String SDL_JoystickGetGUIDString(
             SDL_JoystickGUID guid) {
         Memory textBuffer = new Memory(33L);
-        SDL_JoystickGetGUIDString(guid, textBuffer, (int) textBuffer.size());
+        InternalNativeFunctions.SDL_JoystickGetGUIDString(guid, textBuffer, (int) textBuffer.size());
         return textBuffer.getString(0L, StandardCharsets.US_ASCII.toString());
     }
-
-    /**
-     * @deprecated Use more Java-style version {@link #SDL_JoystickGetGUIDString(SDL_JoystickGUID)}
-     */
-    @Deprecated
-    @SuppressWarnings("DeprecatedIsStillUsed")
-    public static native void SDL_JoystickGetGUIDString(
-            SDL_JoystickGUID guid,
-            Pointer pszGUID,
-            int cbGUID);
 
     public static native SDL_JoystickGUID SDL_JoystickGetGUIDFromString(
             String pchGUID);
@@ -222,6 +225,12 @@ public final class SdlJoystick {
     public static native boolean SDL_JoystickHasLED(
             SDL_Joystick joystick);
 
+    public static native boolean SDL_JoystickHasRumble(
+            SDL_Joystick joystick);
+
+    public static native boolean SDL_JoystickHasRumbleTriggers(
+            SDL_Joystick joystick);
+
     public static native int SDL_JoystickSetLED(
             SDL_Joystick joystick,
             byte red,
@@ -239,4 +248,19 @@ public final class SdlJoystick {
     @MagicConstant(valuesFromClass = SDL_JoystickPowerLevel.class)
     public static native int SDL_JoystickCurrentPowerLevel(
             SDL_Joystick joystick);
+
+    private static final class InternalNativeFunctions {
+
+        static {
+            NativeLoader.registerNativeMethods(InternalNativeFunctions.class);
+        }
+
+        private InternalNativeFunctions() {
+        }
+
+        public static native void SDL_JoystickGetGUIDString(
+                SDL_JoystickGUID guid,
+                Pointer pszGUID,
+                int cbGUID);
+    }
 }

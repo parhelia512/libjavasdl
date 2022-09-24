@@ -6,12 +6,15 @@ import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.pixels.SDL_PixelFormatEnum;
+import org.libsdl.api.rect.SDL_Point;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.jna.ContiguousArrayList;
 import org.libsdl.jna.JnaUtils;
 import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.size_t;
 
+import static org.libsdl.api.stdinc.SdlStdinc.SDL_free;
 import static org.libsdl.api.video.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN;
 import static org.libsdl.api.video.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN_DESKTOP;
 
@@ -84,6 +87,12 @@ public final class SdlVideo {
             SDL_DisplayMode mode,
             SDL_DisplayMode closest);
 
+    public static native int SDL_GetPointDisplayIndex(
+            SDL_Point point);
+
+    public static native int SDL_GetRectDisplayIndex(
+            SDL_Rect rect);
+
     public static native int SDL_GetWindowDisplayIndex(
             SDL_Window window);
 
@@ -94,6 +103,26 @@ public final class SdlVideo {
     public static native int SDL_GetWindowDisplayMode(
             SDL_Window window,
             SDL_DisplayMode mode);
+
+    /**
+     * Get the raw ICC profile data for the screen the window is currently on.
+     *
+     * @param window the window to query
+     * @return the raw ICC profile data on success or null on failure; call
+     * SDL_GetError() for more information.
+     * @since This function is available since SDL 2.0.18.
+     */
+    public static byte[] SDL_GetWindowICCProfile(
+            SDL_Window window) {
+        size_t.Ref sizeRef = new size_t.Ref();
+        Pointer mem = InternalNativeFunctions.SDL_GetWindowICCProfile(window, sizeRef);
+        if (mem == null || Pointer.nativeValue(mem) == 0L) {
+            return null;
+        }
+        byte[] buffer = mem.getByteArray(0L, sizeRef.getValue().intValue());
+        SDL_free(mem);
+        return buffer;
+    }
 
     @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class)
     public static native int SDL_GetWindowPixelFormat(
@@ -265,6 +294,12 @@ public final class SdlVideo {
 
     public static native SDL_Window SDL_GetGrabbedWindow();
 
+    public static native int SDL_SetWindowMouseRect(
+            SDL_Window window, SDL_Rect rect);
+
+    public static native SDL_Rect SDL_GetWindowMouseRect(
+            SDL_Window window);
+
     public static native int SDL_SetWindowBrightness(
             SDL_Window window,
             float brightness);
@@ -407,4 +442,18 @@ public final class SdlVideo {
 
     public static native void SDL_GL_DeleteContext(
             SDL_GLContext context);
+
+    private static final class InternalNativeFunctions {
+
+        static {
+            NativeLoader.registerNativeMethods(InternalNativeFunctions.class);
+        }
+
+        private InternalNativeFunctions() {
+        }
+
+        public static native Pointer SDL_GetWindowICCProfile(
+                SDL_Window window,
+                size_t.Ref size);
+    }
 }

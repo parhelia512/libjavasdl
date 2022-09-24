@@ -51,6 +51,9 @@ public final class SdlRender {
     public static native SDL_Renderer SDL_GetRenderer(
             SDL_Window window);
 
+    public static native SDL_Window SDL_RenderGetWindow(
+            SDL_Renderer renderer);
+
     public static native int SDL_GetRendererInfo(
             SDL_Renderer renderer,
             SDL_RendererInfo info);
@@ -113,6 +116,13 @@ public final class SdlRender {
     public static native int SDL_GetTextureScaleMode(
             SDL_Texture texture,
             SDL_ScaleMode.Ref scaleMode);
+
+    public static native int SDL_SetTextureUserData(
+            SDL_Texture texture,
+            Pointer userdata);
+
+    public static native Pointer SDL_GetTextureUserData(
+            SDL_Texture texture);
 
     public static native int SDL_UpdateTexture(
             SDL_Texture texture,
@@ -209,6 +219,21 @@ public final class SdlRender {
             SDL_Renderer renderer,
             FloatByReference scaleX,
             FloatByReference scaleY);
+
+    public static native void SDL_RenderWindowToLogical(
+            SDL_Renderer renderer,
+            int windowX,
+            int windowY,
+            FloatByReference logicalX,
+            FloatByReference logicalY);
+
+
+    public static native void SDL_RenderLogicalToWindow(
+            SDL_Renderer renderer,
+            float logicalX,
+            float logicalY,
+            IntByReference windowX,
+            IntByReference windowY);
 
     public static native int SDL_SetRenderDrawColor(
             SDL_Renderer renderer,
@@ -417,6 +442,39 @@ public final class SdlRender {
             SDL_FPoint center,
             @MagicConstant(valuesFromClass = SDL_RendererFlip.class) int flip);
 
+    public static int SDL_RenderGeometry(
+            SDL_Renderer renderer,
+            SDL_Texture texture,
+            ContiguousArrayList<SDL_Vertex> vertices,
+            int[] indices) {
+        if (vertices.size() == 0) {
+            return 0;
+        }
+        return SDL_RenderGeometry(renderer, texture, vertices.autoWriteAndGetPointer(), vertices.size(), indices, indices.length);
+    }
+
+    public static native int SDL_RenderGeometry(
+            SDL_Renderer renderer,
+            SDL_Texture texture,
+            Pointer vertices,
+            int num_vertices,
+            int[] indices,
+            int num_indices);
+
+    public static native int SDL_RenderGeometryRaw(
+            SDL_Renderer renderer,
+            SDL_Texture texture,
+            Pointer xy,
+            int xy_stride,
+            Pointer color,
+            int color_stride,
+            Pointer uv,
+            int uv_stride,
+            int num_vertices,
+            Pointer indices,
+            int num_indices,
+            int size_indices);
+
     public static native int SDL_RenderReadPixels(
             SDL_Renderer renderer,
             SDL_Rect rect,
@@ -449,4 +507,8 @@ public final class SdlRender {
 
     public static native Pointer SDL_RenderGetMetalCommandEncoder(
             SDL_Renderer renderer);
+
+    public static native int SDL_RenderSetVSync(
+            SDL_Renderer renderer,
+            int vsync);
 }

@@ -10,7 +10,6 @@ public final class SDL_RWopsPlatformSpecific extends Union {
     public SDL_RWopsStdIO stdio;
     public SDL_RWopsAndroidIO androidio;
     public SDL_RWopsMemoryIO mem;
-    public SDL_RWopsVitaIO vitaio;
 
     public SDL_RWopsPlatformSpecific() {
     }

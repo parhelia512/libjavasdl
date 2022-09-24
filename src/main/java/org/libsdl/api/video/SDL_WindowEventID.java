@@ -21,6 +21,8 @@ public final class SDL_WindowEventID implements JnaEnum {
     public static final int SDL_WINDOWEVENT_CLOSE = 14;
     public static final int SDL_WINDOWEVENT_TAKE_FOCUS = 15;
     public static final int SDL_WINDOWEVENT_HIT_TEST = 16;
+    public static final int SDL_WINDOWEVENT_ICCPROF_CHANGED = 17;
+    public static final int SDL_WINDOWEVENT_DISPLAY_CHANGE = 18;
 
     // TODO: Generate public static String toString(int value)
 
