@@ -6,6 +6,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
 import org.intellij.lang.annotations.MagicConstant;
+import org.libsdl.api.joystick.virtual.SDL_VirtualJoystickDesc;
 import org.libsdl.jna.NativeLoader;
 
 
@@ -54,6 +55,9 @@ public final class SdlJoystick {
     public static native String SDL_JoystickNameForIndex(
             int deviceIndex);
 
+    public static native String SDL_JoystickPathForIndex(
+            int deviceIndex);
+
     public static native int SDL_JoystickGetDevicePlayerIndex(
             int deviceIndex);
 
@@ -91,6 +95,9 @@ public final class SdlJoystick {
             int nbuttons,
             int nhats);
 
+    public static native int SDL_JoystickAttachVirtualEx(
+            SDL_VirtualJoystickDesc desc);
+
     public static native int SDL_JoystickDetachVirtual(
             int deviceIndex);
 
@@ -115,6 +122,9 @@ public final class SdlJoystick {
     public static native String SDL_JoystickName(
             SDL_Joystick joystick);
 
+    public static native String SDL_JoystickPath(
+            SDL_Joystick joystick);
+
     public static native int SDL_JoystickGetPlayerIndex(
             SDL_Joystick joystick);
 
@@ -132,6 +142,9 @@ public final class SdlJoystick {
             SDL_Joystick joystick);
 
     public static native short SDL_JoystickGetProductVersion(
+            SDL_Joystick joystick);
+
+    public static native short SDL_JoystickGetFirmwareVersion(
             SDL_Joystick joystick);
 
     public static native String SDL_JoystickGetSerial(
@@ -220,6 +233,12 @@ public final class SdlJoystick {
             int durationMs);
 
     public static native boolean SDL_JoystickHasLED(
+            SDL_Joystick joystick);
+
+    public static native boolean SDL_JoystickHasRumble(
+            SDL_Joystick joystick);
+
+    public static native boolean SDL_JoystickHasRumbleTriggers(
             SDL_Joystick joystick);
 
     public static native int SDL_JoystickSetLED(
