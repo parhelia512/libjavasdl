@@ -1,9 +1,12 @@
 package org.libsdl.api.rect;
 
 import com.sun.jna.Pointer;
+import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
 import org.libsdl.jna.ContiguousArrayList;
 import org.libsdl.jna.NativeLoader;
+
+import static org.libsdl.api.stdinc.SdlStdincConst.SDL_FLT_EPSILON;
 
 public final class SdlRect {
 
@@ -70,4 +73,70 @@ public final class SdlRect {
             IntByReference y1,
             IntByReference x2,
             IntByReference y2);
+
+    public static boolean SDL_PointInFRect(
+            SDL_FPoint p,
+            SDL_FRect r) {
+        return (p.x >= r.x) && (p.x < (r.x + r.w)) &&
+                (p.y >= r.y) && (p.y < (r.y + r.h));
+    }
+
+    public static boolean SDL_FRectEmpty(
+            SDL_FRect r) {
+        return (r == null) || (r.w <= 0.0f) || (r.h <= 0.0f);
+    }
+
+    public static boolean SDL_FRectEqualsEpsilon(
+            SDL_FRect a,
+            SDL_FRect b,
+            float epsilon) {
+        return a != null && b != null && ((a == b) ||
+                ((Math.abs(a.x - b.x) <= epsilon) &&
+                        (Math.abs(a.y - b.y) <= epsilon) &&
+                        (Math.abs(a.w - b.w) <= epsilon) &&
+                        (Math.abs(a.h - b.h) <= epsilon)));
+    }
+
+    public static boolean SDL_FRectEquals(
+            SDL_FRect a,
+            SDL_FRect b) {
+        return SDL_FRectEqualsEpsilon(a, b, SDL_FLT_EPSILON);
+    }
+
+    public static native boolean SDL_HasIntersectionF(
+            SDL_FRect a,
+            SDL_FRect b);
+
+    public static native boolean SDL_IntersectFRect(
+            SDL_FRect a,
+            SDL_FRect b,
+            SDL_FRect result);
+
+    public static native void SDL_UnionFRect(
+            SDL_FRect a,
+            SDL_FRect b,
+            SDL_FRect result);
+
+    public static boolean SDL_EncloseFPoints(
+            ContiguousArrayList<SDL_FPoint> points,
+            SDL_FRect clip,
+            SDL_FRect result) {
+        if (points.size() == 0) {
+            return true;
+        }
+        return SDL_EncloseFPoints(points.autoWriteAndGetPointer(), points.size(), clip, result);
+    }
+
+    public static native boolean SDL_EncloseFPoints(
+            Pointer points,
+            int count,
+            SDL_FRect clip,
+            SDL_FRect result);
+
+    public static native boolean SDL_IntersectFRectAndLine(
+            SDL_FRect rect,
+            FloatByReference x1,
+            FloatByReference y1,
+            FloatByReference x2,
+            FloatByReference y2);
 }
