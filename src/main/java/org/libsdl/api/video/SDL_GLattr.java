@@ -31,6 +31,7 @@ public final class SDL_GLattr implements JnaEnum {
     public static final int SDL_GL_CONTEXT_RELEASE_BEHAVIOR = 24;
     public static final int SDL_GL_CONTEXT_RESET_NOTIFICATION = 25;
     public static final int SDL_GL_CONTEXT_NO_ERROR = 26;
+    public static final int SDL_GL_FLOATBUFFERS = 27;
 
     // TODO: Generate public static String toString(int value)
 
