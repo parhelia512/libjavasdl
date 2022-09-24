@@ -24,6 +24,28 @@ public final class SdlTimer {
     public static native int SDL_GetTicks();
 
     /**
+     * Get the number of milliseconds since SDL library initialization.
+     *
+     * <p>Note that you should not use the SDL_TICKS_PASSED macro with values
+     * returned by this function, as that macro does clever math to compensate for
+     * the 32-bit overflow every ~49 days that SDL_GetTicks() suffers from. 64-bit
+     * values from this function can be safely compared directly.</p>
+     *
+     * <p>For example, if you want to wait 100 ms, you could do this:</p>
+     *
+     * <blockquote><pre>
+     * long timeout = SDL_GetTicks64() + 100L;
+     * while (SDL_GetTicks64() < timeout) {
+     *     // ... do work until timeout has elapsed
+     * }</pre></blockquote>
+     *
+     * @return a 64-bit value representing the number of milliseconds
+     * since the SDL library initialized.
+     * @since This function is available since SDL 2.0.18.
+     */
+    public static native long SDL_GetTicks64();
+
+    /**
      * Compare SDL ticks values, and return true if {@code A} has passed {@code B}.
      *
      * <p>For example, if you want to wait 100 ms, you could do this:</p>
