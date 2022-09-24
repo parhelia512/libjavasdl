@@ -4,9 +4,9 @@ import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
 
 /**
- *  A handle to a CAMetalLayer-backed NSView (macOS) or UIView (iOS/tvOS).
+ * A handle to a CAMetalLayer-backed NSView (macOS) or UIView (iOS/tvOS).
  *
- *  @apiNote This can be cast directly to an NSView or UIView.
+ * @apiNote This can be cast directly to an NSView or UIView.
  */
 public final class SDL_MetalView extends PointerType {
 

@@ -26,9 +26,9 @@ public final class SdlRWops {
      * @param autoclose {@code true} to close the {@code FILE*} when closing the {@link SDL_RWops},
      *                  {@code false} to leave the {@code FILE*} open when the RWops is closed
      * @return Returns a {@link SDL_RWops} structure that is created, or {@code null} on failure;
-     *         call {@link SdlError#SDL_GetError()} for more information.
+     * call {@link SdlError#SDL_GetError()} for more information.
      * @apiNote This function is not available on Windows,
-     *          since files opened in an application on that platform cannot be used by a dynamically linked library.
+     * since files opened in an application on that platform cannot be used by a dynamically linked library.
      */
     public static native SDL_RWops SDL_RWFromFP(
             Pointer fp,

@@ -10,10 +10,10 @@ import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_WINDOWS;
 import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_X11;
 
 /**
- *  The custom window manager information structure.
+ * The custom window manager information structure.
  *
- *  When this structure is returned, it holds information about which
- *  low level system it is using, and will be one of SDL_SYSWM_TYPE.
+ * When this structure is returned, it holds information about which
+ * low level system it is using, and will be one of SDL_SYSWM_TYPE.
  */
 @Structure.FieldOrder({
         "version",
