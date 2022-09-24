@@ -22,6 +22,9 @@ public final class SdlHints {
             String name,
             String value);
 
+    public static native boolean SDL_ResetHint(
+            String name);
+
     public static native String SDL_GetHint(
             String name);
 
