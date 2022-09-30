@@ -7,7 +7,7 @@ import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.joystick.virtual.SDL_VirtualJoystickDesc;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 
 /**
@@ -39,7 +39,7 @@ import org.libsdl.jna.NativeLoader;
 public final class SdlJoystick {
 
     static {
-        NativeLoader.registerNativeMethods(SdlJoystick.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlJoystick.class);
     }
 
     private SdlJoystick() {
@@ -251,7 +251,7 @@ public final class SdlJoystick {
     private static final class InternalNativeFunctions {
 
         static {
-            NativeLoader.registerNativeMethods(InternalNativeFunctions.class);
+            SdlNativeLibraryLoader.registerNativeMethods(InternalNativeFunctions.class);
         }
 
         private InternalNativeFunctions() {

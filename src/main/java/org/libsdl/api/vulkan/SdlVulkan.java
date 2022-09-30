@@ -7,12 +7,12 @@ import com.sun.jna.StringArray;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
 import org.libsdl.api.video.SDL_Window;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlVulkan {
 
     static {
-        NativeLoader.registerNativeMethods(SdlVulkan.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlVulkan.class);
     }
 
     private SdlVulkan() {

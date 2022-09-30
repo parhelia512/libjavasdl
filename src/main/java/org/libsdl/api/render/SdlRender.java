@@ -16,12 +16,12 @@ import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.api.video.SDL_WindowFlags;
 import org.libsdl.jna.ContiguousArrayList;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlRender {
 
     static {
-        NativeLoader.registerNativeMethods(SdlRender.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlRender.class);
     }
 
     private SdlRender() {

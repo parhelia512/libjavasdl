@@ -6,7 +6,7 @@ import com.sun.jna.ptr.PointerByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.log.SDL_LogCategory.SDL_LOG_CATEGORY_APPLICATION;
 import static org.libsdl.api.log.SDL_LogCategory.SDL_LOG_CATEGORY_ASSERT;
@@ -38,7 +38,7 @@ import static org.libsdl.api.log.SdlLogConst.SDL_MAX_LOG_MESSAGE;
 public final class SdlLog {
 
     static {
-        NativeLoader.registerNativeMethods(SdlLog.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlLog.class);
     }
 
     private SdlLog() {
@@ -253,7 +253,7 @@ public final class SdlLog {
     /* Varargs are not supported in JNA Direct mapping, so Interface mapping is used here. */
     private interface NativeVarargFunctions extends Library {
 
-        NativeVarargFunctions INSTANCE = NativeLoader.loadSdl2LibraryInstance(NativeVarargFunctions.class);
+        NativeVarargFunctions INSTANCE = SdlNativeLibraryLoader.loadLibSDL2InterfaceInstance(NativeVarargFunctions.class);
 
         void SDL_Log(
                 String fmt,

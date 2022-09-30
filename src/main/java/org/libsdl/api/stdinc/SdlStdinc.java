@@ -3,13 +3,13 @@ package org.libsdl.api.stdinc;
 import com.sun.jna.CallbackReference;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 import org.libsdl.jna.size_t;
 
 public final class SdlStdinc {
 
     static {
-        NativeLoader.registerNativeMethods(SdlStdinc.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlStdinc.class);
     }
 
     private SdlStdinc() {

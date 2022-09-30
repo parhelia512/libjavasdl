@@ -1,12 +1,12 @@
 package org.libsdl.api.syswm;
 
 import org.libsdl.api.video.SDL_Window;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlSysWM {
 
     static {
-        NativeLoader.registerNativeMethods(SdlSysWM.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlSysWM.class);
     }
 
     private SdlSysWM() {

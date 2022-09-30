@@ -3,12 +3,12 @@ package org.libsdl.api.locale;
 import java.util.ArrayList;
 import java.util.List;
 import com.sun.jna.Pointer;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlLocale {
 
     static {
-        NativeLoader.registerNativeMethods(SdlLocale.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlLocale.class);
     }
 
     private SdlLocale() {

@@ -1,7 +1,7 @@
 package org.libsdl.api;
 
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 /**
  * @apiNote Native functions are always defined in a private static nested class
@@ -26,20 +26,17 @@ public final class Sdl {
 
     public static int SDL_Init(
             @MagicConstant(flagsFromClass = SdlSubSystemConst.class) int flags) {
-        NativeLoader.loadSdl2Library();
         return InternalNativeFunctions.SDL_Init(flags);
     }
 
     public static int SDL_InitSubSystem(
             @MagicConstant(flagsFromClass = SdlSubSystemConst.class) int flags) {
-        NativeLoader.loadSdl2Library();
         return InternalNativeFunctions.SDL_InitSubSystem(flags);
     }
 
     @MagicConstant(flagsFromClass = SdlSubSystemConst.class)
     public static int SDL_WasInit(
             @MagicConstant(flagsFromClass = SdlSubSystemConst.class) int flags) {
-        NativeLoader.loadSdl2Library();
         return InternalNativeFunctions.SDL_WasInit(flags);
     }
 
@@ -55,7 +52,7 @@ public final class Sdl {
     private static final class InternalNativeFunctions {
 
         static {
-            NativeLoader.registerNativeMethods(InternalNativeFunctions.class);
+            SdlNativeLibraryLoader.registerNativeMethods(InternalNativeFunctions.class);
         }
 
         private InternalNativeFunctions() {

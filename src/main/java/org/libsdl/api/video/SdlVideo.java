@@ -11,7 +11,7 @@ import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.jna.ContiguousArrayList;
 import org.libsdl.jna.JnaUtils;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 import org.libsdl.jna.size_t;
 
 import static org.libsdl.api.stdinc.SdlStdinc.SDL_free;
@@ -21,7 +21,7 @@ import static org.libsdl.api.video.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN_DESKTOP
 public final class SdlVideo {
 
     static {
-        NativeLoader.registerNativeMethods(SdlVideo.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlVideo.class);
     }
 
     private SdlVideo() {
@@ -442,7 +442,7 @@ public final class SdlVideo {
     private static final class InternalNativeFunctions {
 
         static {
-            NativeLoader.registerNativeMethods(InternalNativeFunctions.class);
+            SdlNativeLibraryLoader.registerNativeMethods(InternalNativeFunctions.class);
         }
 
         private InternalNativeFunctions() {

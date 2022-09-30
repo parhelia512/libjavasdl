@@ -3,13 +3,13 @@ package org.libsdl.api.rwops;
 import com.sun.jna.Pointer;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.error.SdlError;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 import org.libsdl.jna.size_t;
 
 public final class SdlRWops {
 
     static {
-        NativeLoader.registerNativeMethods(SdlRWops.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlRWops.class);
     }
 
     private SdlRWops() {

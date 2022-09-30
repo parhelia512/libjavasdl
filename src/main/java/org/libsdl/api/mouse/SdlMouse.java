@@ -5,7 +5,7 @@ import com.sun.jna.ptr.IntByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_Window;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.event.SdlEventsConst.SDL_DISABLE;
 import static org.libsdl.api.event.SdlEventsConst.SDL_ENABLE;
@@ -14,7 +14,7 @@ import static org.libsdl.api.event.SdlEventsConst.SDL_QUERY;
 public final class SdlMouse {
 
     static {
-        NativeLoader.registerNativeMethods(SdlMouse.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlMouse.class);
     }
 
     private SdlMouse() {

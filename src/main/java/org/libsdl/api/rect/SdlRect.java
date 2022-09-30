@@ -4,14 +4,14 @@ import com.sun.jna.Pointer;
 import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
 import org.libsdl.jna.ContiguousArrayList;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.stdinc.SdlStdincConst.SDL_FLT_EPSILON;
 
 public final class SdlRect {
 
     static {
-        NativeLoader.registerNativeMethods(SdlRect.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlRect.class);
     }
 
     private SdlRect() {

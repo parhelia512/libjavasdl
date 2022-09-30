@@ -1,12 +1,12 @@
 package org.libsdl.api.timer;
 
 import com.sun.jna.Pointer;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlTimer {
 
     static {
-        NativeLoader.registerNativeMethods(SdlTimer.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlTimer.class);
     }
 
     private SdlTimer() {

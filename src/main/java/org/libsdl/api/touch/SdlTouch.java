@@ -1,12 +1,12 @@
 package org.libsdl.api.touch;
 
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlTouch {
 
     static {
-        NativeLoader.registerNativeMethods(SdlTouch.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlTouch.class);
     }
 
     private SdlTouch() {

@@ -10,7 +10,7 @@ import org.libsdl.api.pixels.SDL_PixelFormat;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.rwops.SDL_RWops;
 import org.libsdl.jna.ContiguousArrayList;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
 import static org.libsdl.api.surface.SDL_SurfaceFlags.SDL_RLEACCEL;
@@ -18,7 +18,7 @@ import static org.libsdl.api.surface.SDL_SurfaceFlags.SDL_RLEACCEL;
 public final class SdlSurface {
 
     static {
-        NativeLoader.registerNativeMethods(SdlSurface.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlSurface.class);
     }
 
     private SdlSurface() {

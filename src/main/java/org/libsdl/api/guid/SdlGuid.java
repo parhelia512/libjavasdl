@@ -4,7 +4,7 @@ import java.nio.charset.StandardCharsets;
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import org.libsdl.api.joystick.SDL_JoystickGUID;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlGuid {
 
@@ -21,7 +21,7 @@ public final class SdlGuid {
     private final static class InternalNativeFunctions {
 
         static {
-            NativeLoader.registerNativeMethods(InternalNativeFunctions.class);
+            SdlNativeLibraryLoader.registerNativeMethods(InternalNativeFunctions.class);
         }
 
         private InternalNativeFunctions() {

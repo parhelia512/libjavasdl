@@ -1,6 +1,6 @@
 package org.libsdl.api.version;
 
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.version.SdlVersionConst.SDL_MAJOR_VERSION;
 import static org.libsdl.api.version.SdlVersionConst.SDL_MINOR_VERSION;
@@ -9,7 +9,7 @@ import static org.libsdl.api.version.SdlVersionConst.SDL_PATCHLEVEL;
 public final class SdlVersion {
 
     static {
-        NativeLoader.registerNativeMethods(SdlVersion.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlVersion.class);
     }
 
     private SdlVersion() {

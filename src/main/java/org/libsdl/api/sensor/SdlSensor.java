@@ -2,7 +2,7 @@ package org.libsdl.api.sensor;
 
 import com.sun.jna.Pointer;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 /**
  * <p>Adapted from SDL_sensor.h</p>
@@ -14,7 +14,7 @@ import org.libsdl.jna.NativeLoader;
 public final class SdlSensor {
 
     static {
-        NativeLoader.registerNativeMethods(SdlSensor.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlSensor.class);
     }
 
     private SdlSensor() {

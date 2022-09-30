@@ -2,7 +2,7 @@ package org.libsdl.api.haptic;
 
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.joystick.SDL_Joystick;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 /**
  * <p>Adapted from SDL_haptic.h</p>
@@ -95,7 +95,7 @@ import org.libsdl.jna.NativeLoader;
 public final class SdlHaptic {
 
     static {
-        NativeLoader.registerNativeMethods(SdlHaptic.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlHaptic.class);
     }
 
     private SdlHaptic() {

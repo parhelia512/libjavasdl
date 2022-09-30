@@ -2,12 +2,12 @@ package org.libsdl.api.clipboard;
 
 import com.sun.jna.Pointer;
 import org.libsdl.jna.JnaUtils;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlClipboard {
 
     static {
-        NativeLoader.registerNativeMethods(SdlClipboard.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlClipboard.class);
     }
 
     private SdlClipboard() {
@@ -26,7 +26,7 @@ public final class SdlClipboard {
     private static final class InternalNativeFunctions {
 
         static {
-            NativeLoader.registerNativeMethods(InternalNativeFunctions.class);
+            SdlNativeLibraryLoader.registerNativeMethods(InternalNativeFunctions.class);
         }
 
         private InternalNativeFunctions() {

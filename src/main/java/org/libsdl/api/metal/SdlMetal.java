@@ -3,7 +3,7 @@ package org.libsdl.api.metal;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
 import org.libsdl.api.video.SDL_Window;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 // TODO: Test on macOS
 
@@ -15,7 +15,7 @@ import org.libsdl.jna.NativeLoader;
 public final class SdlMetal {
 
     static {
-        NativeLoader.registerNativeMethods(SdlMetal.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlMetal.class);
     }
 
     private SdlMetal() {

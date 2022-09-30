@@ -2,12 +2,12 @@ package org.libsdl.api.hints;
 
 import com.sun.jna.Pointer;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlHints {
 
     static {
-        NativeLoader.registerNativeMethods(SdlHints.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlHints.class);
     }
 
     private SdlHints() {

@@ -2,12 +2,12 @@ package org.libsdl.api.gesture;
 
 import org.libsdl.api.rwops.SDL_RWops;
 import org.libsdl.api.touch.SDL_TouchID;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlGesture {
 
     static {
-        NativeLoader.registerNativeMethods(SdlGesture.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlGesture.class);
     }
 
     private SdlGesture() {
