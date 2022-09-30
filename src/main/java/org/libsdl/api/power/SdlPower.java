@@ -2,12 +2,12 @@ package org.libsdl.api.power;
 
 import com.sun.jna.ptr.IntByReference;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlPower {
 
     static {
-        NativeLoader.registerNativeMethods(SdlPower.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlPower.class);
     }
 
     private SdlPower() {

@@ -13,7 +13,56 @@ but it is outside the scope of this project.
 
 
 
-## Not Implemented
+## SDL2.Dll / libSDL2.so loading
+
+The Java bindings will lookup the SDL2 dynamic library in the following locations
+in order of precedence (algorithm built into `NativeLibrary.loadLibrary()`):
+ 
+1. Any custom paths set by calling: `NativeLibrary.addSearchPath("SDL2", CUSTOM_PATHS)`.  
+2. Java Web Start (if used).
+3. Any custom paths set to `jna.library.path` system property 
+   (`System.setProperty("jna.library.path", "CUSTOM_PATHS");` in the Java code
+   or `-Djna.library.path=CUSTOM_PATHS` Java command line parameter).
+4. Any OS standard library paths (`/usr/lib/`, `LD_LIBRARY_PATH` etc.)
+   and custom paths set to `jna.platform.library.path` system property.
+5. Embedded DLL/so in the `libsdl4j.jar` file itself.
+   There are embedded libraries for Windows (x86, x86-64) and
+   Linux (x86, x86-64, armhf, aarch64).
+
+If you find it difficult to make it working, the process of searching for the dll/so library has debug logs:
+
+| Logger                      | Minimum threshold level     |
+|-----------------------------|-----------------------------|
+| `com.sun.jna.NativeLibrary` | `DEBUG` / `FINE`            |
+
+Note: If you set system property `jna.debug_load` to `true`,
+the minimum threshold level will become `INFO`, and thus will likely be logged by default to the console.
+
+              
+        
+### Embedded SDL2 libraries for Windows and Linux
+
+Windows DLLs are the official ones from SDL2 distribution.
+
+Linux .so are compiled on Ubuntu 2016 LTS (to use reasonably old glibc)
+for x86 and x86-64
+and on Raspberry Pi 4 for armhf and aarch64 (Raspberry Pi OS, version *buster*).
+The compilation went on a newly installed and updated OS
+(`sudo apt-get update`, `sudo apt-get upgrade`)
+with all recommended build dependencies installed
+(see SDL2's [README-linux.md](https://github.com/libsdl-org/SDL/blob/main/docs/README-linux.md#user-content-build-dependencies))
+and with default `./configure` (<https://wiki.libsdl.org/Installation#cb1>). 
+
+On Linux, the embedded library might be missing support for a specific library or framework you have on your computer,
+so it is advised to have the libSDL2 installed as a separate package. Watch out for the library version, though.
+The embedded libraries should be fine in most cases.
+
+On macOS, it is recommended to distribute the libSDL2 library
+as a framework bundled in your `.app` package.
+
+                   
+
+## What Is Not Implemented by LibSDL4J
 
 Minor things that make little to no sense in the Java world were omitted from the Java bindings.
 It's still possible to add those headers if someone contributes it to the project.

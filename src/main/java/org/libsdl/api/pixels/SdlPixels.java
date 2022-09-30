@@ -6,12 +6,12 @@ import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.ContiguousArrayList;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlPixels {
 
     static {
-        NativeLoader.registerNativeMethods(SdlPixels.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlPixels.class);
     }
 
     private SdlPixels() {

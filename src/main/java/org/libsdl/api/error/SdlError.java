@@ -3,12 +3,12 @@ package org.libsdl.api.error;
 import java.util.Locale;
 import com.sun.jna.Library;
 import com.sun.jna.Pointer;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlError {
 
     static {
-        NativeLoader.registerNativeMethods(SdlError.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlError.class);
     }
 
     private SdlError() {
@@ -91,7 +91,7 @@ public final class SdlError {
     /* Varargs are not supported in JNA Direct mapping, so Interface mapping is used here. */
     private interface NativeVarargFunctions extends Library {
 
-        NativeVarargFunctions INSTANCE = NativeLoader.loadSdl2LibraryInstance(NativeVarargFunctions.class);
+        NativeVarargFunctions INSTANCE = SdlNativeLibraryLoader.loadLibSDL2InterfaceInstance(NativeVarargFunctions.class);
 
         int SDL_SetError(
                 String fmt,

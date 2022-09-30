@@ -9,29 +9,32 @@ import com.sun.jna.NativeLibrary;
 import static com.sun.jna.Library.OPTION_CLASSLOADER;
 import static com.sun.jna.Library.OPTION_STRING_ENCODING;
 
-public final class NativeLoader {
+public final class SdlNativeLibraryLoader {
 
     public static final String SDL_LIBRARY_NAME = "SDL2";
+    private static NativeLibrary libSDL2;
 
-    private NativeLoader() {
+    private SdlNativeLibraryLoader() {
     }
 
-    public static void registerNativeMethods(Class<?> nativeClass) {
-        NativeLibrary lib = loadSdl2Library();
-        Native.register(nativeClass, lib);
+    public static synchronized void registerNativeMethods(Class<?> nativeClass) {
+        if (libSDL2 == null) {
+            libSDL2 = loadLibSDL2();
+        }
+        Native.register(nativeClass, libSDL2);
     }
 
-    public static NativeLibrary loadSdl2Library() {
+    private static NativeLibrary loadLibSDL2() {
         Map<String, Object> options = new HashMap<>();
         options.put(OPTION_STRING_ENCODING, "UTF-8");
-        options.put(OPTION_CLASSLOADER, NativeLoader.class.getClassLoader());
+        options.put(OPTION_CLASSLOADER, SdlNativeLibraryLoader.class.getClassLoader());
         return NativeLibrary.getInstance(SDL_LIBRARY_NAME, options);
     }
 
-    public static <T extends Library> T loadSdl2LibraryInstance(Class<T> libraryInterface) {
+    public static <T extends Library> T loadLibSDL2InterfaceInstance(Class<T> libraryInterface) {
         Map<String, Object> options = new HashMap<>();
         options.put(OPTION_STRING_ENCODING, "UTF-8");
-        options.put(OPTION_CLASSLOADER, NativeLoader.class.getClassLoader());
+        options.put(OPTION_CLASSLOADER, SdlNativeLibraryLoader.class.getClassLoader());
         return Native.load(SDL_LIBRARY_NAME, libraryInterface, options);
     }
 }

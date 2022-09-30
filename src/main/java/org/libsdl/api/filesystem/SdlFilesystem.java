@@ -2,7 +2,7 @@ package org.libsdl.api.filesystem;
 
 import com.sun.jna.Pointer;
 import org.libsdl.jna.JnaUtils;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlFilesystem {
 
@@ -24,7 +24,7 @@ public final class SdlFilesystem {
     private static final class InternalNativeFunctions {
 
         static {
-            NativeLoader.registerNativeMethods(InternalNativeFunctions.class);
+            SdlNativeLibraryLoader.registerNativeMethods(InternalNativeFunctions.class);
         }
 
         private InternalNativeFunctions() {

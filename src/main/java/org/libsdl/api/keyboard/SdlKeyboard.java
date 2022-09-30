@@ -8,12 +8,12 @@ import org.libsdl.api.keycode.SDL_Keymod;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.scancode.SDL_Scancode;
 import org.libsdl.api.video.SDL_Window;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 public final class SdlKeyboard {
 
     static {
-        NativeLoader.registerNativeMethods(SdlKeyboard.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlKeyboard.class);
     }
 
     private SdlKeyboard() {

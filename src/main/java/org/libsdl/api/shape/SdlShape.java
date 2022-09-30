@@ -4,7 +4,7 @@ import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.api.video.SDL_WindowFlags;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.shape.WindowShapeMode.ShapeModeBinarizeAlpha;
 import static org.libsdl.api.shape.WindowShapeMode.ShapeModeDefault;
@@ -13,7 +13,7 @@ import static org.libsdl.api.shape.WindowShapeMode.ShapeModeReverseBinarizeAlpha
 public final class SdlShape {
 
     static {
-        NativeLoader.registerNativeMethods(SdlShape.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlShape.class);
     }
 
     private SdlShape() {

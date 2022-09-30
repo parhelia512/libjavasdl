@@ -11,7 +11,7 @@ import org.libsdl.api.joystick.SDL_JoystickID;
 import org.libsdl.api.rwops.SDL_RWops;
 import org.libsdl.api.sensor.SDL_SensorType;
 import org.libsdl.jna.JnaUtils;
-import org.libsdl.jna.NativeLoader;
+import org.libsdl.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
 
@@ -32,7 +32,7 @@ import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
 public final class SdlGamecontroller {
 
     static {
-        NativeLoader.registerNativeMethods(SdlGamecontroller.class);
+        SdlNativeLibraryLoader.registerNativeMethods(SdlGamecontroller.class);
     }
 
     private SdlGamecontroller() {
@@ -265,7 +265,7 @@ public final class SdlGamecontroller {
     private static final class InternalNativeFunctions {
 
         static {
-            NativeLoader.registerNativeMethods(InternalNativeFunctions.class);
+            SdlNativeLibraryLoader.registerNativeMethods(InternalNativeFunctions.class);
         }
 
         private InternalNativeFunctions() {
