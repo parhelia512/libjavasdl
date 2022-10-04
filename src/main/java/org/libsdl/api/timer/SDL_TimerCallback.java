@@ -22,5 +22,5 @@ public interface SDL_TimerCallback extends Callback {
      * passed in, the periodic alarm continues, otherwise a new alarm is
      * scheduled. If the callback returns 0, the periodic alarm is cancelled.
      */
-    int callback(int interval, Pointer param);
+    int onTimerTick(int interval, Pointer param);
 }
