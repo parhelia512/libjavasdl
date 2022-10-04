@@ -11,6 +11,30 @@ Because of these goals, there is a lot of room for Java niceties (enums, encapsu
 which are intentionally avoided. These can be applied by wrapping the raw API,
 but it is outside the scope of this project.
 
+                          
+
+## Design choices
+
+Each SDL C source file maps to a separate package in the API.
+
+In each package, there is a Sdl*Name* class with `public static native` functions
+corresponding to the SDL exported C functions.
+
+If there are structs, enums, unions or other data types defined in the 
+C source file, corresponding Java classes are available.
+
+If there are global constants in the C source file,
+there is also an Sdl*Name*Const file present with the constants.
+
+There is a reason to put the constants into a separate class rather than keeping it 
+within the Sdl*Name* class:
+The first time you use any symbol from a Sdl*Name* class in a client code,
+JNA loads the DLL/so into memory and maps 
+the Java functions to it, which is a costly operation.
+It is not necessary for accessing constants, because they are mere values.
+Therefore, they are placed in a separate class to avoid triggering 
+premature DLL/so loading.
+
 
 
 ## SDL2.Dll / libSDL2.so loading
