@@ -15,6 +15,16 @@ import org.libsdl.api.rect.SDL_Point;
 @FunctionalInterface
 public interface SDL_HitTest extends Callback {
 
+    /**
+     * Callback used for hit-testing.
+     *
+     * @param win the SDL_Window where hit-testing was set on
+     * @param area an SDL_Point which should be hit-tested
+     * @param data what was passed as {@code callbackData} to SDL_SetWindowHitTest()
+     * @return an SDL_HitTestResult value.
+     *
+     * @see SdlVideo#SDL_SetWindowHitTest(SDL_Window, SDL_HitTest, Pointer)
+     */
     @MagicConstant(valuesFromClass = SDL_HitTestResult.class)
     int testHit(
             SDL_Window win,
