@@ -21,7 +21,7 @@ import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
         "rightSat",
         "leftSat",
         "rightCoeff",
-        "leftCSoeff",
+        "leftCoeff",
         "deadband",
         "center"
 })
@@ -43,7 +43,7 @@ public final class SDL_HapticCondition extends Structure {
     public short[] rightSat = new short[3];
     public short[] leftSat = new short[3];
     public short[] rightCoeff = new short[3];
-    public short[] leftCSoeff = new short[3];
+    public short[] leftCoeff = new short[3];
     public short[] deadband = new short[3];
     public short[] center = new short[3];
 
