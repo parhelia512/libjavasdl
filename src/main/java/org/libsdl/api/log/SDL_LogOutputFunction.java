@@ -7,7 +7,7 @@ import org.intellij.lang.annotations.MagicConstant;
 @FunctionalInterface
 public interface SDL_LogOutputFunction extends Callback {
 
-    void callback(
+    void onLogMessage(
             Pointer userdata,
             @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
             @MagicConstant(valuesFromClass = SDL_LogPriority.class) int priority,
