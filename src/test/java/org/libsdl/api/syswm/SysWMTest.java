@@ -56,7 +56,7 @@ public class SysWMTest {
 
         SDL_version version = new SDL_version();
         SDL_GetVersion(version);
-        SDL_SysWMinfo wmInfo = new SDL_SysWMinfo(version);
+        SDL_SysWMInfo wmInfo = new SDL_SysWMInfo(version);
         boolean result = SDL_GetWindowWMInfo(window, wmInfo);
         if (!result) {
             throw new AssertionError("SDL Failure: " + SDL_GetError());
@@ -69,7 +69,7 @@ public class SysWMTest {
         SDL_DestroyWindow(window);
     }
 
-    private void testGetWindowInfoOnWindows(SDL_Window window, SDL_SysWMinfo wmInfo) {
+    private void testGetWindowInfoOnWindows(SDL_Window window, SDL_SysWMInfo wmInfo) {
         System.out.printf("Windows HWND: %1$s%n", wmInfo.info.win.window);
 
         Pointer hwnd = wmInfo.info.win.window;

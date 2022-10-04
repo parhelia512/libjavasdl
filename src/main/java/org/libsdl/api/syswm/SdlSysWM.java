@@ -15,7 +15,7 @@ public final class SdlSysWM {
     /**
      * Get driver-specific information about a window.
      *
-     * The caller must initialize the <code>info</code> structure's version by
+     * <p>You must include SDL_syswm.h for the declaration of SDL_SysWMInfo.</p>
      * <code>SDL_version</code> object (preferably from <code>SDL_GetVersion()</code>),
      * and then this function will fill in the rest
      * of the structure with information about the given window.
@@ -29,5 +29,5 @@ public final class SdlSysWM {
      */
     public static native boolean SDL_GetWindowWMInfo(
             SDL_Window window,
-            SDL_SysWMinfo info);
+            SDL_SysWMInfo info);
 }
