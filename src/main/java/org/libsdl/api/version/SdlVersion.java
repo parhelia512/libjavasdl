@@ -17,7 +17,7 @@ public final class SdlVersion {
 
     // TODO: Custom documentation
 
-    public static SDL_version SDL_GetLinkedLibraryVersion() {
+    public static SDL_version SDL_GetNativeLibraryVersion() {
         SDL_version ver = new SDL_version();
         SDL_GetVersion(ver);
         return ver;
@@ -25,45 +25,35 @@ public final class SdlVersion {
 
     public static SDL_version SDL_GetJavaBindingsVersion() {
         SDL_version ver = new SDL_version();
-        SDL_VERSION(ver);
+        ver.major = SDL_MAJOR_VERSION;
+        ver.minor = SDL_MINOR_VERSION;
+        ver.patch = SDL_PATCHLEVEL;
         return ver;
     }
 
-    public static boolean SDL_CheckLinkedLibraryMatchesAtLeastJavaBindingsVersion() {
-        SDL_version linkedLibraryVersion = SDL_GetLinkedLibraryVersion();
-        if (!SDL_VERSION_ATLEAST(linkedLibraryVersion.major, linkedLibraryVersion.minor, linkedLibraryVersion.patch)) {
-            // "Minimum version of the SDL library found (" + linkedLibraryVersion + ") is older than the application requires (" + SDL_GetJavaBindingsVersion() + ")"
+    public static boolean SDL_CheckNativeLibraryMatchesAtLeastJavaBindingsVersion() {
+        SDL_version nativeLibraryVersion = SDL_GetNativeLibraryVersion();
+        SDL_version javaBindingsVersion = SDL_GetJavaBindingsVersion();
+        if (compareVersions(nativeLibraryVersion, javaBindingsVersion) < 0) {
+            // "Minimum version of the SDL library found (" + nativeLibraryVersion + ") is older than the application requires (" + javaBindingsVersion + ")".
             return false;
         } else {
+            // Everything is OK.
             return true;
         }
     }
 
-    public static void SDL_VERSION(
-            SDL_version ver) {
-        ver.major = SDL_MAJOR_VERSION;
-        ver.minor = SDL_MINOR_VERSION;
-        ver.patch = SDL_PATCHLEVEL;
-    }
-
-    public static int SDL_VERSIONNUM(
-            int major,
-            int minor,
-            int patch) {
-        return major * 1000 + minor * 100 + patch;
-    }
-
-    public static int SDL_COMPILEDVERSION() {
-        return SDL_VERSIONNUM(SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_PATCHLEVEL);
-    }
-
-    public static boolean SDL_VERSION_ATLEAST(
-            int x,
-            int y,
-            int z) {
-        return (SDL_MAJOR_VERSION >= x) &&
-                (SDL_MAJOR_VERSION > x || SDL_MINOR_VERSION >= y) &&
-                (SDL_MAJOR_VERSION > x || SDL_MINOR_VERSION > y || SDL_PATCHLEVEL >= z);
+    public static int compareVersions(
+            SDL_version version1,
+            SDL_version version2) {
+        int result = Integer.compare(version1.major, version2.major);
+        if (result == 0) {
+            result = Integer.compare(version1.minor, version2.minor);
+            if (result == 0) {
+                result = Integer.compare(version1.patch, version2.patch);
+            }
+        }
+        return result;
     }
 
     public static native void SDL_GetVersion(

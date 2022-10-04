@@ -21,6 +21,7 @@ import static org.libsdl.api.render.SDL_RendererFlags.SDL_RENDERER_ACCELERATED;
 import static org.libsdl.api.render.SdlRender.SDL_CreateRenderer;
 import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_WINDOWS;
 import static org.libsdl.api.syswm.SdlSysWM.SDL_GetWindowWMInfo;
+import static org.libsdl.api.version.SdlVersion.SDL_GetJavaBindingsVersion;
 import static org.libsdl.api.version.SdlVersion.SDL_GetVersion;
 import static org.libsdl.api.video.SDL_WindowFlags.SDL_WINDOW_SHOWN;
 import static org.libsdl.api.video.SdlVideo.SDL_CreateWindow;
@@ -54,8 +55,7 @@ public class SysWMTest {
         assertEquals(400, widthHolder.getValue());
         assertEquals(300, heightHolder.getValue());
 
-        SDL_version version = new SDL_version();
-        SDL_GetVersion(version);
+        SDL_version version = SDL_GetJavaBindingsVersion();
         SDL_SysWMInfo wmInfo = new SDL_SysWMInfo(version);
         boolean result = SDL_GetWindowWMInfo(window, wmInfo);
         if (!result) {
