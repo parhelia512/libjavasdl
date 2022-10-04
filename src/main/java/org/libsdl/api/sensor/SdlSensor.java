@@ -21,35 +21,6 @@ public final class SdlSensor {
     }
 
     /**
-     * <p>Accelerometer sensor</p>
-     *
-     * <p>The accelerometer returns the current acceleration in SI meters per
-     * second squared. This measurement includes the force of gravity, so
-     * a device at rest will have an value of SDL_STANDARD_GRAVITY away
-     * from the center of the earth.</p>
-     *
-     * <ul>
-     *     <li>values[0]: Acceleration on the x axis</li>
-     *     <li>values[1]: Acceleration on the y axis</li>
-     *     <li>values[2]: Acceleration on the z axis</li>
-     * </ul>
-     *
-     * <p>For phones held in portrait mode and game controllers held in front of you,
-     * the axes are defined as follows:</p>
-     *
-     * <ul>
-     *     <li>-X ... +X : left ... right</li>
-     *     <li>-Y ... +Y : bottom ... top</li>
-     *     <li>-Z ... +Z : farther ... closer</li>
-     * </ul>
-     *
-     * <p>The axis data is not changed when the phone is rotated.</p>
-     *
-     * @see org.libsdl.api.video.SdlVideo#SDL_GetDisplayOrientation(int)
-     */
-    public static final float SDL_STANDARD_GRAVITY = 9.80665f;
-
-    /**
      * <p>Locking for multi-threaded access to the sensor API</p>
      *
      * <p>If you are using the sensor API or handling events from multiple threads
