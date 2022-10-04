@@ -6,6 +6,9 @@ import org.intellij.lang.annotations.MagicConstant;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_TEXTINPUT;
 
+/**
+ * Keyboard text input event structure (event.text.*)
+ */
 @Structure.FieldOrder({
         "type",
         "timestamp",
@@ -16,11 +19,19 @@ public final class SDL_TextInputEvent extends Structure {
 
     private static final int SDL_TEXTINPUTEVENT_TEXT_SIZE = 32;
 
+    /** {@link org.libsdl.api.event.SDL_EventType#SDL_TEXTINPUT SDL_TEXTINPUT} */
     @MagicConstant(intValues = SDL_TEXTINPUT)
     public int type;
+
+    /** In milliseconds, populated using SDL_GetTicks() */
     public int timestamp;
+
+    /** The window with keyboard focus, if any */
     public int windowID;
-    public byte[] text = new byte[SDL_TEXTINPUTEVENT_TEXT_SIZE];        // TODO: byte, char or String?
+
+    // TODO: byte, char or String?
+    /** The input text */
+    public byte[] text = new byte[SDL_TEXTINPUTEVENT_TEXT_SIZE];
 
     public SDL_TextInputEvent() {
     }

@@ -10,6 +10,9 @@ import static org.libsdl.api.event.SDL_EventType.SDL_JOYBUTTONUP;
 import static org.libsdl.api.event.SdlEventsConst.SDL_PRESSED;
 import static org.libsdl.api.event.SdlEventsConst.SDL_RELEASED;
 
+/**
+ * Joystick button event structure (event.jbutton.*)
+ */
 @Structure.FieldOrder({
         "type",
         "timestamp",
@@ -21,14 +24,29 @@ import static org.libsdl.api.event.SdlEventsConst.SDL_RELEASED;
 })
 public final class SDL_JoyButtonEvent extends Structure {
 
+    /**
+     * {@link org.libsdl.api.event.SDL_EventType#SDL_JOYBUTTONDOWN SDL_JOYBUTTONDOWN}
+     * or {@link org.libsdl.api.event.SDL_EventType#SDL_JOYBUTTONUP SDL_JOYBUTTONUP}
+     */
     @MagicConstant(intValues = {SDL_JOYBUTTONDOWN, SDL_JOYBUTTONUP})
     public int type;
+
+    /** In milliseconds, populated using SDL_GetTicks() */
     public int timestamp;
+
+    /** The joystick instance id */
     public SDL_JoystickID which;
+
+    /** The joystick button index */
     public byte button;
 
+    /**
+     * {@link org.libsdl.api.event.SdlEventsConst#SDL_PRESSED SDL_PRESSED}
+     * or {@link org.libsdl.api.event.SdlEventsConst#SDL_RELEASED SDL_RELEASED}
+     */
     @MagicConstant(intValues = {SDL_PRESSED, SDL_RELEASED})
     public byte state;
+
     public byte padding1;
     public byte padding2;
 
