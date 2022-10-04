@@ -4,6 +4,15 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.ptr.ByteByReference;
 
+/**
+ * A structure to hold a set of audio conversion filters and buffers.
+ *
+ * <p>Note that various parts of the conversion pipeline can take advantage
+ * of SIMD operations (like SSE2, for example). SDL_AudioCVT doesn't require
+ * you to pass it aligned data, but can possibly run much faster if you
+ * set both its (buf) field to a pointer that is aligned to 16 bytes, and its
+ * (len) field to something that's a multiple of 16, if possible.</p>
+ */
 @Structure.FieldOrder({
         "needed",
         "srcFormat",
@@ -20,7 +29,7 @@ import com.sun.jna.ptr.ByteByReference;
 public final class SDL_AudioCVT extends Structure {
 
     /**
-     * <p>Upper limit of filters in SDL_AudioCVT</p>
+     * Upper limit of filters in SDL_AudioCVT
      *
      * <p>The maximum number of SDL_AudioFilter functions in SDL_AudioCVT is
      * currently limited to 9. The SDL_AudioCVT.filters array has 10 pointers,
