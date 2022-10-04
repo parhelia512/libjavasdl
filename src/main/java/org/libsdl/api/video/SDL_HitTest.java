@@ -9,7 +9,7 @@ import org.libsdl.api.rect.SDL_Point;
 public interface SDL_HitTest extends Callback {
 
     @MagicConstant(valuesFromClass = SDL_HitTestResult.class)
-    int callback(
+    int testHit(
             SDL_Window win,
             SDL_Point area,
             Pointer data);

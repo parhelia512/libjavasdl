@@ -6,7 +6,7 @@ import com.sun.jna.Pointer;
 @FunctionalInterface
 public interface SDL_HintCallback extends Callback {
 
-    void callback(
+    void onHintChange(
             Pointer userdata,
             String name,
             String oldValue,
