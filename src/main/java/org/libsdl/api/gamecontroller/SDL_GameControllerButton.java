@@ -3,7 +3,7 @@ package org.libsdl.api.gamecontroller;
 import org.libsdl.jna.JnaEnum;
 
 /**
- * <p>The list of buttons available from a controller.</p>
+ *  The list of buttons available from a controller
  */
 public final class SDL_GameControllerButton implements JnaEnum {
 
