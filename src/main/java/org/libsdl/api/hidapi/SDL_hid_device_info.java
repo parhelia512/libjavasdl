@@ -1,5 +1,10 @@
 package org.libsdl.api.hidapi;
 
+/**
+ * hidapi info structure
+ *
+ * <p>Information about a connected HID device.</p>
+ */
 public final class SDL_hid_device_info {
 
     /** Platform-specific device path */

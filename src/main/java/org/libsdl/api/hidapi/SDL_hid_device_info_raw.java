@@ -3,6 +3,13 @@ package org.libsdl.api.hidapi;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
+/**
+ * hidapi info structure
+ *
+ * <p>Information about a connected HID device.</p>
+ *
+ * <p>This is a private C-style raw type. Use {@link SDL_hid_device_info} instead.</p>
+ */
 @Structure.FieldOrder({
         "path",
         "vendorId",
@@ -19,7 +26,7 @@ import com.sun.jna.Structure;
         "interfaceProtocol",
         "next"
 })
-public final class SDL_hid_device_info_raw extends Structure implements Structure.ByReference {
+final class SDL_hid_device_info_raw extends Structure implements Structure.ByReference {
 
     /** Platform-specific device path */
     public Pointer path;
