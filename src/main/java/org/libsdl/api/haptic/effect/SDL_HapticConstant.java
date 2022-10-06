@@ -11,7 +11,7 @@ import static org.libsdl.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_CONSTANT;
 import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
 
 /**
- * <p>A structure containing a template for a Constant effect.</p>
+ * A structure containing a template for a Constant effect.
  *
  * <p>This struct is exclusively for the {@code SDL_HAPTIC_CONSTANT} effect.</p>
  *
@@ -36,42 +36,39 @@ import static org.libsdl.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
 })
 public final class SDL_HapticConstant extends Structure {
 
+    /** {@link SDL_HapticEffectType#SDL_HAPTIC_CONSTANT SDL_HAPTIC_CONSTANT} */
     @MagicConstant(intValues = SDL_HAPTIC_CONSTANT)
     public short type;
 
     /** Direction of the effect. */
     public SDL_HapticDirection direction;
 
-    /* Replay */
-    /** Duration of the effect. */
+    /** Replay - Duration of the effect. */
     @MagicConstant(intValues = SDL_HAPTIC_INFINITY)
     public int length;
 
-    /** Delay before starting the effect. */
+    /** Replay - Delay before starting the effect. */
     public short delay;
 
-    /* Trigger */
-    /** Button that triggers the effect. */
+    /** Trigger - Button that triggers the effect. */
     public short button;
 
-    /** How soon it can be triggered again after button. */
+    /** Trigger - How soon it can be triggered again after button. */
     public short interval;
 
-    /* Constant */
-    /** Strength of the constant effect. */
+    /** Constant - Strength of the constant effect. */
     public short level;
 
-    /* Envelope */
-    /** Duration of the attack. */
+    /** Envelope - Duration of the attack. */
     public short attackLength;
 
-    /** Level at the start of the attack. */
+    /** Envelope - Level at the start of the attack. */
     public short attackLevel;
 
-    /** Duration of the fade. */
+    /** Envelope - Duration of the fade. */
     public short fadeLength;
 
-    /** Level at the end of the fade. */
+    /** Envelope - Level at the end of the fade. */
     public short fadeLevel;
 
     public SDL_HapticConstant() {
