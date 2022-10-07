@@ -2,6 +2,9 @@ package org.libsdl.api.hints;
 
 import org.libsdl.jna.JnaEnum;
 
+/**
+ * An enumeration of hint priorities
+ */
 public final class SDL_HintPriority implements JnaEnum {
 
     public static final int SDL_HINT_DEFAULT = 0;
