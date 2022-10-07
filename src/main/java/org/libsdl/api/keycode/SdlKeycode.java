@@ -1,5 +1,10 @@
 package org.libsdl.api.keycode;
 
+/**
+ * Definitions from file SDL_keycode.h
+ *
+ * <p>Defines constants which identify keyboard keys and modifiers.</p>
+ */
 public final class SdlKeycode {
 
     public static final int SDLK_SCANCODE_MASK = 1 << 30;
