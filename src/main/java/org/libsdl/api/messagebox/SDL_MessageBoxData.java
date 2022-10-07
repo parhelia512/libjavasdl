@@ -6,6 +6,9 @@ import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.jna.ContiguousArrayList;
 
+/**
+ * MessageBox structure containing title, text, window, etc.
+ */
 @Structure.FieldOrder({
         "flags",
         "window",
@@ -17,13 +20,22 @@ import org.libsdl.jna.ContiguousArrayList;
 })
 public final class SDL_MessageBoxData extends Structure {
 
+    /** {@link SDL_MessageBoxFlags} */
     @MagicConstant(flagsFromClass = SDL_MessageBoxFlags.class)
     public int flags;
+
+    /** Parent window, can be null */
     public SDL_Window window;
+
+    /** UTF-8 title */
     public String title;
+
+    /** UTF-8 message text */
     public String message;
     public int numbuttons;
     public Pointer buttons;
+
+    /** {@link SDL_MessageBoxColorScheme}, can be null to use system settings */
     public SDL_MessageBoxColorScheme colorScheme;
 
     public SDL_MessageBoxData() {

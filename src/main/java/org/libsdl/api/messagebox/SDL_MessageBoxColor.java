@@ -3,6 +3,9 @@ package org.libsdl.api.messagebox;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
+/**
+ * RGB value used in a message box color scheme
+ */
 @Structure.FieldOrder({
         "r",
         "g",
