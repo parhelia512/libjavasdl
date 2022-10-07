@@ -17,7 +17,7 @@ public interface SDL_LogOutputFunction extends Callback {
     /**
      * The prototype for the log output callback function.
      *
-     * <p>This function is called by SDL when there is new text to be logged.</p>
+     * <p>This function is called by SDL when there is a new text to be logged.</p>
      *
      * @param userdata what was passed as {@code userdata} to SDL_LogSetOutputFunction()
      * @param category the category of the message

@@ -2,6 +2,14 @@ package org.libsdl.api.log;
 
 import org.libsdl.jna.JnaEnum;
 
+/**
+ * The predefined log categories. Also known as logger names.
+ *
+ * <p>By default the application category is enabled at the INFO level,
+ * the assert category is enabled at the WARN level, test is enabled
+ * at the VERBOSE level and all other categories are enabled at the
+ * CRITICAL level.</p>
+ */
 public final class SDL_LogCategory implements JnaEnum {
 
     public static final int SDL_LOG_CATEGORY_APPLICATION = 0;
