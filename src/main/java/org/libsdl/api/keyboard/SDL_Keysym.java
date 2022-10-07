@@ -6,6 +6,12 @@ import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.keycode.SDL_Keycode;
 import org.libsdl.api.scancode.SDL_Scancode;
 
+/**
+ * The SDL keysym structure, used in key events.
+ *
+ * @apiNote If you are looking for translated character input, see the
+ * {@link org.libsdl.api.event.SDL_EventType#SDL_TEXTINPUT} event.
+ */
 @Structure.FieldOrder({
         "scancode",
         "sym",
@@ -14,12 +20,15 @@ import org.libsdl.api.scancode.SDL_Scancode;
 })
 public final class SDL_Keysym extends Structure {
 
+    /** SDL physical key code - see {@link SDL_Scancode} for details */
     @MagicConstant(valuesFromClass = SDL_Scancode.class)
     public int scancode;
 
+    /** SDL virtual key code - see {@link SDL_Keycode} for details */
     @MagicConstant(valuesFromClass = SDL_Keycode.class)
     public int sym;
 
+    /** current key modifiers */
     public short mod;
 
     public int unused;
