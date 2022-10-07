@@ -11,7 +11,7 @@ import com.sun.jna.PointerType;
 public final class SDL_MetalView extends PointerType {
 
     /**
-     * The default constructor wraps a NULL pointer.
+     * The default constructor wraps a null pointer.
      */
     public SDL_MetalView() {
     }
