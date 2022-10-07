@@ -2,6 +2,7 @@ package org.libsdl.api.pixels;
 
 import org.libsdl.jna.JnaEnum;
 
+/** Packed component layout. */
 public final class SDL_PackedLayout implements JnaEnum {
 
     public static final int SDL_PACKEDLAYOUT_NONE = 0;

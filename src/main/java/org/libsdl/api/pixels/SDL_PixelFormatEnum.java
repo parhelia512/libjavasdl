@@ -101,13 +101,28 @@ public final class SDL_PixelFormatEnum implements JnaEnum {
         }
     }
 
+    /** Planar mode: Y + V + U  (3 planes) */
     public static final int SDL_PIXELFORMAT_YV12 = SDL_DEFINE_PIXELFOURCC('Y', 'V', '1', '2');
+
+    /** Planar mode: Y + U + V  (3 planes) */
     public static final int SDL_PIXELFORMAT_IYUV = SDL_DEFINE_PIXELFOURCC('I', 'Y', 'U', 'V');
+
+    /** Packed mode: Y0+U0+Y1+V0 (1 plane) */
     public static final int SDL_PIXELFORMAT_YUY2 = SDL_DEFINE_PIXELFOURCC('Y', 'U', 'Y', '2');
+
+    /** Packed mode: U0+Y0+V0+Y1 (1 plane) */
     public static final int SDL_PIXELFORMAT_UYVY = SDL_DEFINE_PIXELFOURCC('U', 'Y', 'V', 'Y');
+
+    /** Packed mode: Y0+V0+Y1+U0 (1 plane) */
     public static final int SDL_PIXELFORMAT_YVYU = SDL_DEFINE_PIXELFOURCC('Y', 'V', 'Y', 'U');
+
+    /** Planar mode: Y + U/V interleaved  (2 planes) */
     public static final int SDL_PIXELFORMAT_NV12 = SDL_DEFINE_PIXELFOURCC('N', 'V', '1', '2');
+
+    /** Planar mode: Y + V/U interleaved  (2 planes) */
     public static final int SDL_PIXELFORMAT_NV21 = SDL_DEFINE_PIXELFOURCC('N', 'V', '2', '1');
+
+    /** Android video texture format */
     public static final int SDL_PIXELFORMAT_EXTERNAL_OES = SDL_DEFINE_PIXELFOURCC('O', 'E', 'S', ' ');
 
     public static int SDL_DEFINE_PIXELFOURCC(
