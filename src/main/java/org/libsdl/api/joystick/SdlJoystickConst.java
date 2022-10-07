@@ -5,11 +5,15 @@ import org.intellij.lang.annotations.MagicConstant;
 public final class SdlJoystickConst {
 
     /**
-     * <p>Set max recognized G-force from accelerometer</p>
+     * Set max recognized G-force from accelerometer.
+     *
      * <p>See src/joystick/uikit/SDL_sysjoystick.m for notes on why this is needed</p>
      */
     public static final double SDL_IPHONE_MAX_GFORCE = 5.0;
 
+    /**
+     * The current version of the SDL_VirtualJoystickDesc structure
+     */
     public static final int SDL_VIRTUAL_JOYSTICK_DESC_VERSION = 1;
 
     public static final int SDL_JOYSTICK_AXIS_MAX = 32767;
