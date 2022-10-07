@@ -18,6 +18,15 @@ public final class SDL_ButtonMask implements JnaEnum {
     public static final int SDL_BUTTON_X1MASK = SDL_BUTTON(SDL_BUTTON_X1);
     public static final int SDL_BUTTON_X2MASK = SDL_BUTTON(SDL_BUTTON_X2);
 
+    /**
+     * Used as a mask when testing buttons in buttonstate.
+     *
+     * <ul>
+     *     <li>Button 1:  Left mouse button</li>
+     *     <li>Button 2:  Middle mouse button</li>
+     *     <li>Button 3:  Right mouse button</li>
+     * </ul>
+     */
     public static int SDL_BUTTON(
             @MagicConstant(valuesFromClass = SDL_Button.class) int x) {
         return 1 << (x - 1);
