@@ -807,8 +807,8 @@ public final class SdlAudio {
      * @see #SDL_AudioStreamPut(SDL_AudioStream, Pointer, int)
      * @see #SDL_AudioStreamGet(SDL_AudioStream, Pointer, int)
      * @see #SDL_AudioStreamAvailable(SDL_AudioStream)
+     * @see #SDL_AudioStreamFlush(SDL_AudioStream)
      * @see #SDL_AudioStreamClear(SDL_AudioStream)
-     * @see #SDL_FreeAudioStream(SDL_AudioStream)
      * @since This function is available since SDL 2.0.7.
      */
     public static native void SDL_FreeAudioStream(
