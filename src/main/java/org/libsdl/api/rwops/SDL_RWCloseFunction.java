@@ -12,6 +12,11 @@ import com.sun.jna.Callback;
 @FunctionalInterface
 public interface SDL_RWCloseFunction extends Callback {
 
+    /**
+     * Close a file.
+     *
+     * @return 0 if successful or -1 on write error when flushing data.
+     */
     int close(
             SDL_RWops context);
 }

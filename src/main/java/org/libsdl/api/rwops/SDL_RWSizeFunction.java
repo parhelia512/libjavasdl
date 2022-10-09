@@ -12,6 +12,9 @@ import com.sun.jna.Callback;
 @FunctionalInterface
 public interface SDL_RWSizeFunction extends Callback {
 
+    /**
+     * @return The size of the file in this rwops, or -1 if unknown
+     */
     long size(
             SDL_RWops context);
 }

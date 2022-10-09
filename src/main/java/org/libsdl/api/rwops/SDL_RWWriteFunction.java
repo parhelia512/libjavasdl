@@ -14,6 +14,12 @@ import org.libsdl.jna.size_t;
 @FunctionalInterface
 public interface SDL_RWWriteFunction extends Callback {
 
+    /**
+     * Write exactly {@code num} objects each of {@code size} from the area
+     * pointed at by {@code ptr} to data stream.
+     *
+     * @return the number of objects written, or 0 at error or end of file.
+     */
     size_t write(
             SDL_RWops context,
             Pointer ptr,

@@ -13,6 +13,12 @@ import org.intellij.lang.annotations.MagicConstant;
 @FunctionalInterface
 public interface SDL_RWSeekFunction extends Callback {
 
+    /**
+     * Seek to {@code offset} relative to {@code whence}, one of stdio's whence values:
+     * RW_SEEK_SET, RW_SEEK_CUR, RW_SEEK_END
+     *
+     * @return the final offset in the data stream, or -1 on error.
+     */
     long size(
             SDL_RWops context,
             long offset,
