@@ -22,7 +22,7 @@ public final class SdlHidApi {
             short productId) {
         SDL_hid_device_info_raw rawStruct = InternalNativeFunctions.SDL_hid_enumerate(vendorId, productId);
         List<SDL_hid_device_info> devInfoList = convert(rawStruct);
-        InternalNativeFunctions.SDL_hid_free_enumeration(rawStruct);
+        InternalNativeFunctions.SDL_hid_free_enumeration(rawStruct.getPointer());
         return devInfoList;
     }
 
@@ -196,7 +196,7 @@ public final class SdlHidApi {
                 short productId);
 
         public static native void SDL_hid_free_enumeration(
-                SDL_hid_device_info_raw devs);
+                Pointer devs);
 
         public static native SDL_hid_device SDL_hid_open(
                 short vendorId,
