@@ -4,6 +4,9 @@ import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
 import com.sun.jna.ptr.PointerByReference;
 
+/**
+ * A structure representing rendering state
+ */
 public final class SDL_Renderer extends PointerType {
 
     public SDL_Renderer() {

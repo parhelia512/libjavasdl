@@ -3,10 +3,18 @@ package org.libsdl.api.render;
 import org.libsdl.jna.JnaEnum;
 import org.libsdl.jna.JnaUtils;
 
+/**
+ * Flip constants for SDL_RenderCopyEx
+ */
 public final class SDL_RendererFlip implements JnaEnum {
 
+    /** Do not flip */
     public static final int SDL_FLIP_NONE = 0x00000000;
+
+    /** flip horizontally */
     public static final int SDL_FLIP_HORIZONTAL = 0x00000001;
+
+    /** flip vertically */
     public static final int SDL_FLIP_VERTICAL = 0x00000002;
 
     public static String toString(int value) {
