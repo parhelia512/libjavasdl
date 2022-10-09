@@ -6,7 +6,7 @@ import com.sun.jna.IntegerType;
  * This is a unique ID for a sensor for the time it is connected to the system,
  * and is never reused for the lifetime of the application.
  *
- * The ID value starts at 0 and increments from there. The value -1 is an invalid ID.
+ * <p>The ID value starts at 0 and increments from there. The value -1 is an invalid ID.</p>
  */
 public final class SDL_SensorID extends IntegerType {
 

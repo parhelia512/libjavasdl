@@ -6,12 +6,12 @@ import com.sun.jna.PointerType;
 /**
  * A platform specific structure to identify a sensor.
  *
- * Treat it as an opaque pointer.
+ * <p>Treat it as an opaque pointer.</p>
  */
 public final class SDL_Sensor extends PointerType {
 
     /**
-     * The default constructor wraps a NULL pointer.
+     * The default constructor wraps a null pointer.
      */
     public SDL_Sensor() {
     }
