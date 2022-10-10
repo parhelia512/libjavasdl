@@ -6,7 +6,8 @@ import com.sun.jna.ptr.FloatByReference;
 import org.libsdl.jna.ContiguousArrayList;
 
 /**
- * A rectangle, with the origin at the upper left (floating point).
+ * {@code SDL_FRect} is a simple structure that contains only four floating values:
+ * {@code x}, {@code y} which hold the position and {@code w}, {@code h} which hold width and height.
  *
  * @see SdlRect#SDL_FRectEmpty(SDL_FRect)
  * @see SdlRect#SDL_FRectEquals(SDL_FRect, SDL_FRect)
