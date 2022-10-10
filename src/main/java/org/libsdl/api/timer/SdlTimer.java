@@ -3,6 +3,11 @@ package org.libsdl.api.timer;
 import com.sun.jna.Pointer;
 import org.libsdl.jna.SdlNativeLibraryLoader;
 
+/**
+ * Definitions from file SDL_timer.h
+ *
+ * <p>Header for the SDL time management routines.</p>
+ */
 public final class SdlTimer {
 
     static {
@@ -17,9 +22,16 @@ public final class SdlTimer {
      *
      * <p>This value wraps if the program runs for more than ~49 days.</p>
      *
+     * <p>This function is not recommended as of SDL 2.0.18; use SDL_GetTicks64()
+     * instead, where the value doesn't wrap every ~49 days. There are places in
+     * SDL where we provide a 32-bit timestamp that can not change without
+     * breaking binary compatibility, though, so this function isn't officially
+     * deprecated.</p>
+     *
      * @return an unsigned 32-bit value representing the number of milliseconds
      * since the SDL library initialized.
      * @see #SDL_TICKS_PASSED(int, int)
+     * @since This function is available since SDL 2.0.0.
      */
     public static native int SDL_GetTicks();
 
@@ -46,15 +58,25 @@ public final class SdlTimer {
     public static native long SDL_GetTicks64();
 
     /**
-     * Compare SDL ticks values, and return true if {@code A} has passed {@code B}.
+     * Compare 32-bit SDL ticks values, and return true if {@code A} has passed {@code B}.
      *
-     * <p>For example, if you want to wait 100 ms, you could do this:</p>
+     * <p>This should be used with results from SDL_GetTicks(), as this macro
+     * attempts to deal with the 32-bit counter wrapping back to zero every ~49
+     * days, but should _not_ be used with SDL_GetTicks64(), which does not have
+     * that problem.</p>
+     *
+     * <p>For example, with SDL_GetTicks(), if you want to wait 100 ms, you could
+     * do this:</p>
      *
      * <blockquote><pre>
      * int timeout = SDL_GetTicks() + 100;
      * while (!SDL_TICKS_PASSED(SDL_GetTicks(), timeout)) {
      *     // ... do work until timeout has elapsed
      * }</pre></blockquote>
+     *
+     * <p>Note that this does not handle tick differences greater
+     * than 2^31 so take care when using the above kind of code
+     * with large timeout delays (tens of days).</p>
      */
     public static boolean SDL_TICKS_PASSED(
             int ticksCountA,
@@ -73,6 +95,7 @@ public final class SdlTimer {
      *
      * @return the current counter value.
      * @see #SDL_GetPerformanceFrequency()
+     * @since This function is available since SDL 2.0.0.
      */
     public static native long SDL_GetPerformanceCounter();
 
@@ -93,6 +116,7 @@ public final class SdlTimer {
      * scheduling.</p>
      *
      * @param ms the number of milliseconds to delay
+     * @since This function is available since SDL 2.0.0.
      */
     public static native void SDL_Delay(
             int ms);
@@ -125,6 +149,7 @@ public final class SdlTimer {
      * @return a timer ID or 0 if an error occurs; call SDL_GetError() for more
      * information.
      * @see #SDL_RemoveTimer(SDL_TimerID)
+     * @since This function is available since SDL 2.0.0.
      */
     public static native SDL_TimerID SDL_AddTimer(
             int interval,
@@ -135,9 +160,10 @@ public final class SdlTimer {
      * Remove a timer created with SDL_AddTimer().
      *
      * @param id the ID of the timer to remove
-     * @return SDL_TRUE if the timer is removed or SDL_FALSE if the timer wasn't
+     * @return true if the timer is removed or false if the timer wasn't
      * found.
      * @see #SDL_AddTimer(int, SDL_TimerCallback, Pointer)
+     * @since This function is available since SDL 2.0.0.
      */
     public static native boolean SDL_RemoveTimer(
             SDL_TimerID id);
