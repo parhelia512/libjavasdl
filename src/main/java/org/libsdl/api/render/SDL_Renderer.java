@@ -3,9 +3,12 @@ package org.libsdl.api.render;
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
 import com.sun.jna.ptr.PointerByReference;
+import org.libsdl.api.video.SDL_Window;
 
 /**
- * A structure representing rendering state
+ * A structure holding state and settings for rendering operations.
+ *
+ * <p>It is tied to an {@link SDL_Window SDL_Window} so it can only render within that {@code SDL_Window}.</p>
  */
 public final class SDL_Renderer extends PointerType {
 
