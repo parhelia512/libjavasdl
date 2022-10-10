@@ -6,6 +6,11 @@ import com.sun.jna.ptr.PointerByReference;
 import org.libsdl.jna.SdlNativeLibraryLoader;
 import org.libsdl.jna.size_t;
 
+/**
+ * Definitions from file SDL_stdinc.h
+ *
+ * <p>This is a general header that includes C language support.</p>
+ */
 public final class SdlStdinc {
 
     static {
@@ -37,6 +42,11 @@ public final class SdlStdinc {
     public static native void SDL_free(
             Pointer mem);
 
+    /**
+     * Get the original set of SDL memory functions
+     *
+     * @since This function is available since SDL 2.24.0.
+     */
     public static AllocationFunctions SDL_GetOriginalMemoryFunctions() {
         PointerByReference mallocFunc = new PointerByReference();
         PointerByReference callocFunc = new PointerByReference();
@@ -48,6 +58,22 @@ public final class SdlStdinc {
         return collectAllocationFunctions(mallocFunc, callocFunc, reallocFunc, freeFunc);
     }
 
+    /**
+     * Get the original set of SDL memory functions
+     *
+     * @since This function is available since SDL 2.24.0.
+     */
+    public static native void SDL_GetOriginalMemoryFunctions(
+            PointerByReference mallocFunc,
+            PointerByReference callocFunc,
+            PointerByReference reallocFunc,
+            PointerByReference freeFunc);
+
+    /**
+     * Get the current set of SDL memory functions
+     *
+     * @since This function is available since SDL 2.0.7.
+     */
     public static AllocationFunctions SDL_GetMemoryFunctions() {
         PointerByReference mallocFunc = new PointerByReference();
         PointerByReference callocFunc = new PointerByReference();
@@ -58,6 +84,17 @@ public final class SdlStdinc {
 
         return collectAllocationFunctions(mallocFunc, callocFunc, reallocFunc, freeFunc);
     }
+
+    /**
+     * Get the current set of SDL memory functions
+     *
+     * @since This function is available since SDL 2.0.7.
+     */
+    public static native void SDL_GetMemoryFunctions(
+            PointerByReference mallocFunc,
+            PointerByReference callocFunc,
+            PointerByReference reallocFunc,
+            PointerByReference freeFunc);
 
     private static AllocationFunctions collectAllocationFunctions(
             PointerByReference mallocFunc,
@@ -71,32 +108,32 @@ public final class SdlStdinc {
         return new AllocationFunctions(mallocCallback, callocCallback, reallocCallback, freeCallback);
     }
 
+    /**
+     * Replace SDL's memory allocation functions with a custom set
+     *
+     * @since This function is available since SDL 2.0.7.
+     */
     public static native int SDL_SetMemoryFunctions(
-            SDL_malloc_func malloc_func,
-            SDL_calloc_func calloc_func,
-            SDL_realloc_func realloc_func,
-            SDL_free_func free_func);
+            SDL_malloc_func mallocFunc,
+            SDL_calloc_func callocFunc,
+            SDL_realloc_func reallocFunc,
+            SDL_free_func freeFunc);
 
-    public static native void SDL_GetOriginalMemoryFunctions(
-            PointerByReference mallocFunc,
-            PointerByReference callocFunc,
-            PointerByReference reallocFunc,
-            PointerByReference freeFunc);
-
-    public static native void SDL_GetMemoryFunctions(
-            PointerByReference malloc_func,
-            PointerByReference calloc_func,
-            PointerByReference realloc_func,
-            PointerByReference free_func);
-
+    /**
+     * Replace SDL's memory allocation functions with a custom set
+     *
+     * @since This function is available since SDL 2.0.7.
+     */
     public static native int SDL_SetMemoryFunctions(
-            Pointer malloc_func,
-            Pointer calloc_func,
-            Pointer realloc_func,
-            Pointer free_func);
+            Pointer mallocFunc,
+            Pointer callocFunc,
+            Pointer reallocFunc,
+            Pointer freeFunc);
 
     /**
      * Get the number of outstanding (unfreed) allocations
+     *
+     * @since This function is available since SDL 2.0.7.
      */
     public static native int SDL_GetNumAllocations();
 
