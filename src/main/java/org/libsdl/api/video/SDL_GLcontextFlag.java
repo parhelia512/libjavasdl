@@ -3,11 +3,25 @@ package org.libsdl.api.video;
 import org.libsdl.jna.JnaEnum;
 import org.libsdl.jna.JnaUtils;
 
+/**
+ * Flags for OpenGL attribute key {@link SDL_GLattr#SDL_GL_CONTEXT_FLAGS}.
+ *
+ * <p>To be OR'd and passed to {@code SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, flags)}</p>
+ *
+ * @see SdlVideo#SDL_GL_SetAttribute(int, int) SDL_GL_SetAttribute(SDL_GLattr, ...)
+ */
 public final class SDL_GLcontextFlag implements JnaEnum {
 
+    /** @see SDL_GLattr#SDL_GL_CONTEXT_FLAGS */
     public static final int SDL_GL_CONTEXT_DEBUG_FLAG = 0x0001;
+
+    /** @see SDL_GLattr#SDL_GL_CONTEXT_FLAGS */
     public static final int SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG = 0x0002;
+
+    /** @see SDL_GLattr#SDL_GL_CONTEXT_FLAGS */
     public static final int SDL_GL_CONTEXT_ROBUST_ACCESS_FLAG = 0x0004;
+
+    /** @see SDL_GLattr#SDL_GL_CONTEXT_FLAGS */
     public static final int SDL_GL_CONTEXT_RESET_ISOLATION_FLAG = 0x0008;
 
     public static String toString(int type) {

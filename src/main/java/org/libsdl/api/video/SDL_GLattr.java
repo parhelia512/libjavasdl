@@ -2,6 +2,11 @@ package org.libsdl.api.video;
 
 import org.libsdl.jna.JnaEnum;
 
+/**
+ * OpenGL configuration attributes.
+ *
+ * @see SdlVideo#SDL_GL_SetAttribute(int, int) SDL_GL_SetAttribute(SDL_GLattr, ...)
+ */
 public final class SDL_GLattr implements JnaEnum {
 
     public static final int SDL_GL_RED_SIZE = 0;
@@ -24,13 +29,25 @@ public final class SDL_GLattr implements JnaEnum {
     public static final int SDL_GL_CONTEXT_MAJOR_VERSION = 17;
     public static final int SDL_GL_CONTEXT_MINOR_VERSION = 18;
     public static final int SDL_GL_CONTEXT_EGL = 19;
+
+    /** @see SDL_GLcontextFlag */
     public static final int SDL_GL_CONTEXT_FLAGS = 20;
+
+    /** @see SDL_GLprofile */
     public static final int SDL_GL_CONTEXT_PROFILE_MASK = 21;
+
     public static final int SDL_GL_SHARE_WITH_CURRENT_CONTEXT = 22;
+
     public static final int SDL_GL_FRAMEBUFFER_SRGB_CAPABLE = 23;
+
+    /** @see SDL_GLcontextReleaseFlag */
     public static final int SDL_GL_CONTEXT_RELEASE_BEHAVIOR = 24;
+
+    /** @see SDL_GLContextResetNotification */
     public static final int SDL_GL_CONTEXT_RESET_NOTIFICATION = 25;
+
     public static final int SDL_GL_CONTEXT_NO_ERROR = 26;
+
     public static final int SDL_GL_FLOATBUFFERS = 27;
 
     // TODO: Generate public static String toString(int value)

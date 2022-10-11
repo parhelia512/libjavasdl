@@ -2,10 +2,19 @@ package org.libsdl.api.video;
 
 import org.libsdl.jna.JnaEnum;
 
+/**
+ * Possible return values from the SDL_HitTest callback.
+ *
+ * @see SDL_HitTest
+ */
 public final class SDL_HitTestResult implements JnaEnum {
 
+    /** Region is normal. No special properties. */
     public static final int SDL_HITTEST_NORMAL = 0;
+
+    /** Region can drag entire window. */
     public static final int SDL_HITTEST_DRAGGABLE = 1;
+
     public static final int SDL_HITTEST_RESIZE_TOPLEFT = 2;
     public static final int SDL_HITTEST_RESIZE_TOP = 3;
     public static final int SDL_HITTEST_RESIZE_TOPRIGHT = 4;
