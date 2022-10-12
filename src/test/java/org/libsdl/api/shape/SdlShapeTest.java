@@ -51,7 +51,7 @@ public class SdlShapeTest {
         boolean isAlpha = SDL_ISPIXELFORMAT_ALPHA(shape.getFormat().format);
         System.out.println("Has alpha channel: " + isAlpha);
 
-        SDL_Window window = SDL_CreateShapedWindow("Test window", SDL_WINDOWPOS_CENTERED(), SDL_WINDOWPOS_CENTERED(), 400, 300, SDL_WINDOW_SHOWN);
+        SDL_Window window = SDL_CreateShapedWindow("Test window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 400, 300, SDL_WINDOW_SHOWN);
         System.out.println("Press SPACE to set shape");
 
         final AtomicBoolean shouldRun = new AtomicBoolean(true);

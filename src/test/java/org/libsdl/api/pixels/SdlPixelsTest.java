@@ -30,7 +30,7 @@ public final class SdlPixelsTest {
         int h = 200;
 
         SDL_Init(SDL_INIT_VIDEO);
-        SDL_Window window = SDL_CreateWindow("Test Window", SDL_WINDOWPOS_CENTERED(), SDL_WINDOWPOS_CENTERED(), w, h, 0);
+        SDL_Window window = SDL_CreateWindow("Test Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, 0);
         SDL_Surface windowSurface = SDL_GetWindowSurface(window);
 
         SDL_Surface imageSurface = SDL_CreateRGBSurface(0, w, h, 8, 0, 0, 0, 0);
