@@ -98,32 +98,12 @@ public final class SdlPixels {
     /**
      * Free an SDL_PixelFormat structure allocated by SDL_AllocFormat().
      *
-     * <p>This is a Java-style version of the raw C-style {@link #SDL_FreeFormat(Pointer)}.
-     * Prefer this function to the raw C-style one.</p>
-     *
      * @param format the SDL_PixelFormat structure to free
      * @see #SDL_AllocFormat(int)
      * @since This function is available since SDL 2.0.0.
      */
-    public static void SDL_FreeFormat(
-            SDL_PixelFormat format) {
-        // Actual deallocation must always be called with a pointer, so extract it and re-call the raw native method. Reason: When a native method has an argument of type Structure, JNA calls Structure.read() to refresh the Java object after the native call. In case of deallocation, this would end up reading from a deallocated memory.
-        Pointer mem = format.getPointer();
-        SDL_FreeFormat(mem);
-    }
-
-    /**
-     * Free an SDL_PixelFormat structure allocated by SDL_AllocFormat().
-     *
-     * <p>This is a raw C-style version of the function.
-     * Prefer more Java-style {@link #SDL_FreeFormat(SDL_PixelFormat)}.</p>
-     *
-     * @param format Pointer to the SDL_PixelFormat structure to free
-     * @see #SDL_AllocFormat(int)
-     * @since This function is available since SDL 2.0.0.
-     */
     public static native void SDL_FreeFormat(
-            Pointer format);
+            SDL_PixelFormat format);
 
     /**
      * Create a palette structure with the specified number of color entries.

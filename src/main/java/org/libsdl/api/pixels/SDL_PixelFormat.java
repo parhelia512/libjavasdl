@@ -1,60 +1,129 @@
 package org.libsdl.api.pixels;
 
 import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
+import com.sun.jna.PointerType;
 import org.intellij.lang.annotations.MagicConstant;
 
 /**
+ * A structure that contains pixel format information.
+ *
+ * <p>A pixel format has either a palette or masks. If a palette is used,
+ * then rMask, gMask, bMask, and aMask will be 0.</p>
+ *
+ * The data types used to represent pixels are as follows:
+ *
+ * <table>
+ *     <tr>
+ *         <th>Bytes Per Pixel</th>
+ *         <th>Related Data Types</th>
+ *     </tr>
+ *     <tr>
+ *         <td>1</td>
+ *         <td>byte (Uint8)</td>
+ *     </tr>
+ *     <tr>
+ *         <td>2</td>
+ *         <td>short (Unit16)</td>
+ *     </tr>
+ *     <tr>
+ *         <td>3</td>
+ *         <td>3×byte (3×Uint8)</td>
+ *     </tr>
+ *     <tr>
+ *         <td>4</td>
+ *         <td>int (Uint32)</td>
+ *     </tr>
+ * </table>
+ *
+ * <p>An {@code SDL_PixelFormat} describes the format of the pixel data stored
+ * at the {@code pixels} property of an {@link org.libsdl.api.surface.SDL_Surface SDL_Surface}.
+ * Every surface stores an {@code SDL_PixelFormat} in the {@code format} property.</p>
+ *
+ * <p>If you wish to do pixel level modifications on a surface,
+ * then understanding how SDL stores its color information is essential.</p>
+ *
  * @apiNote Everything in the pixel format structure is read-only.
  */
-@Structure.FieldOrder({
-        "format",
-        "palette",
-        "bitsPerPixel",
-        "bytesPerPixel",
-        "padding",
-        "rMask",
-        "gMask",
-        "bMask",
-        "aMask",
-        "rLoss",
-        "gLoss",
-        "bLoss",
-        "aLoss",
-        "rShift",
-        "gShift",
-        "bShift",
-        "aShift",
-        "refcount",
-        "next"
-})
-public final class SDL_PixelFormat extends Structure implements Structure.ByReference {
+public final class SDL_PixelFormat extends PointerType {
 
-    @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class)
-    public int format;
-    public SDL_Palette palette;
-    public byte bitsPerPixel;
-    public byte bytesPerPixel;
-    public byte[] padding = new byte[2];
-    public int rMask;
-    public int gMask;
-    public int bMask;
-    public int aMask;
-    public byte rLoss;
-    public byte gLoss;
-    public byte bLoss;
-    public byte aLoss;
-    public byte rShift;
-    public byte gShift;
-    public byte bShift;
-    public byte aShift;
-    public int refcount;
-    public Pointer next;
+    private SDL_PixelFormat_internal semanticStruct;
 
     public SDL_PixelFormat() {
     }
 
     public SDL_PixelFormat(Pointer p) {
         super(p);
+    }
+
+    @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class)
+    public int getFormat() {
+        return (Integer) readField("format");
+    }
+
+    public SDL_Palette getPalette() {
+        return (SDL_Palette) readField("palette");
+    }
+
+    public byte getBitsPerPixel() {
+        return (Byte) readField("bitsPerPixel");
+    }
+
+    public byte getBytesPerPixel() {
+        return (Byte) readField("bytesPerPixel");
+    }
+
+    public int getRMask() {
+        return (Integer) readField("rMask");
+    }
+
+    public int getGMask() {
+        return (Integer) readField("gMask");
+    }
+
+    public int getBMask() {
+        return (Integer) readField("bMask");
+    }
+
+    public int getAMask() {
+        return (Integer) readField("aMask");
+    }
+
+    public byte getRLoss() {
+        return (Byte) readField("rLoss");
+    }
+
+    public byte getGLoss() {
+        return (Byte) readField("gLoss");
+    }
+
+    public byte getBLoss() {
+        return (Byte) readField("bLoss");
+    }
+
+    public byte getALoss() {
+        return (Byte) readField("aLoss");
+    }
+
+    public byte getRShift() {
+        return (Byte) readField("rShift");
+    }
+
+    public byte getGShift() {
+        return (Byte) readField("gShift");
+    }
+
+    public byte getBShift() {
+        return (Byte) readField("bShift");
+    }
+
+    public byte getAShift() {
+        return (Byte) readField("aShift");
+    }
+
+    private Object readField(String name) {
+        if (semanticStruct == null) {
+            semanticStruct = new SDL_PixelFormat_internal(getPointer());
+        }
+        return semanticStruct.readField(name);
     }
 }

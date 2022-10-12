@@ -80,6 +80,12 @@ public final class SdlPixelsTest {
 
         SDL_SetSurfacePalette(imageSurface, firstPalette);
 
+        SDL_Color color0b = imageSurface.getFormat().getPalette().getColors(0);
+        Assertions.assertEquals(colorList.get(0).r, color0b.r);
+        Assertions.assertEquals(colorList.get(0).g, color0b.g);
+        Assertions.assertEquals(colorList.get(0).b, color0b.b);
+        Assertions.assertEquals(colorList.get(0).a, color0b.a);
+
         SDL_BlitSurface(imageSurface, null, windowSurface, null);
         SDL_UpdateWindowSurface(window);
         SDL_Delay(2000);
