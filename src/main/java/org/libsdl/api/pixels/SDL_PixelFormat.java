@@ -49,7 +49,7 @@ public final class SDL_PixelFormat extends Structure implements Structure.ByRefe
     public byte bShift;
     public byte aShift;
     public int refcount;
-    public SDL_PixelFormat next;
+    public Pointer next;
 
     public SDL_PixelFormat() {
     }
