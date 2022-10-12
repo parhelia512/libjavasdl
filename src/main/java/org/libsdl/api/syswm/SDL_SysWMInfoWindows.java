@@ -10,13 +10,13 @@ import com.sun.jna.Structure;
 })
 public final class SDL_SysWMInfoWindows extends Structure {
 
-    /** The window handle (HWND) */
+    /** The window handle ({@code HWND}) */
     public Pointer window;
 
-    /** The window device context */
+    /** The window device context ({@code HDC}) */
     public Pointer hdc;
 
-    /** The instance handle */
+    /** The instance handle ({@code HINSTANCE}) */
     public Pointer hinstance;
 
     public SDL_SysWMInfoWindows() {

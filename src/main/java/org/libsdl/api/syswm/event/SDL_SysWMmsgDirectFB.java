@@ -8,7 +8,7 @@ import com.sun.jna.Structure;
 })
 public final class SDL_SysWMmsgDirectFB extends Structure {
 
-    /** DFBEvent */
+    /** {@code DFBEvent} */
     public Pointer event;
 
     public SDL_SysWMmsgDirectFB() {

@@ -10,13 +10,13 @@ import com.sun.jna.Structure;
 })
 public final class SDL_SysWMInfoDirectFB extends Structure {
 
-    /** The directfb main interface */
+    /** The directfb main interface ({@code IDirectFB *}) */
     public Pointer dfb;
 
-    /** The directfb window handle */
+    /** The directfb window handle ({@code IDirectFBWindow *}) */
     public Pointer window;
 
-    /** The directfb client surface */
+    /** The directfb client surface ({@code IDirectFBSurface *}) */
     public Pointer surface;
 
     public SDL_SysWMInfoDirectFB() {
