@@ -1,12 +1,13 @@
 package org.libsdl.api.pixels;
 
+import java.util.List;
+import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.video.SDL_Window;
-import org.libsdl.jna.ContiguousArrayList;
 import org.libsdl.jna.SdlNativeLibraryLoader;
 
 /**
@@ -153,7 +154,7 @@ public final class SdlPixels {
      */
     public static int SDL_SetPaletteColors(
             SDL_Palette palette,
-            ContiguousArrayList<SDL_Color> colors,
+            List<SDL_Color> colors,
             int firstcolor,
             int ncolors) {
         if (colors.size() == 0) {
@@ -162,14 +163,23 @@ public final class SdlPixels {
         if (ncolors > colors.size()) {
             throw new IllegalArgumentException("ncolors [" + ncolors + "] is greater than the size of the list of colors [" + colors.size() + "]");
         }
-        return SDL_SetPaletteColors(palette, colors.autoWriteAndGetPointer(), firstcolor, ncolors);
+        Memory buffer = new Memory(ncolors * 4L);
+        long offset = 0L;
+        for (int i = 0; i < ncolors; i++) {
+            SDL_Color color = colors.get(i);
+            buffer.setByte(offset++, color.r);
+            buffer.setByte(offset++, color.g);
+            buffer.setByte(offset++, color.b);
+            buffer.setByte(offset++, color.a);
+        }
+        return SDL_SetPaletteColors(palette, buffer, firstcolor, ncolors);
     }
 
     /**
      * Set a range of colors in a palette.
      *
      * <p>This is a raw C-style version of the function.
-     * Prefer more Java-style {@link #SDL_SetPaletteColors(SDL_Palette, ContiguousArrayList, int, int)}.</p>
+     * Prefer more Java-style {@link #SDL_SetPaletteColors(SDL_Palette, List, int, int)}.</p>
      *
      * @param palette    the SDL_Palette structure to modify
      * @param colors     an array of SDL_Color structures to copy into the palette

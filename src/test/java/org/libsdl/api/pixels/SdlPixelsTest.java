@@ -1,10 +1,11 @@
 package org.libsdl.api.pixels;
 
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_Window;
-import org.libsdl.jna.ContiguousArrayList;
 
 import static org.libsdl.api.Sdl.SDL_Init;
 import static org.libsdl.api.Sdl.SDL_Quit;
@@ -57,19 +58,10 @@ public final class SdlPixelsTest {
         imageSurface.getPixels().write(0L, offscreen, 0, offscreen.length);
 
         SDL_Palette firstPalette = SDL_AllocPalette(256);
-        ContiguousArrayList<SDL_Color> colorList = new ContiguousArrayList<>(SDL_Color.class, 3);
-        colorList.get(0).r = 0;
-        colorList.get(0).g = 0;
-        colorList.get(0).b = (byte) 255;
-        colorList.get(0).a = 0;
-        colorList.get(1).r = 0;
-        colorList.get(1).g = (byte) 255;
-        colorList.get(1).b = 0;
-        colorList.get(1).a = 0;
-        colorList.get(2).r = (byte) 255;
-        colorList.get(2).g = (byte) 255;
-        colorList.get(2).b = 0;
-        colorList.get(2).a = 0;
+        List<SDL_Color> colorList = Arrays.asList(
+                new SDL_Color(0, 0, 255, 0),
+                new SDL_Color(0, 255, 0, 0),
+                new SDL_Color(255, 255, 0, 0));
         SDL_SetPaletteColors(firstPalette, colorList, 0, 3);
 
         SDL_Color color0 = firstPalette.getColors(0);
@@ -92,19 +84,10 @@ public final class SdlPixelsTest {
 
         if (true) {
             SDL_Palette secondPalette = SDL_AllocPalette(256);
-            ContiguousArrayList<SDL_Color> colors2 = new ContiguousArrayList<>(SDL_Color.class, 3);
-            colors2.get(0).r = (byte) 64;
-            colors2.get(0).g = 0;
-            colors2.get(0).b = (byte) 64;
-            colors2.get(0).a = 0;
-            colors2.get(1).r = (byte) 128;
-            colors2.get(1).g = 0;
-            colors2.get(1).b = (byte) 128;
-            colors2.get(1).a = 0;
-            colors2.get(2).r = (byte) 192;
-            colors2.get(2).g = 0;
-            colors2.get(2).b = (byte) 192;
-            colors2.get(2).a = 0;
+            List<SDL_Color> colors2 = Arrays.asList(
+                    new SDL_Color(64, 0, 64, 0),
+                    new SDL_Color(128, 0, 128, 0),
+                    new SDL_Color(192, 0, 192, 0));
             SDL_SetPaletteColors(secondPalette, colors2, 0, 3);
             SDL_SetSurfacePalette(imageSurface, secondPalette);
 

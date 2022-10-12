@@ -75,13 +75,8 @@ public class SdlShapeTest {
                     case SDL_KEYDOWN:
                         if (evt.key.keysym.sym == SDLK_SPACE) {
                             SDL_WindowShapeMode shapeMode1 = new SDL_WindowShapeMode();
-                            shapeMode1.mode = ShapeModeColorKey;
-                            shapeMode1.parameters.setType("colorKey");
-                            shapeMode1.parameters.colorKey = new SDL_Color();
-                            shapeMode1.parameters.colorKey.r = 0;
-                            shapeMode1.parameters.colorKey.g = 0;
-                            shapeMode1.parameters.colorKey.b = 0;
-                            shapeMode1.parameters.colorKey.a = (byte) 255;
+                            shapeMode1.setMode(ShapeModeColorKey);
+                            shapeMode1.setColorKey(new SDL_Color(0, 0, 0, 255));
                             int result = SDL_SetWindowShape(window, shape, shapeMode1);
                             if (result == SDL_INVALID_SHAPE_ARGUMENT) {
                                 System.out.println("SDL_INVALID_SHAPE_ARGUMENT");
@@ -98,7 +93,7 @@ public class SdlShapeTest {
                             int result2 = SDL_GetShapedWindowMode(window, shapeMode2);
                             if (result2 == 0) {
                                 System.out.println("Shape mode: " + shapeMode2.mode);
-                                System.out.println("Shape parameters: " + shapeMode2.parameters);
+                                System.out.println("Shape parameters: " + shapeMode2.getColorKey());
                             } else if (result2 == SDL_NONSHAPEABLE_WINDOW) {
                                 System.out.println("SDL_NONSHAPEABLE_WINDOW");
                                 System.out.println(SDL_GetError());
