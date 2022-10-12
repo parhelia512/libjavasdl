@@ -1,9 +1,9 @@
 package org.libsdl.api.surface;
 
 import com.sun.jna.Pointer;
+import com.sun.jna.PointerType;
 import com.sun.jna.Structure;
 import com.sun.jna.ptr.PointerByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.pixels.SDL_PixelFormat;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.render.SDL_Renderer;
@@ -26,94 +26,97 @@ import org.libsdl.api.render.SDL_Texture;
  *
  * <p>You can convert {@code SDL_Surface} to {@code SDL_Texture} using
  * {@link org.libsdl.api.render.SdlRender#SDL_CreateTextureFromSurface(SDL_Renderer, SDL_Surface) SDL_CreateTextureFromSurface(...)},
- * after which you can release the SDL_Surface memory by
+ * after which you can release the {@code SDL_Surface} memory by
  * {@link org.libsdl.api.surface.SdlSurface#SDL_FreeSurface(SDL_Surface) SDL_FreeSurface(...)}</p>
  *
  * @apiNote This structure should be treated as read-only, except for {@code pixels},
  * which, if not null, contains the raw pixel data for the surface.
+ * @implNote {@code SDL_Surface} would normally be implemented as a {@link Structure}
+ * but the SDL internals keep references to all allocated {@code SDL_Surface}s
+ * and change their internal fields without notice. Thus it is implemented as
+ * an opaque Pointer and there is a co-located {@link SDL_Surface_internal}
+ * which allows a read-only access to the fields.</p>
  */
-@Structure.FieldOrder({
-        "flags",
-        "format",
-        "w",
-        "h",
-        "pitch",
-        "pixels",
-        "userdata",
-        "locked",
-        "listBlitmap",
-        "clipRect",
-        "map",
-        "refcount"
-})
-public final class SDL_Surface extends Structure {
+public final class SDL_Surface extends PointerType {
 
-    /** Read-only */
-    @MagicConstant(flagsFromClass = SDL_SurfaceFlags.class)
-    public int flags;
-
-    /** Read-only */
-    public SDL_PixelFormat format;
-
-    /** Read-only */
-    public int w;
-
-    /** Read-only */
-    public int h;
-
-    /** Read-only */
-    public int pitch;
-
-    /** Read-write */
-    public Pointer pixels;
-
-    /**
-     * Application data associated with the surface
-     *
-     * <p>Read-write</p>
-     */
-    public Pointer userdata;
-
-    /**
-     * Information needed for surfaces requiring locks
-     *
-     * <p>Read-only</p>
-     */
-    public int locked;
-
-    /**
-     * List of BlitMap that hold a reference to this surface
-     *
-     * <p>Private</p>
-     */
-    public Pointer listBlitmap;
-
-    /**
-     * Clipping information
-     *
-     * <p>Read-only</p>
-     */
-    public SDL_Rect clipRect;
-
-    /**
-     * Info for fast blit mapping to other surfaces
-     *
-     * <p>Private</p>
-     */
-    public Pointer map;
-
-    /**
-     * Reference count -- used when freeing surface
-     *
-     * <p>Read-mostly</p>
-     */
-    public int refcount;
+    private SDL_Surface_internal semanticStruct;
 
     public SDL_Surface() {
+        super();
     }
 
     public SDL_Surface(Pointer p) {
         super(p);
+    }
+
+    public int getFlags() {
+        return (Integer) readField("flags");
+    }
+
+    public SDL_PixelFormat getFormat() {
+        return (SDL_PixelFormat) readField("format");
+    }
+
+    public int getW() {
+        return (Integer) readField("w");
+    }
+
+    public int getH() {
+        return (Integer) readField("h");
+    }
+
+    public int getPitch() {
+        return (Integer) readField("pitch");
+    }
+
+    public Pointer getPixels() {
+        return (Pointer) readField("pixels");
+    }
+
+    /**
+     * Read the application data associated with the surface
+     */
+    public Pointer getUserdata() {
+        return (Pointer) readField("userdata");
+    }
+
+    /**
+     * Set the application data associated with the surface
+     */
+    public void setUserdata(Pointer newValue) {
+        writeField("userdata", newValue);
+    }
+
+    public int getLocked() {
+        return (Integer) readField("locked");
+    }
+
+    /**
+     * Get the clipping information
+     */
+    public SDL_Rect getClipRect() {
+        return (SDL_Rect) readField("clipRect");
+    }
+
+    /**
+     * Get the reference count -- used when freeing surface
+     */
+    public int getRefcount() {
+        return (Integer) readField("refcount");
+    }
+
+    private Object readField(String name) {
+        if (semanticStruct == null) {
+            semanticStruct = new SDL_Surface_internal(getPointer());
+        }
+        return semanticStruct.readField(name);
+    }
+
+    private void writeField(String name, Object newValue) {
+        if (semanticStruct == null) {
+            semanticStruct = new SDL_Surface_internal(getPointer());
+        }
+        semanticStruct.writeField(name, newValue);
     }
 
     public static final class Ref extends PointerByReference {
@@ -126,9 +129,7 @@ public final class SDL_Surface extends Structure {
         }
 
         public SDL_Surface getSurface() {
-            SDL_Surface surface = new SDL_Surface(getValue());
-            surface.read();
-            return surface;
+            return new SDL_Surface(getValue());
         }
     }
 }

@@ -34,7 +34,7 @@ public final class SdlSurface {
      */
     public static boolean SDL_MUSTLOCK(
             SDL_Surface s) {
-        return (s.flags & SDL_RLEACCEL) != 0;
+        return (s.getFlags() & SDL_RLEACCEL) != 0;
     }
 
     /**
@@ -185,29 +185,7 @@ public final class SdlSurface {
     /**
      * Free an RGB surface.
      *
-     * <p>This is a Java-style version of a raw C-style function. Prefer this function over the raw C-style one.</p>
-     *
-     * @param surface the SDL_Surface to free.
-     * @see #SDL_CreateRGBSurface(int, int, int, int, int, int, int, int)
-     * @see #SDL_CreateRGBSurfaceFrom(Pointer, int, int, int, int, int, int, int, int)
-     * @see #SDL_LoadBMP(String)
-     * @see #SDL_LoadBMP_RW(SDL_RWops, int)
-     * @since This function is available since SDL 2.0.0.
-     */
-    public static void SDL_FreeSurface(
-            SDL_Surface surface) {
-        // Actual deallocation must always be called with a pointer, so extract it and re-call the raw native method. Reason: When a native method has an argument of type Structure, JNA calls Structure.read() to refresh the Java object after the native call. In case of deallocation, this would end up reading from a deallocated memory.
-        Pointer mem = surface.getPointer();
-        SDL_FreeSurface(mem);
-    }
-
-    /**
-     * Free an RGB surface.
-     *
      * <p>It is safe to pass null to this function.</p>
-     *
-     * <p>This is a raw C-style version of the function. Prefer Java-style version
-     * {@link #SDL_FreeSurface(SDL_Surface)}.</p>
      *
      * @param surface the SDL_Surface to free.
      * @see #SDL_CreateRGBSurface(int, int, int, int, int, int, int, int)
@@ -217,7 +195,7 @@ public final class SdlSurface {
      * @since This function is available since SDL 2.0.0.
      */
     public static native void SDL_FreeSurface(
-            Pointer surface);
+            SDL_Surface surface);
 
     /**
      * Set the palette used by a surface.
