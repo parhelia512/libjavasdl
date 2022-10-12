@@ -581,6 +581,15 @@ public final class SdlSurface {
             SDL_Surface surface,
             SDL_Rect rect);
 
+    /*
+     * Creates a new surface identical to the existing surface.
+     *
+     * <p>The returned surface should be freed with SDL_FreeSurface().</p>
+     *
+     * @param surface the surface to duplicate.
+     * @return a copy of the surface, or null on failure; call SDL_GetError() for
+     *          more information.
+     */
     public static native SDL_Surface SDL_DuplicateSurface(
             SDL_Surface surface);
 
@@ -912,6 +921,14 @@ public final class SdlSurface {
             SDL_Surface dst,
             SDL_Rect dstrect);
 
+    /**
+     * Perform a scaled surface copy to a destination surface.
+     *
+     * <p>SDL_BlitScaled() is a replacement for SDL_UpperBlitScaled() with a less confusing name.</p>
+     *
+     * @see #SDL_BlitScaled(SDL_Surface, SDL_Rect, SDL_Surface, SDL_Rect)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static int SDL_BlitScaled(
             SDL_Surface src,
             SDL_Rect srcRect,
