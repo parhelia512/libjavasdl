@@ -210,32 +210,12 @@ public final class SdlPixels {
     /**
      * Free a palette created with SDL_AllocPalette().
      *
-     * <p>This is a Java-style version of the raw C-style {@link #SDL_FreePalette(Pointer)}.
-     * Prefer this function to the raw C-style one.</p>
-     *
-     * @param palette the SDL_Palette structure to be freed
-     * @see #SDL_AllocPalette(int)
-     * @since This function is available since SDL 2.0.0.
-     */
-    public static void SDL_FreePalette(
-            SDL_Palette palette) {
-        // Actual deallocation must always be called with a pointer, so extract it and re-call the raw native method. Reason: When a native method has an argument of type Structure, JNA calls Structure.read() to refresh the Java object after the native call. In case of deallocation, this would end up reading from a deallocated memory.
-        Pointer mem = palette.getPointer();
-        SDL_FreePalette(mem);
-    }
-
-    /**
-     * Free a palette created with SDL_AllocPalette().
-     *
-     * <p>This is a raw C-style version of the function.
-     * Prefer more Java-style {@link #SDL_SetPaletteColors(SDL_Palette, ContiguousArrayList, int, int)}.</p>
-     *
      * @param palette the SDL_Palette structure to be freed
      * @see #SDL_AllocPalette(int)
      * @since This function is available since SDL 2.0.0.
      */
     public static native void SDL_FreePalette(
-            Pointer palette);
+            SDL_Palette palette);
 
     /**
      * Map an RGB triple to an opaque pixel value for a given pixel format.

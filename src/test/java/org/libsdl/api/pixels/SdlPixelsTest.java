@@ -1,5 +1,6 @@
 package org.libsdl.api.pixels;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_Window;
@@ -70,6 +71,13 @@ public final class SdlPixelsTest {
         colorList.get(2).b = 0;
         colorList.get(2).a = 0;
         SDL_SetPaletteColors(firstPalette, colorList, 0, 3);
+
+        SDL_Color color0 = firstPalette.getColors(0);
+        Assertions.assertEquals(colorList.get(0).r, color0.r);
+        Assertions.assertEquals(colorList.get(0).g, color0.g);
+        Assertions.assertEquals(colorList.get(0).b, color0.b);
+        Assertions.assertEquals(colorList.get(0).a, color0.a);
+
         SDL_SetSurfacePalette(imageSurface, firstPalette);
 
         SDL_BlitSurface(imageSurface, null, windowSurface, null);
