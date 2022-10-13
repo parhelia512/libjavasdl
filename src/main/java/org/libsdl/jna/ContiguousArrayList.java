@@ -17,7 +17,7 @@ import com.sun.jna.Structure;
 /**
  * A {@link java.util.List} of JNA {@link Structure} objects allocated so that they hold a single contiguous block of native memory.
  *
- * <p>It is a Java-style replacement for a raw {@link Pointer}, to be used in place of C-style array. Such as {@code SDL_Color *colors}.</p>
+ * <p>It is a Java-style replacement for a raw {@link Pointer}, to be used in place of C-style array. Such as {@code SDL_Point *points}.</p>
  *
  * <p>Automatically instantiates all Java objects and allocates a contiguous block of native memory for them.</p>
  *
@@ -26,23 +26,18 @@ import com.sun.jna.Structure;
  *
  * <h2>Sample usage:</h2>
  * <blockquote><pre>
- * ContiguousArrayList&lt;SDL_Color&gt; colorList = new ContiguousArrayList&lt;&gt;(SDL_Color.class, 3);
- * colorList.get(0).r = 0;
- * colorList.get(0).g = 0;
- * colorList.get(0).b = (byte) 255;
- * colorList.get(0).a = 0;
- * colorList.get(1).r = 0;
- * colorList.get(1).g = (byte) 255;
- * colorList.get(1).b = 0;
- * colorList.get(1).a = 0;
- * colorList.get(2).r = (byte) 255;
- * colorList.get(2).g = (byte) 255;
- * colorList.get(2).b = 0;
- * colorList.get(2).a = 0;
+ * ContiguousArrayList&lt;SDL_Point&gt; pointList = new ContiguousArrayList&lt;&gt;(SDL_Point.class, 3);
+ * pointList.get(0).x = 0;
+ * pointList.get(0).y = 0;
+ * pointList.get(1).x = 100;
+ * pointList.get(1).y = 150;
+ * pointList.get(2).x = 400;
+ * pointList.get(2).y = 300;
  *
- * SDL_SetPaletteColors(palette, colorList, 0, 3);</pre></blockquote>
+ * SDL_RenderDrawPoints(renderer, pointList);</pre></blockquote>
  *
- * @param <T> type of the Structure. Such as {@link org.libsdl.api.pixels.SDL_Color} or {@link org.libsdl.api.messagebox.SDL_MessageBoxButtonData}.
+ * @param <T> type of the Structure. Such as {@link org.libsdl.api.rect.SDL_Point SDL_Point}
+ *          or {@link org.libsdl.api.messagebox.SDL_MessageBoxButtonData SDL_MessageBoxButtonData}.
  */
 public final class ContiguousArrayList<T extends Structure> implements List<T> {
 

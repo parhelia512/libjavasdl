@@ -4,6 +4,8 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 
+import org.libsdl.api.pixels.SDL_Color;
+
 import static org.libsdl.api.shape.WindowShapeMode.ShapeModeBinarizeAlpha;
 import static org.libsdl.api.shape.WindowShapeMode.ShapeModeColorKey;
 import static org.libsdl.api.shape.WindowShapeMode.ShapeModeDefault;
@@ -14,16 +16,12 @@ import static org.libsdl.api.shape.WindowShapeMode.ShapeModeReverseBinarizeAlpha
  */
 @Structure.FieldOrder({
         "mode",
-        "parameters"
+        "binarizationCutoffOrRed",
+        "g",
+        "b",
+        "a"
 })
 public final class SDL_WindowShapeMode extends Structure {
-
-    /** The mode of these window-shape parameters. */
-    @MagicConstant(valuesFromClass = WindowShapeMode.class)
-    public int mode;
-
-    /** Window-shape parameters. */
-    public SDL_WindowShapeParams parameters;
 
     public SDL_WindowShapeMode() {
     }
@@ -32,24 +30,43 @@ public final class SDL_WindowShapeMode extends Structure {
         super(p);
     }
 
-    /**
-     * Reads the fields of the struct from native memory
-     */
-    @Override
-    public void read() {
-        readField("mode");
-        switch (mode) {
-            case ShapeModeDefault:
-            case ShapeModeBinarizeAlpha:
-            case ShapeModeReverseBinarizeAlpha:
-                parameters.setType("binarizationCutoff");
-                break;
-            case ShapeModeColorKey:
-                parameters.setType("colorKey");
-                break;
-            default:
-                throw new IllegalStateException("Unknown mode " + mode);
-        }
-        super.read();
+    /** The mode of these window-shape parameters. */
+    @MagicConstant(valuesFromClass = WindowShapeMode.class)
+    public int mode;
+
+    /** A cutoff alpha value for binarization of the window shape's alpha channel. */
+    public byte binarizationCutoffOrRed;
+    public byte g;
+    public byte b;
+    public byte a;
+
+    public int getMode() {
+        return mode;
+    }
+
+    public void setMode(
+            @MagicConstant(valuesFromClass = WindowShapeMode.class) int mode) {
+        this.mode = mode;
+    }
+
+    public byte getBinarizationCutoff() {
+        return binarizationCutoffOrRed;
+    }
+
+    public void setBinarizationCutoff(
+            byte newValue) {
+        this.binarizationCutoffOrRed = newValue;
+    }
+
+    public SDL_Color getColorKey() {
+        return new SDL_Color(binarizationCutoffOrRed, g, b, a);
+    }
+
+    public void setColorKey(
+            SDL_Color newValue) {
+        this.binarizationCutoffOrRed = newValue.r;
+        this.g = newValue.g;
+        this.b = newValue.b;
+        this.a = newValue.a;
     }
 }

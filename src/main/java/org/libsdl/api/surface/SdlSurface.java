@@ -7,6 +7,7 @@ import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.blendmode.SDL_BlendMode;
 import org.libsdl.api.pixels.SDL_Palette;
 import org.libsdl.api.pixels.SDL_PixelFormat;
+import org.libsdl.api.pixels.SDL_PixelFormatEnum;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.rwops.SDL_RWops;
 import org.libsdl.jna.ContiguousArrayList;
@@ -111,7 +112,7 @@ public final class SdlSurface {
             int width,
             int height,
             int depth,
-            int format);
+            @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class) int format);
 
     /**
      * Allocate a new RGB surface with existing pixel data.
@@ -180,7 +181,7 @@ public final class SdlSurface {
             int height,
             int depth,
             int pitch,
-            int format);
+            @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class) int format);
 
     /**
      * Free an RGB surface.
@@ -618,7 +619,7 @@ public final class SdlSurface {
      */
     public static native SDL_Surface SDL_ConvertSurfaceFormat(
             SDL_Surface src,
-            int pixelFormat,
+            @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class) int pixelFormat,
             int flags);
 
     /**
@@ -639,10 +640,10 @@ public final class SdlSurface {
     public static native int SDL_ConvertPixels(
             int width,
             int height,
-            int srcFormat,
+            @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class) int srcFormat,
             Pointer src,
             int srcPitch,
-            int dstFormat,
+            @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class) int dstFormat,
             Pointer dst,
             int dstPitch);
 
@@ -668,10 +669,10 @@ public final class SdlSurface {
     public static native int SDL_PremultiplyAlpha(
             int width,
             int height,
-            int srcFormat,
+            @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class) int srcFormat,
             Pointer src,
             int srcPitch,
-            int dstFormat,
+            @MagicConstant(valuesFromClass = SDL_PixelFormatEnum.class) int dstFormat,
             Pointer dst,
             int dstPitch);
 

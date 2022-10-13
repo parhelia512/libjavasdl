@@ -10,7 +10,10 @@ import org.libsdl.api.rect.SDL_FPoint;
  */
 @Structure.FieldOrder({
         "position",
-        "color",
+        "r",
+        "g",
+        "b",
+        "a",
         "texCoord"
 })
 public final class SDL_Vertex extends Structure {
@@ -19,7 +22,10 @@ public final class SDL_Vertex extends Structure {
     public SDL_FPoint position;
 
     /** Vertex color */
-    public SDL_Color color;
+    public byte r;
+    public byte g;
+    public byte b;
+    public byte a;
 
     /** Normalized texture coordinates, if needed */
     public SDL_FPoint texCoord;
@@ -29,5 +35,9 @@ public final class SDL_Vertex extends Structure {
 
     public SDL_Vertex(Pointer p) {
         super(p);
+    }
+
+    public SDL_Color getColor() {
+        return new SDL_Color(r, g, b, a);
     }
 }
