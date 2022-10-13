@@ -1,6 +1,6 @@
 package org.libsdl.api.pixels;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * Array component order, low byte -> high byte.

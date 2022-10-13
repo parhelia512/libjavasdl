@@ -2,7 +2,7 @@ package org.libsdl.api.gesture;
 
 import org.libsdl.api.rwops.SDL_RWops;
 import org.libsdl.api.touch.SDL_TouchID;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 /**
  * Definitions from file SDL_gesture.h

@@ -1,8 +1,8 @@
 package org.libsdl.api.clipboard;
 
 import com.sun.jna.Pointer;
-import org.libsdl.jna.JnaUtils;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.JnaUtils;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 /**
  * Definitions from file SDL_clipboard.h

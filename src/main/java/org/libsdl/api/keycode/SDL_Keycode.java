@@ -1,6 +1,6 @@
 package org.libsdl.api.keycode;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 import static org.libsdl.api.keycode.SdlKeycode.SDL_SCANCODE_TO_KEYCODE;
 import static org.libsdl.api.scancode.SDL_Scancode.*;

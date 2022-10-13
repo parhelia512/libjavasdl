@@ -7,7 +7,7 @@ import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.joystick.virtual.SDL_VirtualJoystickDesc;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 
 /**

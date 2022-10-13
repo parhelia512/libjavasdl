@@ -3,7 +3,7 @@ package org.libsdl.api.error;
 import java.util.Locale;
 import com.sun.jna.Library;
 import com.sun.jna.Pointer;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 /**
  * Definitions from file SDL_error.h

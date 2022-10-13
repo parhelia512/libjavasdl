@@ -2,7 +2,7 @@ package org.libsdl.api.rwops;
 
 import com.sun.jna.Callback;
 import com.sun.jna.Pointer;
-import org.libsdl.jna.size_t;
+import io.github.libsdl4j.jna.size_t;
 
 /**
  * <p><b>Warning:</b> It is necessary to keep a reference to the callback object somewhere in your Java program,

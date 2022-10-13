@@ -3,7 +3,7 @@ package org.libsdl.api.blendmode;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.render.SDL_Renderer;
 import org.libsdl.api.render.SDL_Texture;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 /**
  * Definitions from file SDL_blendmode.h

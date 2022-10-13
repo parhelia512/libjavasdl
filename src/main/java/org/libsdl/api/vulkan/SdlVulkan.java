@@ -7,7 +7,7 @@ import com.sun.jna.StringArray;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
 import org.libsdl.api.video.SDL_Window;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 /**
  * Definitions from file SDL_vulkan.h

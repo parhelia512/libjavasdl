@@ -1,4 +1,4 @@
-package org.libsdl.jna;
+package io.github.libsdl4j.jna;
 
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;

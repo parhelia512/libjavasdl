@@ -1,6 +1,6 @@
 package org.libsdl.api.mouse;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * Scroll direction types for the Scroll event

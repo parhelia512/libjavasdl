@@ -1,7 +1,7 @@
 package org.libsdl.api.haptic;
 
-import org.libsdl.jna.JnaEnum;
-import org.libsdl.jna.JnaUtils;
+import io.github.libsdl4j.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaUtils;
 
 public final class SDL_HapticEffectType implements JnaEnum {
 

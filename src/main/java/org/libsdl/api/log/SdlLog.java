@@ -6,7 +6,7 @@ import com.sun.jna.ptr.PointerByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.log.SDL_LogCategory.SDL_LOG_CATEGORY_APPLICATION;
 import static org.libsdl.api.log.SDL_LogCategory.SDL_LOG_CATEGORY_ASSERT;

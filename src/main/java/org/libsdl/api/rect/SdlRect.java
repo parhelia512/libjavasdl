@@ -3,8 +3,8 @@ package org.libsdl.api.rect;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
-import org.libsdl.jna.ContiguousArrayList;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.ContiguousArrayList;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.stdinc.SdlStdincConst.SDL_FLT_EPSILON;
 

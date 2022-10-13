@@ -1,6 +1,6 @@
 package org.libsdl.api.sensor;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * The different sensors defined by SDL

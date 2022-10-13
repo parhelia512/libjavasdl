@@ -1,6 +1,6 @@
 package org.libsdl.api.blendmode;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * The blend operation used when combining source and destination pixel components

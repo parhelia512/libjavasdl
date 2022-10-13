@@ -1,4 +1,4 @@
-package org.libsdl.jna;
+package io.github.libsdl4j.jna;
 
 /**
  * Tagging interface marking int-based enums.

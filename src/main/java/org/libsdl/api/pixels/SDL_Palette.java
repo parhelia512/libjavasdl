@@ -2,7 +2,7 @@ package org.libsdl.api.pixels;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
-import org.libsdl.jna.ContiguousArrayList;
+import io.github.libsdl4j.jna.ContiguousArrayList;
 
 import static org.libsdl.api.endian.SdlEndianConst.SDL_BYTEORDER;
 import static org.libsdl.api.endian.SdlEndianConst.SDL_LIL_ENDIAN;

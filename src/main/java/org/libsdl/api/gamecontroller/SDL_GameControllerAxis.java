@@ -1,6 +1,6 @@
 package org.libsdl.api.gamecontroller;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  *  The list of axes available from a controller

@@ -1,6 +1,6 @@
 package org.libsdl.api.hints;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * An enumeration of hint priorities

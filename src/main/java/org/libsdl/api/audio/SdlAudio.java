@@ -5,9 +5,9 @@ import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.rwops.SDL_RWops;
-import org.libsdl.jna.JnaUtils;
-import org.libsdl.jna.SdlNativeLibraryLoader;
-import org.libsdl.jna.StringRef;
+import io.github.libsdl4j.jna.JnaUtils;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.StringRef;
 
 import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
 

@@ -1,4 +1,4 @@
-package org.libsdl.jna;
+package io.github.libsdl4j.jna;
 
 import java.util.HashMap;
 import java.util.Map;

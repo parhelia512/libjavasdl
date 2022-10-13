@@ -5,9 +5,9 @@ import java.util.List;
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.WString;
-import org.libsdl.jna.SdlNativeLibraryLoader;
-import org.libsdl.jna.StringRef;
-import org.libsdl.jna.size_t;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.StringRef;
+import io.github.libsdl4j.jna.size_t;
 
 /**
  * Definitions from file SDL_hidapi.h

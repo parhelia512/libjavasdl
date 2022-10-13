@@ -10,8 +10,8 @@ import org.libsdl.api.joystick.SDL_JoystickGUID;
 import org.libsdl.api.joystick.SDL_JoystickID;
 import org.libsdl.api.rwops.SDL_RWops;
 import org.libsdl.api.sensor.SDL_SensorType;
-import org.libsdl.jna.JnaUtils;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.JnaUtils;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
 

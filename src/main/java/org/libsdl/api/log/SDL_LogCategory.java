@@ -1,6 +1,6 @@
 package org.libsdl.api.log;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * The predefined log categories. Also known as logger names.

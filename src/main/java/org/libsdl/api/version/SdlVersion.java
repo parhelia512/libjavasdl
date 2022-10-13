@@ -1,6 +1,6 @@
 package org.libsdl.api.version;
 
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.version.SdlVersionConst.SDL_MAJOR_VERSION;
 import static org.libsdl.api.version.SdlVersionConst.SDL_MINOR_VERSION;

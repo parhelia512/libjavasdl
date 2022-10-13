@@ -1,6 +1,6 @@
 package org.libsdl.api.power;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * The basic state for the system's power supply.

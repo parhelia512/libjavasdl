@@ -1,6 +1,5 @@
-package org.libsdl.jna;
+package io.github.libsdl4j.jna;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;

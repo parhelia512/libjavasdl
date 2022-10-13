@@ -1,6 +1,6 @@
 package org.libsdl.api.blendmode;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * The normalized factor used to multiply pixel components

@@ -5,7 +5,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.libsdl.jna.size_t;
+import io.github.libsdl4j.jna.size_t;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

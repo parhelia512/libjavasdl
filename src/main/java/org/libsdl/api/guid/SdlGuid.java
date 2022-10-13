@@ -3,7 +3,7 @@ package org.libsdl.api.guid;
 import java.nio.charset.StandardCharsets;
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 /**
  * Definitions from file SDL_guid.h

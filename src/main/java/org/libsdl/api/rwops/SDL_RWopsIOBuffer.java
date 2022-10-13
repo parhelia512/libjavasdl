@@ -2,7 +2,7 @@ package org.libsdl.api.rwops;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.libsdl.jna.size_t;
+import io.github.libsdl4j.jna.size_t;
 
 @Structure.FieldOrder({
         "data",

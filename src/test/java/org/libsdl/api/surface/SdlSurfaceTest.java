@@ -10,7 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.libsdl.api.SdlTest;
 import org.libsdl.api.rect.SDL_Rect;
-import org.libsdl.jna.ContiguousArrayList;
+import io.github.libsdl4j.jna.ContiguousArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;

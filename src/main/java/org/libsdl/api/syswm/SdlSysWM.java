@@ -1,7 +1,7 @@
 package org.libsdl.api.syswm;
 
 import org.libsdl.api.video.SDL_Window;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 /**
  * Definitions from file SDL_syswm.h

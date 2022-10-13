@@ -3,7 +3,7 @@ package org.libsdl.api.rect;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.ptr.IntByReference;
-import org.libsdl.jna.ContiguousArrayList;
+import io.github.libsdl4j.jna.ContiguousArrayList;
 
 /**
  * {@code SDL_Rect} is a simple structure that contains only four int values:

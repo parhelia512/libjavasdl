@@ -4,7 +4,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.video.SDL_Window;
-import org.libsdl.jna.ContiguousArrayList;
+import io.github.libsdl4j.jna.ContiguousArrayList;
 
 /**
  * MessageBox structure containing title, text, window, etc.

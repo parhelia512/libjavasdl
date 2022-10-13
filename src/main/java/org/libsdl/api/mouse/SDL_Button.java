@@ -1,7 +1,7 @@
 package org.libsdl.api.mouse;
 
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 public final class SDL_Button implements JnaEnum {
 

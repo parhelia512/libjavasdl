@@ -1,6 +1,6 @@
 package org.libsdl.api.surface;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * The formula used for converting between YUV and RGB

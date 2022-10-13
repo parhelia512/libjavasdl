@@ -1,7 +1,7 @@
 package org.libsdl.api.video;
 
-import org.libsdl.jna.JnaEnum;
-import org.libsdl.jna.JnaUtils;
+import io.github.libsdl4j.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaUtils;
 
 /**
  * The flags on a window

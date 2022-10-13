@@ -16,8 +16,8 @@ import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_GLContext;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.api.video.SDL_WindowFlags;
-import org.libsdl.jna.ContiguousArrayList;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.ContiguousArrayList;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 /**
  * Definitions from file SDL_render.h

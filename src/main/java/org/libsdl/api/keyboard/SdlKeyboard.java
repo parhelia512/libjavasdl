@@ -8,7 +8,7 @@ import org.libsdl.api.keycode.SDL_Keymod;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.scancode.SDL_Scancode;
 import org.libsdl.api.video.SDL_Window;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 /**
  * Definitions from file SDL_keyboard.h

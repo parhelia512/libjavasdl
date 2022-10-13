@@ -2,7 +2,7 @@ package org.libsdl.api.rect;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.libsdl.jna.ContiguousArrayList;
+import io.github.libsdl4j.jna.ContiguousArrayList;
 
 /**
  * The structure that defines a point (floating point)

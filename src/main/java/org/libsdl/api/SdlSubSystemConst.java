@@ -1,6 +1,6 @@
 package org.libsdl.api;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 public final class SdlSubSystemConst implements JnaEnum {
 

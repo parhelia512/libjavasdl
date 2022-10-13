@@ -1,6 +1,6 @@
 package org.libsdl.api.joystick;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 public final class SDL_JoystickPowerLevel implements JnaEnum {
 

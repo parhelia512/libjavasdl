@@ -1,7 +1,7 @@
 package org.libsdl.api.pixels;
 
 import org.libsdl.api.stdinc.SdlStdinc;
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 import static org.libsdl.api.endian.SdlEndianConst.SDL_BIG_ENDIAN;
 import static org.libsdl.api.endian.SdlEndianConst.SDL_BYTEORDER;

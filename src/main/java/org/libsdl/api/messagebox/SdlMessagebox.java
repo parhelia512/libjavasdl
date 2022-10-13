@@ -3,7 +3,7 @@ package org.libsdl.api.messagebox;
 import com.sun.jna.ptr.IntByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.video.SDL_Window;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.messagebox.SDL_MessageBoxFlags.SDL_MESSAGEBOX_ERROR;
 import static org.libsdl.api.messagebox.SDL_MessageBoxFlags.SDL_MESSAGEBOX_INFORMATION;

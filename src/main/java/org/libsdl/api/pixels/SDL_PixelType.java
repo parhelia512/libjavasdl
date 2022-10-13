@@ -1,6 +1,6 @@
 package org.libsdl.api.pixels;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 public final class SDL_PixelType implements JnaEnum {
 

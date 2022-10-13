@@ -3,8 +3,8 @@ package org.libsdl.api.stdinc;
 import com.sun.jna.CallbackReference;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
-import org.libsdl.jna.SdlNativeLibraryLoader;
-import org.libsdl.jna.size_t;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.size_t;
 
 /**
  * Definitions from file SDL_stdinc.h

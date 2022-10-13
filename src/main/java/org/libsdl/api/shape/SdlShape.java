@@ -4,7 +4,7 @@ import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.surface.SDL_Surface;
 import org.libsdl.api.video.SDL_Window;
 import org.libsdl.api.video.SDL_WindowFlags;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.shape.WindowShapeMode.ShapeModeBinarizeAlpha;
 import static org.libsdl.api.shape.WindowShapeMode.ShapeModeDefault;

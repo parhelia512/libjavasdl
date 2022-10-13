@@ -1,6 +1,6 @@
 package org.libsdl.api.render;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * The access pattern allowed for a texture.

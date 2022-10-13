@@ -1,6 +1,6 @@
 package org.libsdl.api.shape;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * An enum denoting the specific type of contents present in an SDL_WindowShapeParams union.

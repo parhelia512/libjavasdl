@@ -2,8 +2,8 @@ package org.libsdl.api.rwops;
 
 import com.sun.jna.Pointer;
 import org.intellij.lang.annotations.MagicConstant;
-import org.libsdl.jna.SdlNativeLibraryLoader;
-import org.libsdl.jna.size_t;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.size_t;
 
 /**
  * Definitions from file SDL_rwops.h

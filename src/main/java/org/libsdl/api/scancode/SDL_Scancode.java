@@ -1,6 +1,6 @@
 package org.libsdl.api.scancode;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * The SDL keyboard scancode representation.

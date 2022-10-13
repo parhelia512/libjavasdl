@@ -1,6 +1,6 @@
 package org.libsdl.api.video;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * OpenGL configuration attributes.

@@ -1,6 +1,6 @@
 package org.libsdl.api.event;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 /**
  * The types of events that can be delivered.

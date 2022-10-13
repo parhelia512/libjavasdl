@@ -1,7 +1,7 @@
 package org.libsdl.api.messagebox;
 
-import org.libsdl.jna.JnaEnum;
-import org.libsdl.jna.JnaUtils;
+import io.github.libsdl4j.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaUtils;
 
 /**
  * Flags for SDL_MessageBoxButtonData.

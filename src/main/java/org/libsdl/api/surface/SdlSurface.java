@@ -10,8 +10,8 @@ import org.libsdl.api.pixels.SDL_PixelFormat;
 import org.libsdl.api.pixels.SDL_PixelFormatEnum;
 import org.libsdl.api.rect.SDL_Rect;
 import org.libsdl.api.rwops.SDL_RWops;
-import org.libsdl.jna.ContiguousArrayList;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.ContiguousArrayList;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 import static org.libsdl.api.rwops.SdlRWops.SDL_RWFromFile;
 import static org.libsdl.api.surface.SDL_SurfaceFlags.SDL_RLEACCEL;

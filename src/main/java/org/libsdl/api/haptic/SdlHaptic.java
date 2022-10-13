@@ -2,7 +2,7 @@ package org.libsdl.api.haptic;
 
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.api.joystick.SDL_Joystick;
-import org.libsdl.jna.SdlNativeLibraryLoader;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 /**
  * Definitions from file SDL_haptic.h

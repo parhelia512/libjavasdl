@@ -1,6 +1,6 @@
 package org.libsdl.api.rwops;
 
-import org.libsdl.jna.JnaEnum;
+import io.github.libsdl4j.jna.JnaEnum;
 
 public final class SDL_RWopsType implements JnaEnum {
 
