@@ -47,8 +47,8 @@ public class SdlShapeTest {
     public void windowModeConstant() throws URISyntaxException {
         Path sampleFile = SdlTest.getSampleFile(this, "shape-24bit.bmp");
         SDL_Surface shape = SDL_LoadBMP(sampleFile.toString());
-        System.out.println("Shape bitmap resolution: " + shape.w + " x " + shape.h);
-        boolean isAlpha = SDL_ISPIXELFORMAT_ALPHA(shape.format.format);
+        System.out.println("Shape bitmap resolution: " + shape.getW() + " x " + shape.getH());
+        boolean isAlpha = SDL_ISPIXELFORMAT_ALPHA(shape.getFormat().format);
         System.out.println("Has alpha channel: " + isAlpha);
 
         SDL_Window window = SDL_CreateShapedWindow("Test window", SDL_WINDOWPOS_CENTERED(), SDL_WINDOWPOS_CENTERED(), 400, 300, SDL_WINDOW_SHOWN);

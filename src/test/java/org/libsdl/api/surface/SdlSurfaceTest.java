@@ -46,9 +46,8 @@ public final class SdlSurfaceTest {
                 0,
                 0,
                 0);
-        assertEquals(96, s.size());
-        assertEquals(400, s.w);
-        assertEquals(300, s.h);
+        assertEquals(400, s.getW());
+        assertEquals(300, s.getH());
         SDL_FreeSurface(s);
 
         assertNoMemoryLeak(numOfAllocationsBefore);

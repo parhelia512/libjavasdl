@@ -25,7 +25,7 @@ import static org.libsdl.api.video.SdlVideoConst.SDL_WINDOWPOS_CENTERED;
 public final class SdlPixelsTest {
 
     @Test
-    public void testPaletteColors() throws InterruptedException {
+    public void testPaletteColors() {
         int w = 320;
         int h = 200;
 
@@ -53,9 +53,9 @@ public final class SdlPixelsTest {
             offscreen[i + 14] = -0x01;
             offscreen[i + 15] = -0x01;
         }
-        imageSurface.pixels.write(0L, offscreen, 0, offscreen.length);
+        imageSurface.getPixels().write(0L, offscreen, 0, offscreen.length);
 
-        SDL_Palette originalPalette = imageSurface.format.palette;
+        SDL_Palette firstPalette = SDL_AllocPalette(256);
         ContiguousArrayList<SDL_Color> colorList = new ContiguousArrayList<>(SDL_Color.class, 3);
         colorList.get(0).r = 0;
         colorList.get(0).g = 0;
@@ -69,35 +69,35 @@ public final class SdlPixelsTest {
         colorList.get(2).g = (byte) 255;
         colorList.get(2).b = 0;
         colorList.get(2).a = 0;
-        SDL_SetPaletteColors(originalPalette, colorList, 0, 3);
+        SDL_SetPaletteColors(firstPalette, colorList, 0, 3);
+        SDL_SetSurfacePalette(imageSurface, firstPalette);
 
         SDL_BlitSurface(imageSurface, null, windowSurface, null);
         SDL_UpdateWindowSurface(window);
         SDL_Delay(2000);
 
-        if (false) {
-            SDL_Palette newPalette = SDL_AllocPalette(256);
-            SDL_Color[] colors2 = (SDL_Color[]) new SDL_Color().toArray(3);
-            colors2[0].r = (byte) 64;
-            colors2[0].g = 0;
-            colors2[0].b = (byte) 64;
-            colors2[0].a = 0;
-            colors2[1].r = (byte) 128;
-            colors2[1].g = 0;
-            colors2[1].b = (byte) 128;
-            colors2[1].a = 0;
-            colors2[2].r = (byte) 192;
-            colors2[2].g = 0;
-            colors2[2].b = (byte) 192;
-            colors2[2].a = 0;
-            colors2[0].autoWrite();
-            SDL_SetPaletteColors(newPalette, colors2[0].getPointer(), 0, 3);
-            SDL_SetSurfacePalette(imageSurface, newPalette);
+        if (true) {
+            SDL_Palette secondPalette = SDL_AllocPalette(256);
+            ContiguousArrayList<SDL_Color> colors2 = new ContiguousArrayList<>(SDL_Color.class, 3);
+            colors2.get(0).r = (byte) 64;
+            colors2.get(0).g = 0;
+            colors2.get(0).b = (byte) 64;
+            colors2.get(0).a = 0;
+            colors2.get(1).r = (byte) 128;
+            colors2.get(1).g = 0;
+            colors2.get(1).b = (byte) 128;
+            colors2.get(1).a = 0;
+            colors2.get(2).r = (byte) 192;
+            colors2.get(2).g = 0;
+            colors2.get(2).b = (byte) 192;
+            colors2.get(2).a = 0;
+            SDL_SetPaletteColors(secondPalette, colors2, 0, 3);
+            SDL_SetSurfacePalette(imageSurface, secondPalette);
 
             SDL_BlitSurface(imageSurface, null, windowSurface, null);
             SDL_UpdateWindowSurface(window);
             SDL_Delay(2000);
-            SDL_FreePalette(newPalette);
+            SDL_FreePalette(secondPalette);
         }
 
         SDL_FreeSurface(imageSurface);
