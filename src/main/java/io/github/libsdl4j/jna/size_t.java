@@ -4,9 +4,9 @@ import com.sun.jna.IntegerType;
 import com.sun.jna.Native;
 import com.sun.jna.ptr.ByReference;
 
-import static org.libsdl.api.endian.SdlEndianConst.SDL_BIG_ENDIAN;
-import static org.libsdl.api.endian.SdlEndianConst.SDL_BYTEORDER;
-import static org.libsdl.api.endian.SdlEndianConst.SDL_LIL_ENDIAN;
+import static io.github.libsdl4j.api.endian.SdlEndianConst.SDL_BIG_ENDIAN;
+import static io.github.libsdl4j.api.endian.SdlEndianConst.SDL_BYTEORDER;
+import static io.github.libsdl4j.api.endian.SdlEndianConst.SDL_LIL_ENDIAN;
 
 /**
  * <p>'size_t' C type (32 bits on 32 bits platforms, 64 bits on 64 bits platforms).

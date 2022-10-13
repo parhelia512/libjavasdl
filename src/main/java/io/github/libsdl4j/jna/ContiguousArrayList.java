@@ -35,8 +35,8 @@ import com.sun.jna.Structure;
  *
  * SDL_RenderDrawPoints(renderer, pointList);</pre></blockquote>
  *
- * @param <T> type of the Structure. Such as {@link org.libsdl.api.rect.SDL_Point SDL_Point}
- *          or {@link org.libsdl.api.messagebox.SDL_MessageBoxButtonData SDL_MessageBoxButtonData}.
+ * @param <T> type of the Structure. Such as {@link io.github.libsdl4j.api.rect.SDL_Point SDL_Point}
+ *          or {@link io.github.libsdl4j.api.messagebox.SDL_MessageBoxButtonData SDL_MessageBoxButtonData}.
  */
 public final class ContiguousArrayList<T extends Structure> implements List<T> {
 

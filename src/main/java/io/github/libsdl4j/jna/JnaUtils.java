@@ -3,7 +3,7 @@ package io.github.libsdl4j.jna;
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 
-import static org.libsdl.api.stdinc.SdlStdinc.SDL_free;
+import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_free;
 
 public final class JnaUtils {
 
