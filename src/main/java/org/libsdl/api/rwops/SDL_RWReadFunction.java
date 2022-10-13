@@ -14,6 +14,12 @@ import org.libsdl.jna.size_t;
 @FunctionalInterface
 public interface SDL_RWReadFunction extends Callback {
 
+    /**
+     * Read up to {@code maxnum} objects each of {@code size} from the data
+     * stream to the area pointed at by {@code ptr}.
+     *
+     * @return the number of objects read, or 0 at error or end of file.
+     */
     size_t read(
             SDL_RWops context,
             Pointer ptr,

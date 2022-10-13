@@ -11,16 +11,16 @@ import com.sun.jna.Structure;
 })
 public final class SDL_SysWMInfoUIKit extends Structure {
 
-    /** The UIKit window */
+    /** The UIKit window ({@code UIWindow *}) */
     public Pointer window;
 
-    /** The GL view's Framebuffer Object. It must be bound when rendering to the screen using GL. */
+    /** The GL view's Framebuffer Object. It must be bound when rendering to the screen using GL. ({@code GLuint}) */
     public int framebuffer;
 
-    /** The GL view's color Renderbuffer Object. It must be bound when SDL_GL_SwapWindow is called. */
+    /** The GL view's color Renderbuffer Object. It must be bound when SDL_GL_SwapWindow is called. ({@code GLuint}) */
     public int colorbuffer;
 
-    /** The Framebuffer Object which holds the resolve color Renderbuffer, when MSAA is used. */
+    /** The Framebuffer Object which holds the resolve color Renderbuffer, when MSAA is used. ({@code GLuint}) */
     public int resolveFramebuffer;
 
     public SDL_SysWMInfoUIKit() {

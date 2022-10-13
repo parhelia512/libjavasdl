@@ -10,6 +10,9 @@ import static org.libsdl.api.event.SDL_EventType.SDL_KEYUP;
 import static org.libsdl.api.event.SdlEventsConst.SDL_PRESSED;
 import static org.libsdl.api.event.SdlEventsConst.SDL_RELEASED;
 
+/**
+ * Keyboard button event structure (event.key.*)
+ */
 @Structure.FieldOrder({
         "type",
         "timestamp",
@@ -22,16 +25,33 @@ import static org.libsdl.api.event.SdlEventsConst.SDL_RELEASED;
 })
 public final class SDL_KeyboardEvent extends Structure {
 
+    /**
+     * {@link org.libsdl.api.event.SDL_EventType#SDL_KEYDOWN SDL_KEYDOWN}
+     * or {@link org.libsdl.api.event.SDL_EventType#SDL_KEYUP SDL_KEYUP}
+     */
     @MagicConstant(intValues = {SDL_KEYDOWN, SDL_KEYUP})
     public int type;
+
+    /** In milliseconds, populated using SDL_GetTicks() */
     public int timestamp;
+
+    /** The window with keyboard focus, if any */
     public int windowID;
 
+    /**
+     * {@link org.libsdl.api.event.SdlEventsConst#SDL_PRESSED SDL_PRESSED}
+     * or {@link org.libsdl.api.event.SdlEventsConst#SDL_RELEASED SDL_RELEASED}
+     */
     @MagicConstant(intValues = {SDL_PRESSED, SDL_RELEASED})
     public byte state;
+
+    /** Non-zero if this is a key repeat */
     public byte repeat;
+
     public byte padding2;
     public byte padding3;
+
+    /** The key that was pressed or released */
     public SDL_Keysym keysym;
 
     public SDL_KeyboardEvent() {

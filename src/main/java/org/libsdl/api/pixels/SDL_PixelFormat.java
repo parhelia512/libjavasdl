@@ -4,6 +4,9 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 
+/**
+ * @apiNote Everything in the pixel format structure is read-only.
+ */
 @Structure.FieldOrder({
         "format",
         "palette",

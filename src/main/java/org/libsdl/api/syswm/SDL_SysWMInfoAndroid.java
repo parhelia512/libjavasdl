@@ -9,7 +9,10 @@ import com.sun.jna.Structure;
 })
 public final class SDL_SysWMInfoAndroid extends Structure {
 
+    /** {@code ANativeWindow *} */
     public Pointer window;
+
+    /** {@code EGLSurface} */
     public Pointer surface;
 
     public SDL_SysWMInfoAndroid() {

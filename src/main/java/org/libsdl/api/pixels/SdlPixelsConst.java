@@ -1,5 +1,10 @@
 package org.libsdl.api.pixels;
 
+/**
+ * Transparency definitions
+ *
+ * <p>These define alpha as the opacity of a surface.</p>
+ */
 public final class SdlPixelsConst {
 
     public static final int SDL_ALPHA_OPAQUE = 255;

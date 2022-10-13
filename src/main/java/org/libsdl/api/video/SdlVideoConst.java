@@ -2,7 +2,14 @@ package org.libsdl.api.video;
 
 public final class SdlVideoConst {
 
+    /**
+     * Used to indicate that you don't care what the window position is.
+     */
     public static final int SDL_WINDOWPOS_UNDEFINED_MASK = 0x1FFF0000;
+
+    /**
+     * Used to indicate that the window position should be centered.
+     */
     public static final int SDL_WINDOWPOS_CENTERED_MASK = 0x2FFF0000;
 
     public static int SDL_WINDOWPOS_UNDEFINED_DISPLAY(

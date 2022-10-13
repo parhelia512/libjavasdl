@@ -82,23 +82,22 @@ import org.intellij.lang.annotations.MagicConstant;
  *
  * <p>Example of force coming from the south with all encodings (force coming
  *  from the south means the user will have to pull the stick to counteract):</p>
- * <pre>
- * SDL_HapticDirection direction;
+ * <blockquote><pre>
+ * SDL_HapticDirection direction = new SDL_HapticDirection();
  *
  * // Cartesian directions
- * direction.type = SDL_HAPTIC_CARTESIAN; // Using cartesian direction encoding.
- * direction.dir[0] = 0; // X position
- * direction.dir[1] = 1; // Y position
+ * direction.type = SDL_HAPTIC_CARTESIAN;   // Using cartesian direction encoding.
+ * direction.dir[0] = 0;                    // X position
+ * direction.dir[1] = 1;                    // Y position
  * // Assuming the device has 2 axes, we don't need to specify third parameter.
  *
  * // Polar directions
- * direction.type = SDL_HAPTIC_POLAR; // We'll be using polar direction encoding.
- * direction.dir[0] = 18000; // Polar only uses first parameter
+ * direction.type = SDL_HAPTIC_POLAR;       // We'll be using polar direction encoding.
+ * direction.dir[0] = 18000;                // Polar only uses first parameter
  *
  * // Spherical coordinates
- * direction.type = SDL_HAPTIC_SPHERICAL; // Spherical encoding
- * direction.dir[0] = 9000; // Since we only have two axes we don't need more parameters.
- * </pre>
+ * direction.type = SDL_HAPTIC_SPHERICAL;   // Spherical encoding
+ * direction.dir[0] = 9000;                 // Since we only have two axes we don't need more parameters.</pre></blockquote>
  *
  * @see SDL_HapticDirectionEncoding#SDL_HAPTIC_POLAR
  * @see SDL_HapticDirectionEncoding#SDL_HAPTIC_CARTESIAN
@@ -113,8 +112,11 @@ import org.intellij.lang.annotations.MagicConstant;
 })
 public final class SDL_HapticDirection extends Structure {
 
+    /** The type of encoding. */
     @MagicConstant(valuesFromClass = SDL_HapticDirectionEncoding.class)
     public byte type;
+
+    /** The encoded direction. */
     public int[] dir = new int[3];
 
     public SDL_HapticDirection() {

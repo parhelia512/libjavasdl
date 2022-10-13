@@ -3,10 +3,18 @@ package org.libsdl.api.render;
 import org.libsdl.jna.JnaEnum;
 import org.libsdl.jna.JnaUtils;
 
+/**
+ * The texture channel modulation used in SDL_RenderCopy().
+ */
 public final class SDL_TextureModulate implements JnaEnum {
 
+    /** No modulation */
     public static final int SDL_TEXTUREMODULATE_NONE = 0x00000000;
+
+    /** srcC = srcC * color */
     public static final int SDL_TEXTUREMODULATE_COLOR = 0x00000001;
+
+    /** srcA = srcA * alpha */
     public static final int SDL_TEXTUREMODULATE_ALPHA = 0x00000002;
 
     public static String toString(int value) {

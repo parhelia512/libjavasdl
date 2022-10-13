@@ -7,6 +7,9 @@ import org.intellij.lang.annotations.MagicConstant;
 import static org.libsdl.api.event.SDL_EventType.SDL_JOYDEVICEADDED;
 import static org.libsdl.api.event.SDL_EventType.SDL_JOYDEVICEREMOVED;
 
+/**
+ * Joystick device event structure (event.jdevice.*)
+ */
 @Structure.FieldOrder({
         "type",
         "timestamp",
@@ -14,10 +17,19 @@ import static org.libsdl.api.event.SDL_EventType.SDL_JOYDEVICEREMOVED;
 })
 public final class SDL_JoyDeviceEvent extends Structure {
 
+    /**
+     * {@link org.libsdl.api.event.SDL_EventType#SDL_JOYDEVICEADDED SDL_JOYDEVICEADDED}
+     * or {@link org.libsdl.api.event.SDL_EventType#SDL_JOYDEVICEREMOVED SDL_JOYDEVICEREMOVED}
+     */
     @MagicConstant(intValues = {SDL_JOYDEVICEADDED, SDL_JOYDEVICEREMOVED})
     public int type;
+
+    /** In milliseconds, populated using SDL_GetTicks() */
     public int timestamp;
-    public int which;           // TODO: Shouldn't it be SDL_JoystickID?
+
+    // TODO: Shouldn't it be SDL_JoystickID?
+    /** The joystick device index for the ADDED event, instance id for the REMOVED event */
+    public int which;
 
     public SDL_JoyDeviceEvent() {
     }

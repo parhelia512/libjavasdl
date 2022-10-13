@@ -2,6 +2,9 @@ package org.libsdl.api.pixels;
 
 import org.libsdl.jna.JnaEnum;
 
+/**
+ * Array component order, low byte -> high byte.
+ */
 public final class SDL_ArrayOrder implements JnaEnum {
 
     public static final int SDL_ARRAYORDER_NONE = 0;

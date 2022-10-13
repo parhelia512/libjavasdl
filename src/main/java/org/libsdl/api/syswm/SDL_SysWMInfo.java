@@ -17,15 +17,15 @@ import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_WINRT;
 import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_X11;
 
 /**
- *  The custom window manager information structure.
+ * The custom window manager information structure.
  *
- *  <p>When this structure is returned, it holds information about which
- *  low level system it is using, and will be one of SDL_SYSWM_TYPE.</p>
+ * <p>When this structure is returned, it holds information about which
+ * low level system it is using, and will be one of SDL_SYSWM_TYPE.</p>
  *
- *  <p>Your application has access to a special type of event {@code SDL_SYSWMEVENT},
- *  which contains window-manager specific information and arrives whenever
- *  an unhandled window event occurs.  This event is ignored by default, but
- *  you can enable it with {@link org.libsdl.api.event.SdlEvents#SDL_EventState(int, int)}.</p>
+ * <p>Your application has access to a special type of event {@code SDL_SYSWMEVENT},
+ * which contains window-manager specific information and arrives whenever
+ * an unhandled window event occurs.  This event is ignored by default, but
+ * you can enable it with {@link org.libsdl.api.event.SdlEvents#SDL_EventState(int, int)}.</p>
  */
 @Structure.FieldOrder({
         "version",

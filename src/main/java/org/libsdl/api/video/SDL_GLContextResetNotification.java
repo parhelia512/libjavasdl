@@ -3,9 +3,19 @@ package org.libsdl.api.video;
 import org.libsdl.jna.JnaEnum;
 import org.libsdl.jna.JnaUtils;
 
+/**
+ * Values for the OpenGL attribute key {@link SDL_GLattr#SDL_GL_CONTEXT_RESET_NOTIFICATION}.
+ *
+ * <p>To be passed to {@code SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, value)}</p>
+ *
+ * @see SdlVideo#SDL_GL_SetAttribute(int, int) SDL_GL_SetAttribute(SDL_GLattr, ...)
+ */
 public final class SDL_GLContextResetNotification implements JnaEnum {
 
+    /** @see SDL_GLattr#SDL_GL_CONTEXT_RESET_NOTIFICATION */
     public static final int SDL_GL_CONTEXT_RESET_NO_NOTIFICATION = 0x0000;
+
+    /** @see SDL_GLattr#SDL_GL_CONTEXT_RESET_NOTIFICATION */
     public static final int SDL_GL_CONTEXT_RESET_LOSE_CONTEXT = 0x0001;
 
     public static String toString(int type) {

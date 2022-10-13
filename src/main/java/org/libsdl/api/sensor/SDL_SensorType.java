@@ -12,24 +12,16 @@ import org.libsdl.jna.JnaEnum;
  */
 public final class SDL_SensorType implements JnaEnum {
 
-    /**
-     * Returned for an invalid sensor
-     */
+    /** Returned for an invalid sensor */
     public static final int SDL_SENSOR_INVALID = -1;
 
-    /**
-     * Unknown sensor type
-     */
+    /** Unknown sensor type */
     public static final int SDL_SENSOR_UNKNOWN = 0;
 
-    /**
-     * Accelerometer
-     */
+    /** Accelerometer */
     public static final int SDL_SENSOR_ACCEL = 1;
 
-    /**
-     * Gyroscope
-     */
+    /** Gyroscope */
     public static final int SDL_SENSOR_GYRO = 2;
 
     // TODO: Generate public static String toString(int value)

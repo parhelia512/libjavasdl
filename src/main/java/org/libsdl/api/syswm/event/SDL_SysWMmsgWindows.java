@@ -11,16 +11,16 @@ import com.sun.jna.Structure;
 })
 public final class SDL_SysWMmsgWindows extends Structure {
 
-    /** The window for the message */
+    /** The window for the message ({@code HWND}) */
     public Pointer hwnd;
 
-    /** The type of message */
+    /** The type of message ({@code UINT}) */
     public int msg;
 
-    /** WORD message parameter */
+    /** WORD message parameter ({@code WPARAM}) */
     public Pointer wParam;
 
-    /** LONG message parameter */
+    /** LONG message parameter ({@code LPARAM}) */
     public Pointer lParam;
 
     public SDL_SysWMmsgWindows() {

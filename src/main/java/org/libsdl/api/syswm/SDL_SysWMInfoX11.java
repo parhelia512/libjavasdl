@@ -10,10 +10,10 @@ import com.sun.jna.Structure;
 })
 public final class SDL_SysWMInfoX11 extends Structure {
 
-    /** The X11 display */
+    /** The X11 display ({@code Display *}) */
     public Pointer display;
 
-    /** The X11 window */
+    /** The X11 window ({@code Window}) */
     public NativeLong window;
 
     public SDL_SysWMInfoX11() {

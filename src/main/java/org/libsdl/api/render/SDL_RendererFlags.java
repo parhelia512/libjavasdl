@@ -3,11 +3,21 @@ package org.libsdl.api.render;
 import org.libsdl.jna.JnaEnum;
 import org.libsdl.jna.JnaUtils;
 
+/**
+ * Flags used when creating a rendering context
+ */
 public final class SDL_RendererFlags implements JnaEnum {
 
+    /** The renderer is a software fallback */
     public static final int SDL_RENDERER_SOFTWARE = 0x00000001;
+
+    /** The renderer uses hardware acceleration */
     public static final int SDL_RENDERER_ACCELERATED = 0x00000002;
+
+    /** Present is synchronized with the refresh rate */
     public static final int SDL_RENDERER_PRESENTVSYNC = 0x00000004;
+
+    /** The renderer supports  rendering to texture */
     public static final int SDL_RENDERER_TARGETTEXTURE = 0x00000008;
 
     public static String toString(int value) {

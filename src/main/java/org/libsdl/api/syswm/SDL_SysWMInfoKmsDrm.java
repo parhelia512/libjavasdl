@@ -16,7 +16,7 @@ public final class SDL_SysWMInfoKmsDrm extends Structure {
     /** DRM FD (unavailable on Vulkan windows) */
     public int drmFd;
 
-    /** GBM device (unavailable on Vulkan windows) */
+    /** GBM device (unavailable on Vulkan windows) ({@code gbm_device *}) */
     public Pointer gbmDev;
 
     public SDL_SysWMInfoKmsDrm() {

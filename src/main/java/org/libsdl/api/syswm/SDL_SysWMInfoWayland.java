@@ -15,32 +15,32 @@ import com.sun.jna.Structure;
 })
 public final class SDL_SysWMInfoWayland extends Structure {
 
-    /** Wayland display */
+    /** Wayland display ({@code wl_display *}) */
     public Pointer display;
 
-    /** Wayland surface */
+    /** Wayland surface ({@code wl_surface *}) */
     public Pointer surface;
 
     /**
-     * Wayland shell surface (window manager handle)
+     * Wayland shell surface (window manager handle) ({@code void *})
      *
      * @deprecated
      */
     public Pointer shellSurface;
 
-    /** Wayland EGL window (native window) */
+    /** Wayland EGL window (native window) ({@code wl_egl_window *}) */
     public Pointer eglWindow;
 
-    /** Wayland xdg surface (window manager handle) */
+    /** Wayland xdg surface (window manager handle) ({@code xdg_surface *}) */
     public Pointer xdgSurface;
 
-    /** Wayland xdg toplevel role */
+    /** Wayland xdg toplevel role ({@code xdg_toplevel *}) */
     public Pointer xdgToplevel;
 
-    /** Wayland xdg popup role */
+    /** Wayland xdg popup role ({@code xdg_popup *}) */
     public Pointer xdgPopup;
 
-    /** Wayland xdg positioner, for popup */
+    /** Wayland xdg positioner, for popup ({@code xdg_positioner *}) */
     public Pointer xdgPositioner;
 
     public SDL_SysWMInfoWayland() {

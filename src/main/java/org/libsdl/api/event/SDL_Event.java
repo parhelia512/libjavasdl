@@ -93,6 +93,8 @@ import static org.libsdl.api.event.SDL_EventType.SDL_USEREVENT;
 import static org.libsdl.api.event.SDL_EventType.SDL_WINDOWEVENT;
 
 /**
+ * General event class.
+ *
  * <p>This class is a union of all event info objects from SDL.
  * You can pass an empty instance to methods such as {@link SdlEvents#SDL_PollEvent(SDL_Event)}
  * and have it populated with event info.</p>
@@ -106,37 +108,99 @@ import static org.libsdl.api.event.SDL_EventType.SDL_WINDOWEVENT;
  */
 public final class SDL_Event extends Union {
 
+    /** Event type, shared with all events */
     public int type;
+
+    /** Common event data */
     public SDL_CommonEvent common;
+
+    /** Display event data */
     public SDL_DisplayEvent display;
+
+    /** Window event data */
     public SDL_WindowEvent window;
+
+    /** Keyboard event data */
     public SDL_KeyboardEvent key;
+
+    /** Text editing event data */
     public SDL_TextEditingEvent edit;
+
+    /** Text input event data */
     public SDL_TextInputEvent text;
+
+    /** Extended text editing event data */
     public SDL_TextEditingExtEvent editExt;
+
+    /** Mouse motion event data */
     public SDL_MouseMotionEvent motion;
+
+    /** Mouse button event data */
     public SDL_MouseButtonEvent button;
+
+    /** Mouse wheel event data */
     public SDL_MouseWheelEvent wheel;
+
+    /** Joystick axis event data */
     public SDL_JoyAxisEvent jaxis;
+
+    /** Joystick ball event data */
     public SDL_JoyBallEvent jball;
+
+    /** Joystick hat event data */
     public SDL_JoyHatEvent jhat;
+
+    /** Joystick button event data */
     public SDL_JoyButtonEvent jbutton;
+
+    /** Joystick device change event data */
     public SDL_JoyDeviceEvent jdevice;
+
+    /** Joystick battery event data */
     public SDL_JoyBatteryEvent jbattery;
+
+    /** Game Controller axis event data */
     public SDL_ControllerAxisEvent caxis;
+
+    /** Game Controller button event data */
     public SDL_ControllerButtonEvent cbutton;
+
+    /** Game Controller device event data */
     public SDL_ControllerDeviceEvent cdevice;
+
+    /** Game Controller touchpad event data */
     public SDL_ControllerTouchpadEvent ctouchpad;
+
+    /** Game Controller sensor event data */
     public SDL_ControllerSensorEvent csensor;
+
+    /** Audio device event data */
     public SDL_AudioDeviceEvent adevice;
+
+    /** Touch finger event data */
     public SDL_TouchFingerEvent tfinger;
+
+    /** Gesture event data */
     public SDL_MultiGestureEvent mgesture;
+
+    /** Gesture event data */
     public SDL_DollarGestureEvent dgesture;
+
+    /** Drag and drop event data */
     public SDL_DropEvent drop;
+
+    /** Sensor event data */
     public SDL_SensorEvent sensor;
+
+    /** Quit request event data */
     public SDL_QuitEvent quit;
+
     public SDL_OSEvent os;
+
+    /** Custom event data */
     public SDL_UserEvent user;
+
+    /** System dependent window event data */
     public SDL_SysWMEvent syswm;
 
     public SDL_Event() {

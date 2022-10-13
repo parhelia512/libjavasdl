@@ -2,6 +2,9 @@ package org.libsdl.api.log;
 
 import org.libsdl.jna.JnaEnum;
 
+/**
+ * The predefined log priorities
+ */
 public final class SDL_LogPriority implements JnaEnum {
 
     public static final int SDL_LOG_PRIORITY_VERBOSE = 1;

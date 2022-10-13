@@ -35,6 +35,20 @@ import static org.libsdl.api.log.SDL_LogPriority.SDL_LOG_PRIORITY_VERBOSE;
 import static org.libsdl.api.log.SDL_LogPriority.SDL_LOG_PRIORITY_WARN;
 import static org.libsdl.api.log.SdlLogConst.SDL_MAX_LOG_MESSAGE;
 
+/**
+ * Definitions from file SDL_log.h
+ *
+ * <p>Simple log messages with categories and priorities.</p>
+ *
+ * <p>By default logs are quiet, but if you're debugging SDL you might want:</p>
+ *
+ * <p>SDL_LogSetAllPriority(SDL_LOG_PRIORITY_WARN);</p>
+ *
+ * <p>Here's where the messages go on different platforms:
+ * Windows: debug output stream
+ * Android: log output
+ * Others: standard error output (stderr)</p>
+ */
 public final class SdlLog {
 
     static {
@@ -44,19 +58,67 @@ public final class SdlLog {
     private SdlLog() {
     }
 
+    /**
+     * Set the priority of all log categories.
+     *
+     * @param priority the SDL_LogPriority to assign
+     * @see #SDL_LogSetPriority(int, int)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static native void SDL_LogSetAllPriority(
             @MagicConstant(valuesFromClass = SDL_LogPriority.class) int priority);
 
+    /**
+     * Set the priority of a particular log category.
+     *
+     * @param category the category to assign a priority to
+     * @param priority the SDL_LogPriority to assign
+     * @see #SDL_LogGetPriority(int)
+     * @see #SDL_LogSetAllPriority(int)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static native void SDL_LogSetPriority(
             @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
             @MagicConstant(valuesFromClass = SDL_LogPriority.class) int priority);
 
+    /**
+     * Get the priority of a particular log category.
+     *
+     * @param category the category to query
+     * @return the SDL_LogPriority for the requested category
+     * @see #SDL_LogSetPriority(int, int)
+     * @since This function is available since SDL 2.0.0.
+     */
     @MagicConstant(valuesFromClass = SDL_LogPriority.class)
     public static native int SDL_LogGetPriority(
             @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category);
 
+    /**
+     * Reset all priorities to default.
+     *
+     * <p>This is called by SDL_Quit().</p>
+     *
+     * @see #SDL_LogSetAllPriority(int)
+     * @see #SDL_LogSetPriority(int, int)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static native void SDL_LogResetPriorities();
 
+    /**
+     * Log a message with SDL_LOG_CATEGORY_APPLICATION and SDL_LOG_PRIORITY_INFO.
+     *
+     * @param fmt  a printf() style message format string
+     * @param args additional parameters matching % tokens in the {@code fmt} string, if
+     *             any
+     * @see #SDL_LogCritical(int, String, Object...)
+     * @see #SDL_LogDebug(int, String, Object...)
+     * @see #SDL_LogError(int, String, Object...)
+     * @see #SDL_LogInfo(int, String, Object...)
+     * @see #SDL_LogMessage(int, int, String, Object...)
+     * @see #SDL_LogVerbose(int, String, Object...)
+     * @see #SDL_LogWarn(int, String, Object...)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static void SDL_Log(
             String fmt,
             Object... args) {
@@ -66,6 +128,22 @@ public final class SdlLog {
         NativeVarargFunctions.INSTANCE.SDL_Log(fmt, args);
     }
 
+    /**
+     * Log a message with SDL_LOG_PRIORITY_VERBOSE.
+     *
+     * @param category the category of the message
+     * @param fmt      a printf() style message format string
+     * @param args     additional parameters matching % tokens in the **fmt** string,
+     *                 if any
+     * @see #SDL_Log(String, Object...)
+     * @see #SDL_LogCritical(int, String, Object...)
+     * @see #SDL_LogDebug(int, String, Object...)
+     * @see #SDL_LogError(int, String, Object...)
+     * @see #SDL_LogInfo(int, String, Object...)
+     * @see #SDL_LogMessage(int, int, String, Object...)
+     * @see #SDL_LogWarn(int, String, Object...)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static void SDL_LogVerbose(
             @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
             String fmt,
@@ -76,6 +154,22 @@ public final class SdlLog {
         NativeVarargFunctions.INSTANCE.SDL_LogVerbose(category, fmt, args);
     }
 
+    /**
+     * Log a message with SDL_LOG_PRIORITY_DEBUG.
+     *
+     * @param category the category of the message
+     * @param fmt      a printf() style message format string
+     * @param args     additional parameters matching % tokens in the **fmt** string,
+     *                 if any
+     * @see #SDL_Log(String, Object...)
+     * @see #SDL_LogCritical(int, String, Object...)
+     * @see #SDL_LogDebug(int, String, Object...)
+     * @see #SDL_LogError(int, String, Object...)
+     * @see #SDL_LogInfo(int, String, Object...)
+     * @see #SDL_LogMessage(int, int, String, Object...)
+     * @see #SDL_LogWarn(int, String, Object...)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static void SDL_LogDebug(
             @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
             String fmt,
@@ -86,6 +180,22 @@ public final class SdlLog {
         NativeVarargFunctions.INSTANCE.SDL_LogDebug(category, fmt, args);
     }
 
+    /**
+     * Log a message with SDL_LOG_PRIORITY_INFO.
+     *
+     * @param category the category of the message
+     * @param fmt      a printf() style message format string
+     * @param args     additional parameters matching % tokens in the **fmt** string,
+     *                 if any
+     * @see #SDL_Log(String, Object...)
+     * @see #SDL_LogCritical(int, String, Object...)
+     * @see #SDL_LogDebug(int, String, Object...)
+     * @see #SDL_LogError(int, String, Object...)
+     * @see #SDL_LogInfo(int, String, Object...)
+     * @see #SDL_LogMessage(int, int, String, Object...)
+     * @see #SDL_LogWarn(int, String, Object...)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static void SDL_LogInfo(
             @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
             String fmt,
@@ -96,6 +206,22 @@ public final class SdlLog {
         NativeVarargFunctions.INSTANCE.SDL_LogInfo(category, fmt, args);
     }
 
+    /**
+     * Log a message with SDL_LOG_PRIORITY_WARN.
+     *
+     * @param category the category of the message
+     * @param fmt      a printf() style message format string
+     * @param args     additional parameters matching % tokens in the **fmt** string,
+     *                 if any
+     * @see #SDL_Log(String, Object...)
+     * @see #SDL_LogCritical(int, String, Object...)
+     * @see #SDL_LogDebug(int, String, Object...)
+     * @see #SDL_LogError(int, String, Object...)
+     * @see #SDL_LogInfo(int, String, Object...)
+     * @see #SDL_LogMessage(int, int, String, Object...)
+     * @see #SDL_LogWarn(int, String, Object...)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static void SDL_LogWarn(
             @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
             String fmt,
@@ -106,6 +232,22 @@ public final class SdlLog {
         NativeVarargFunctions.INSTANCE.SDL_LogWarn(category, fmt, args);
     }
 
+    /**
+     * Log a message with SDL_LOG_PRIORITY_ERROR.
+     *
+     * @param category the category of the message
+     * @param fmt      a printf() style message format string
+     * @param args     additional parameters matching % tokens in the **fmt** string,
+     *                 if any
+     * @see #SDL_Log(String, Object...)
+     * @see #SDL_LogCritical(int, String, Object...)
+     * @see #SDL_LogDebug(int, String, Object...)
+     * @see #SDL_LogError(int, String, Object...)
+     * @see #SDL_LogInfo(int, String, Object...)
+     * @see #SDL_LogMessage(int, int, String, Object...)
+     * @see #SDL_LogWarn(int, String, Object...)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static void SDL_LogError(
             @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
             String fmt,
@@ -116,6 +258,22 @@ public final class SdlLog {
         NativeVarargFunctions.INSTANCE.SDL_LogError(category, fmt, args);
     }
 
+    /**
+     * Log a message with SDL_LOG_PRIORITY_CRITICAL.
+     *
+     * @param category the category of the message
+     * @param fmt      a printf() style message format string
+     * @param args     additional parameters matching % tokens in the **fmt** string,
+     *                 if any
+     * @see #SDL_Log(String, Object...)
+     * @see #SDL_LogCritical(int, String, Object...)
+     * @see #SDL_LogDebug(int, String, Object...)
+     * @see #SDL_LogError(int, String, Object...)
+     * @see #SDL_LogInfo(int, String, Object...)
+     * @see #SDL_LogMessage(int, int, String, Object...)
+     * @see #SDL_LogWarn(int, String, Object...)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static void SDL_LogCritical(
             @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
             String fmt,
@@ -126,6 +284,23 @@ public final class SdlLog {
         NativeVarargFunctions.INSTANCE.SDL_LogCritical(category, fmt, args);
     }
 
+    /**
+     * Log a message with the specified category and priority.
+     *
+     * @param category the category of the message
+     * @param priority the priority of the message
+     * @param fmt      a printf() style message format string
+     * @param args     additional parameters matching % tokens in the **fmt** string,
+     *                 if any
+     * @see #SDL_Log(String, Object...)
+     * @see #SDL_LogCritical(int, String, Object...)
+     * @see #SDL_LogDebug(int, String, Object...)
+     * @see #SDL_LogError(int, String, Object...)
+     * @see #SDL_LogInfo(int, String, Object...)
+     * @see #SDL_LogMessage(int, int, String, Object...)
+     * @see #SDL_LogWarn(int, String, Object...)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static void SDL_LogMessage(
             @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,
             @MagicConstant(valuesFromClass = SDL_LogPriority.class) int priority,
@@ -137,14 +312,40 @@ public final class SdlLog {
         NativeVarargFunctions.INSTANCE.SDL_LogMessage(category, priority, fmt, args);
     }
 
+    /**
+     * Get the current log output function.
+     *
+     * @param callback an SDL_LogOutputFunction filled in with the current log
+     *                 callback
+     * @param userdata a pointer filled in with the pointer that is passed to
+     *                 {@code callback}
+     * @see #SDL_LogSetOutputFunction(Pointer, Pointer)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static native void SDL_LogGetOutputFunction(
             PointerByReference callback,
             PointerByReference userdata);
 
+    /**
+     * Replace the default log output function with one of your own.
+     *
+     * @param callback an SDL_LogOutputFunction to call instead of the default
+     * @param userdata a pointer that is passed to {@code callback}
+     * @see #SDL_LogGetOutputFunction(PointerByReference, PointerByReference)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static native void SDL_LogSetOutputFunction(
             SDL_LogOutputFunction callback,
             Pointer userdata);
 
+    /**
+     * Replace the default log output function with one of your own.
+     *
+     * @param callback an SDL_LogOutputFunction to call instead of the default
+     * @param userdata a pointer that is passed to {@code callback}
+     * @see #SDL_LogGetOutputFunction(PointerByReference, PointerByReference)
+     * @since This function is available since SDL 2.0.0.
+     */
     public static native void SDL_LogSetOutputFunction(
             Pointer callback,
             Pointer userdata);

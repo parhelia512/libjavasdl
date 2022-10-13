@@ -3,6 +3,7 @@ package org.libsdl.api.mouse;
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
 
+/** Implementation dependent */
 public final class SDL_Cursor extends PointerType {
 
     public SDL_Cursor() {

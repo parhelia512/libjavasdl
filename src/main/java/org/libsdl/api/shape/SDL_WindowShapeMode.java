@@ -9,14 +9,20 @@ import static org.libsdl.api.shape.WindowShapeMode.ShapeModeColorKey;
 import static org.libsdl.api.shape.WindowShapeMode.ShapeModeDefault;
 import static org.libsdl.api.shape.WindowShapeMode.ShapeModeReverseBinarizeAlpha;
 
+/**
+ * A struct that tags the SDL_WindowShapeParams union with an enum describing the type of its contents.
+ */
 @Structure.FieldOrder({
         "mode",
         "parameters"
 })
 public final class SDL_WindowShapeMode extends Structure {
 
+    /** The mode of these window-shape parameters. */
     @MagicConstant(valuesFromClass = WindowShapeMode.class)
     public int mode;
+
+    /** Window-shape parameters. */
     public SDL_WindowShapeParams parameters;
 
     public SDL_WindowShapeMode() {

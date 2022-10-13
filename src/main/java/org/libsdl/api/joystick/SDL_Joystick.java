@@ -9,7 +9,7 @@ import com.sun.jna.PointerType;
 public final class SDL_Joystick extends PointerType {
 
     /**
-     * The default constructor wraps a NULL pointer.
+     * The default constructor wraps a null pointer.
      */
     public SDL_Joystick() {
     }

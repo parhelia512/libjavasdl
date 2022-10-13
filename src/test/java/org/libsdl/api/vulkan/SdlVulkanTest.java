@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.libsdl.api.video.SDL_Window;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.libsdl.api.Sdl.SDL_InitSubSystem;
 import static org.libsdl.api.Sdl.SDL_QuitSubSystem;
 import static org.libsdl.api.SdlSubSystemConst.SDL_INIT_VIDEO;
@@ -31,12 +32,8 @@ public class SdlVulkanTest {
         }
 
         List<String> extensions = SDL_Vulkan_GetInstanceExtensions(window);
-        if (extensions == null) {
-            throw new AssertionError("SDL Failure: " + SDL_GetError());
-        }
-
         System.out.println("Vulkan extensions: " + extensions);
-        assertFalse(extensions.isEmpty());
+        assertNotNull(extensions, () -> "SDL Failure: " + SDL_GetError());
     }
 
     @AfterEach

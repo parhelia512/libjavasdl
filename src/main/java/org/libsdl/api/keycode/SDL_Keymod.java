@@ -4,6 +4,9 @@ import com.sun.jna.ptr.IntByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaEnum;
 
+/**
+ * Enumeration of valid key mods (possibly OR'd together).
+ */
 public final class SDL_Keymod implements JnaEnum {
 
     public static final int KMOD_NONE = 0x0000;

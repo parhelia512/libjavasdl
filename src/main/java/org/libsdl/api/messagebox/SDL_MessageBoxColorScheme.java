@@ -4,6 +4,9 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 
+/**
+ * A set of colors to use for message box dialogs
+ */
 @Structure.FieldOrder({
         "colors"
 })

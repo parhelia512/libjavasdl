@@ -46,60 +46,40 @@ public final class SdlAudioConst {
         return (!SDL_AUDIO_ISSIGNED(x));
     }
 
-    /**
-     * Unsigned 8-bit samples
-     */
+    /** Unsigned 8-bit samples */
     public static final int AUDIO_U8 = 0x0008;
 
-    /**
-     * Signed 8-bit samples
-     */
+    /** Signed 8-bit samples */
     public static final int AUDIO_S8 = 0x8008;
 
-    /**
-     * Unsigned 16-bit samples
-     */
+    /** Unsigned 16-bit samples */
     public static final int AUDIO_U16LSB = 0x0010;
 
-    /**
-     * Signed 16-bit samples
-     */
+    /** Signed 16-bit samples */
     public static final int AUDIO_S16LSB = 0x8010;
 
-    /**
-     * As above, but big-endian byte order
-     */
+    /** Unsigned 16-bit samples, big-endian byte order */
     public static final int AUDIO_U16MSB = 0x1010;
 
-    /**
-     * As above, but big-endian byte order
-     */
+    /** Signed 16-bit samples, big-endian byte order */
     public static final int AUDIO_S16MSB = 0x9010;
 
     public static final int AUDIO_U16 = AUDIO_U16LSB;
 
     public static final int AUDIO_S16 = AUDIO_S16LSB;
 
-    /**
-     * 32-bit integer samples
-     */
+    /** 32-bit integer samples */
     public static final int AUDIO_S32LSB = 0x8020;
 
-    /**
-     * 32-bit integer samples, big-endian byte order
-     */
+    /** 32-bit integer samples, big-endian byte order */
     public static final int AUDIO_S32MSB = 0x9020;
 
     public static final int AUDIO_S32 = AUDIO_S32LSB;
 
-    /**
-     * 32-bit floating point samples
-     */
+    /** 32-bit floating point samples */
     public static final int AUDIO_F32LSB = 0x8120;
 
-    /**
-     * 32-bit floating point samples, big-endian byte order
-     */
+    /** 32-bit floating point samples, big-endian byte order */
     public static final int AUDIO_F32MSB = 0x9120;
 
     public static final int AUDIO_F32 = AUDIO_F32LSB;

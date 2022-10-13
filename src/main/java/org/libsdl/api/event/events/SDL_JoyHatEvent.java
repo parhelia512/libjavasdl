@@ -16,6 +16,9 @@ import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_RIGHTDOWN;
 import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_RIGHTUP;
 import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_UP;
 
+/**
+ * Joystick hat position change event structure (event.jhat.*)
+ */
 @Structure.FieldOrder({
         "type",
         "timestamp",
@@ -27,12 +30,34 @@ import static org.libsdl.api.joystick.SdlJoystickConst.SDL_HAT_UP;
 })
 public final class SDL_JoyHatEvent extends Structure {
 
+    /** {@link org.libsdl.api.event.SDL_EventType#SDL_JOYHATMOTION SDL_JOYHATMOTION} */
     @MagicConstant(intValues = SDL_JOYHATMOTION)
     public int type;
+
+    /** In milliseconds, populated using SDL_GetTicks() */
     public int timestamp;
+
+    /** The joystick instance id */
     public SDL_JoystickID which;
+
+    /** The joystick hat index */
     public byte hat;
 
+    /**
+     * The hat position value.
+     *
+     * @see org.libsdl.api.joystick.SdlJoystickConst#SDL_HAT_LEFTUP
+     * @see org.libsdl.api.joystick.SdlJoystickConst#SDL_HAT_UP
+     * @see org.libsdl.api.joystick.SdlJoystickConst#SDL_HAT_RIGHTUP
+     * @see org.libsdl.api.joystick.SdlJoystickConst#SDL_HAT_LEFT
+     * @see org.libsdl.api.joystick.SdlJoystickConst#SDL_HAT_CENTERED
+     * @see org.libsdl.api.joystick.SdlJoystickConst#SDL_HAT_RIGHT
+     * @see org.libsdl.api.joystick.SdlJoystickConst#SDL_HAT_LEFTDOWN
+     * @see org.libsdl.api.joystick.SdlJoystickConst#SDL_HAT_DOWN
+     * @see org.libsdl.api.joystick.SdlJoystickConst#SDL_HAT_RIGHTDOWN
+     *
+     * <p>Note that zero means the POV is centered.</p>
+     */
     @MagicConstant(intValues = {
             SDL_HAT_CENTERED,
             SDL_HAT_UP,
@@ -44,6 +69,7 @@ public final class SDL_JoyHatEvent extends Structure {
             SDL_HAT_LEFTUP,
             SDL_HAT_LEFTDOWN})
     public byte value;
+
     public byte padding1;
     public byte padding2;
 

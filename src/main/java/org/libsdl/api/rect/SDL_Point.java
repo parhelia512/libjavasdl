@@ -2,7 +2,14 @@ package org.libsdl.api.rect;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import org.libsdl.jna.ContiguousArrayList;
 
+/**
+ * The structure that defines a point (integer)
+ *
+ * @see SdlRect#SDL_EnclosePoints(ContiguousArrayList, SDL_Rect, SDL_Rect)
+ * @see SdlRect#SDL_PointInRect(SDL_Point, SDL_Rect)
+ */
 @Structure.FieldOrder({
         "x",
         "y"

@@ -7,6 +7,9 @@ import org.libsdl.api.video.SDL_WindowEventID;
 
 import static org.libsdl.api.event.SDL_EventType.SDL_WINDOWEVENT;
 
+/**
+ * Window state change event data (event.window.*)
+ */
 @Structure.FieldOrder({
         "type",
         "timestamp",
@@ -20,17 +23,28 @@ import static org.libsdl.api.event.SDL_EventType.SDL_WINDOWEVENT;
 })
 public final class SDL_WindowEvent extends Structure {
 
+    /** {@link org.libsdl.api.event.SDL_EventType#SDL_WINDOWEVENT SDL_WINDOWEVENT} */
     @MagicConstant(intValues = SDL_WINDOWEVENT)
     public int type;
+
+    /** In milliseconds, populated using SDL_GetTicks() */
     public int timestamp;
+
+    /** The associated window */
     public int windowID;
 
+    /** {@link SDL_WindowEventID} */
     @MagicConstant(valuesFromClass = SDL_WindowEventID.class)
     public byte event;
+
     public byte padding1;
     public byte padding2;
     public byte padding3;
+
+    /** event dependent data */
     public int data1;
+
+    /** event dependent data */
     public int data2;
 
     public SDL_WindowEvent() {

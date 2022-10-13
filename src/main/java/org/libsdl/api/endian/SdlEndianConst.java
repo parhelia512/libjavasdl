@@ -3,6 +3,9 @@ package org.libsdl.api.endian;
 import java.nio.ByteOrder;
 import org.intellij.lang.annotations.MagicConstant;
 
+/**
+ *  Definitions from file SDL_endian.h
+ */
 public final class SdlEndianConst {
 
     public static final int SDL_LIL_ENDIAN = 1234;

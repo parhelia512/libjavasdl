@@ -9,7 +9,10 @@ import com.sun.jna.Structure;
 })
 public final class SDL_SysWMInfoVivante extends Structure {
 
+    /** {@code EGLNativeDisplayType} */
     public Pointer display;
+
+    /** {@code EGLNativeWindowType} */
     public Pointer window;
 
     public SDL_SysWMInfoVivante() {

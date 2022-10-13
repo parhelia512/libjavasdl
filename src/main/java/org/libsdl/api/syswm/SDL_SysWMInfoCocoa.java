@@ -8,7 +8,7 @@ import com.sun.jna.Structure;
 })
 public final class SDL_SysWMInfoCocoa extends Structure {
 
-    /** The Cocoa window */
+    /** The Cocoa window ({@code NSWindow *}) */
     public Pointer window;
 
     public SDL_SysWMInfoCocoa() {

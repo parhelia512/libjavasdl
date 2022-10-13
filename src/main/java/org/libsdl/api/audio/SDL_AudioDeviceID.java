@@ -3,7 +3,7 @@ package org.libsdl.api.audio;
 import com.sun.jna.IntegerType;
 
 /**
- * <p>SDL Audio Device IDs.</p>
+ * SDL Audio Device IDs.
  *
  * <p>A successful call to SDL_OpenAudio() is always device id 1, and legacy
  * SDL audio APIs assume you want this device ID. SDL_OpenAudioDevice() calls

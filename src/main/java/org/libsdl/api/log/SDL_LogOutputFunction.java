@@ -14,6 +14,16 @@ import org.intellij.lang.annotations.MagicConstant;
 @FunctionalInterface
 public interface SDL_LogOutputFunction extends Callback {
 
+    /**
+     * The prototype for the log output callback function.
+     *
+     * <p>This function is called by SDL when there is a new text to be logged.</p>
+     *
+     * @param userdata what was passed as {@code userdata} to SDL_LogSetOutputFunction()
+     * @param category the category of the message
+     * @param priority the priority of the message
+     * @param message the message being output
+     */
     void onLogMessage(
             Pointer userdata,
             @MagicConstant(valuesFromClass = SDL_LogCategory.class) int category,

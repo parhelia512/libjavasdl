@@ -4,10 +4,18 @@ import com.sun.jna.ptr.IntByReference;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaEnum;
 
+/**
+ * The scaling mode for a texture.
+ */
 public final class SDL_ScaleMode implements JnaEnum {
 
+    /** nearest pixel sampling */
     public static final int SDL_ScaleModeNearest = 0;
+
+    /** linear filtering */
     public static final int SDL_ScaleModeLinear = 1;
+
+    /** anisotropic filtering */
     public static final int SDL_ScaleModeBest = 2;
 
     // TODO: Generate public static String toString(int value)

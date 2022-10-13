@@ -3,6 +3,9 @@ package org.libsdl.api.syswm;
 import org.intellij.lang.annotations.MagicConstant;
 import org.libsdl.jna.JnaEnum;
 
+/**
+ * These are the various supported windowing subsystems
+ */
 public final class SDL_SYSWM_TYPE implements JnaEnum {
 
     public static final int SDL_SYSWM_UNKNOWN = 0;

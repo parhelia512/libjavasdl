@@ -8,7 +8,7 @@ import com.sun.jna.Structure;
 })
 public final class SDL_SysWMInfoWinRT extends Structure {
 
-    /** The WinRT CoreWindow */
+    /** The WinRT CoreWindow ({@code IInspectable *}) */
     public Pointer window;
 
     public SDL_SysWMInfoWinRT() {
