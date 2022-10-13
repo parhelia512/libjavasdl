@@ -16,26 +16,37 @@ import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_WINDOWS;
 import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_WINRT;
 import static org.libsdl.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_X11;
 
+/**
+ *  The custom window manager information structure.
+ *
+ *  <p>When this structure is returned, it holds information about which
+ *  low level system it is using, and will be one of SDL_SYSWM_TYPE.</p>
+ *
+ *  <p>Your application has access to a special type of event {@code SDL_SYSWMEVENT},
+ *  which contains window-manager specific information and arrives whenever
+ *  an unhandled window event occurs.  This event is ignored by default, but
+ *  you can enable it with {@link org.libsdl.api.event.SdlEvents#SDL_EventState(int, int)}.</p>
+ */
 @Structure.FieldOrder({
         "version",
         "subsystem",
         "info"
 })
-public final class SDL_SysWMinfo extends Structure {
+public final class SDL_SysWMInfo extends Structure {
 
     public SDL_version version;
     @MagicConstant(valuesFromClass = SDL_SYSWM_TYPE.class)
     public int subsystem;
     public SDL_SysWMInfoPlatformSpecific info;
 
-    public SDL_SysWMinfo() {
+    public SDL_SysWMInfo() {
     }
 
-    public SDL_SysWMinfo(SDL_version version) {
+    public SDL_SysWMInfo(SDL_version version) {
         this.version = version;
     }
 
-    public SDL_SysWMinfo(Pointer p, SDL_version version) {
+    public SDL_SysWMInfo(Pointer p, SDL_version version) {
         super(p);
         this.version = version;
     }

@@ -154,7 +154,6 @@ public final class SdlRender {
             PointerByReference pixels,
             IntByReference pitch);
 
-    // TODO: Test
     public static native int SDL_LockTextureToSurface(
             SDL_Texture texture,
             SDL_Rect rect,

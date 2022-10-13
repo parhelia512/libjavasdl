@@ -15,7 +15,7 @@ public final class SDL_hid_device_info {
     public String serialNumber;
 
     /** Device Release Number in binary-coded decimal, also known as Device Version Number */
-    short releaseNumber;
+    public short releaseNumber;
 
     /** Manufacturer String */
     public String manufacturerString;

@@ -25,8 +25,10 @@ public final class SdlEventsConst {
     }
 
     public static String toString(
-            @MagicConstant(intValues = {SDL_DISABLE, SDL_ENABLE}) int value) {
+            @MagicConstant(intValues = {SDL_QUERY, SDL_IGNORE, SDL_DISABLE, SDL_ENABLE}) int value) {
         switch (value) {
+            case SDL_QUERY:
+                return "SDL_QUERY";
             case SDL_DISABLE:
                 return "SDL_DISABLE";
             case SDL_ENABLE:

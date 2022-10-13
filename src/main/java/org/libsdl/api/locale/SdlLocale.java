@@ -15,15 +15,20 @@ public final class SdlLocale {
     }
 
     public static List<SDL_Locale> SDL_GetPreferredLocalesList() {
-        Pointer locales = SDL_GetPreferredLocales();
+        Pointer localeArrayPointer = SDL_GetPreferredLocales();
+        if (localeArrayPointer == null) {
+            return null;
+        }
+        Pointer localePointer = localeArrayPointer;
         List<SDL_Locale> localesList = new ArrayList<>();
         while (true) {
-            SDL_Locale locale = new SDL_Locale(locales);
+            SDL_Locale locale = new SDL_Locale(localePointer);
             locale.read();
             if (locale.language == null) break;
             localesList.add(locale);
-            locales = locales.getPointer(locale.size());
+            localePointer = localePointer.share(locale.size());
         }
+        SDL_free(localeArrayPointer);
         return localesList;
     }
 

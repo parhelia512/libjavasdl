@@ -29,7 +29,7 @@ public final class SdlSurface {
      */
     public static boolean SDL_MUSTLOCK(
             SDL_Surface s) {
-        return ((s.flags & SDL_RLEACCEL) != 0);
+        return (s.flags & SDL_RLEACCEL) != 0;
     }
 
     public static native SDL_Surface SDL_CreateRGBSurface(
@@ -237,7 +237,6 @@ public final class SdlSurface {
     }
 
     @Deprecated
-    @SuppressWarnings("DeprecatedIsStillUsed")
     public static native int SDL_UpperBlit(
             SDL_Surface src,
             SDL_Rect srcrect,
@@ -275,7 +274,6 @@ public final class SdlSurface {
     }
 
     @Deprecated
-    @SuppressWarnings("DeprecatedIsStillUsed")
     public static native int SDL_UpperBlitScaled(
             SDL_Surface src,
             SDL_Rect srcRect,

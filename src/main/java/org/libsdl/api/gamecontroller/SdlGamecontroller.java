@@ -77,7 +77,7 @@ public final class SdlGamecontroller {
             int joystickIndex);
 
     public static native String SDL_GameControllerPathForIndex(
-            int joystick_index);
+            int joystickIndex);
 
     @MagicConstant(valuesFromClass = SDL_GameControllerType.class)
     public static native int SDL_GameControllerTypeForIndex(
