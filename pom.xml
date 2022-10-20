@@ -83,6 +83,82 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-and-process-pom.xml</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="copy pom.xml to META-INF and remove ˂build˃ and ˂test-dependency˃ elements">
+                                <copy file="pom.xml" tofile="${project.build.outputDirectory}/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"/>
+
+                                <!-- Remove <build> element -->
+                                <replaceregexp file="${project.build.outputDirectory}/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"
+                                               match="\s*&lt;build&gt;.*?&lt;/build&gt;"
+                                               replace=""
+                                               flags="ms"
+                                               byline="false"/>
+
+                                <!-- Remove <properties> element -->
+                                <replaceregexp file="${project.build.outputDirectory}/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"
+                                               match="\s*&lt;properties&gt;.*?&lt;/properties&gt;"
+                                               replace=""
+                                               flags="ms"
+                                               byline="false"/>
+
+                                <!-- Remove <dependency> ... <scope>test</scope></dependency> -->
+                                <!-- Step 1: Replace \s*<dependency>(?:\s*<(\w+)>[^<]*</\1>)+\s*<scope>test</scope>\s*</dependency> -->
+                                <replaceregexp file="${project.build.outputDirectory}/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"
+                                               match="&lt;scope&gt;test&lt;/scope&gt;.*?&lt;/dependency&gt;"
+                                               replace="ZZZ"
+                                               flags="gms"
+                                               byline="false"/>
+                                <!-- Step 2: Save non-test dependencies -->
+                                <replaceregexp file="${project.build.outputDirectory}/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"
+                                               match="&lt;dependency&gt;(.*?)&lt;/dependency&gt;"
+                                               replace="&lt;depend&gt;\1&lt;/depend&gt;"
+                                               flags="gms"
+                                               byline="false"/>
+                                <!-- Step 3: Remove the ZZZ altogether:  <dependency>.*?ZZZ  -->
+                                <replaceregexp file="${project.build.outputDirectory}/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"
+                                               match="\s*&lt;dependency&gt;.*?ZZZ"
+                                               replace=""
+                                               flags="gms"
+                                               byline="false"/>
+                                <!-- Step 4: Revert the saved non-test dependencies -->
+                                <replaceregexp file="${project.build.outputDirectory}/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"
+                                               match="&lt;depend&gt;(.*?)&lt;/depend&gt;"
+                                               replace="&lt;dependency&gt;\1&lt;/dependency&gt;"
+                                               flags="gms"
+                                               byline="false"/>
+
+                                <propertyfile file="${project.build.outputDirectory}/META-INF/maven/${project.groupId}/${project.artifactId}/pom.properties">
+                                    <entry key="groupId" value="${project.groupId}"/>
+                                    <entry key="artifactId" value="${project.artifactId}"/>
+                                    <entry key="version" value="${project.version}"/>
+                                </propertyfile>
+                                <copy file="${project.build.outputDirectory}/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml" tofile="${project.build.directory}/${project.artifactId}-${project.version}.pom"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>3.2.1</version>
                 <configuration>
