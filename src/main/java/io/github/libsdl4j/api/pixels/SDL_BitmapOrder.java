@@ -2,7 +2,7 @@ package io.github.libsdl4j.api.pixels;
 
 import io.github.libsdl4j.jna.JnaEnum;
 
-/** Bitmap pixel order, high bit -> low bit. */
+/** Bitmap pixel order, high bit to low bit. */
 public final class SDL_BitmapOrder implements JnaEnum {
 
     public static final int SDL_BITMAPORDER_NONE = 0;

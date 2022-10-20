@@ -4,7 +4,7 @@ import java.nio.ByteOrder;
 import org.intellij.lang.annotations.MagicConstant;
 
 /**
- *  Definitions from file SDL_endian.h
+ * Definitions from file SDL_endian.h
  */
 public final class SdlEndianConst {
 

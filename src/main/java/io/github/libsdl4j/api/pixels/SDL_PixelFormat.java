@@ -2,6 +2,7 @@ package io.github.libsdl4j.api.pixels;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 
 /**
@@ -13,6 +14,7 @@ import org.intellij.lang.annotations.MagicConstant;
  * The data types used to represent pixels are as follows:
  *
  * <table>
+ *     <caption>Pixel datatypes</caption>
  *     <tr>
  *         <th>Bytes Per Pixel</th>
  *         <th>Related Data Types</th>
@@ -42,7 +44,13 @@ import org.intellij.lang.annotations.MagicConstant;
  * <p>If you wish to do pixel level modifications on a surface,
  * then understanding how SDL stores its color information is essential.</p>
  *
- * @apiNote Everything in the pixel format structure is read-only.
+ * <p><b>Note:</b> Everything in the pixel format structure is read-only.</p>
+ *
+ * <p><b>Implementation note:</b> {@code SDL_SDL_PixelFormat} would normally be implemented as a JNA {@link Structure}
+ * but the SDL internals keep references to all allocated {@code SDL_PixelFormat}s
+ * and change their internal fields via various functions. Thus it is implemented as
+ * an opaque Pointer and there is a co-located {@link SDL_PixelFormat_internal}
+ * which allows a read-only access to the fields.</p>
  */
 public final class SDL_PixelFormat extends PointerType {
 

@@ -31,14 +31,15 @@ import static io.github.libsdl4j.api.rwops.SdlRWops.SDL_RWFromFile;
  *
  * <p>To count the number of game controllers in the system for the following:</p>
  *
- * <blockquote><pre>
+ * <pre>
  *  int nJoysticks = SDL_NumJoysticks();
  *  int nGameControllers = 0;
- *  for (int i = 0; i < nJoysticks; i++) {
+ *  for (int i = 0; i &lt; nJoysticks; i++) {
  *      if (SDL_IsGameController(i)) {
  *          nGameControllers++;
  *      }
- *  }</pre></blockquote>
+ *  }
+ * </pre>
  *
  * <p>Using the SDL_HINT_GAMECONTROLLERCONFIG hint or the SDL_GameControllerAddMapping() you can add support for controllers SDL is unaware of or cause an existing controller to have a different binding. The format is:
  * guid,name,mappings</p>
@@ -57,8 +58,9 @@ import static io.github.libsdl4j.api.rwops.SdlRWops.SDL_RWFromFile;
  *
  *  <p>This string shows an example of a valid mapping for a controller</p>
  *
- * <blockquote><pre>
- * "03000000341a00003608000000000000,PS3 Controller,a:b1,b:b2,y:b3,x:b0,start:b9,guide:b12,back:b8,dpup:h0.1,dpleft:h0.8,dpdown:h0.4,dpright:h0.2,leftshoulder:b4,rightshoulder:b5,leftstick:b10,rightstick:b11,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7",</pre></blockquote>
+ * <pre>
+ * "03000000341a00003608000000000000,PS3 Controller,a:b1,b:b2,y:b3,x:b0,start:b9,guide:b12,back:b8,dpup:h0.1,dpleft:h0.8,dpdown:h0.4,dpright:h0.2,leftshoulder:b4,rightshoulder:b5,leftstick:b10,rightstick:b11,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7",
+ * </pre>
  */
 public final class SdlGamecontroller {
 
@@ -123,8 +125,9 @@ public final class SdlGamecontroller {
      *
      * <p>This string shows an example of a valid mapping for a controller:</p>
      *
-     * <blockquote><pre>
-     * "341a3608000000000000504944564944,Afterglow PS3 Controller,a:b1,b:b2,y:b3,x:b0,start:b9,guide:b12,back:b8,dpup:h0.1,dpleft:h0.8,dpdown:h0.4,dpright:h0.2,leftshoulder:b4,rightshoulder:b5,leftstick:b10,rightstick:b11,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7"</pre></blockquote>
+     * <pre>
+     * "341a3608000000000000504944564944,Afterglow PS3 Controller,a:b1,b:b2,y:b3,x:b0,start:b9,guide:b12,back:b8,dpup:h0.1,dpleft:h0.8,dpdown:h0.4,dpright:h0.2,leftshoulder:b4,rightshoulder:b5,leftstick:b10,rightstick:b11,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7"
+     * </pre>
      *
      * @param mappingString the mapping string
      * @return 1 if a new mapping is added, 0 if an existing mapping is updated,
@@ -666,7 +669,7 @@ public final class SdlGamecontroller {
      *
      * @param gamecontroller a game controller
      * @param button         a button enum value (an SDL_GameControllerButton value)
-     * @return SDL_TRUE if the controller has this button, SDL_FALSE otherwise.
+     * @return true if the controller has this button, false otherwise.
      * @since This function is available since SDL 2.0.14.
      */
     public static native boolean SDL_GameControllerHasButton(

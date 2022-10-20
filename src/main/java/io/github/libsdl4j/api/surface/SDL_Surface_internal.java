@@ -12,8 +12,8 @@ import org.intellij.lang.annotations.MagicConstant;
  *
  * <p>Do not use it explicitly in your code.</p>
  *
- * @implNote No-arg constructor is intentionally omitted
- * as this structure will always be instantiated as part of an existing {@code SDL_Surface}.
+ * <p><b>Implementation note:</b> No-arg constructor is intentionally omitted
+ * as this structure will always be instantiated as part of an existing {@code SDL_Surface}.</p>
  */
 @Structure.FieldOrder({
         "flags",

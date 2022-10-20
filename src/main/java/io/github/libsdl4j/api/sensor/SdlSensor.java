@@ -15,7 +15,7 @@ import org.intellij.lang.annotations.MagicConstant;
  *
  *
  *
- * <h4>Accelerometer sensor</h4>
+ * <h3>Accelerometer sensor</h3>
  *
  * <p>The accelerometer returns the current acceleration in SI meters per
  * second squared. This measurement includes the force of gravity, so
@@ -41,7 +41,7 @@ import org.intellij.lang.annotations.MagicConstant;
  *
  *
  *
- * <h4>Gyroscope sensor</h4>
+ * <h3>Gyroscope sensor</h3>
  *
  * <p>The gyroscope returns the current rate of rotation in radians per second.
  * The rotation is positive in the counter-clockwise direction. That is,

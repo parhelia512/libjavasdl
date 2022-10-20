@@ -5,7 +5,9 @@ import com.sun.jna.Structure;
 import org.intellij.lang.annotations.MagicConstant;
 
 /**
- * @apiNote Everything in the pixel format structure is read-only.
+ * This is an internal structure and should not be used by a client Java code.
+ *
+ * <p>Note that everything in the pixel format structure is read-only.</p>
  */
 @Structure.FieldOrder({
         "format",

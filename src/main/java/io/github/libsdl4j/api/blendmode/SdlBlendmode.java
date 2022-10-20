@@ -33,9 +33,10 @@ public final class SdlBlendmode {
      *
      * <p>Expressed in pseudocode, it would look like this:</p>
      *
-     * <blockquote><pre>
+     * <pre>
      * dstRGB = colorOperation(srcRGB * srcColorFactor, dstRGB * dstColorFactor);
-     * dstA = alphaOperation(srcA * srcAlphaFactor, dstA * dstAlphaFactor);</pre></blockquote>
+     * dstA = alphaOperation(srcA * srcAlphaFactor, dstA * dstAlphaFactor);
+     * </pre>
      *
      * <p>Where the functions {@code colorOperation(src, dst)} and `alphaOperation(src,
      * dst)` can return one of the following:</p>

@@ -29,9 +29,10 @@ import io.github.libsdl4j.api.render.SDL_Texture;
  * after which you can release the {@code SDL_Surface} memory by
  * {@link io.github.libsdl4j.api.surface.SdlSurface#SDL_FreeSurface(SDL_Surface) SDL_FreeSurface(...)}</p>
  *
- * @apiNote This structure should be treated as read-only, except for {@code pixels},
- * which, if not null, contains the raw pixel data for the surface.
- * @implNote {@code SDL_Surface} would normally be implemented as a {@link Structure}
+ * <p><b>Note:</b>This structure should be treated as read-only, except for {@code pixels},
+ * which, if not null, contains the raw pixel data for the surface.</p>
+ *
+ * <p><b>Implementation note:</b> {@code SDL_Surface} would normally be implemented as a JNA {@link Structure}
  * but the SDL internals keep references to all allocated {@code SDL_Surface}s
  * and change their internal fields without notice. Thus it is implemented as
  * an opaque Pointer and there is a co-located {@link SDL_Surface_internal}

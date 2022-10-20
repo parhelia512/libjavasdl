@@ -101,7 +101,7 @@ public final class SdlEvents {
      * instead.</p>
      *
      * @param type the type of event to be queried; see SDL_EventType for details
-     * @return SDL_TRUE if events matching {@code type} are present, or SDL_FALSE if
+     * @return true if events matching {@code type} are present, or false if
      * events matching {@code type} are not present.
      * @see #SDL_HasEvents(int, int)
      * @since This function is available since SDL 2.0.0.
@@ -118,8 +118,8 @@ public final class SdlEvents {
      *                SDL_EventType for details
      * @param maxType the high end of event type to be queried, inclusive; see
      *                SDL_EventType for details
-     * @return SDL_TRUE if events with type >= {@code minType} and <= {@code maxType} are
-     * present, or SDL_FALSE if not.
+     * @return true if events with type greater or equal to {@code minType} and less or equal to {@code maxType} are
+     * present, or false if not.
      * @see #SDL_HasEvents(int, int)
      * @since This function is available since SDL 2.0.0.
      */
@@ -194,7 +194,7 @@ public final class SdlEvents {
      * <p>The common practice is to fully process the event queue once every frame,
      * usually as a first step before updating the game's state:</p>
      *
-     * <blockquote><pre>
+     * <pre>
      * while (gameIsStillRunning) {
      *     SDL_Event event;
      *     while (SDL_PollEvent(event)) {  // poll until all events are handled!
@@ -202,7 +202,8 @@ public final class SdlEvents {
      *     }
      *
      *     // update game state, draw the current frame
-     * }</pre></blockquote>
+     * }
+     * </pre>
      *
      * @param event the SDL_Event structure to be filled with the next event from
      *              the queue, or NULL
@@ -351,7 +352,7 @@ public final class SdlEvents {
      * <p>This function can be used to "chain" filters, by saving the existing filter
      * before replacing it with a function that will call that saved filter.</p>
      *
-     * <p>More Java-style of retrieving {@link SDL_EventFilter}</p>
+     * <p>This is a Java-style version of a raw C-style function. Prefer this function over the raw C-style one.</p>
      *
      * @param userdata A pointer that is passed to `filter` when first registered
      * @return Either a previously registered {@link SDL_EventFilter} or null if none was previously registered
@@ -376,12 +377,13 @@ public final class SdlEvents {
      * <p>This function can be used to "chain" filters, by saving the existing filter
      * before replacing it with a function that will call that saved filter.</p>
      *
+     * <p>This is a raw C-style version of the function. Prefer Java-style version
+     * {@link #SDL_GetEventFilter(PointerByReference)}.</p>
+     *
      * @param filter   the current callback function will be stored here
      * @param userdata the pointer that is passed to the current event filter will
      *                 be stored here
      * @return true on success or false if there is no event filter set.
-     * @apiNote This function is C-style function. It should be avoided in favor of
-     * the more Java-style version {@link #SDL_GetEventFilter(PointerByReference)}.
      * @see #SDL_SetEventFilter(SDL_EventFilter, Pointer)
      * @since This function is available since SDL 2.0.0.
      */
@@ -484,7 +486,7 @@ public final class SdlEvents {
      * Allocate a set of user-defined events, and return the beginning event
      * number for that set of events.
      *
-     * <p>Calling this function with {@code numevents} <= 0 is an error and will return
+     * <p>Calling this function with {@code numevents} less or equal to 0 is an error and will return
      * (Uint32)-1.</p>
      *
      * <p>Note, (Uint32)-1 means the maximum unsigned 32-bit integer value (or

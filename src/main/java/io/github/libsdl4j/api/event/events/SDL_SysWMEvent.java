@@ -11,7 +11,7 @@ import static io.github.libsdl4j.api.event.SDL_EventType.SDL_SYSWMEVENT;
  * A video driver dependent system event (event.syswm.*)
  * This event is disabled by default, you can enable it with SDL_EventState()
  *
- * @apiNote If you want to use this event, you should include SDL_syswm.h.
+ * <p><b>Note:</b> If you want to use this event, you should include SDL_syswm.h.</p>
  */
 @Structure.FieldOrder({
         "type",

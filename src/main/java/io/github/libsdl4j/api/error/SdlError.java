@@ -127,11 +127,13 @@ public final class SdlError {
      * <p>This allows the caller to copy the error string into a provided buffer, but
      * otherwise operates exactly the same as SDL_GetError().</p>
      *
+     * <p>This is a raw C-style version of the function. Prefer Java-style version
+     * {@link #SDL_GetError()}.</p>
+     *
      * @param errstr A buffer to fill with the last error message that was set for
      *               the current thread
      * @param maxlen The size of the buffer pointed to by the errstr parameter
      * @return the pointer passed in as the {@code errstr} parameter.
-     * @apiNote This method is a more technical C-style method and should not be used from Java
      * @see #SDL_GetError()
      * @since This function is available since SDL 2.0.14.
      */

@@ -357,7 +357,7 @@ public final class SdlLog {
      * to route all SDL internal logging to Java-style SLF4J.
      * Thus your application can have a single logging backend via a Java de-facto standard
      * SLF4J (LogBack, Log4J 2, etc.). All SDL internal logging will bubble up to Java
-     * so that you can configure it as is common in Java.<p/>
+     * so that you can configure it as is common in Java.</p>
      *
      * <p>If you want to use this log message handler, you must add SLF4J as a dependency to your project.</p>
      *

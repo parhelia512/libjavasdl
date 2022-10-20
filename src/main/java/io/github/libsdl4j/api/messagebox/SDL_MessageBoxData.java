@@ -32,7 +32,9 @@ public final class SDL_MessageBoxData extends Structure {
 
     /** UTF-8 message text */
     public String message;
+
     public int numbuttons;
+
     public Pointer buttons;
 
     /** {@link SDL_MessageBoxColorScheme}, can be null to use system settings */

@@ -35,7 +35,7 @@ import org.intellij.lang.annotations.MagicConstant;
  *                       ^
  *                       |
  *                       |
- * (-1,0)  West <----[ HAPTIC ]----> East (1,0)
+ * (-1,0)  West &lt;----[ HAPTIC ]----&gt; East (1,0)
  *                       |
  *                       |
  *                       v
@@ -82,7 +82,7 @@ import org.intellij.lang.annotations.MagicConstant;
  *
  * <p>Example of force coming from the south with all encodings (force coming
  *  from the south means the user will have to pull the stick to counteract):</p>
- * <blockquote><pre>
+ * <pre>
  * SDL_HapticDirection direction = new SDL_HapticDirection();
  *
  * // Cartesian directions
@@ -97,7 +97,8 @@ import org.intellij.lang.annotations.MagicConstant;
  *
  * // Spherical coordinates
  * direction.type = SDL_HAPTIC_SPHERICAL;   // Spherical encoding
- * direction.dir[0] = 9000;                 // Since we only have two axes we don't need more parameters.</pre></blockquote>
+ * direction.dir[0] = 9000;                 // Since we only have two axes we don't need more parameters.
+ * </pre>
  *
  * @see SDL_HapticDirectionEncoding#SDL_HAPTIC_POLAR
  * @see SDL_HapticDirectionEncoding#SDL_HAPTIC_CARTESIAN

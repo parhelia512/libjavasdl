@@ -14,7 +14,7 @@ import static io.github.libsdl4j.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
 /**
  * A structure containing a template for a Periodic effect.
  *
- * <h4>The struct handles the following effects:</h4>
+ * <p>The struct handles the following effects:</p>
  *
  * <ul>
  *     <li>{@link io.github.libsdl4j.api.haptic.SDL_HapticEffectType#SDL_HAPTIC_SINE SDL_HAPTIC_SINE}</li>
@@ -31,7 +31,7 @@ import static io.github.libsdl4j.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
  * <p>Phase is given by hundredth of a degree meaning that giving the phase a value
  * of 9000 will displace it 25% of its period.</p>
  *
- * <h4>Here are sample values:</h4>
+ * <p>Here are sample values:</p>
  * <pre>
  *     0: No phase displacement.
  *  9000: Displaced 25% of its period.
@@ -40,7 +40,7 @@ import static io.github.libsdl4j.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
  * 36000: Displaced 100% of its period, same as 0, but 0 is preferred.
  * </pre>
  *
- * <h4>Examples:</h4>
+ * <h3>Examples:</h3>
  * <pre>
  * SDL_HAPTIC_SINE
  *   __      __      __      __

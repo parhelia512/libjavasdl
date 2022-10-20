@@ -18,7 +18,7 @@ public interface SDL_HintCallback extends Callback {
      * The hint callback function.
      *
      * @param userdata what was passed as {@code userdata} to SDL_AddHintCallback()
-     * @param name what was passed as {@code name} to SDL_AddHintCallback()
+     * @param name     what was passed as {@code name} to SDL_AddHintCallback()
      * @param oldValue the previous hint value
      * @param newValue the new value hint is to be set to
      */

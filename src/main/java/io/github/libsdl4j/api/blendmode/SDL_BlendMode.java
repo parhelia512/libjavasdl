@@ -19,7 +19,8 @@ public final class SDL_BlendMode implements JnaEnum {
      * alpha blending
      * <pre>
      * dstRGB = (srcRGB * srcA) + (dstRGB * (1-srcA))
-     * dstA = srcA + (dstA * (1-srcA))</pre>
+     * dstA = srcA + (dstA * (1-srcA))
+     * </pre>
      */
     public static final int SDL_BLENDMODE_BLEND = 0x00000001;
 
@@ -27,7 +28,8 @@ public final class SDL_BlendMode implements JnaEnum {
      * additive blending
      * <pre>
      * dstRGB = (srcRGB * srcA) + dstRGB
-     * dstA = dstA</pre>
+     * dstA = dstA
+     * </pre>
      */
     public static final int SDL_BLENDMODE_ADD = 0x00000002;
 
@@ -35,7 +37,8 @@ public final class SDL_BlendMode implements JnaEnum {
      * color modulate
      * <pre>
      * dstRGB = srcRGB * dstRGB
-     * dstA = dstA</pre>
+     * dstA = dstA
+     * </pre>
      */
     public static final int SDL_BLENDMODE_MOD = 0x00000004;
 
@@ -43,9 +46,11 @@ public final class SDL_BlendMode implements JnaEnum {
      * color multiply
      * <pre>
      * dstRGB = (srcRGB * dstRGB) + (dstRGB * (1-srcA))
-     * dstA = (srcA * dstA) + (dstA * (1-srcA))</pre>
+     * dstA = (srcA * dstA) + (dstA * (1-srcA))
+     * </pre>
      */
     public static final int SDL_BLENDMODE_MUL = 0x00000008;
+
     public static final int SDL_BLENDMODE_INVALID = 0x7FFFFFFF;
 
     // TODO: Generate public static String toString(int value)

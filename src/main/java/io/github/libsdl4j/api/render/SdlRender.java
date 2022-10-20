@@ -64,7 +64,7 @@ public final class SdlRender {
      *
      * <p>There may be none if SDL was compiled without render support.</p>
      *
-     * @return a number >= 0 on success or a negative error code on failure; call
+     * @return a number greater or equal to 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_CreateRenderer(SDL_Window, int, int)
      * @see #SDL_GetRenderDriverInfo(int, SDL_RendererInfo)

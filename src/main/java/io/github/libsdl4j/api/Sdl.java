@@ -4,9 +4,10 @@ import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 import org.intellij.lang.annotations.MagicConstant;
 
 /**
- * @apiNote Native functions are always defined in a private static nested class
- * and public methods from the enclosing class delegate to them.
- * This is for a number of reasons:
+ * <p><b>Implementation note:</b> Native functions in this class are defined in a private static nested class
+ * and public methods from the enclosing class delegate to them.</p>
+ *
+ * <p>This is for a number of reasons:</p>
  * <ul>
  *     <li>Function signatures are not very Java idiomatic and public methods can do a basic translation
  *         (enums, pointers to Strings, etc.)</li>
@@ -58,19 +59,19 @@ public final class Sdl {
         private InternalNativeFunctions() {
         }
 
-        static native int SDL_Init(
+        public static native int SDL_Init(
                 @MagicConstant(flagsFromClass = SdlSubSystemConst.class) int flags);
 
-        static native int SDL_InitSubSystem(
+        public static native int SDL_InitSubSystem(
                 @MagicConstant(flagsFromClass = SdlSubSystemConst.class) int flags);
 
         @MagicConstant(flagsFromClass = SdlSubSystemConst.class)
-        static native int SDL_WasInit(
+        public static native int SDL_WasInit(
                 @MagicConstant(flagsFromClass = SdlSubSystemConst.class) int flags);
 
-        static native void SDL_Quit();
+        public static native void SDL_Quit();
 
-        static native void SDL_QuitSubSystem(
+        public static native void SDL_QuitSubSystem(
                 @MagicConstant(flagsFromClass = SdlSubSystemConst.class) int flags);
     }
 }

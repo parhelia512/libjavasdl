@@ -23,7 +23,7 @@ public interface SDL_LogOutputFunction extends Callback {
      * @param userdata what was passed as {@code userdata} to SDL_LogSetOutputFunction()
      * @param category the category of the message
      * @param priority the priority of the message
-     * @param message the message being output
+     * @param message  the message being output
      */
     void onLogMessage(
             Pointer userdata,
