@@ -1,14 +1,17 @@
 package io.github.libsdl4j.api.rect;
 
 import org.junit.jupiter.api.Test;
-import io.github.libsdl4j.api.Sdl;
+
+import static io.github.libsdl4j.api.Sdl.SDL_Init;
+import static io.github.libsdl4j.api.Sdl.SDL_Quit;
+import static io.github.libsdl4j.api.rect.SdlRect.SDL_RectEmpty;
 
 public final class SdlRectTest {
 
     @Test
     public void control() {
-        Sdl.SDL_Init(0);
-        SdlRect.SDL_RectEmpty(new SDL_Rect());
-        Sdl.SDL_Quit();
+        SDL_Init(0);
+        SDL_RectEmpty(new SDL_Rect());
+        SDL_Quit();
     }
 }
