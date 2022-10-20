@@ -617,9 +617,9 @@ public final class SdlHintsConst {
      *
      * <p>The variable can be set to the following values:</p>
      * <pre>
-     * "0"       - Disable joystick & gamecontroller input events when the
+     * "0"       - Disable joystick and gamecontroller input events when the
      *             application is in the background.
-     * "1"       - Enable joystick & gamecontroller input events when the
+     * "1"       - Enable joystick and gamecontroller input events when the
      *             application is in the background.
      * </pre>
      *
@@ -654,12 +654,14 @@ public final class SdlHintsConst {
     public static final String SDL_HINT_JOYSTICK_HIDAPI_GAMECUBE = "SDL_JOYSTICK_HIDAPI_GAMECUBE";
 
     /**
-     * A variable controlling whether "low_frequency_rumble" and "high_frequency_rumble" is used to implement
-     * the GameCube controller's 3 rumble modes, Stop(0), Rumble(1), and StopHard(2)
-     * this is useful for applications that need full compatibility for things like ADSR envelopes.
-     * Stop is implemented by setting "low_frequency_rumble" to "0" and "high_frequency_rumble" ">0"
-     * Rumble is both at any arbitrary value,
-     * StopHard is implemented by setting both "low_frequency_rumble" and "high_frequency_rumble" to "0"
+     * A variable controlling whether "lowFrequencyRumble" and "highFrequencyRumble" is used to implement
+     * the GameCube controller's 3 rumble modes, Stop(0), Rumble(1), and StopHard(2).
+     *
+     * <p>This is useful for applications that need full compatibility for things like ADSR envelopes.</p>
+     *
+     * <p><b>Stop</b> is implemented by setting "lowFrequencyRumble" to "0" and "highFrequencyRumble" to "greater than 0",</p>
+     * <p><b>Rumble</b> is both at any arbitrary value,</p>
+     * <p><b>StopHard</b> is implemented by setting both "lowFrequencyRumble" and "highFrequencyRumble" to "0"</p>
      *
      * <p>This variable can be set to the following values:</p>
      * <pre>
@@ -699,7 +701,7 @@ public final class SdlHintsConst {
      * <p>This variable can be set to the following values:</p>
      * <pre>
      * "0"       - HIDAPI driver is not used
-     * "1"       - HIDAPI driver is used</p>
+     * "1"       - HIDAPI driver is used
      * </pre>
      *
      * <p>The default is the value of SDL_HINT_JOYSTICK_HIDAPI</p>
@@ -712,7 +714,7 @@ public final class SdlHintsConst {
      * <p>This variable can be set to the following values:</p>
      * <pre>
      * "0"       - HIDAPI driver is not used
-     * "1"       - HIDAPI driver is used</p>
+     * "1"       - HIDAPI driver is used
      * </pre>
      *
      * <p>The default is the value of SDL_HINT_JOYSTICK_HIDAPI</p>
@@ -725,7 +727,7 @@ public final class SdlHintsConst {
      * <p>This variable can be set to the following values:</p>
      * <pre>
      * "0"       - HIDAPI driver is not used
-     * "1"       - HIDAPI driver is used</p>
+     * "1"       - HIDAPI driver is used
      * </pre>
      *
      * <p>The default is the value of SDL_HINT_JOYSTICK_HIDAPI</p>
@@ -1463,7 +1465,8 @@ public final class SdlHintsConst {
      *
      * <p>The variable can be set to the following values:</p>
      * <pre>
-     * "0"       - The return key will be handled as a key event. This is the behaviour of SDL <= 2.0.3. (default)
+     * "0"       - The return key will be handled as a key event.
+     *             This is the behaviour of SDL 2.0.3 and older. (default)
      * "1"       - The return key will hide the keyboard.
      * </pre>
      *
@@ -1533,9 +1536,9 @@ public final class SdlHintsConst {
      * pthread hint values are "current", "other", "fifo" and "rr".
      * Currently no other platform hint values are defined but may be in the future.
      *
-     * @apiNote On Linux, the kernel may send SIGKILL to realtime tasks which exceed the distro
+     * <p><b>Note:</b> On Linux, the kernel may send SIGKILL to realtime tasks which exceed the distro
      * configured execution budget for rtkit. This budget can be queried through RLIMIT_RTTIME
-     * after calling SDL_SetThreadPriority().
+     * after calling SDL_SetThreadPriority().</p>
      */
     public static final String SDL_HINT_THREAD_PRIORITY_POLICY = "SDL_THREAD_PRIORITY_POLICY";
 
@@ -1966,7 +1969,7 @@ public final class SdlHintsConst {
      * <p>The variable can be set to the following values:</p>
      * <pre>
      * "0"       - SDL will raise the 0x406D1388 Exception to name threads.
-     *             This is the default behavior of SDL <= 2.0.4.
+     *             This is the default behavior of SDL 2.0.4 and older.
      * "1"       - SDL will not raise this exception, and threads will be unnamed. (default)
      *             This is necessary with .NET languages or debuggers that aren't Visual Studio.
      * </pre>
@@ -2130,7 +2133,7 @@ public final class SdlHintsConst {
      * <p>This variable can be set to the following values:
      * <pre>
      * "0"       - The window is activated when the SDL_ShowWindow function is called
-     * "1"       - The window is not activated when the SDL_ShowWindow function is called</p>
+     * "1"       - The window is not activated when the SDL_ShowWindow function is called
      * </pre>
      *
      * By default SDL will activate the window when the SDL_ShowWindow function is called
@@ -2267,7 +2270,7 @@ public final class SdlHintsConst {
      * <p>The variable can be set to the following values:</p>
      * <pre>
      * "0"       - Disable DirectInput detection (only uses XInput)
-     * "1"       - Enable DirectInput detection (the default)</p>
+     * "1"       - Enable DirectInput detection (the default)
      * </pre>
      */
     public static final String SDL_HINT_DIRECTINPUT_ENABLED = "SDL_DIRECTINPUT_ENABLED";

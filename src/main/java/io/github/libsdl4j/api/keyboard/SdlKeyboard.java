@@ -2,13 +2,13 @@ package io.github.libsdl4j.api.keyboard;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.keycode.SDL_Keycode;
 import io.github.libsdl4j.api.keycode.SDL_Keymod;
 import io.github.libsdl4j.api.rect.SDL_Rect;
 import io.github.libsdl4j.api.scancode.SDL_Scancode;
 import io.github.libsdl4j.api.video.SDL_Window;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * Definitions from file SDL_keyboard.h

@@ -4,7 +4,6 @@ import com.sun.jna.ptr.IntByReference;
 import io.github.libsdl4j.api.error.SdlError;
 import io.github.libsdl4j.jna.ContiguousArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static io.github.libsdl4j.api.messagebox.SDL_MessageBoxButtonFlags.SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT;
 import static io.github.libsdl4j.api.messagebox.SDL_MessageBoxButtonFlags.SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT;
 import static io.github.libsdl4j.api.messagebox.SDL_MessageBoxColorType.SDL_MESSAGEBOX_COLOR_BACKGROUND;
@@ -16,6 +15,7 @@ import static io.github.libsdl4j.api.messagebox.SDL_MessageBoxFlags.SDL_MESSAGEB
 import static io.github.libsdl4j.api.messagebox.SDL_MessageBoxFlags.SDL_MESSAGEBOX_WARNING;
 import static io.github.libsdl4j.api.messagebox.SdlMessagebox.SDL_ShowMessageBox;
 import static io.github.libsdl4j.api.messagebox.SdlMessagebox.SDL_ShowSimpleMessageBox;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SdlMessageboxTest {
 

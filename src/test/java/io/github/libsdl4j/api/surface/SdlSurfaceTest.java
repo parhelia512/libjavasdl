@@ -5,15 +5,13 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import com.sun.jna.Memory;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import io.github.libsdl4j.api.SdlTest;
 import io.github.libsdl4j.api.rect.SDL_Rect;
 import io.github.libsdl4j.jna.ContiguousArrayList;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static io.github.libsdl4j.api.Sdl.SDL_InitSubSystem;
 import static io.github.libsdl4j.api.Sdl.SDL_QuitSubSystem;
 import static io.github.libsdl4j.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
@@ -24,6 +22,8 @@ import static io.github.libsdl4j.api.surface.SdlSurface.SDL_FillRect;
 import static io.github.libsdl4j.api.surface.SdlSurface.SDL_FillRects;
 import static io.github.libsdl4j.api.surface.SdlSurface.SDL_FreeSurface;
 import static io.github.libsdl4j.api.surface.SdlSurface.SDL_SaveBMP;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class SdlSurfaceTest {
 

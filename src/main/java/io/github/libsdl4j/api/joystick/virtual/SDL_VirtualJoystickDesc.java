@@ -2,10 +2,10 @@ package io.github.libsdl4j.api.joystick.virtual;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.gamecontroller.SDL_GameControllerAxis;
 import io.github.libsdl4j.api.gamecontroller.SDL_GameControllerButton;
 import io.github.libsdl4j.api.joystick.SDL_JoystickType;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.joystick.SdlJoystickConst.SDL_VIRTUAL_JOYSTICK_DESC_VERSION;
 
@@ -67,14 +67,14 @@ public final class SDL_VirtualJoystickDesc extends Structure {
 
     /**
      * A mask of which buttons are valid for this controller
-     * e.g. (1 << SDL_CONTROLLER_BUTTON_A)
+     * <p>e.g. {@code (1 << SDL_CONTROLLER_BUTTON_A)}</p>
      */
     @MagicConstant(flagsFromClass = SDL_GameControllerButton.class)
     public int buttonMask;
 
     /**
      * A mask of which axes are valid for this controller
-     * e.g. (1 << SDL_CONTROLLER_AXIS_LEFTX)
+     * <p>e.g. {@code (1 << SDL_CONTROLLER_AXIS_LEFTX)}</p>
      */
     @MagicConstant(flagsFromClass = SDL_GameControllerAxis.class)
     public int axisMask;

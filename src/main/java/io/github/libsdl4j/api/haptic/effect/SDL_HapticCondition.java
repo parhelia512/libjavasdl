@@ -2,8 +2,8 @@ package io.github.libsdl4j.api.haptic.effect;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.haptic.SDL_HapticDirection;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_DAMPER;
 import static io.github.libsdl4j.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_FRICTION;
@@ -14,7 +14,7 @@ import static io.github.libsdl4j.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
 /**
  * A structure containing a template for a Condition effect.
  *
- * <h4>The struct handles the following effects:</h4>
+ * <p>The struct handles the following effects:</p>
  * <ul>
  *     <li>{@link io.github.libsdl4j.api.haptic.SDL_HapticEffectType#SDL_HAPTIC_SPRING SDL_HAPTIC_SPRING}: Effect based on axes position.</li>
  *     <li>{@link io.github.libsdl4j.api.haptic.SDL_HapticEffectType#SDL_HAPTIC_DAMPER SDL_HAPTIC_DAMPER}: Effect based on axes velocity.</li>

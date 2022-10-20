@@ -2,15 +2,16 @@ package io.github.libsdl4j.api.keyboard;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.intellij.lang.annotations.MagicConstant;
+import io.github.libsdl4j.api.event.SDL_EventType;
 import io.github.libsdl4j.api.keycode.SDL_Keycode;
 import io.github.libsdl4j.api.scancode.SDL_Scancode;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * The SDL keysym structure, used in key events.
  *
- * @apiNote If you are looking for translated character input, see the
- * {@link io.github.libsdl4j.api.event.SDL_EventType#SDL_TEXTINPUT} event.
+ * <p><b>Note:</b> If you are looking for translated character input, see the
+ * {@link SDL_EventType#SDL_TEXTINPUT} event.</p>
  */
 @Structure.FieldOrder({
         "scancode",

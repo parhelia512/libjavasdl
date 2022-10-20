@@ -28,12 +28,12 @@ public final class SdlFilesystem {
      * application in /Applications/SDLApp/MyApp.app):</p>
      *
      * <ul>
-     *     <li>{@code resource}: bundle resource directory (the default). For example:<br/>
-     *         {@code /Applications/SDLApp/MyApp.app/Contents/Resources}</li>
-     *     <li>{@code bundle}: the Bundle directory. For example:<br/>
-     *         {@code /Applications/SDLApp/MyApp.app/}</li>
-     *     <li>{@code parent}: the containing directory of the bundle. For example:<br/>
-     *         {@code /Applications/SDLApp/}</li>
+     *     <li><p>{@code resource}: bundle resource directory (the default). For example:</p>
+     *         <p>{@code /Applications/SDLApp/MyApp.app/Contents/Resources}</p></li>
+     *     <li><p>{@code bundle}: the Bundle directory. For example:</p>
+     *         <p>{@code /Applications/SDLApp/MyApp.app/}</p></li>
+     *     <li><p>{@code parent}: the containing directory of the bundle. For example:</p>
+     *         <p>{@code /Applications/SDLApp/}</p></li>
      * </ul>
      *
      * <p>The returned path is guaranteed to end with a path separator ('\' on
@@ -62,14 +62,14 @@ public final class SdlFilesystem {
      * filesystem, create the directory if necessary, and return a string of the
      * absolute path to the directory in UTF-8 encoding.</p>
      *
-     * <p>On Windows, the string might look like:<br/>
-     * {@code C:\\Users\\bob\\AppData\\Roaming\\My Company\\My Program Name\\}</p>
+     * <p>On Windows, the string might look like:</p>
+     * <p>{@code C:\\Users\\bob\\AppData\\Roaming\\My Company\\My Program Name\\}</p>
      *
-     * <p>On Linux, the string might look like:<br/>
-     * {@code /home/bob/.local/share/My Program Name/}</p>
+     * <p>On Linux, the string might look like:</p>
+     * <p>{@code /home/bob/.local/share/My Program Name/}</p>
      *
-     * <p>On Mac OS X, the string might look like:<br/>
-     * {@code /Users/bob/Library/Application Support/My Program Name/}</p>
+     * <p>On Mac OS X, the string might look like:</p>
+     * <p>{@code /Users/bob/Library/Application Support/My Program Name/}</p>
      *
      * <p>You should assume the path returned by this function is the only safe place
      * to write files (and that SDL_GetBasePath(), while it might be writable, or

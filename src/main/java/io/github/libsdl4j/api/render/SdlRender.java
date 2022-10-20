@@ -5,7 +5,6 @@ import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.blendmode.SDL_BlendMode;
 import io.github.libsdl4j.api.pixels.SDL_PixelFormatEnum;
 import io.github.libsdl4j.api.rect.SDL_FPoint;
@@ -18,6 +17,7 @@ import io.github.libsdl4j.api.video.SDL_Window;
 import io.github.libsdl4j.api.video.SDL_WindowFlags;
 import io.github.libsdl4j.jna.ContiguousArrayList;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * Definitions from file SDL_render.h
@@ -64,7 +64,7 @@ public final class SdlRender {
      *
      * <p>There may be none if SDL was compiled without render support.</p>
      *
-     * @return a number >= 0 on success or a negative error code on failure; call
+     * @return a number greater or equal to 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_CreateRenderer(SDL_Window, int, int)
      * @see #SDL_GetRenderDriverInfo(int, SDL_RendererInfo)

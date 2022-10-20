@@ -3,12 +3,10 @@ package io.github.libsdl4j.api.stdinc;
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
+import io.github.libsdl4j.jna.size_t;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import io.github.libsdl4j.jna.size_t;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static io.github.libsdl4j.api.filesystem.SdlFilesystem.SDL_GetBasePath;
 import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_GetMemoryFunctions;
 import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_GetNumAllocations;
@@ -19,6 +17,8 @@ import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_getenv;
 import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_malloc;
 import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_setenv;
 import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_utf8strlen;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class SdlStdincTest {
 

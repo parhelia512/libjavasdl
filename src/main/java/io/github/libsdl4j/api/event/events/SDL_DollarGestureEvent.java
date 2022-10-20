@@ -2,9 +2,9 @@ package io.github.libsdl4j.api.event.events;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.gesture.SDL_GestureID;
 import io.github.libsdl4j.api.touch.SDL_TouchID;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.event.SDL_EventType.SDL_DOLLARGESTURE;
 import static io.github.libsdl4j.api.event.SDL_EventType.SDL_DOLLARRECORD;

@@ -2,10 +2,10 @@ package io.github.libsdl4j.api.pixels;
 
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import io.github.libsdl4j.api.surface.SDL_Surface;
 import io.github.libsdl4j.api.video.SDL_Window;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import static io.github.libsdl4j.api.Sdl.SDL_Init;
 import static io.github.libsdl4j.api.Sdl.SDL_Quit;

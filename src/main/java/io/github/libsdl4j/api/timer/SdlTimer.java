@@ -45,11 +45,12 @@ public final class SdlTimer {
      *
      * <p>For example, if you want to wait 100 ms, you could do this:</p>
      *
-     * <blockquote><pre>
+     * <pre>
      * long timeout = SDL_GetTicks64() + 100L;
-     * while (SDL_GetTicks64() < timeout) {
+     * while (SDL_GetTicks64() &lt; timeout) {
      *     // ... do work until timeout has elapsed
-     * }</pre></blockquote>
+     * }
+     * </pre>
      *
      * @return a 64-bit value representing the number of milliseconds
      * since the SDL library initialized.
@@ -68,11 +69,12 @@ public final class SdlTimer {
      * <p>For example, with SDL_GetTicks(), if you want to wait 100 ms, you could
      * do this:</p>
      *
-     * <blockquote><pre>
+     * <pre>
      * int timeout = SDL_GetTicks() + 100;
      * while (!SDL_TICKS_PASSED(SDL_GetTicks(), timeout)) {
      *     // ... do work until timeout has elapsed
-     * }</pre></blockquote>
+     * }
+     * </pre>
      *
      * <p>Note that this does not handle tick differences greater
      * than 2^31 so take care when using the above kind of code

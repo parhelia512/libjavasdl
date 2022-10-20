@@ -3,7 +3,7 @@ package io.github.libsdl4j.api.gamecontroller;
 import io.github.libsdl4j.jna.JnaEnum;
 
 /**
- *  The list of axes available from a controller
+ * The list of axes available from a controller
  *
  * <p>Thumbstick axis values range from SDL_JOYSTICK_AXIS_MIN to SDL_JOYSTICK_AXIS_MAX,
  * and are centered within ~8000 of zero, though advanced UI will allow users to set

@@ -1,13 +1,11 @@
 package io.github.libsdl4j.api.vulkan;
 
 import java.util.List;
+import io.github.libsdl4j.api.video.SDL_Window;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import io.github.libsdl4j.api.video.SDL_Window;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static io.github.libsdl4j.api.Sdl.SDL_InitSubSystem;
 import static io.github.libsdl4j.api.Sdl.SDL_QuitSubSystem;
 import static io.github.libsdl4j.api.SdlSubSystemConst.SDL_INIT_VIDEO;
@@ -16,6 +14,7 @@ import static io.github.libsdl4j.api.video.SDL_WindowFlags.SDL_WINDOW_SHOWN;
 import static io.github.libsdl4j.api.video.SDL_WindowFlags.SDL_WINDOW_VULKAN;
 import static io.github.libsdl4j.api.video.SdlVideo.SDL_CreateWindow;
 import static io.github.libsdl4j.api.vulkan.SdlVulkan.SDL_Vulkan_GetInstanceExtensions;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class SdlVulkanTest {
 

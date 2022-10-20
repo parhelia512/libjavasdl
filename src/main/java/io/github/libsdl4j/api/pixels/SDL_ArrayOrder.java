@@ -3,7 +3,7 @@ package io.github.libsdl4j.api.pixels;
 import io.github.libsdl4j.jna.JnaEnum;
 
 /**
- * Array component order, low byte -> high byte.
+ * Array component order, low byte to high byte.
  */
 public final class SDL_ArrayOrder implements JnaEnum {
 

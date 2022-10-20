@@ -4,7 +4,6 @@ import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.pixels.SDL_PixelFormatEnum;
 import io.github.libsdl4j.api.rect.SDL_Point;
 import io.github.libsdl4j.api.rect.SDL_Rect;
@@ -13,6 +12,7 @@ import io.github.libsdl4j.jna.ContiguousArrayList;
 import io.github.libsdl4j.jna.JnaUtils;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 import io.github.libsdl4j.jna.size_t;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_free;
 import static io.github.libsdl4j.api.video.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN;
@@ -35,7 +35,7 @@ public final class SdlVideo {
     /**
      * Get the number of video drivers compiled into SDL.
      *
-     * @return a number >= 1 on success or a negative error code on failure; call
+     * @return a number greater or equal to 1 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_GetVideoDriver(int)
      * @since This function is available since SDL 2.0.0.
@@ -110,7 +110,7 @@ public final class SdlVideo {
     /**
      * Get the number of available video displays.
      *
-     * @return a number >= 1 or a negative error code on failure; call
+     * @return a number greater or equal to 1 or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_GetDisplayBounds(int, SDL_Rect)
      * @since This function is available since SDL 2.0.0.
@@ -234,7 +234,7 @@ public final class SdlVideo {
      * SDL_GetNumVideoDisplays() - 1.</p>
      *
      * @param displayIndex the index of the display to query
-     * @return a number >= 1 on success or a negative error code on failure; call
+     * @return a number greater or equal to 1 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_GetDisplayMode(int, int, SDL_DisplayMode)
      * @see #SDL_GetNumVideoDisplays()
@@ -248,11 +248,13 @@ public final class SdlVideo {
      *
      * <p>The display modes are sorted in this priority:</p>
      *
-     * - width -> largest to smallest
-     * - height -> largest to smallest
-     * - bits per pixel -> more colors to fewer colors
-     * - packed pixel layout -> largest to smallest
-     * - refresh rate -> highest to lowest
+     * <ul>
+     *     <li>width ... largest to smallest</li>
+     *     <li>height ... largest to smallest</li>
+     *     <li>bits per pixel ... more colors to fewer colors</li>
+     *     <li>packed pixel layout ... largest to smallest</li>
+     *     <li>refresh rate ... highest to lowest</li>
+     * </ul>
      *
      * @param displayIndex the index of the display to query
      * @param modeIndex    the index of the display mode to query
@@ -468,7 +470,7 @@ public final class SdlVideo {
      *     <li>{@code SDL_WINDOW_MAXIMIZED}: window is maximized</li>
      *     <li>{@code SDL_WINDOW_INPUT_GRABBED}: window has grabbed input focus</li>
      *     <li>{@code SDL_WINDOW_ALLOW_HIGHDPI}: window should be created in high-DPI mode if
-     *         supported (>= SDL 2.0.1)</li>
+     *         supported (SDL 2.0.1 and newer)</li>
      * </ul>
      *
      * <p>{@code SDL_WINDOW_SHOWN} is ignored by SDL_CreateWindow(). The SDL_Window is
@@ -712,9 +714,9 @@ public final class SdlVideo {
      *
      * @param window the window to change
      * @param w      the width of the window in pixels, in screen coordinates, must be
-     *               > 0
+     *               greater than 0
      * @param h      the height of the window in pixels, in screen coordinates, must be
-     *               > 0
+     *               greater than 0
      * @see #SDL_GetWindowSize(SDL_Window, IntByReference, IntByReference)
      * @see #SDL_SetWindowDisplayMode(SDL_Window, SDL_DisplayMode)
      * @since This function is available since SDL 2.0.0.

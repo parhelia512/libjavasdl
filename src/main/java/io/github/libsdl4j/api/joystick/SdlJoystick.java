@@ -5,9 +5,9 @@ import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.joystick.virtual.SDL_VirtualJoystickDesc;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 
 /**

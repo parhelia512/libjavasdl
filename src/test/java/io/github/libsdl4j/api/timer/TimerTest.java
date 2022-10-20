@@ -6,8 +6,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static io.github.libsdl4j.api.Sdl.SDL_InitSubSystem;
 import static io.github.libsdl4j.api.Sdl.SDL_QuitSubSystem;
 import static io.github.libsdl4j.api.SdlSubSystemConst.SDL_INIT_TIMER;
@@ -16,6 +14,8 @@ import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_GetNumAllocations;
 import static io.github.libsdl4j.api.timer.SdlTimer.SDL_AddTimer;
 import static io.github.libsdl4j.api.timer.SdlTimer.SDL_GetTicks;
 import static io.github.libsdl4j.api.timer.SdlTimer.SDL_RemoveTimer;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TimerTest {
 

@@ -2,9 +2,9 @@ package io.github.libsdl4j.api.surface;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.pixels.SDL_PixelFormat;
 import io.github.libsdl4j.api.rect.SDL_Rect;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * This is an internal {@link Structure} co-located with its parent Pointer-like {@link SDL_Surface}.
@@ -12,8 +12,8 @@ import io.github.libsdl4j.api.rect.SDL_Rect;
  *
  * <p>Do not use it explicitly in your code.</p>
  *
- * @implNote No-arg constructor is intentionally omitted
- * as this structure will always be instantiated as part of an existing {@code SDL_Surface}.
+ * <p><b>Implementation note:</b> No-arg constructor is intentionally omitted
+ * as this structure will always be instantiated as part of an existing {@code SDL_Surface}.</p>
  */
 @Structure.FieldOrder({
         "flags",

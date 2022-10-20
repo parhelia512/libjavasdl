@@ -2,9 +2,8 @@ package io.github.libsdl4j.api.shape;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.intellij.lang.annotations.MagicConstant;
-
 import io.github.libsdl4j.api.pixels.SDL_Color;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * A struct that tags the SDL_WindowShapeParams union with an enum describing the type of its contents.

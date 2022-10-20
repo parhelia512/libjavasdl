@@ -13,7 +13,7 @@ import static io.github.libsdl4j.api.event.SDL_EventType.SDL_DROPTEXT;
  * An event used to request a file open by the system (event.drop.*)
  * This event is enabled by default, you can disable it with SDL_EventState().
  *
- * @apiNote If this event is enabled, you must free the filename in the event.
+ * <p><b>Note:</b> If this event is enabled, you must free the filename in the event.</p>
  */
 @Structure.FieldOrder({
         "type",

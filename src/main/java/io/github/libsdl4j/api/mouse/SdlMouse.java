@@ -2,10 +2,10 @@ package io.github.libsdl4j.api.mouse;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.surface.SDL_Surface;
 import io.github.libsdl4j.api.video.SDL_Window;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.event.SdlEventsConst.SDL_DISABLE;
 import static io.github.libsdl4j.api.event.SdlEventsConst.SDL_ENABLE;

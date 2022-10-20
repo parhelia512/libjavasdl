@@ -2,7 +2,7 @@ package io.github.libsdl4j.api.pixels;
 
 import io.github.libsdl4j.jna.JnaEnum;
 
-/** Packed component order, high bit -> low bit. */
+/** Packed component order, high bit to low bit. */
 public final class SDL_PackedOrder implements JnaEnum {
 
     public static final int SDL_PACKEDORDER_NONE = 0;

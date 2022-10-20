@@ -2,13 +2,9 @@ package io.github.libsdl4j.api.joystick;
 
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
-import org.junit.jupiter.api.Test;
 import io.github.libsdl4j.api.joystick.virtual.SDL_VirtualJoystickDesc;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static io.github.libsdl4j.api.Sdl.SDL_Init;
 import static io.github.libsdl4j.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
 import static io.github.libsdl4j.api.gamecontroller.SDL_GameControllerAxis.SDL_CONTROLLER_AXIS_LEFTX;
@@ -28,6 +24,10 @@ import static io.github.libsdl4j.api.joystick.SdlJoystick.SDL_JoystickSendEffect
 import static io.github.libsdl4j.api.joystick.SdlJoystick.SDL_JoystickSetLED;
 import static io.github.libsdl4j.api.joystick.SdlJoystick.SDL_JoystickSetPlayerIndex;
 import static io.github.libsdl4j.api.joystick.SdlJoystick.SDL_NumJoysticks;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class VirtualJoystickTest {
 

@@ -2,10 +2,10 @@ package io.github.libsdl4j.api.haptic.effect;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.haptic.SDL_HapticDirection;
 import io.github.libsdl4j.api.haptic.SDL_HapticEffect;
 import io.github.libsdl4j.api.haptic.SDL_HapticEffectType;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_CONSTANT;
 import static io.github.libsdl4j.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;

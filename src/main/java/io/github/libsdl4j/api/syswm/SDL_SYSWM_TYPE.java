@@ -1,7 +1,7 @@
 package io.github.libsdl4j.api.syswm;
 
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.jna.JnaEnum;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * These are the various supported windowing subsystems

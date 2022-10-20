@@ -2,8 +2,8 @@ package io.github.libsdl4j.api.render;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.pixels.SDL_PixelFormatEnum;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * Information on the capabilities of a render driver or context.

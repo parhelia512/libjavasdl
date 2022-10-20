@@ -1,8 +1,8 @@
 package io.github.libsdl4j.api.haptic;
 
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.joystick.SDL_Joystick;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * Definitions from file SDL_haptic.h
@@ -13,11 +13,12 @@ import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
  * <p>The basic usage is as follows:</p>
  * <ol>
  *     <li>Initialize the subsystem ({@link io.github.libsdl4j.api.SdlSubSystemConst#SDL_INIT_HAPTIC SDL_INIT_HAPTIC}).</li>
- *     <li>Open a haptic device.</li>
- *     <ol>
- *         <li>SDL_HapticOpen() to open from index.</li>
- *         <li>SDL_HapticOpenFromJoystick() to open from an existing joystick.</li>
- *     </ol>
+ *     <li>Open a haptic device.
+ *         <ol>
+ *             <li>SDL_HapticOpen() to open from index.</li>
+ *             <li>SDL_HapticOpenFromJoystick() to open from an existing joystick.</li>
+ *         </ol>
+ *     </li>
  *     <li>Create an effect ({@link SDL_HapticEffect}).</li>
  *     <li>Upload the effect with SDL_HapticNewEffect().</li>
  *     <li>Run the effect with SDL_HapticRunEffect().</li>
@@ -26,9 +27,9 @@ import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
  * </ol>
  *
  *
- * <h4>Simple rumble example:<h4>
+ * <h3>Simple rumble example:</h3>
  *
- * <blockquote><pre>
+ * <pre>
  * // Open the device
  * SDL_Haptic haptic = SDL_HapticOpen(0);
  * if (haptic == null) {
@@ -48,12 +49,13 @@ import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
  * } finally {
  *     // Clean up
  *     SDL_HapticClose(haptic);
- * }</pre></blockquote>
+ * }
+ * </pre>
  *
  *
- * <h4>Complete example:<h4>
+ * <p>Complete example:</p>
  *
- * <blockquote><pre>
+ * <pre>
  * public void testHaptic(SDL_Joystick joystick) {
  *     // Open the device
  *     SDL_Haptic haptic = SDL_HapticOpenFromJoystick(joystick);
@@ -63,7 +65,7 @@ import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
  *
  *     try {
  *         // See if it can do sine waves
- *         if ((SDL_HapticQuery(haptic) & SDL_HAPTIC_SINE) == 0) {
+ *         if ((SDL_HapticQuery(haptic) &amp; SDL_HAPTIC_SINE) == 0) {
  *             throw new IllegalStateException("No sine effect supported");
  *         }
  *
@@ -92,7 +94,8 @@ import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
  *         // Close the device
  *         SDL_HapticClose(haptic);
  *     }
- * }</pre></blockquote>
+ * }
+ * </pre>
  */
 public final class SdlHaptic {
 

@@ -1,8 +1,8 @@
 package io.github.libsdl4j.api.keycode;
 
 import com.sun.jna.ptr.IntByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.jna.JnaEnum;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * Enumeration of valid key mods (possibly OR'd together).

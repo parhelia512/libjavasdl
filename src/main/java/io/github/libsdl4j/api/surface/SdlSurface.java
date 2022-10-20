@@ -3,7 +3,6 @@ package io.github.libsdl4j.api.surface;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.blendmode.SDL_BlendMode;
 import io.github.libsdl4j.api.pixels.SDL_Palette;
 import io.github.libsdl4j.api.pixels.SDL_PixelFormat;
@@ -12,6 +11,7 @@ import io.github.libsdl4j.api.rect.SDL_Rect;
 import io.github.libsdl4j.api.rwops.SDL_RWops;
 import io.github.libsdl4j.jna.ContiguousArrayList;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.rwops.SdlRWops.SDL_RWFromFile;
 import static io.github.libsdl4j.api.surface.SDL_SurfaceFlags.SDL_RLEACCEL;
@@ -50,15 +50,17 @@ public final class SdlSurface {
      * stored in the most significant byte. Using zeros for the RGB masks sets a
      * default value, based on the depth. For example:</p>
      *
-     * <blockquote><pre>
-     * SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0);</pre></blockquote>
+     * <pre>
+     * SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0);
+     * </pre>
      *
      * <p>However, using zero for the Amask results in an Amask of 0.</p>
      *
      * <p>By default surfaces with an alpha mask are set up for blending as with:</p>
      *
-     * <blockquote><pre>
-     * SDL_SetSurfaceBlendMode(surface, SDL_BLENDMODE_BLEND)</pre></blockquote>
+     * <pre>
+     * SDL_SetSurfaceBlendMode(surface, SDL_BLENDMODE_BLEND)
+     * </pre>
      *
      * <p>You can change this by calling SDL_SetSurfaceBlendMode() and selecting a
      * different {@code blendMode}.</p>
@@ -416,7 +418,8 @@ public final class SdlSurface {
      * channel is modulated by the appropriate color value according to the
      * following formula:</p>
      *
-     * <pre>srcC = srcC * (color / 255)</pre>
+     * <pre>srcC = srcC * (color / 255)
+     * </pre>
      *
      * @param surface the SDL_Surface structure to update
      * @param r       the red color value multiplied into blit operations
@@ -459,7 +462,8 @@ public final class SdlSurface {
      * <p>When this surface is blitted, during the blit operation the source alpha
      * value is modulated by this alpha value according to the following formula:</p>
      *
-     * <pre>srcA = srcA * (alpha / 255)</pre>
+     * <pre>srcA = srcA * (alpha / 255)
+     * </pre>
      *
      * @param surface the SDL_Surface structure to update
      * @param alpha   the alpha value multiplied into blit operations
@@ -776,8 +780,8 @@ public final class SdlSurface {
      *
      * <p>The blit semantics for surfaces with and without blending and colorkey
      * are defined as follows:</p>
-     * <blockquote><pre>
-     * RGBA->RGB:
+     * <pre>
+     * RGBA-&gt;RGB:
      *   Source surface blend mode set to SDL_BLENDMODE_BLEND:
      *     alpha-blend (using the source alpha-channel and per-surface alpha)
      *     SDL_SRCCOLORKEY ignored.
@@ -787,7 +791,7 @@ public final class SdlSurface {
      *     RGB values of the source color key, ignoring alpha in the
      *     comparison.
      *
-     * RGB->RGBA:
+     * RGB-&gt;RGBA:
      *   Source surface blend mode set to SDL_BLENDMODE_BLEND:
      *     alpha-blend (using the source per-surface alpha)
      *   Source surface blend mode set to SDL_BLENDMODE_NONE:
@@ -796,7 +800,7 @@ public final class SdlSurface {
      *     if SDL_SRCCOLORKEY set, only copy the pixels matching the
      *     source color key.
      *
-     * RGBA->RGBA:
+     * RGBA-&gt;RGBA:
      *   Source surface blend mode set to SDL_BLENDMODE_BLEND:
      *     alpha-blend (using the source alpha-channel and per-surface alpha)
      *     SDL_SRCCOLORKEY ignored.
@@ -806,7 +810,7 @@ public final class SdlSurface {
      *     RGB values of the source color key, ignoring alpha in the
      *     comparison.
      *
-     * RGB->RGB:
+     * RGB-&gt;RGB:
      *   Source surface blend mode set to SDL_BLENDMODE_BLEND:
      *     alpha-blend (using the source per-surface alpha)
      *   Source surface blend mode set to SDL_BLENDMODE_NONE:
@@ -814,7 +818,7 @@ public final class SdlSurface {
      *   both:
      *     if SDL_SRCCOLORKEY set, only copy the pixels matching the
      *     source color key.
-     * </pre></blockquote>
+     * </pre>
      *
      * <p>For blitting, prefer calling just this function ({@code SDL_BlitSurface()}) unless you know exactly how SDL
      * blitting works internally and how to use the other blit functions.</p>

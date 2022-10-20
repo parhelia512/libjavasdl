@@ -1,8 +1,8 @@
 package io.github.libsdl4j.api.mouse;
 
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.jna.JnaEnum;
 import io.github.libsdl4j.jna.JnaUtils;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.mouse.SDL_Button.SDL_BUTTON_LEFT;
 import static io.github.libsdl4j.api.mouse.SDL_Button.SDL_BUTTON_MIDDLE;

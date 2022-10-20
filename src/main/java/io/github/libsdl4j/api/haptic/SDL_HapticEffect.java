@@ -2,13 +2,13 @@ package io.github.libsdl4j.api.haptic;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Union;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.haptic.effect.SDL_HapticCondition;
 import io.github.libsdl4j.api.haptic.effect.SDL_HapticConstant;
 import io.github.libsdl4j.api.haptic.effect.SDL_HapticCustom;
 import io.github.libsdl4j.api.haptic.effect.SDL_HapticLeftRight;
 import io.github.libsdl4j.api.haptic.effect.SDL_HapticPeriodic;
 import io.github.libsdl4j.api.haptic.effect.SDL_HapticRamp;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_CONSTANT;
 import static io.github.libsdl4j.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_CUSTOM;
@@ -43,12 +43,12 @@ import static io.github.libsdl4j.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_TRIA
  * <p>If both attackLength and fadeLevel are 0, the envelope is not used,
  * otherwise both values are used.</p>
  *
- * <h4>Common parts:</h4>
+ * <h3>Common parts:</h3>
  *
- * <blockquote><pre>
+ * <pre>
  * // Replay - All effects have this
  * int length;           // Duration of effect (ms).
- * short delay;          // Delay before starting effect.</p>
+ * short delay;          // Delay before starting effect.
  *
  * // Trigger - All effects have this
  * short button;         // Button that triggers effect.
@@ -58,23 +58,23 @@ import static io.github.libsdl4j.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_TRIA
  * short attackLength;   // Duration of the attack (ms).
  * short attackLevel;    // Level at the start of the attack.
  * short fadeLength;     // Duration of the fade out (ms).
- * short fadeLevel;      // Level at the end of the fade.</pre></blockquote>
- *
+ * short fadeLevel;      // Level at the end of the fade.
+ * </pre>
  *
  * Here we have an example of a constant effect evolution in time:
  * <pre>
  * Strength
  * ^
  * |
- * |    effect level -->  _________________
+ * |    effect level --&gt;  _________________
  * |                     /                 \
  * |                    /                   \
  * |                   /                     \
  * |                  /                       \
- * |  attackLevel --> |                        \
- * |                  |                        |  <---  fadeLevel
+ * |  attackLevel --&gt; |                        \
+ * |                  |                        |  &lt;---  fadeLevel
  * |
- * +--------------------------------------------------> Time
+ * +--------------------------------------------------&gt; Time
  *                    [--]                 [---]
  *                    attackLength         fadeLength
  *

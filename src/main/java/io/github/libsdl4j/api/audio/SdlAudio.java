@@ -3,11 +3,11 @@ package io.github.libsdl4j.api.audio;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.rwops.SDL_RWops;
 import io.github.libsdl4j.jna.JnaUtils;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 import io.github.libsdl4j.jna.StringRef;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.rwops.SdlRWops.SDL_RWFromFile;
 
@@ -119,8 +119,9 @@ public final class SdlAudio {
      *
      * <p>This function is roughly equivalent to:</p>
      *
-     * <blockquote><pre>
-     * SDL_OpenAudioDevice(NULL, 0, desired, obtained, SDL_AUDIO_ALLOW_ANY_CHANGE);</pre></blockquote>
+     * <pre>
+     * SDL_OpenAudioDevice(NULL, 0, desired, obtained, SDL_AUDIO_ALLOW_ANY_CHANGE);
+     * </pre>
      *
      * <p>With two notable exceptions:</p>
      *
@@ -174,7 +175,7 @@ public final class SdlAudio {
      * Internet, but it will still allow a specific host to be specified in
      * SDL_OpenAudioDevice().</p>
      *
-     * <p>In many common cases, when this function returns a value <= 0, it can still
+     * <p>In many common cases, when this function returns a value 0 or less, it can still
      * successfully open the default device (NULL for first argument of
      * SDL_OpenAudioDevice()).</p>
      *
@@ -182,13 +183,14 @@ public final class SdlAudio {
      * should not be called for each iteration of a loop, but rather once at the
      * start of a loop:</p>
      *
-     * <blockquote><pre>
+     * <pre>
      * // Don't do this:
-     * for (int i = 0; i < SDL_GetNumAudioDevices(0); i++)
+     * for (int i = 0; i &lt; SDL_GetNumAudioDevices(0); i++)
      *
      * // Do this instead:
      * int count = SDL_GetNumAudioDevices(0);
-     * for (int i = 0; i < count; ++i) { do_something_here(); }</pre></blockquote>
+     * for (int i = 0; i &lt; count; ++i) { do_something_here(); }
+     * </pre>
      *
      * @param iscapture zero to request playback devices, non-zero to request
      *                  recording devices
@@ -391,7 +393,7 @@ public final class SdlAudio {
      * @param obtained       an SDL_AudioSpec structure filled in with the actual output
      *                       format; see SDL_OpenAudio() for more information
      * @param allowedChanges 0, or one or more flags OR'd together
-     * @return a valid device ID that is > 0 on success or 0 on failure; call
+     * @return a valid device ID that is greater than 0 on success or 0 on failure; call
      * SDL_GetError() for more information.
      *
      * <p>For compatibility with SDL 1.2, this will never return 1, since
@@ -417,8 +419,9 @@ public final class SdlAudio {
      * <p>New programs might want to use SDL_GetAudioDeviceStatus() instead. This
      * function is equivalent to calling...</p>
      *
-     * <blockquote><pre>
-     * SDL_GetAudioDeviceStatus(1);</pre></blockquote>
+     * <pre>
+     * SDL_GetAudioDeviceStatus(1);
+     * </pre>
      *
      * <p>...and is only useful if you used the legacy SDL_OpenAudio() function.</p>
      *
@@ -448,8 +451,9 @@ public final class SdlAudio {
      * <p>New programs might want to use SDL_PauseAudioDevice() instead. This
      * function is equivalent to calling...</p>
      *
-     * <blockquote><pre>
-     * SDL_PauseAudioDevice(1, pauseOn);</pre></blockquote>
+     * <pre>
+     * SDL_PauseAudioDevice(1, pauseOn);
+     * </pre>
      *
      * <p>...and is only useful if you used the legacy SDL_OpenAudio() function.</p>
      *
@@ -535,14 +539,16 @@ public final class SdlAudio {
      *
      * <p>Example:</p>
      *
-     * <blockquote><pre>
-     * SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, &spec, &buf, &len);</pre></blockquote>
+     * <pre>
+     * SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, spec, buf, len);
+     * </pre>
      *
      * <p>Note that the SDL_LoadWAV macro does this same thing for you, but in a less
      * messy way:</p>
      *
-     * <blockquote><pre>
-     * SDL_LoadWAV("sample.wav", &spec, &buf, &len);</pre></blockquote>
+     * <pre>
+     * SDL_LoadWAV("sample.wav", spec, buf, len);
+     * </pre>
      *
      * @param src      The data source for the WAVE data
      * @param freesrc  If non-zero, SDL will _always_ free the data source
@@ -663,14 +669,14 @@ public final class SdlAudio {
      * buffer will be both the source and destination, converting as necessary
      * in-place, the application must allocate a buffer that will fully contain
      * the data during its largest conversion pass. After SDL_BuildAudioCVT()
-     * returns, the application should set the {@code cvt->len} field to the size, in
-     * bytes, of the source data, and allocate a buffer that is `cvt->len *
-     * cvt->len_mult{@code  bytes long for the }buf` field.</p>
+     * returns, the application should set the {@code cvt.len} field to the size, in
+     * bytes, of the source data, and allocate a buffer that is {@code cvt.len *
+     * cvt.len_mult}  bytes long for the {@code buf} field.</p>
      *
      * <p>The source data should be copied into this buffer before the call to
      * SDL_ConvertAudio(). Upon successful return, this buffer will contain the
-     * converted audio, and {@code cvt->len_cvt} will be the size of the converted data,
-     * in bytes. Any bytes in the buffer past {@code cvt->len_cvt} are undefined once
+     * converted audio, and {@code cvt.len_cvt} will be the size of the converted data,
+     * in bytes. Any bytes in the buffer past {@code cvt.len_cvt} are undefined once
      * this function returns.</p>
      *
      * @param cvt an SDL_AudioCVT structure that was previously set up by
@@ -819,8 +825,9 @@ public final class SdlAudio {
      *
      * <p>This function is equivalent to calling...</p>
      *
-     * <blockquote><pre>
-     * SDL_MixAudioFormat(dst, src, format, len, volume);</pre></blockquote>
+     * <pre>
+     * SDL_MixAudioFormat(dst, src, format, len, volume);
+     * </pre>
      *
      * <p>...where {@code format} is the obtained format of the audio device from the
      * legacy SDL_OpenAudio() function.</p>
@@ -1045,8 +1052,9 @@ public final class SdlAudio {
      * <p>New programs might want to use SDL_LockAudioDevice() instead. This function
      * is equivalent to calling...</p>
      *
-     * <blockquote><pre>
-     * SDL_LockAudioDevice(1);</pre></blockquote>
+     * <pre>
+     * SDL_LockAudioDevice(1);
+     * </pre>
      *
      * <p>...and is only useful if you used the legacy SDL_OpenAudio() function.</p>
      *
@@ -1101,8 +1109,9 @@ public final class SdlAudio {
      * <p>New programs might want to use SDL_UnlockAudioDevice() instead. This
      * function is equivalent to calling...</p>
      *
-     * <blockquote><pre>
-     * SDL_UnlockAudioDevice(1);</pre></blockquote>
+     * <pre>
+     * SDL_UnlockAudioDevice(1);
+     * </pre>
      *
      * <p>...and is only useful if you used the legacy SDL_OpenAudio() function.</p>
      *
@@ -1130,8 +1139,9 @@ public final class SdlAudio {
      *
      * <p>This function is equivalent to calling...</p>
      *
-     * <blockquote><pre>
-     * SDL_CloseAudioDevice(1);</pre></blockquote>
+     * <pre>
+     * SDL_CloseAudioDevice(1);
+     * </pre>
      *
      * <p>...and is only useful if you used the legacy SDL_OpenAudio() function.</p>
      *

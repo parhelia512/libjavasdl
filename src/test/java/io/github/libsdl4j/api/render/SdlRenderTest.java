@@ -1,14 +1,12 @@
 package io.github.libsdl4j.api.render;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import io.github.libsdl4j.api.rect.SDL_Rect;
 import io.github.libsdl4j.api.surface.SDL_Surface;
 import io.github.libsdl4j.api.video.SDL_Window;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static io.github.libsdl4j.api.Sdl.SDL_InitSubSystem;
 import static io.github.libsdl4j.api.Sdl.SDL_QuitSubSystem;
 import static io.github.libsdl4j.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
@@ -29,6 +27,8 @@ import static io.github.libsdl4j.api.surface.SdlSurface.SDL_FillRect;
 import static io.github.libsdl4j.api.video.SDL_WindowFlags.SDL_WINDOW_SHOWN;
 import static io.github.libsdl4j.api.video.SdlVideo.SDL_CreateWindow;
 import static io.github.libsdl4j.api.video.SdlVideo.SDL_DestroyWindow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public final class SdlRenderTest {
 

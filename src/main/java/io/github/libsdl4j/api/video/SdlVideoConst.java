@@ -31,7 +31,7 @@ public final class SdlVideoConst {
         return SDL_WINDOWPOS_CENTERED_MASK | x;
     }
 
-    public static int SDL_WINDOWPOS_CENTERED =  SDL_WINDOWPOS_CENTERED_DISPLAY(0);
+    public static int SDL_WINDOWPOS_CENTERED = SDL_WINDOWPOS_CENTERED_DISPLAY(0);
 
     public static boolean SDL_WINDOWPOS_ISCENTERED(
             int x) {

@@ -6,7 +6,7 @@ import com.sun.jna.PointerType;
 /**
  * A handle to a CAMetalLayer-backed NSView (macOS) or UIView (iOS/tvOS).
  *
- * @apiNote This can be cast directly to an NSView or UIView.
+ * <p><b>Note:</b> This can be cast directly to an NSView or UIView.</p>
  */
 public final class SDL_MetalView extends PointerType {
 

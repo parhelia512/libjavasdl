@@ -51,7 +51,7 @@ public final class SdlClipboard {
     /**
      * Query whether the clipboard exists and contains a non-empty text string.
      *
-     * @return SDL_TRUE if the clipboard has text, or SDL_FALSE if it does not.
+     * @return true if the clipboard has text, or false if it does not.
      * @see #SDL_GetClipboardText()
      * @see #SDL_SetClipboardText(String)
      * @since This function is available since SDL 2.0.0.

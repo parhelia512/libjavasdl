@@ -1,8 +1,8 @@
 package io.github.libsdl4j.api.sensor;
 
 import com.sun.jna.Pointer;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * Definitions from file SDL_sensor.h
@@ -15,7 +15,7 @@ import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
  *
  *
  *
- * <h4>Accelerometer sensor</h4>
+ * <h3>Accelerometer sensor</h3>
  *
  * <p>The accelerometer returns the current acceleration in SI meters per
  * second squared. This measurement includes the force of gravity, so
@@ -41,7 +41,7 @@ import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
  *
  *
  *
- * <h4>Gyroscope sensor</h4>
+ * <h3>Gyroscope sensor</h3>
  *
  * <p>The gyroscope returns the current rate of rotation in radians per second.
  * The rotation is positive in the counter-clockwise direction. That is,

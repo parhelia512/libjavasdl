@@ -61,7 +61,7 @@ public final class SdlMetal {
 
     /**
      * Get the size of a window's underlying drawable in pixels (for use with
-     * setting viewport, scissor & etc).
+     * setting viewport, scissor etc).
      *
      * @param window SDL_Window from which the drawable size should be queried
      * @param w      Pointer to variable for storing the width in pixels, may be null

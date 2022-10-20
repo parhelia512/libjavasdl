@@ -1,9 +1,9 @@
 package io.github.libsdl4j.api.bits;
 
 /**
- *  Definitions from file SDL_bits.h
+ * Definitions from file SDL_bits.h
  *
- *  <p>Functions for fiddling with bits and bitmasks.</p>
+ * <p>Functions for fiddling with bits and bitmasks.</p>
  */
 public final class SdlBits {
 
@@ -14,11 +14,11 @@ public final class SdlBits {
     }
 
     /**
-     *  Get the index of the most significant bit.
-     *  This operation can also be stated as "count leading zeroes" and
-     *  "log base 2".
+     * Get the index of the most significant bit.
+     * This operation can also be stated as "count leading zeroes" and
+     * "log base 2".
      *
-     *  @return the index of the most significant bit, or -1 if the value is 0.
+     * @return the index of the most significant bit, or -1 if the value is 0.
      */
     public static int SDL_MostSignificantBitIndex32(
             int x) {

@@ -3,7 +3,6 @@ package io.github.libsdl4j.api.joystick;
 import com.sun.jna.ptr.ShortByReference;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static io.github.libsdl4j.api.Sdl.SDL_Init;
 import static io.github.libsdl4j.api.Sdl.SDL_Quit;
 import static io.github.libsdl4j.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
@@ -26,6 +25,7 @@ import static io.github.libsdl4j.api.joystick.SdlJoystick.SDL_JoystickNumHats;
 import static io.github.libsdl4j.api.joystick.SdlJoystick.SDL_JoystickOpen;
 import static io.github.libsdl4j.api.joystick.SdlJoystick.SDL_JoystickUpdate;
 import static io.github.libsdl4j.api.joystick.SdlJoystick.SDL_NumJoysticks;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class SdlJoystickTest {
 

@@ -4,15 +4,13 @@ import com.sun.jna.Pointer;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.ptr.IntByReference;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import io.github.libsdl4j.api.render.SDL_Renderer;
 import io.github.libsdl4j.api.version.SDL_version;
 import io.github.libsdl4j.api.video.SDL_Window;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static io.github.libsdl4j.api.Sdl.SDL_InitSubSystem;
 import static io.github.libsdl4j.api.Sdl.SDL_QuitSubSystem;
 import static io.github.libsdl4j.api.SdlSubSystemConst.SDL_INIT_VIDEO;
@@ -27,6 +25,8 @@ import static io.github.libsdl4j.api.video.SdlVideo.SDL_CreateWindow;
 import static io.github.libsdl4j.api.video.SdlVideo.SDL_DestroyWindow;
 import static io.github.libsdl4j.api.video.SdlVideo.SDL_GetWindowPosition;
 import static io.github.libsdl4j.api.video.SdlVideo.SDL_GetWindowSize;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SysWMTest {
 
