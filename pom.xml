@@ -155,6 +155,44 @@
                             </target>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>clean-dummy-repo</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="Delete dummy repo after signature">
+                                <delete dir="${java.io.tmpdir}/dummy-repo"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-pom.xml</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign-and-deploy-file</goal>
+                        </goals>
+                        <configuration>
+                            <keyname>8669fc4922b1b132</keyname>
+                            <url>file:///${java.io.tmpdir}/dummy-repo</url>
+                            <repositoryId>Dummy repo</repositoryId>
+                            <file>${project.build.directory}/${project.artifactId}-${project.version}.pom</file>
+                            <files>${project.build.directory}/${project.artifactId}-${project.version}.jar,${project.build.directory}/${project.artifactId}-${project.version}-sources.jar</files>
+                            <types>jar,jar</types>
+                            <classifiers>jar,jar</classifiers>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${project.artifactId}</artifactId>
+                            <version>${project.version}</version>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
