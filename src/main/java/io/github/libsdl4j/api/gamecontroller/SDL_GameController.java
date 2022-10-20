@@ -18,8 +18,6 @@ public final class SDL_GameController extends PointerType {
     /**
      * This constructor is typically used by {@link #fromNative} if generating
      * a new object instance.
-     *
-     * @param p
      */
     public SDL_GameController(Pointer p) {
         super(p);
