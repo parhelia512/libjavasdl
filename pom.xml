@@ -9,6 +9,31 @@
     <version>2.24.0.1</version>
     <packaging>jar</packaging>
 
+    <name>LibSDL4J</name>
+    <description>LibSDL4J - Java language bindings for SDL2.</description>
+    <url>https://libsdl4j.github.io/</url>
+
+    <licenses>
+        <license>
+            <name>zlib License</name>
+            <url>https://opensource.org/licenses/Zlib</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Kamil Ševeček</name>
+            <url>https://github.com/shinedeveloper</url>
+            <email>libsdl4j@outlook.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/libsdl4j/libsdl4j.git</connection>
+        <developerConnection>scm:git:ssh://github.com:libsdl4j/libsdl4j.git</developerConnection>
+        <url>https://github.com/libsdl4j/libsdl4j/tree/master</url>
+    </scm>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
