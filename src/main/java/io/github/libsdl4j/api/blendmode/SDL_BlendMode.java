@@ -1,8 +1,8 @@
 package io.github.libsdl4j.api.blendmode;
 
 import com.sun.jna.ptr.IntByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.jna.JnaEnum;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * The blend mode used in SDL_RenderCopy() and drawing operations.

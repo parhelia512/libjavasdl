@@ -2,10 +2,10 @@ package io.github.libsdl4j.api.joystick.virtual;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.gamecontroller.SDL_GameControllerAxis;
 import io.github.libsdl4j.api.gamecontroller.SDL_GameControllerButton;
 import io.github.libsdl4j.api.joystick.SDL_JoystickType;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.joystick.SdlJoystickConst.SDL_VIRTUAL_JOYSTICK_DESC_VERSION;
 

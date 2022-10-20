@@ -1,7 +1,7 @@
 package io.github.libsdl4j.api.audio;
 
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.jna.JnaEnum;
+import org.intellij.lang.annotations.MagicConstant;
 
 public final class SDL_AudioStatus implements JnaEnum {
 

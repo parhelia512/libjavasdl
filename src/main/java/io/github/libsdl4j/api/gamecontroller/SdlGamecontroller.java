@@ -3,7 +3,6 @@ package io.github.libsdl4j.api.gamecontroller;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.FloatByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.SdlSubSystemConst;
 import io.github.libsdl4j.api.joystick.SDL_Joystick;
 import io.github.libsdl4j.api.joystick.SDL_JoystickGUID;
@@ -12,6 +11,7 @@ import io.github.libsdl4j.api.rwops.SDL_RWops;
 import io.github.libsdl4j.api.sensor.SDL_SensorType;
 import io.github.libsdl4j.jna.JnaUtils;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.rwops.SdlRWops.SDL_RWFromFile;
 

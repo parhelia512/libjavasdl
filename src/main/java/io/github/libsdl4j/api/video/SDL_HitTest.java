@@ -2,8 +2,8 @@ package io.github.libsdl4j.api.video;
 
 import com.sun.jna.Callback;
 import com.sun.jna.Pointer;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.rect.SDL_Point;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * <p><b>Warning:</b> It is necessary to keep a reference to the callback object somewhere in your Java program,

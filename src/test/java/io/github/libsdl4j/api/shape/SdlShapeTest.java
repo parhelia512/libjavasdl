@@ -4,14 +4,14 @@ import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.atomic.AtomicBoolean;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import io.github.libsdl4j.api.SdlTest;
 import io.github.libsdl4j.api.event.SDL_Event;
 import io.github.libsdl4j.api.pixels.SDL_Color;
 import io.github.libsdl4j.api.surface.SDL_Surface;
 import io.github.libsdl4j.api.video.SDL_Window;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static io.github.libsdl4j.api.Sdl.SDL_Init;
 import static io.github.libsdl4j.api.Sdl.SDL_Quit;

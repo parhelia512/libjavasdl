@@ -1,8 +1,8 @@
 package io.github.libsdl4j.api.power;
 
 import com.sun.jna.ptr.IntByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * Definitions from file SDL_power.h

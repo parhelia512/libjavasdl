@@ -6,9 +6,9 @@ import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.video.SDL_Window;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * Definitions from file SDL_pixels.h

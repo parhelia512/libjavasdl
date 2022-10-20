@@ -2,10 +2,10 @@ package io.github.libsdl4j.api.video;
 
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.atomic.AtomicBoolean;
+import io.github.libsdl4j.api.event.SDL_Event;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import io.github.libsdl4j.api.event.SDL_Event;
 
 import static io.github.libsdl4j.api.Sdl.SDL_InitSubSystem;
 import static io.github.libsdl4j.api.Sdl.SDL_QuitSubSystem;

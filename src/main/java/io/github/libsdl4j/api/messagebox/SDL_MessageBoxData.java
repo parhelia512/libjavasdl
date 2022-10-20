@@ -2,9 +2,9 @@ package io.github.libsdl4j.api.messagebox;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.video.SDL_Window;
 import io.github.libsdl4j.jna.ContiguousArrayList;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * MessageBox structure containing title, text, window, etc.

@@ -4,7 +4,6 @@ import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.pixels.SDL_PixelFormatEnum;
 import io.github.libsdl4j.api.rect.SDL_Point;
 import io.github.libsdl4j.api.rect.SDL_Rect;
@@ -13,6 +12,7 @@ import io.github.libsdl4j.jna.ContiguousArrayList;
 import io.github.libsdl4j.jna.JnaUtils;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 import io.github.libsdl4j.jna.size_t;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_free;
 import static io.github.libsdl4j.api.video.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN;

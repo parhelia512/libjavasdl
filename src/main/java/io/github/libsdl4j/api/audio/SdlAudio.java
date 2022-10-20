@@ -3,11 +3,11 @@ package io.github.libsdl4j.api.audio;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.rwops.SDL_RWops;
 import io.github.libsdl4j.jna.JnaUtils;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 import io.github.libsdl4j.jna.StringRef;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.rwops.SdlRWops.SDL_RWFromFile;
 

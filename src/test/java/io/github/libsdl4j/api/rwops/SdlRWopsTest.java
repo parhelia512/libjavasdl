@@ -4,14 +4,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
+import io.github.libsdl4j.api.SdlTest;
+import io.github.libsdl4j.jna.size_t;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import io.github.libsdl4j.api.SdlTest;
-import io.github.libsdl4j.jna.size_t;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static io.github.libsdl4j.api.Sdl.SDL_Init;
 import static io.github.libsdl4j.api.Sdl.SDL_Quit;
 import static io.github.libsdl4j.api.SdlSubSystemConst.SDL_INIT_VIDEO;
@@ -22,6 +20,8 @@ import static io.github.libsdl4j.api.rwops.SdlRWops.SDL_RWFromFile;
 import static io.github.libsdl4j.api.rwops.SdlRWops.SDL_RWclose;
 import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_GetNumAllocations;
 import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_free;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public final class SdlRWopsTest {
 

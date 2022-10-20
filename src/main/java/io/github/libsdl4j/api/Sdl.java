@@ -1,7 +1,7 @@
 package io.github.libsdl4j.api;
 
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * @apiNote Native functions are always defined in a private static nested class

@@ -5,7 +5,6 @@ import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.FloatByReference;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.blendmode.SDL_BlendMode;
 import io.github.libsdl4j.api.pixels.SDL_PixelFormatEnum;
 import io.github.libsdl4j.api.rect.SDL_FPoint;
@@ -18,6 +17,7 @@ import io.github.libsdl4j.api.video.SDL_Window;
 import io.github.libsdl4j.api.video.SDL_WindowFlags;
 import io.github.libsdl4j.jna.ContiguousArrayList;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 /**
  * Definitions from file SDL_render.h

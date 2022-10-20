@@ -1,7 +1,7 @@
 package io.github.libsdl4j.api.keyboard;
 
-import org.junit.jupiter.api.Test;
 import io.github.libsdl4j.api.Sdl;
+import org.junit.jupiter.api.Test;
 
 public final class SdlKeyboardTest {
 

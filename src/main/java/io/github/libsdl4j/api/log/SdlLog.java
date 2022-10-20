@@ -3,10 +3,10 @@ package io.github.libsdl4j.api.log;
 import com.sun.jna.Library;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
+import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 import org.intellij.lang.annotations.MagicConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 
 import static io.github.libsdl4j.api.log.SDL_LogCategory.SDL_LOG_CATEGORY_APPLICATION;
 import static io.github.libsdl4j.api.log.SDL_LogCategory.SDL_LOG_CATEGORY_ASSERT;

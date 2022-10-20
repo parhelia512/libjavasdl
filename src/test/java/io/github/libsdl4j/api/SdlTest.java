@@ -7,8 +7,8 @@ import java.nio.file.Paths;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_GetNumAllocations;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class SdlTest {
 

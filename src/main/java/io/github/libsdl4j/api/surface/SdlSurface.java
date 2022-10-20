@@ -3,7 +3,6 @@ package io.github.libsdl4j.api.surface;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.blendmode.SDL_BlendMode;
 import io.github.libsdl4j.api.pixels.SDL_Palette;
 import io.github.libsdl4j.api.pixels.SDL_PixelFormat;
@@ -12,6 +11,7 @@ import io.github.libsdl4j.api.rect.SDL_Rect;
 import io.github.libsdl4j.api.rwops.SDL_RWops;
 import io.github.libsdl4j.jna.ContiguousArrayList;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.rwops.SdlRWops.SDL_RWFromFile;
 import static io.github.libsdl4j.api.surface.SDL_SurfaceFlags.SDL_RLEACCEL;

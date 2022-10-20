@@ -4,8 +4,8 @@ import com.sun.jna.Callback;
 import com.sun.jna.CallbackReference;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.PointerByReference;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.event.SdlEventsConst.SDL_DISABLE;
 import static io.github.libsdl4j.api.event.SdlEventsConst.SDL_ENABLE;

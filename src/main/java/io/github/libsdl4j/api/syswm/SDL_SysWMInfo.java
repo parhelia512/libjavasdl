@@ -2,8 +2,8 @@ package io.github.libsdl4j.api.syswm;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import org.intellij.lang.annotations.MagicConstant;
 import io.github.libsdl4j.api.version.SDL_version;
+import org.intellij.lang.annotations.MagicConstant;
 
 import static io.github.libsdl4j.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_ANDROID;
 import static io.github.libsdl4j.api.syswm.SDL_SYSWM_TYPE.SDL_SYSWM_COCOA;
