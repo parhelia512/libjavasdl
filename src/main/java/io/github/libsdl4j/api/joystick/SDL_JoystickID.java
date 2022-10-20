@@ -20,8 +20,6 @@ public final class SDL_JoystickID extends IntegerType {
 
     /**
      * Create a signed IntegerType with the given value.
-     *
-     * @param value
      */
     public SDL_JoystickID(long value) {
         super(4, value, false);
