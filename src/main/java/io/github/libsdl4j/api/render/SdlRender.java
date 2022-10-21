@@ -18,6 +18,7 @@ import io.github.libsdl4j.api.video.SDL_GLContext;
 import io.github.libsdl4j.api.video.SDL_Window;
 import io.github.libsdl4j.api.video.SDL_WindowFlags;
 import io.github.libsdl4j.jna.ContiguousArrayList;
+import io.github.libsdl4j.jna.PojoStructure;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 import org.intellij.lang.annotations.MagicConstant;
 
@@ -1110,20 +1111,9 @@ public final class SdlRender {
         if (points.size() == 0) {
             return 0;
         }
-        try (Memory pointsBuffer = writePoints(points)) {
+        try (Memory pointsBuffer = PojoStructure.writeListToNativeMemory(points)) {
             return SDL_RenderDrawPoints(renderer, pointsBuffer, points.size());
         }
-    }
-
-    private static Memory writePoints(List<SDL_Point> points) {
-        long pointStructSize = points.get(0).size();
-        Memory pointsBuffer = new Memory(points.size() * pointStructSize);
-        long offset = 0;
-        for (SDL_Point point : points) {
-            point.write(pointsBuffer, offset);
-            offset += pointStructSize;
-        }
-        return pointsBuffer;
     }
 
     /**
@@ -1260,7 +1250,7 @@ public final class SdlRender {
         if (points.size() == 0) {
             return 0;
         }
-        try (Memory pointsBuffer = writePoints(points)) {
+        try (Memory pointsBuffer = PojoStructure.writeListToNativeMemory(points)) {
             return SDL_RenderDrawLines(renderer, pointsBuffer, points.size());
         }
     }
@@ -1632,20 +1622,9 @@ public final class SdlRender {
         if (fPoints.size() == 0) {
             return 0;
         }
-        try (Memory fPointsBuffer = writeFPoints(fPoints)) {
+        try (Memory fPointsBuffer = PojoStructure.writeListToNativeMemory(fPoints)) {
             return SDL_RenderDrawPointsF(renderer, fPointsBuffer, fPoints.size());
         }
-    }
-
-    private static Memory writeFPoints(List<SDL_FPoint> fPoints) {
-        long pointStructSize = fPoints.get(0).size();
-        Memory pointsBuffer = new Memory(fPoints.size() * pointStructSize);
-        long offset = 0;
-        for (SDL_FPoint fPoint : fPoints) {
-            fPoint.write(pointsBuffer, offset);
-            offset += pointStructSize;
-        }
-        return pointsBuffer;
     }
 
     /**
@@ -1700,7 +1679,7 @@ public final class SdlRender {
         if (fPoints.size() == 0) {
             return 0;
         }
-        try (Memory fPointsBuffer = writeFPoints(fPoints)) {
+        try (Memory fPointsBuffer = PojoStructure.writeListToNativeMemory(fPoints)) {
             return SDL_RenderDrawLinesF(renderer, fPointsBuffer, fPoints.size());
         }
     }
@@ -1943,20 +1922,9 @@ public final class SdlRender {
         if (vertices.size() == 0) {
             return 0;
         }
-        try (Memory buffer = writeVertices(vertices)) {
+        try (Memory buffer = PojoStructure.writeListToNativeMemory(vertices)) {
             return SDL_RenderGeometry(renderer, texture, buffer, vertices.size(), indices, indices != null ? indices.length : 0);
         }
-    }
-
-    private static Memory writeVertices(List<SDL_Vertex> vertices) {
-        long vertexStructSize = vertices.get(0).size();
-        Memory pointsBuffer = new Memory(vertices.size() * vertexStructSize);
-        long offset = 0;
-        for (SDL_Vertex vertex : vertices) {
-            vertex.write(pointsBuffer, offset);
-            offset += vertexStructSize;
-        }
-        return pointsBuffer;
     }
 
     /**

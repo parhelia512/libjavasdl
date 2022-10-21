@@ -3,11 +3,12 @@ package io.github.libsdl4j.api.render;
 import com.sun.jna.Pointer;
 import io.github.libsdl4j.api.pixels.SDL_Color;
 import io.github.libsdl4j.api.rect.SDL_FPoint;
+import io.github.libsdl4j.jna.PojoStructure;
 
 /**
  * Vertex structure
  */
-public final class SDL_Vertex {
+public final class SDL_Vertex implements PojoStructure {
 
     /** Vertex position X, in SDL_Renderer coordinates */
     public float positionX;
@@ -103,10 +104,12 @@ public final class SDL_Vertex {
         texCoordY = texCoord.y;
     }
 
+    @Override
     public long size() {
         return 20L;
     }
 
+    @Override
     public void write(Pointer p, long offset) {
         p.setFloat(offset, positionX);
         p.setFloat(offset + 4L, positionY);
