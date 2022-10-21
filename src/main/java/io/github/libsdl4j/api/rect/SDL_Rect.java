@@ -1,9 +1,9 @@
 package io.github.libsdl4j.api.rect;
 
+import java.util.List;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import com.sun.jna.ptr.IntByReference;
-import io.github.libsdl4j.jna.ContiguousArrayList;
+import io.github.libsdl4j.jna.IntRef;
 
 /**
  * {@code SDL_Rect} is a simple structure that contains only four int values:
@@ -16,9 +16,9 @@ import io.github.libsdl4j.jna.ContiguousArrayList;
  * @see SdlRect#SDL_RectEquals(SDL_Rect, SDL_Rect)
  * @see SdlRect#SDL_HasIntersection(SDL_Rect, SDL_Rect)
  * @see SdlRect#SDL_IntersectRect(SDL_Rect, SDL_Rect, SDL_Rect)
- * @see SdlRect#SDL_IntersectRectAndLine(SDL_Rect, IntByReference, IntByReference, IntByReference, IntByReference)
+ * @see SdlRect#SDL_IntersectRectAndLine(SDL_Rect, IntRef, IntRef, IntRef, IntRef)
  * @see SdlRect#SDL_UnionRect(SDL_Rect, SDL_Rect, SDL_Rect)
- * @see SdlRect#SDL_EnclosePoints(ContiguousArrayList, SDL_Rect, SDL_Rect)
+ * @see SdlRect#SDL_EnclosePoints(List, SDL_Rect, SDL_Rect)
  */
 @Structure.FieldOrder({
         "x",
