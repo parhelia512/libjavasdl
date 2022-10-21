@@ -1880,12 +1880,25 @@ public final class SdlRender {
     public static int SDL_RenderGeometry(
             SDL_Renderer renderer,
             SDL_Texture texture,
-            ContiguousArrayList<SDL_Vertex> vertices,
+            List<SDL_Vertex> vertices,
             int[] indices) {
         if (vertices.size() == 0) {
             return 0;
         }
-        return SDL_RenderGeometry(renderer, texture, vertices.autoWriteAndGetPointer(), vertices.size(), indices, indices.length);
+        try (Memory buffer = writeVertices(vertices)) {
+            return SDL_RenderGeometry(renderer, texture, buffer, vertices.size(), indices, indices != null ? indices.length : 0);
+        }
+    }
+
+    private static Memory writeVertices(List<SDL_Vertex> vertices) {
+        long vertexStructSize = vertices.get(0).size();
+        Memory pointsBuffer = new Memory(vertices.size() * vertexStructSize);
+        long offset = 0;
+        for (SDL_Vertex vertex : vertices) {
+            vertex.write(pointsBuffer, offset);
+            offset += vertexStructSize;
+        }
+        return pointsBuffer;
     }
 
     /**
@@ -1894,16 +1907,16 @@ public final class SdlRender {
      * (SDL_SetTextureColorMod and SDL_SetTextureAlphaMod are ignored).
      *
      * <p>This is a raw C-style version of the function. Prefer Java-style version
-     * {@link #SDL_RenderGeometry(SDL_Renderer, SDL_Texture, ContiguousArrayList, int[])}.</p>
+     * {@link #SDL_RenderGeometry(SDL_Renderer, SDL_Texture, List, int[])}.</p>
      *
-     * @param renderer     The rendering context.
-     * @param texture      (optional) The SDL texture to use.
-     * @param vertices     Vertices.
-     * @param num_vertices Number of vertices.
-     * @param indices      (optional) An array of integer indices into the 'vertices'
-     *                     array, if null all vertices will be rendered in sequential
-     *                     order.
-     * @param num_indices  Number of indices.
+     * @param renderer    The rendering context.
+     * @param texture     (optional) The SDL texture to use.
+     * @param vertices    Vertices.
+     * @param numVertices Number of vertices.
+     * @param indices     (optional) An array of integer indices into the 'vertices'
+     *                    array, if null all vertices will be rendered in sequential
+     *                    order.
+     * @param numIndices  Number of indices.
      * @return 0 on success, or -1 if the operation is not supported
      * @see #SDL_RenderGeometryRaw(SDL_Renderer, SDL_Texture, Pointer, int, Pointer, int, Pointer, int, int, Pointer, int, int)
      * @see SDL_Vertex
@@ -1913,30 +1926,30 @@ public final class SdlRender {
             SDL_Renderer renderer,
             SDL_Texture texture,
             Pointer vertices,
-            int num_vertices,
+            int numVertices,
             int[] indices,
-            int num_indices);
+            int numIndices);
 
     /**
      * Render a list of triangles, optionally using a texture and indices into the
      * vertex arrays Color and alpha modulation is done per vertex
      * (SDL_SetTextureColorMod and SDL_SetTextureAlphaMod are ignored).
      *
-     * @param renderer     The rendering context.
-     * @param texture      (optional) The SDL texture to use.
-     * @param xy           Vertex positions
-     * @param xy_stride    Byte size to move from one element to the next element
-     * @param color        Vertex colors (as SDL_Color)
-     * @param color_stride Byte size to move from one element to the next element
-     * @param uv           Vertex normalized texture coordinates
-     * @param uv_stride    Byte size to move from one element to the next element
-     * @param num_vertices Number of vertices.
-     * @param indices      (optional) An array of indices into the 'vertices' arrays,
-     *                     if null all vertices will be rendered in sequential order.
-     * @param num_indices  Number of indices.
-     * @param size_indices Index size: 1 (byte), 2 (short), 4 (int)
+     * @param renderer    The rendering context.
+     * @param texture     (optional) The SDL texture to use.
+     * @param xy          Vertex positions
+     * @param xyStride    Byte size to move from one element to the next element
+     * @param color       Vertex colors (as SDL_Color)
+     * @param colorStride Byte size to move from one element to the next element
+     * @param uv          Vertex normalized texture coordinates
+     * @param uvStride    Byte size to move from one element to the next element
+     * @param numVertices Number of vertices.
+     * @param indices     (optional) An array of indices into the 'vertices' arrays,
+     *                    if null all vertices will be rendered in sequential order.
+     * @param numIndices  Number of indices.
+     * @param sizeIndices Index size: 1 (byte), 2 (short), 4 (int)
      * @return 0 on success, or -1 if the operation is not supported
-     * @see #SDL_RenderGeometry(SDL_Renderer, SDL_Texture, ContiguousArrayList, int[])
+     * @see #SDL_RenderGeometry(SDL_Renderer, SDL_Texture, List, int[])
      * @see SDL_Vertex
      * @since This function is available since SDL 2.0.18.
      */
@@ -1944,15 +1957,15 @@ public final class SdlRender {
             SDL_Renderer renderer,
             SDL_Texture texture,
             Pointer xy,
-            int xy_stride,
+            int xyStride,
             Pointer color,
-            int color_stride,
+            int colorStride,
             Pointer uv,
-            int uv_stride,
-            int num_vertices,
+            int uvStride,
+            int numVertices,
             Pointer indices,
-            int num_indices,
-            int size_indices);
+            int numIndices,
+            int sizeIndices);
 
     /**
      * Read pixels from the current rendering target to an array of pixels.
