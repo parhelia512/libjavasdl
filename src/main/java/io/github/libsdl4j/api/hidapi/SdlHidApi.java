@@ -215,9 +215,10 @@ public final class SdlHidApi {
     public static int SDL_hid_write(
             SDL_hid_device dev,
             byte[] data) {
-        Memory buffer = new Memory(data.length);
-        buffer.write(0L, data, 0, data.length);
-        return SDL_hid_write(dev, buffer, new size_t(buffer.size()));
+        try (Memory buffer = new Memory(data.length)) {
+            buffer.write(0L, data, 0, data.length);
+            return SDL_hid_write(dev, buffer, new size_t(buffer.size()));
+        }
     }
 
     /**
@@ -275,10 +276,11 @@ public final class SdlHidApi {
             SDL_hid_device dev,
             byte[] data,
             int milliseconds) {
-        Memory buffer = new Memory(data.length);
-        int result = SDL_hid_read_timeout(dev, buffer, new size_t(buffer.size()), milliseconds);
-        buffer.read(0L, data, 0, data.length);
-        return result;
+        try (Memory buffer = new Memory(data.length)) {
+            int result = SDL_hid_read_timeout(dev, buffer, new size_t(buffer.size()), milliseconds);
+            buffer.read(0L, data, 0, data.length);
+            return result;
+        }
     }
 
     /**
@@ -329,10 +331,11 @@ public final class SdlHidApi {
     public static int SDL_hid_read(
             SDL_hid_device dev,
             byte[] data) {
-        Memory buffer = new Memory(data.length);
-        int result = SDL_hid_read(dev, buffer, new size_t(buffer.size()));
-        buffer.read(0L, data, 0, data.length);
-        return result;
+        try (Memory buffer = new Memory(data.length)) {
+            int result = SDL_hid_read(dev, buffer, new size_t(buffer.size()));
+            buffer.read(0L, data, 0, data.length);
+            return result;
+        }
     }
 
     /**
@@ -402,9 +405,10 @@ public final class SdlHidApi {
     public static int SDL_hid_send_feature_report(
             SDL_hid_device dev,
             byte[] data) {
-        Memory buffer = new Memory(data.length);
-        buffer.write(0L, data, 0, data.length);
-        return SDL_hid_send_feature_report(dev, buffer, new size_t(buffer.size()));
+        try (Memory buffer = new Memory(data.length)) {
+            buffer.write(0L, data, 0, data.length);
+            return SDL_hid_send_feature_report(dev, buffer, new size_t(buffer.size()));
+        }
     }
 
     /**
@@ -460,10 +464,12 @@ public final class SdlHidApi {
     public static int SDL_hid_get_feature_report(
             SDL_hid_device dev,
             byte[] data) {
-        Memory buffer = new Memory(data.length);
-        int result = SDL_hid_get_feature_report(dev, buffer, new size_t(buffer.size()));
-        buffer.read(0L, data, 0, data.length);
-        return result;
+        int result;
+        try (Memory buffer = new Memory(data.length)) {
+            result = SDL_hid_get_feature_report(dev, buffer, new size_t(buffer.size()));
+            buffer.read(0L, data, 0, data.length);
+            return result;
+        }
     }
 
     /**
@@ -514,10 +520,11 @@ public final class SdlHidApi {
             SDL_hid_device dev,
             StringRef text,
             int maxlen) {
-        Memory buffer = new Memory(maxlen * 2L);
-        int result = InternalNativeFunctions.SDL_hid_get_manufacturer_string(dev, buffer, new size_t(maxlen));
-        text.setValue(buffer.getWideString(0L));
-        return result;
+        try (Memory buffer = new Memory(maxlen * 2L)) {
+            int result = InternalNativeFunctions.SDL_hid_get_manufacturer_string(dev, buffer, new size_t(maxlen));
+            text.setValue(buffer.getWideString(0L));
+            return result;
+        }
     }
 
     /**
@@ -533,10 +540,11 @@ public final class SdlHidApi {
             SDL_hid_device dev,
             StringRef text,
             int maxlen) {
-        Memory buffer = new Memory(maxlen * 2L);
-        int result = InternalNativeFunctions.SDL_hid_get_product_string(dev, buffer, new size_t(maxlen));
-        text.setValue(buffer.getWideString(0L));
-        return result;
+        try (Memory buffer = new Memory(maxlen * 2L)) {
+            int result = InternalNativeFunctions.SDL_hid_get_product_string(dev, buffer, new size_t(maxlen));
+            text.setValue(buffer.getWideString(0L));
+            return result;
+        }
     }
 
     /**
@@ -552,10 +560,11 @@ public final class SdlHidApi {
             SDL_hid_device dev,
             StringRef text,
             int maxlen) {
-        Memory buffer = new Memory(maxlen * 2L);
-        int result = InternalNativeFunctions.SDL_hid_get_serial_number_string(dev, buffer, new size_t(maxlen));
-        text.setValue(buffer.getWideString(0L));
-        return result;
+        try (Memory buffer = new Memory(maxlen * 2L)) {
+            int result = InternalNativeFunctions.SDL_hid_get_serial_number_string(dev, buffer, new size_t(maxlen));
+            text.setValue(buffer.getWideString(0L));
+            return result;
+        }
     }
 
     /**
@@ -573,10 +582,11 @@ public final class SdlHidApi {
             int stringIndex,
             StringRef text,
             int maxlen) {
-        Memory buffer = new Memory(maxlen * 2L);
-        int result = InternalNativeFunctions.SDL_hid_get_indexed_string(dev, stringIndex, buffer, new size_t(maxlen));
-        text.setValue(buffer.getWideString(0L));
-        return result;
+        try (Memory buffer = new Memory(maxlen * 2L)) {
+            int result = InternalNativeFunctions.SDL_hid_get_indexed_string(dev, stringIndex, buffer, new size_t(maxlen));
+            text.setValue(buffer.getWideString(0L));
+            return result;
+        }
     }
 
     /**

@@ -1475,14 +1475,15 @@ public final class SdlVideo {
             short[] red,
             short[] green,
             short[] blue) {
-        Memory redMemory = new Memory(256 * 2L);
-        Memory greenMemory = new Memory(256 * 2L);
-        Memory blueMemory = new Memory(256 * 2L);
-        int result = SDL_GetWindowGammaRamp(window, redMemory, greenMemory, blueMemory);
-        redMemory.read(0L, red, 0, 256);
-        greenMemory.read(0L, green, 0, 256);
-        blueMemory.read(0L, blue, 0, 256);
-        return result;
+        try (Memory redMemory = new Memory(256 * 2L);
+             Memory greenMemory = new Memory(256 * 2L);
+             Memory blueMemory = new Memory(256 * 2L)) {
+            int result = SDL_GetWindowGammaRamp(window, redMemory, greenMemory, blueMemory);
+            redMemory.read(0L, red, 0, 256);
+            greenMemory.read(0L, green, 0, 256);
+            blueMemory.read(0L, blue, 0, 256);
+            return result;
+        }
     }
 
     /**

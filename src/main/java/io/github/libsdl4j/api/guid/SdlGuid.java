@@ -23,9 +23,10 @@ public final class SdlGuid {
      */
     public static String SDL_GUIDToString(
             SDL_GUID guid) {
-        Memory textBuffer = new Memory(33L);
-        InternalNativeFunctions.SDL_GUIDToString(guid, textBuffer, (int) textBuffer.size());
-        return textBuffer.getString(0L, StandardCharsets.US_ASCII.toString());
+        try (Memory textBuffer = new Memory(33L)) {
+            InternalNativeFunctions.SDL_GUIDToString(guid, textBuffer, (int) textBuffer.size());
+            return textBuffer.getString(0L, StandardCharsets.US_ASCII.toString());
+        }
     }
 
     /**
