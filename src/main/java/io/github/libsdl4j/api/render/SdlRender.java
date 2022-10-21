@@ -1628,18 +1628,31 @@ public final class SdlRender {
      */
     public static int SDL_RenderDrawPointsF(
             SDL_Renderer renderer,
-            ContiguousArrayList<SDL_FPoint> fPoints) {
+            List<SDL_FPoint> fPoints) {
         if (fPoints.size() == 0) {
             return 0;
         }
-        return SDL_RenderDrawPointsF(renderer, fPoints.autoWriteAndGetPointer(), fPoints.size());
+        try (Memory fPointsBuffer = writeFPoints(fPoints)) {
+            return SDL_RenderDrawPointsF(renderer, fPointsBuffer, fPoints.size());
+        }
+    }
+
+    private static Memory writeFPoints(List<SDL_FPoint> fPoints) {
+        long pointStructSize = fPoints.get(0).size();
+        Memory pointsBuffer = new Memory(fPoints.size() * pointStructSize);
+        long offset = 0;
+        for (SDL_FPoint fPoint : fPoints) {
+            fPoint.write(pointsBuffer, offset);
+            offset += pointStructSize;
+        }
+        return pointsBuffer;
     }
 
     /**
      * Draw multiple points on the current rendering target at subpixel precision.
      *
      * <p>This is a raw C-style version of the function. Prefer Java-style version
-     * {@link #SDL_RenderDrawPointsF(SDL_Renderer, ContiguousArrayList)}.</p>
+     * {@link #SDL_RenderDrawPointsF(SDL_Renderer, List)}.</p>
      *
      * @param renderer The renderer which should draw multiple points.
      * @param fPoints  The points to draw
@@ -1683,11 +1696,13 @@ public final class SdlRender {
      */
     public static int SDL_RenderDrawLinesF(
             SDL_Renderer renderer,
-            ContiguousArrayList<SDL_FPoint> fPoints) {
+            List<SDL_FPoint> fPoints) {
         if (fPoints.size() == 0) {
             return 0;
         }
-        return SDL_RenderDrawLinesF(renderer, fPoints.autoWriteAndGetPointer(), fPoints.size());
+        try (Memory fPointsBuffer = writeFPoints(fPoints)) {
+            return SDL_RenderDrawLinesF(renderer, fPointsBuffer, fPoints.size());
+        }
     }
 
     /**
@@ -1695,7 +1710,7 @@ public final class SdlRender {
      * subpixel precision.
      *
      * <p>This is a raw C-style version of the function. Prefer Java-style version
-     * {@link #SDL_RenderDrawLinesF(SDL_Renderer, ContiguousArrayList)}.</p>
+     * {@link #SDL_RenderDrawLinesF(SDL_Renderer, List)}.</p>
      *
      * @param renderer The renderer which should draw multiple lines.
      * @param fPoints  The points along the lines
@@ -1834,6 +1849,8 @@ public final class SdlRender {
      * Copy a portion of the source texture to the current rendering target, with
      * rotation and flipping, at subpixel precision.
      *
+     * <p>This is a Java-style version of a raw C-style function. Prefer this function over the raw C-style one.</p>
+     *
      * @param renderer The renderer which should copy parts of a texture.
      * @param texture  The source texture.
      * @param srcRect  A pointer to the source rectangle, or null for the entire
@@ -1842,9 +1859,50 @@ public final class SdlRender {
      *                 entire rendering target.
      * @param angle    An angle in degrees that indicates the rotation that will be
      *                 applied to dstrect, rotating it in a clockwise direction
-     * @param center   A pointer to a point indicating the point around which
-     *                 dstrect will be rotated (if null, rotation will be done
-     *                 around dstrect.w/2, dstrect.h/2).
+     * @param center   An {@code SDL_FPoint} indicating the point around which
+     *                 {@code dstFRect} will be rotated (if null, rotation will be done
+     *                 around {@code dstFRect.w/2}, {@code dstFRect.h/2}).
+     * @param flip     An SDL_RendererFlip value stating which flipping actions should
+     *                 be performed on the texture
+     * @return 0 on success, or -1 on error
+     * @since This function is available since SDL 2.0.10.
+     */
+    public static int SDL_RenderCopyExF(
+            SDL_Renderer renderer,
+            SDL_Texture texture,
+            SDL_Rect srcRect,
+            SDL_FRect dstFRect,
+            double angle,
+            SDL_FPoint center,
+            @MagicConstant(valuesFromClass = SDL_RendererFlip.class) int flip) {
+        if (center == null) {
+            return SDL_RenderCopyExF(renderer, texture, srcRect, dstFRect, angle, (Pointer) null, flip);
+        } else {
+            try (Memory rawCenterPoint = new Memory(center.size())) {
+                center.write(rawCenterPoint, 0L);
+                return SDL_RenderCopyExF(renderer, texture, srcRect, dstFRect, angle, rawCenterPoint, flip);
+            }
+        }
+    }
+
+    /**
+     * Copy a portion of the source texture to the current rendering target, with
+     * rotation and flipping, at subpixel precision.
+     *
+     * <p>This is a raw C-style version of the function. Prefer Java-style version
+     * {@link #SDL_RenderCopyExF(SDL_Renderer, SDL_Texture, SDL_Rect, SDL_FRect, double, SDL_FPoint, int)}.</p>
+     *
+     * @param renderer The renderer which should copy parts of a texture.
+     * @param texture  The source texture.
+     * @param srcRect  A pointer to the source rectangle, or null for the entire
+     *                 texture.
+     * @param dstFRect A pointer to the destination rectangle, or null for the
+     *                 entire rendering target.
+     * @param angle    An angle in degrees that indicates the rotation that will be
+     *                 applied to dstrect, rotating it in a clockwise direction
+     * @param center   A pointer to an {@code SDL_FPoint} indicating the point around which
+     *                 {@code dstFRect} will be rotated (if null, rotation will be done
+     *                 around {@code dstFRect.w/2}, {@code dstFRect.h/2}).
      * @param flip     An SDL_RendererFlip value stating which flipping actions should
      *                 be performed on the texture
      * @return 0 on success, or -1 on error
@@ -1856,7 +1914,7 @@ public final class SdlRender {
             SDL_Rect srcRect,
             SDL_FRect dstFRect,
             double angle,
-            SDL_FPoint center,
+            Pointer center,
             @MagicConstant(valuesFromClass = SDL_RendererFlip.class) int flip);
 
     /**
