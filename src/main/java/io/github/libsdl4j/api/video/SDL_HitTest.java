@@ -19,15 +19,15 @@ public interface SDL_HitTest extends Callback {
     /**
      * Callback used for hit-testing.
      *
-     * @param win  the SDL_Window where hit-testing was set on
-     * @param area an SDL_Point which should be hit-tested
-     * @param data what was passed as {@code callbackData} to SDL_SetWindowHitTest()
+     * @param win  the SDL_Window where hit-testing was set on.
+     * @param area a Pointer to an SDL_Point which should be hit-tested. Use {@code new }{@link SDL_Point#SDL_Point(Pointer) SDL_Point(Pointer)} to get the actual SDL_Point.
+     * @param data what was passed as {@code callbackData} to SDL_SetWindowHitTest().
      * @return an SDL_HitTestResult value.
      * @see SdlVideo#SDL_SetWindowHitTest(SDL_Window, SDL_HitTest, Pointer)
      */
     @MagicConstant(valuesFromClass = SDL_HitTestResult.class)
     int testHit(
             SDL_Window win,
-            SDL_Point area,
+            Pointer area,
             Pointer data);
 }
