@@ -24,19 +24,26 @@ import com.sun.jna.Structure;
  * It is supposed that the client programmer will just change fields in the Java objects.</p>
  *
  * <h2>Sample usage:</h2>
- * <blockquote><pre>
- * ContiguousArrayList&lt;SDL_Point&gt; pointList = new ContiguousArrayList&lt;&gt;(SDL_Point.class, 3);
- * pointList.get(0).x = 0;
- * pointList.get(0).y = 0;
- * pointList.get(1).x = 100;
- * pointList.get(1).y = 150;
- * pointList.get(2).x = 400;
- * pointList.get(2).y = 300;
+ * <pre>
+ * ContiguousArrayList&lt;SDL_Rect&gt; rectangleList = new ContiguousArrayList&lt;&gt;(SDL_Rect.class, 3);
+ * rectangleList.get(0).x = 0;
+ * rectangleList.get(0).y = 0;
+ * rectangleList.get(0).w = 10;
+ * rectangleList.get(0).h = 10;
+ * rectangleList.get(1).x = 100;
+ * rectangleList.get(1).y = 150;
+ * rectangleList.get(1).w = 20;
+ * rectangleList.get(1).h = 20;
+ * rectangleList.get(2).x = 400;
+ * rectangleList.get(2).y = 300;
+ * rectangleList.get(2).w = 40;
+ * rectangleList.get(2).h = 40;
  *
- * SDL_RenderDrawPoints(renderer, pointList);</pre></blockquote>
+ * SDL_RenderDrawRects(renderer, rectangleList);
+ * </pre>
  *
- * @param <T> type of the Structure. Such as {@link io.github.libsdl4j.api.rect.SDL_Point SDL_Point}
- *          or {@link io.github.libsdl4j.api.messagebox.SDL_MessageBoxButtonData SDL_MessageBoxButtonData}.
+ * @param <T> type of the Structure. Such as {@link io.github.libsdl4j.api.rect.SDL_Rect SDL_Rect}
+ *            or {@link io.github.libsdl4j.api.messagebox.SDL_MessageBoxButtonData SDL_MessageBoxButtonData}.
  */
 public final class ContiguousArrayList<T extends Structure> implements List<T> {
 
@@ -55,25 +62,6 @@ public final class ContiguousArrayList<T extends Structure> implements List<T> {
         }
         T firstItem = Structure.newInstance(structureClass, Pointer.NULL);
         array = (T[]) firstItem.toArray(size);
-    }
-
-    /**
-     * Wrap an existing array of objects.
-     *
-     * <p>It <b>must</b> be an array of {@link com.sun.jna.Structure} objects with
-     * <b>contiguous</b> allocated memory. It is not possible to check so we just trust the client programmer here.</p>
-     *
-     * <p>One way to get the array is from {@link com.sun.jna.Structure#toArray(int)}.
-     * The other is read() an array from a larger Structure allocated in native code.</p>
-     *
-     * @param array of Java objects (descendants of {@link com.sun.jna.Structure} which have their individual native memory
-     *             in consecutive blocks in a single shared native memory.
-     */
-    public ContiguousArrayList(T[] array) {
-        if (array.length < 1) {
-            throw new IllegalArgumentException("The array to be wrapped must be at least of size 1");
-        }
-        this.array = array;
     }
 
     // TODO: How about introducing an additional constructor: ContiguousArrayList(Class<T> structureClass, int size, existingPointer);
