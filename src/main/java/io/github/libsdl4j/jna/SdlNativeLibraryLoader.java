@@ -12,6 +12,8 @@ import static com.sun.jna.Library.OPTION_STRING_ENCODING;
 public final class SdlNativeLibraryLoader {
 
     public static final String SDL_LIBRARY_NAME = "SDL2";
+
+    // This field keeps the reference to the loaded JNA library object to prevent it from being garbage collected.
     private static NativeLibrary libSDL2;
 
     private SdlNativeLibraryLoader() {
