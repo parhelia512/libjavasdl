@@ -9,7 +9,10 @@ import static io.github.libsdl4j.api.stdinc.SdlStdinc.SDL_free;
 public final class JnaUtils {
 
     public static String extractStringAndReleaseNativeSdlMemory(Pointer pointer) {
-        String result = pointer.getString(0L);
+        if (Pointer.nativeValue(pointer) == 0L) {
+            return null;
+        }
+        String result = pointer.getString(0L, "UTF-8");
         SDL_free(pointer);
         return result;
     }
