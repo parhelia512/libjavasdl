@@ -334,7 +334,7 @@ public final class SdlPixels {
      *
      * @param gamma a gamma value where 0.0 is black and 1.0 is identity
      * @param ramp  an array of 256 values filled in with the gamma ramp
-     * @see io.github.libsdl4j.api.video.SdlVideo#SDL_SetWindowGammaRamp(SDL_Window, short[], short[], short[])
+     * @see io.github.libsdl4j.api.video.SdlVideo#SDL_SetWindowGammaRamp(SDL_Window, short[], short[], short[]) SDL_SetWindowGammaRamp(SDL_Window, short[], short[], short[])
      * @since This function is available since SDL 2.0.0.
      */
     public static native void SDL_CalculateGammaRamp(
