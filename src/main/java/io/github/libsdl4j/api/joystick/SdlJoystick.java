@@ -8,6 +8,7 @@ import com.sun.jna.ptr.ShortByReference;
 import io.github.libsdl4j.api.joystick.virtual.SDL_VirtualJoystickDesc;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 import org.intellij.lang.annotations.MagicConstant;
+import sun.nio.cs.US_ASCII;
 
 
 /**
@@ -515,7 +516,7 @@ public final class SdlJoystick {
             SDL_JoystickGUID guid) {
         try (Memory textBuffer = new Memory(33L)) {
             InternalNativeFunctions.SDL_JoystickGetGUIDString(guid, textBuffer, (int) textBuffer.size());
-            return textBuffer.getString(0L, StandardCharsets.US_ASCII.toString());
+            return textBuffer.getString(0L, "US_ASCII");
         }
     }
 
