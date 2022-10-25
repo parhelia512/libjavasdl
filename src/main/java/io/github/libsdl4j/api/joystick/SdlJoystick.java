@@ -513,9 +513,10 @@ public final class SdlJoystick {
      */
     public static String SDL_JoystickGetGUIDString(
             SDL_JoystickGUID guid) {
-        Memory textBuffer = new Memory(33L);
-        InternalNativeFunctions.SDL_JoystickGetGUIDString(guid, textBuffer, (int) textBuffer.size());
-        return textBuffer.getString(0L, StandardCharsets.US_ASCII.toString());
+        try (Memory textBuffer = new Memory(33L)) {
+            InternalNativeFunctions.SDL_JoystickGetGUIDString(guid, textBuffer, (int) textBuffer.size());
+            return textBuffer.getString(0L, StandardCharsets.US_ASCII.toString());
+        }
     }
 
     /**

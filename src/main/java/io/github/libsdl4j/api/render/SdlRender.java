@@ -1922,7 +1922,7 @@ public final class SdlRender {
             return 0;
         }
         try (Memory buffer = JnaUtils.writeListToNativeMemory(vertices);
-            Memory indicesBuffer = JnaUtils.writeArrayToNativeMemory(indices)) {
+             Memory indicesBuffer = JnaUtils.writeArrayToNativeMemory(indices)) {
             return SDL_RenderGeometry(renderer, texture, buffer, vertices.size(), indicesBuffer, indices != null ? indices.length : 0);
         }
     }
