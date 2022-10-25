@@ -287,12 +287,12 @@ public final class SdlAudio {
             StringRef name,
             SDL_AudioSpec spec,
             int iscapture) {
-        Pointer namePointer = new Pointer(0L);
+        PointerByReference namePointer = new PointerByReference();
         int result = InternalNativeFunctions.SDL_GetDefaultAudioInfo(namePointer, spec, iscapture);
-        if (Pointer.nativeValue(namePointer) == 0L) {
+        if (Pointer.nativeValue(namePointer.getValue()) == 0L) {
             return result;
         }
-        String nameString = JnaUtils.extractStringAndReleaseNativeSdlMemory(namePointer);
+        String nameString = JnaUtils.extractStringAndReleaseNativeSdlMemory(namePointer.getValue());
         name.setValue(nameString);
         return result;
     }
@@ -1183,7 +1183,7 @@ public final class SdlAudio {
         }
 
         public static native int SDL_GetDefaultAudioInfo(
-                Pointer name,
+                PointerByReference name,
                 SDL_AudioSpec spec,
                 int iscapture);
     }

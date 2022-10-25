@@ -1,6 +1,5 @@
 package io.github.libsdl4j.api.joystick;
 
-import java.nio.charset.StandardCharsets;
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
@@ -515,7 +514,7 @@ public final class SdlJoystick {
             SDL_JoystickGUID guid) {
         try (Memory textBuffer = new Memory(33L)) {
             InternalNativeFunctions.SDL_JoystickGetGUIDString(guid, textBuffer, (int) textBuffer.size());
-            return textBuffer.getString(0L, StandardCharsets.US_ASCII.toString());
+            return textBuffer.getString(0L, "US_ASCII");
         }
     }
 

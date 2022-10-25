@@ -195,8 +195,8 @@ public final class SdlEvents {
      * usually as a first step before updating the game's state:</p>
      *
      * <pre>
+     * SDL_Event event = new SDL_Event();
      * while (gameIsStillRunning) {
-     *     SDL_Event event;
      *     while (SDL_PollEvent(event)) {  // poll until all events are handled!
      *         // decide what to do with this event.
      *     }
@@ -364,7 +364,7 @@ public final class SdlEvents {
             return null;
         }
         Pointer filterPointer = filterHolder.getPointer();
-        if (filterPointer == Pointer.NULL) {
+        if (Pointer.nativeValue(filterPointer) == 0L) {
             return null;
         }
         Callback filter = CallbackReference.getCallback(SDL_EventFilter.class, filterPointer);

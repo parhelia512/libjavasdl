@@ -15,7 +15,7 @@ import static io.github.libsdl4j.api.event.SDL_EventType.SDL_TEXTEDITING_EXT;
         "type",
         "timestamp",
         "windowID",
-        "text",
+        "rawText",
         "start",
         "length"
 })
@@ -31,16 +31,21 @@ public final class SDL_TextEditingExtEvent extends Structure {
     /** The window with keyboard focus, if any */
     public int windowID;
 
-    /** The editing text, which should be freed with SDL_free(), and will not be NULL */
-    public Pointer text;
+    /**
+     * The pointer to the raw bytes of the text.
+     * Do not use it, because it is freed automatically after reading fields from native memory.
+     *
+     * Use {@link #getText() text} property instead ({@link #getText()}). It contains the converted text.
+     */
+    public Pointer rawText;
+
+    private String convertedText;
 
     /** The start cursor of selected editing text */
     public int start;
 
     /** The length of selected editing text */
     public int length;
-
-    private transient String convertedText;
 
     public SDL_TextEditingExtEvent() {
     }
@@ -49,11 +54,22 @@ public final class SDL_TextEditingExtEvent extends Structure {
         super(p);
     }
 
-    public synchronized String getText() {
-        if (text != null) {
-            convertedText = JnaUtils.extractStringAndReleaseNativeSdlMemory(text);
-            text = null;
+    @Override
+    protected Object readField(StructField structField) {
+        Object result = super.readField(structField);
+        if (structField.name.equals("rawText")) {
+            if (Pointer.nativeValue(rawText) == 0L) {
+                return rawText;
+            }
+            convertedText = JnaUtils.extractStringAndReleaseNativeSdlMemory(rawText);
+            rawText = Pointer.NULL;
+            return rawText;
         }
+        return result;
+    }
+
+    /** The editing text. Will not be null */
+    public String getText() {
         return convertedText;
     }
 }
