@@ -7,7 +7,7 @@ import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
 import io.github.libsdl4j.api.video.SDL_Window;
-import io.github.libsdl4j.jna.PojoStructure;
+import io.github.libsdl4j.jna.JnaUtils;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 import org.intellij.lang.annotations.MagicConstant;
 
@@ -164,7 +164,7 @@ public final class SdlPixels {
         if (ncolors > colors.size()) {
             throw new IllegalArgumentException("ncolors [" + ncolors + "] is greater than the size of the list of colors [" + colors.size() + "]");
         }
-        try (Memory buffer = PojoStructure.writeListToNativeMemory(colors)) {
+        try (Memory buffer = JnaUtils.writeListToNativeMemory(colors)) {
             return SDL_SetPaletteColors(palette, buffer, firstcolor, ncolors);
         }
     }

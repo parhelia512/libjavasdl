@@ -1,5 +1,6 @@
 package io.github.libsdl4j.jna;
 
+import java.util.List;
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 
@@ -29,6 +30,26 @@ public final class JnaUtils {
         Memory memory = new Memory(data.length * 2L);
         memory.write(0L, data, 0, data.length);
         return memory;
+    }
+
+    public static Memory writeArrayToNativeMemory(int[] data) {
+        if (data == null) {
+            return null;
+        }
+        Memory memory = new Memory(data.length * 4L);
+        memory.write(0L, data, 0, data.length);
+        return memory;
+    }
+
+    public static Memory writeListToNativeMemory(List<? extends PojoStructure> objects) {
+        long structSize = objects.get(0).size();
+        Memory buffer = new Memory(objects.size() * structSize);
+        long offset = 0;
+        for (PojoStructure obj : objects) {
+            obj.write(buffer, offset);
+            offset += structSize;
+        }
+        return buffer;
     }
 
     public static void append(StringBuilder result, String name) {

@@ -18,7 +18,7 @@ import io.github.libsdl4j.api.video.SDL_GLContext;
 import io.github.libsdl4j.api.video.SDL_Window;
 import io.github.libsdl4j.api.video.SDL_WindowFlags;
 import io.github.libsdl4j.jna.ContiguousArrayList;
-import io.github.libsdl4j.jna.PojoStructure;
+import io.github.libsdl4j.jna.JnaUtils;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 import org.intellij.lang.annotations.MagicConstant;
 
@@ -1111,7 +1111,7 @@ public final class SdlRender {
         if (points.size() == 0) {
             return 0;
         }
-        try (Memory pointsBuffer = PojoStructure.writeListToNativeMemory(points)) {
+        try (Memory pointsBuffer = JnaUtils.writeListToNativeMemory(points)) {
             return SDL_RenderDrawPoints(renderer, pointsBuffer, points.size());
         }
     }
@@ -1122,7 +1122,7 @@ public final class SdlRender {
      * <p>This is a raw int[]-style function.
      * You can use it for efficiency if you do not use SDL_Point,
      * because have your own data structure for points.
-     * If you used {@link #SDL_RenderDrawPoints(SDL_Renderer, List<SDL_Point>)}
+     * If you used {@link #SDL_RenderDrawPoints(SDL_Renderer, List)}
      * you would have to copy data from your structures to SDL_Point first
      * and then they would be copied again into na off-heap buffer.
      * Using this method, you can skip the artificial conversion
@@ -1155,8 +1155,7 @@ public final class SdlRender {
             SDL_SetError("Invalid length of the int[] array. It must consist of pairs of `int x` and `int y`.");
             return -1;
         }
-        try (Memory pointsBuffer = new Memory(intXandY.length * 4L)) {
-            pointsBuffer.write(0L, intXandY, 0, intXandY.length);
+        try (Memory pointsBuffer = JnaUtils.writeArrayToNativeMemory(intXandY)) {
             return SDL_RenderDrawPoints(renderer, pointsBuffer, intXandY.length / 2);
         }
     }
@@ -1250,7 +1249,7 @@ public final class SdlRender {
         if (points.size() == 0) {
             return 0;
         }
-        try (Memory pointsBuffer = PojoStructure.writeListToNativeMemory(points)) {
+        try (Memory pointsBuffer = JnaUtils.writeListToNativeMemory(points)) {
             return SDL_RenderDrawLines(renderer, pointsBuffer, points.size());
         }
     }
@@ -1622,7 +1621,7 @@ public final class SdlRender {
         if (fPoints.size() == 0) {
             return 0;
         }
-        try (Memory fPointsBuffer = PojoStructure.writeListToNativeMemory(fPoints)) {
+        try (Memory fPointsBuffer = JnaUtils.writeListToNativeMemory(fPoints)) {
             return SDL_RenderDrawPointsF(renderer, fPointsBuffer, fPoints.size());
         }
     }
@@ -1679,7 +1678,7 @@ public final class SdlRender {
         if (fPoints.size() == 0) {
             return 0;
         }
-        try (Memory fPointsBuffer = PojoStructure.writeListToNativeMemory(fPoints)) {
+        try (Memory fPointsBuffer = JnaUtils.writeListToNativeMemory(fPoints)) {
             return SDL_RenderDrawLinesF(renderer, fPointsBuffer, fPoints.size());
         }
     }
@@ -1922,8 +1921,9 @@ public final class SdlRender {
         if (vertices.size() == 0) {
             return 0;
         }
-        try (Memory buffer = PojoStructure.writeListToNativeMemory(vertices)) {
-            return SDL_RenderGeometry(renderer, texture, buffer, vertices.size(), indices, indices != null ? indices.length : 0);
+        try (Memory buffer = JnaUtils.writeListToNativeMemory(vertices);
+            Memory indicesBuffer = JnaUtils.writeArrayToNativeMemory(indices)) {
+            return SDL_RenderGeometry(renderer, texture, buffer, vertices.size(), indicesBuffer, indices != null ? indices.length : 0);
         }
     }
 
@@ -1953,7 +1953,7 @@ public final class SdlRender {
             SDL_Texture texture,
             Pointer vertices,
             int numVertices,
-            int[] indices,
+            Pointer indices,
             int numIndices);
 
     /**
