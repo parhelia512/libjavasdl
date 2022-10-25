@@ -5,6 +5,7 @@ import java.util.List;
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.WString;
+import io.github.libsdl4j.jna.JnaUtils;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 import io.github.libsdl4j.jna.StringRef;
 import io.github.libsdl4j.jna.size_t;
@@ -111,7 +112,7 @@ public final class SdlHidApi {
      *
      * @param vendorId  The Vendor ID (VID) of the types of device to open.
      * @param productId The Product ID (PID) of the types of device to open.
-     * @return a pointer to a list of type SDL_hid_device_info, containing
+     * @return a list of SDL_hid_device_info objects, containing
      * information about the HID devices attached to the system, or null
      * in the case of failure.
      * @see #SDL_hid_device_change_count()
@@ -215,8 +216,7 @@ public final class SdlHidApi {
     public static int SDL_hid_write(
             SDL_hid_device dev,
             byte[] data) {
-        try (Memory buffer = new Memory(data.length)) {
-            buffer.write(0L, data, 0, data.length);
+        try (Memory buffer = JnaUtils.writeArrayToNativeMemory(data)) {
             return SDL_hid_write(dev, buffer, new size_t(buffer.size()));
         }
     }
@@ -405,8 +405,7 @@ public final class SdlHidApi {
     public static int SDL_hid_send_feature_report(
             SDL_hid_device dev,
             byte[] data) {
-        try (Memory buffer = new Memory(data.length)) {
-            buffer.write(0L, data, 0, data.length);
+        try (Memory buffer = JnaUtils.writeArrayToNativeMemory(data)) {
             return SDL_hid_send_feature_report(dev, buffer, new size_t(buffer.size()));
         }
     }

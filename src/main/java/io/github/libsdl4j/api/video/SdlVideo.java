@@ -454,7 +454,7 @@ public final class SdlVideo {
             SDL_Window window) {
         size_t.Ref sizeRef = new size_t.Ref();
         Pointer mem = InternalNativeFunctions.SDL_GetWindowICCProfile(window, sizeRef);
-        if (mem == null || Pointer.nativeValue(mem) == 0L) {
+        if (Pointer.nativeValue(mem) == 0L) {
             return null;
         }
         byte[] buffer = mem.getByteArray(0L, sizeRef.getValue().intValue());
@@ -1395,19 +1395,20 @@ public final class SdlVideo {
             short[] red,
             short[] green,
             short[] blue) {
-        if (red != null && red.length != 256) {
-            throw new IllegalArgumentException("Red array length must be 256 but was " + red.length);
+        if (red == null || red.length != 256) {
+            throw new IllegalArgumentException("Red array length must be 256 but was " + (red != null ? red.length : "null"));
         }
-        if (green != null && green.length != 256) {
-            throw new IllegalArgumentException("Green array length must be 256 but was " + green.length);
+        if (green == null || green.length != 256) {
+            throw new IllegalArgumentException("Green array length must be 256 but was " + (green != null ? green.length : "null"));
         }
-        if (blue != null && blue.length != 256) {
-            throw new IllegalArgumentException("Blue array length must be 256 but was " + blue.length);
+        if (blue == null || blue.length != 256) {
+            throw new IllegalArgumentException("Blue array length must be 256 but was " + (blue != null ? blue.length : "null"));
         }
-        Pointer redMemory = JnaUtils.writeArrayToNativeMemory(red);
-        Pointer greenMemory = JnaUtils.writeArrayToNativeMemory(green);
-        Pointer blueMemory = JnaUtils.writeArrayToNativeMemory(blue);
-        return SDL_SetWindowGammaRamp(window, redMemory, greenMemory, blueMemory);
+        try (Memory redMemory = JnaUtils.writeArrayToNativeMemory(red);
+             Memory greenMemory = JnaUtils.writeArrayToNativeMemory(green);
+             Memory blueMemory = JnaUtils.writeArrayToNativeMemory(blue)) {
+            return SDL_SetWindowGammaRamp(window, redMemory, greenMemory, blueMemory);
+        }
     }
 
     /**
