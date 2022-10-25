@@ -1,11 +1,14 @@
 package io.github.libsdl4j.api.pixels;
 
+import com.sun.jna.Pointer;
+import io.github.libsdl4j.jna.PojoStructure;
+
 /**
  * The bits of this structure can be directly reinterpreted as an integer-packed
  * color which uses the SDL_PIXELFORMAT_RGBA32 format (SDL_PIXELFORMAT_ABGR8888
  * on little-endian systems and SDL_PIXELFORMAT_RGBA8888 on big-endian systems).
  */
-public final class SDL_Color {
+public final class SDL_Color implements PojoStructure {
 
     public byte r;
     public byte g;
@@ -27,6 +30,19 @@ public final class SDL_Color {
         this.g = (byte) g;
         this.b = (byte) b;
         this.a = (byte) a;
+    }
+
+    @Override
+    public long size() {
+        return 4L;
+    }
+
+    @Override
+    public void write(Pointer buffer, long offset) {
+        buffer.setByte(offset++, r);
+        buffer.setByte(offset++, g);
+        buffer.setByte(offset++, b);
+        buffer.setByte(offset, a);
     }
 
     @Override

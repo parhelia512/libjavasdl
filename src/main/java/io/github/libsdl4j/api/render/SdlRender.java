@@ -1,5 +1,7 @@
 package io.github.libsdl4j.api.render;
 
+import java.util.List;
+import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.FloatByReference;
@@ -16,8 +18,11 @@ import io.github.libsdl4j.api.video.SDL_GLContext;
 import io.github.libsdl4j.api.video.SDL_Window;
 import io.github.libsdl4j.api.video.SDL_WindowFlags;
 import io.github.libsdl4j.jna.ContiguousArrayList;
+import io.github.libsdl4j.jna.JnaUtils;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 import org.intellij.lang.annotations.MagicConstant;
+
+import static io.github.libsdl4j.api.error.SdlError.SDL_SetError;
 
 /**
  * Definitions from file SDL_render.h
@@ -957,9 +962,9 @@ public final class SdlRender {
      * @see #SDL_GetRenderDrawColor(SDL_Renderer, ByteByReference, ByteByReference, ByteByReference, ByteByReference)
      * @see #SDL_RenderClear(SDL_Renderer)
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
-     * @see #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
-     * @see #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawPoints(SDL_Renderer, List)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
      * @see #SDL_RenderFillRect(SDL_Renderer, SDL_Rect)
@@ -1008,9 +1013,9 @@ public final class SdlRender {
      * SDL_GetError() for more information.
      * @see #SDL_GetRenderDrawBlendMode(SDL_Renderer, SDL_BlendMode.Ref)
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
-     * @see #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
-     * @see #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawPoints(SDL_Renderer, List)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
      * @see #SDL_RenderFillRect(SDL_Renderer, SDL_Rect)
@@ -1062,8 +1067,8 @@ public final class SdlRender {
      * @return 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
-     * @see #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)
-     * @see #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
+     * @see #SDL_RenderDrawPoints(SDL_Renderer, List)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
      * @see #SDL_RenderFillRect(SDL_Renderer, SDL_Rect)
@@ -1089,7 +1094,7 @@ public final class SdlRender {
      * @return 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
-     * @see #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
@@ -1102,18 +1107,64 @@ public final class SdlRender {
      */
     public static int SDL_RenderDrawPoints(
             SDL_Renderer renderer,
-            ContiguousArrayList<SDL_Point> points) {
+            List<SDL_Point> points) {
         if (points.size() == 0) {
             return 0;
         }
-        return SDL_RenderDrawPoints(renderer, points.autoWriteAndGetPointer(), points.size());
+        try (Memory pointsBuffer = JnaUtils.writeListToNativeMemory(points)) {
+            return SDL_RenderDrawPoints(renderer, pointsBuffer, points.size());
+        }
+    }
+
+    /**
+     * Draw multiple points on the current rendering target.
+     *
+     * <p>This is a raw int[]-style function.
+     * You can use it for efficiency if you do not use SDL_Point,
+     * because have your own data structure for points.
+     * If you used {@link #SDL_RenderDrawPoints(SDL_Renderer, List)}
+     * you would have to copy data from your structures to SDL_Point first
+     * and then they would be copied again into na off-heap buffer.
+     * Using this method, you can skip the artificial conversion
+     * and fill the int[] with X and Y values interleaving one another.</p>
+     *
+     * @param renderer the rendering context
+     * @param intXandY an array of X and Y int values that represent the points to
+     *                 draw
+     * @return 0 on success or a negative error code on failure; call
+     * SDL_GetError() for more information.
+     * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
+     * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
+     * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
+     * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderFillRect(SDL_Renderer, SDL_Rect)
+     * @see #SDL_RenderFillRects(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderPresent(SDL_Renderer)
+     * @see #SDL_SetRenderDrawBlendMode(SDL_Renderer, int)
+     * @see #SDL_SetRenderDrawColor(SDL_Renderer, byte, byte, byte, byte)
+     * @since This function is available since SDL 2.0.0.
+     */
+    public static int SDL_RenderDrawPoints(
+            SDL_Renderer renderer,
+            int[] intXandY) {
+        if (intXandY.length == 0) {
+            return 0;
+        }
+        if (intXandY.length % 2 != 0) {
+            SDL_SetError("Invalid length of the int[] array. It must consist of pairs of `int x` and `int y`.");
+            return -1;
+        }
+        try (Memory pointsBuffer = JnaUtils.writeArrayToNativeMemory(intXandY)) {
+            return SDL_RenderDrawPoints(renderer, pointsBuffer, intXandY.length / 2);
+        }
     }
 
     /**
      * Draw multiple points on the current rendering target.
      *
      * <p>This is a raw C-style version of the function. Prefer Java-style version
-     * {@link #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)}.</p>
+     * {@link #SDL_RenderDrawPoints(SDL_Renderer, List)}.</p>
      *
      * @param renderer the rendering context
      * @param points   an array of SDL_Point structures that represent the points to
@@ -1122,7 +1173,7 @@ public final class SdlRender {
      * @return 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
-     * @see #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
@@ -1151,9 +1202,9 @@ public final class SdlRender {
      * @param y2       the y coordinate of the end point
      * @return 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
-     * @see #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
-     * @see #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawPoints(SDL_Renderer, List)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
      * @see #SDL_RenderFillRect(SDL_Renderer, SDL_Rect)
@@ -1182,7 +1233,7 @@ public final class SdlRender {
      * SDL_GetError() for more information.
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
-     * @see #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawPoints(SDL_Renderer, List)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
      * @see #SDL_RenderFillRect(SDL_Renderer, SDL_Rect)
@@ -1194,18 +1245,20 @@ public final class SdlRender {
      */
     public static int SDL_RenderDrawLines(
             SDL_Renderer renderer,
-            ContiguousArrayList<SDL_Point> points) {
+            List<SDL_Point> points) {
         if (points.size() == 0) {
             return 0;
         }
-        return SDL_RenderDrawLines(renderer, points.autoWriteAndGetPointer(), points.size());
+        try (Memory pointsBuffer = JnaUtils.writeListToNativeMemory(points)) {
+            return SDL_RenderDrawLines(renderer, pointsBuffer, points.size());
+        }
     }
 
     /**
      * Draw a series of connected lines on the current rendering target.
      *
      * <p>This is a raw C-style version of the function. Prefer Java-style version
-     * {@link #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)}.</p>
+     * {@link #SDL_RenderDrawLines(SDL_Renderer, List)}.</p>
      *
      * @param renderer the rendering context
      * @param points   an array of SDL_Point structures representing points along
@@ -1215,7 +1268,7 @@ public final class SdlRender {
      * SDL_GetError() for more information.
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
-     * @see #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawPoints(SDL_Renderer, List)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
      * @see #SDL_RenderFillRect(SDL_Renderer, SDL_Rect)
@@ -1239,9 +1292,9 @@ public final class SdlRender {
      * @return 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
-     * @see #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
-     * @see #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawPoints(SDL_Renderer, List)
      * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
      * @see #SDL_RenderFillRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderFillRects(SDL_Renderer, ContiguousArrayList)
@@ -1265,9 +1318,9 @@ public final class SdlRender {
      * @return 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
-     * @see #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
-     * @see #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawPoints(SDL_Renderer, List)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderFillRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderFillRects(SDL_Renderer, ContiguousArrayList)
@@ -1298,9 +1351,9 @@ public final class SdlRender {
      * @return 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
-     * @see #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
-     * @see #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawPoints(SDL_Renderer, List)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderFillRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderFillRects(SDL_Renderer, ContiguousArrayList)
@@ -1327,9 +1380,9 @@ public final class SdlRender {
      * @return 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
-     * @see #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
-     * @see #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawPoints(SDL_Renderer, List)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
      * @see #SDL_RenderFillRects(SDL_Renderer, ContiguousArrayList)
@@ -1354,9 +1407,9 @@ public final class SdlRender {
      * @return 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
-     * @see #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
-     * @see #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawPoints(SDL_Renderer, List)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
      * @see #SDL_RenderFillRect(SDL_Renderer, SDL_Rect)
@@ -1386,9 +1439,9 @@ public final class SdlRender {
      * @return 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
-     * @see #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
-     * @see #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawPoints(SDL_Renderer, List)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
      * @see #SDL_RenderFillRect(SDL_Renderer, SDL_Rect)
@@ -1449,6 +1502,8 @@ public final class SdlRender {
      * <p>The texture alpha is affected based on its alpha modulation set by
      * SDL_SetTextureAlphaMod().</p>
      *
+     * <p>This is a Java-style version of a raw C-style function. Prefer this function over the raw C-style one.</p>
+     *
      * @param renderer the rendering context
      * @param texture  the source texture
      * @param srcRect  the source SDL_Rect structure or null for the entire texture
@@ -1457,8 +1512,66 @@ public final class SdlRender {
      * @param angle    an angle in degrees that indicates the rotation that will be
      *                 applied to dstrect, rotating it in a clockwise direction
      * @param center   a pointer to a point indicating the point around which
-     *                 dstrect will be rotated (if null, rotation will be done
-     *                 around {@code dstrect.w / 2}, {@code dstrect.h / 2})
+     *                 dstRect will be rotated (if null, rotation will be done
+     *                 around {@code dstRect.w / 2}, {@code dstRect.h / 2})
+     * @param flip     a SDL_RendererFlip value stating which flipping actions should
+     *                 be performed on the texture
+     * @return 0 on success or a negative error code on failure; call
+     * SDL_GetError() for more information.
+     * @see #SDL_RenderCopy(SDL_Renderer, SDL_Texture, SDL_Rect, SDL_Rect)
+     * @see #SDL_SetTextureAlphaMod(SDL_Texture, byte)
+     * @see #SDL_SetTextureBlendMode(SDL_Texture, int)
+     * @see #SDL_SetTextureColorMod(SDL_Texture, byte, byte, byte)
+     * @since This function is available since SDL 2.0.0.
+     */
+    public static int SDL_RenderCopyEx(
+            SDL_Renderer renderer,
+            SDL_Texture texture,
+            SDL_Rect srcRect,
+            SDL_Rect dstRect,
+            double angle,
+            SDL_Point center,
+            @MagicConstant(valuesFromClass = SDL_RendererFlip.class) int flip) {
+        if (center == null) {
+            return SDL_RenderCopyEx(renderer, texture, srcRect, dstRect, angle, (Pointer) null, flip);
+        } else {
+            try (Memory rawCenterPoint = new Memory(center.size())) {
+                center.write(rawCenterPoint, 0L);
+                return SDL_RenderCopyEx(renderer, texture, srcRect, dstRect, angle, rawCenterPoint, flip);
+            }
+        }
+    }
+
+    /**
+     * Copy a portion of the texture to the current rendering, with optional
+     * rotation and flipping.
+     *
+     * <p>Copy a portion of the texture to the current rendering target, optionally
+     * rotating it by angle around the given center and also flipping it
+     * top-bottom and/or left-right.</p>
+     *
+     * <p>The texture is blended with the destination based on its blend mode set
+     * with SDL_SetTextureBlendMode().</p>
+     *
+     * <p>The texture color is affected based on its color modulation set by
+     * SDL_SetTextureColorMod().</p>
+     *
+     * <p>The texture alpha is affected based on its alpha modulation set by
+     * SDL_SetTextureAlphaMod().</p>
+     *
+     * <p>This is a raw C-style version of the function. Prefer Java-style version
+     * {@link #SDL_RenderCopyEx(SDL_Renderer, SDL_Texture, SDL_Rect, SDL_Rect, double, SDL_Point, int)}.</p>
+     *
+     * @param renderer the rendering context
+     * @param texture  the source texture
+     * @param srcRect  the source SDL_Rect structure or null for the entire texture
+     * @param dstRect  the destination SDL_Rect structure or null for the entire
+     *                 rendering target
+     * @param angle    an angle in degrees that indicates the rotation that will be
+     *                 applied to dstrect, rotating it in a clockwise direction
+     * @param center   a pointer to an SDL_Point struct indicating the point around which
+     *                 dstRect will be rotated (if null, rotation will be done
+     *                 around {@code dstRect.w / 2}, {@code dstRect.h / 2})
      * @param flip     a SDL_RendererFlip value stating which flipping actions should
      *                 be performed on the texture
      * @return 0 on success or a negative error code on failure; call
@@ -1475,7 +1588,7 @@ public final class SdlRender {
             SDL_Rect srcRect,
             SDL_Rect dstRect,
             double angle,
-            SDL_Point center,
+            Pointer center,
             @MagicConstant(valuesFromClass = SDL_RendererFlip.class) int flip);
 
     /**
@@ -1504,18 +1617,20 @@ public final class SdlRender {
      */
     public static int SDL_RenderDrawPointsF(
             SDL_Renderer renderer,
-            ContiguousArrayList<SDL_FPoint> fPoints) {
+            List<SDL_FPoint> fPoints) {
         if (fPoints.size() == 0) {
             return 0;
         }
-        return SDL_RenderDrawPointsF(renderer, fPoints.autoWriteAndGetPointer(), fPoints.size());
+        try (Memory fPointsBuffer = JnaUtils.writeListToNativeMemory(fPoints)) {
+            return SDL_RenderDrawPointsF(renderer, fPointsBuffer, fPoints.size());
+        }
     }
 
     /**
      * Draw multiple points on the current rendering target at subpixel precision.
      *
      * <p>This is a raw C-style version of the function. Prefer Java-style version
-     * {@link #SDL_RenderDrawPointsF(SDL_Renderer, ContiguousArrayList)}.</p>
+     * {@link #SDL_RenderDrawPointsF(SDL_Renderer, List)}.</p>
      *
      * @param renderer The renderer which should draw multiple points.
      * @param fPoints  The points to draw
@@ -1559,11 +1674,13 @@ public final class SdlRender {
      */
     public static int SDL_RenderDrawLinesF(
             SDL_Renderer renderer,
-            ContiguousArrayList<SDL_FPoint> fPoints) {
+            List<SDL_FPoint> fPoints) {
         if (fPoints.size() == 0) {
             return 0;
         }
-        return SDL_RenderDrawLinesF(renderer, fPoints.autoWriteAndGetPointer(), fPoints.size());
+        try (Memory fPointsBuffer = JnaUtils.writeListToNativeMemory(fPoints)) {
+            return SDL_RenderDrawLinesF(renderer, fPointsBuffer, fPoints.size());
+        }
     }
 
     /**
@@ -1571,7 +1688,7 @@ public final class SdlRender {
      * subpixel precision.
      *
      * <p>This is a raw C-style version of the function. Prefer Java-style version
-     * {@link #SDL_RenderDrawLinesF(SDL_Renderer, ContiguousArrayList)}.</p>
+     * {@link #SDL_RenderDrawLinesF(SDL_Renderer, List)}.</p>
      *
      * @param renderer The renderer which should draw multiple lines.
      * @param fPoints  The points along the lines
@@ -1710,6 +1827,8 @@ public final class SdlRender {
      * Copy a portion of the source texture to the current rendering target, with
      * rotation and flipping, at subpixel precision.
      *
+     * <p>This is a Java-style version of a raw C-style function. Prefer this function over the raw C-style one.</p>
+     *
      * @param renderer The renderer which should copy parts of a texture.
      * @param texture  The source texture.
      * @param srcRect  A pointer to the source rectangle, or null for the entire
@@ -1718,9 +1837,50 @@ public final class SdlRender {
      *                 entire rendering target.
      * @param angle    An angle in degrees that indicates the rotation that will be
      *                 applied to dstrect, rotating it in a clockwise direction
-     * @param center   A pointer to a point indicating the point around which
-     *                 dstrect will be rotated (if null, rotation will be done
-     *                 around dstrect.w/2, dstrect.h/2).
+     * @param center   An {@code SDL_FPoint} indicating the point around which
+     *                 {@code dstFRect} will be rotated (if null, rotation will be done
+     *                 around {@code dstFRect.w/2}, {@code dstFRect.h/2}).
+     * @param flip     An SDL_RendererFlip value stating which flipping actions should
+     *                 be performed on the texture
+     * @return 0 on success, or -1 on error
+     * @since This function is available since SDL 2.0.10.
+     */
+    public static int SDL_RenderCopyExF(
+            SDL_Renderer renderer,
+            SDL_Texture texture,
+            SDL_Rect srcRect,
+            SDL_FRect dstFRect,
+            double angle,
+            SDL_FPoint center,
+            @MagicConstant(valuesFromClass = SDL_RendererFlip.class) int flip) {
+        if (center == null) {
+            return SDL_RenderCopyExF(renderer, texture, srcRect, dstFRect, angle, (Pointer) null, flip);
+        } else {
+            try (Memory rawCenterPoint = new Memory(center.size())) {
+                center.write(rawCenterPoint, 0L);
+                return SDL_RenderCopyExF(renderer, texture, srcRect, dstFRect, angle, rawCenterPoint, flip);
+            }
+        }
+    }
+
+    /**
+     * Copy a portion of the source texture to the current rendering target, with
+     * rotation and flipping, at subpixel precision.
+     *
+     * <p>This is a raw C-style version of the function. Prefer Java-style version
+     * {@link #SDL_RenderCopyExF(SDL_Renderer, SDL_Texture, SDL_Rect, SDL_FRect, double, SDL_FPoint, int)}.</p>
+     *
+     * @param renderer The renderer which should copy parts of a texture.
+     * @param texture  The source texture.
+     * @param srcRect  A pointer to the source rectangle, or null for the entire
+     *                 texture.
+     * @param dstFRect A pointer to the destination rectangle, or null for the
+     *                 entire rendering target.
+     * @param angle    An angle in degrees that indicates the rotation that will be
+     *                 applied to dstrect, rotating it in a clockwise direction
+     * @param center   A pointer to an {@code SDL_FPoint} indicating the point around which
+     *                 {@code dstFRect} will be rotated (if null, rotation will be done
+     *                 around {@code dstFRect.w/2}, {@code dstFRect.h/2}).
      * @param flip     An SDL_RendererFlip value stating which flipping actions should
      *                 be performed on the texture
      * @return 0 on success, or -1 on error
@@ -1732,7 +1892,7 @@ public final class SdlRender {
             SDL_Rect srcRect,
             SDL_FRect dstFRect,
             double angle,
-            SDL_FPoint center,
+            Pointer center,
             @MagicConstant(valuesFromClass = SDL_RendererFlip.class) int flip);
 
     /**
@@ -1756,12 +1916,15 @@ public final class SdlRender {
     public static int SDL_RenderGeometry(
             SDL_Renderer renderer,
             SDL_Texture texture,
-            ContiguousArrayList<SDL_Vertex> vertices,
+            List<SDL_Vertex> vertices,
             int[] indices) {
         if (vertices.size() == 0) {
             return 0;
         }
-        return SDL_RenderGeometry(renderer, texture, vertices.autoWriteAndGetPointer(), vertices.size(), indices, indices.length);
+        try (Memory buffer = JnaUtils.writeListToNativeMemory(vertices);
+            Memory indicesBuffer = JnaUtils.writeArrayToNativeMemory(indices)) {
+            return SDL_RenderGeometry(renderer, texture, buffer, vertices.size(), indicesBuffer, indices != null ? indices.length : 0);
+        }
     }
 
     /**
@@ -1770,16 +1933,16 @@ public final class SdlRender {
      * (SDL_SetTextureColorMod and SDL_SetTextureAlphaMod are ignored).
      *
      * <p>This is a raw C-style version of the function. Prefer Java-style version
-     * {@link #SDL_RenderGeometry(SDL_Renderer, SDL_Texture, ContiguousArrayList, int[])}.</p>
+     * {@link #SDL_RenderGeometry(SDL_Renderer, SDL_Texture, List, int[])}.</p>
      *
-     * @param renderer     The rendering context.
-     * @param texture      (optional) The SDL texture to use.
-     * @param vertices     Vertices.
-     * @param num_vertices Number of vertices.
-     * @param indices      (optional) An array of integer indices into the 'vertices'
-     *                     array, if null all vertices will be rendered in sequential
-     *                     order.
-     * @param num_indices  Number of indices.
+     * @param renderer    The rendering context.
+     * @param texture     (optional) The SDL texture to use.
+     * @param vertices    Vertices.
+     * @param numVertices Number of vertices.
+     * @param indices     (optional) An array of integer indices into the 'vertices'
+     *                    array, if null all vertices will be rendered in sequential
+     *                    order.
+     * @param numIndices  Number of indices.
      * @return 0 on success, or -1 if the operation is not supported
      * @see #SDL_RenderGeometryRaw(SDL_Renderer, SDL_Texture, Pointer, int, Pointer, int, Pointer, int, int, Pointer, int, int)
      * @see SDL_Vertex
@@ -1789,30 +1952,30 @@ public final class SdlRender {
             SDL_Renderer renderer,
             SDL_Texture texture,
             Pointer vertices,
-            int num_vertices,
-            int[] indices,
-            int num_indices);
+            int numVertices,
+            Pointer indices,
+            int numIndices);
 
     /**
      * Render a list of triangles, optionally using a texture and indices into the
      * vertex arrays Color and alpha modulation is done per vertex
      * (SDL_SetTextureColorMod and SDL_SetTextureAlphaMod are ignored).
      *
-     * @param renderer     The rendering context.
-     * @param texture      (optional) The SDL texture to use.
-     * @param xy           Vertex positions
-     * @param xy_stride    Byte size to move from one element to the next element
-     * @param color        Vertex colors (as SDL_Color)
-     * @param color_stride Byte size to move from one element to the next element
-     * @param uv           Vertex normalized texture coordinates
-     * @param uv_stride    Byte size to move from one element to the next element
-     * @param num_vertices Number of vertices.
-     * @param indices      (optional) An array of indices into the 'vertices' arrays,
-     *                     if null all vertices will be rendered in sequential order.
-     * @param num_indices  Number of indices.
-     * @param size_indices Index size: 1 (byte), 2 (short), 4 (int)
+     * @param renderer    The rendering context.
+     * @param texture     (optional) The SDL texture to use.
+     * @param xy          Vertex positions
+     * @param xyStride    Byte size to move from one element to the next element
+     * @param color       Vertex colors (as SDL_Color)
+     * @param colorStride Byte size to move from one element to the next element
+     * @param uv          Vertex normalized texture coordinates
+     * @param uvStride    Byte size to move from one element to the next element
+     * @param numVertices Number of vertices.
+     * @param indices     (optional) An array of indices into the 'vertices' arrays,
+     *                    if null all vertices will be rendered in sequential order.
+     * @param numIndices  Number of indices.
+     * @param sizeIndices Index size: 1 (byte), 2 (short), 4 (int)
      * @return 0 on success, or -1 if the operation is not supported
-     * @see #SDL_RenderGeometry(SDL_Renderer, SDL_Texture, ContiguousArrayList, int[])
+     * @see #SDL_RenderGeometry(SDL_Renderer, SDL_Texture, List, int[])
      * @see SDL_Vertex
      * @since This function is available since SDL 2.0.18.
      */
@@ -1820,15 +1983,15 @@ public final class SdlRender {
             SDL_Renderer renderer,
             SDL_Texture texture,
             Pointer xy,
-            int xy_stride,
+            int xyStride,
             Pointer color,
-            int color_stride,
+            int colorStride,
             Pointer uv,
-            int uv_stride,
-            int num_vertices,
+            int uvStride,
+            int numVertices,
             Pointer indices,
-            int num_indices,
-            int size_indices);
+            int numIndices,
+            int sizeIndices);
 
     /**
      * Read pixels from the current rendering target to an array of pixels.
@@ -1884,9 +2047,9 @@ public final class SdlRender {
      * @param renderer the rendering context
      * @see #SDL_RenderClear(SDL_Renderer)
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
-     * @see #SDL_RenderDrawLines(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawLines(SDL_Renderer, List)
      * @see #SDL_RenderDrawPoint(SDL_Renderer, int, int)
-     * @see #SDL_RenderDrawPoints(SDL_Renderer, ContiguousArrayList)
+     * @see #SDL_RenderDrawPoints(SDL_Renderer, List)
      * @see #SDL_RenderDrawRect(SDL_Renderer, SDL_Rect)
      * @see #SDL_RenderDrawRects(SDL_Renderer, ContiguousArrayList)
      * @see #SDL_RenderFillRect(SDL_Renderer, SDL_Rect)

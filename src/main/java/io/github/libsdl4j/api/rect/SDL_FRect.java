@@ -1,9 +1,9 @@
 package io.github.libsdl4j.api.rect;
 
+import java.util.List;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import com.sun.jna.ptr.FloatByReference;
-import io.github.libsdl4j.jna.ContiguousArrayList;
+import io.github.libsdl4j.jna.FloatRef;
 
 /**
  * {@code SDL_FRect} is a simple structure that contains only four floating values:
@@ -14,9 +14,9 @@ import io.github.libsdl4j.jna.ContiguousArrayList;
  * @see SdlRect#SDL_FRectEqualsEpsilon(SDL_FRect, SDL_FRect, float)
  * @see SdlRect#SDL_HasIntersectionF(SDL_FRect, SDL_FRect)
  * @see SdlRect#SDL_IntersectFRect(SDL_FRect, SDL_FRect, SDL_FRect)
- * @see SdlRect#SDL_IntersectFRectAndLine(SDL_FRect, FloatByReference, FloatByReference, FloatByReference, FloatByReference)
+ * @see SdlRect#SDL_IntersectFRectAndLine(SDL_FRect, FloatRef, FloatRef, FloatRef, FloatRef)
  * @see SdlRect#SDL_UnionFRect(SDL_FRect, SDL_FRect, SDL_FRect)
- * @see SdlRect#SDL_EncloseFPoints(ContiguousArrayList, SDL_FRect, SDL_FRect)
+ * @see SdlRect#SDL_EncloseFPoints(List, SDL_FRect, SDL_FRect)
  * @see SdlRect#SDL_PointInFRect(SDL_FPoint, SDL_FRect)
  */
 @Structure.FieldOrder({

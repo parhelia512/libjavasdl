@@ -344,7 +344,30 @@ public final class SdlVideo {
     /**
      * Get the index of the display containing a point
      *
-     * @param point the point to query
+     * <p>This is a Java-style version of a raw C-style function. Prefer this function over the raw C-style one.</p>
+     *
+     * @param point the SDL_Point to query
+     * @return the index of the display containing the point or a negative error
+     * code on failure; call SDL_GetError() for more information.
+     * @see #SDL_GetDisplayBounds(int, SDL_Rect)
+     * @see #SDL_GetNumVideoDisplays()
+     * @since This function is available since SDL 2.24.0.
+     */
+    public static int SDL_GetPointDisplayIndex(
+            SDL_Point point) {
+        try (Memory rawPoint = new Memory(point.size())) {
+            point.write(rawPoint, 0L);
+            return SDL_GetPointDisplayIndex(rawPoint);
+        }
+    }
+
+    /**
+     * Get the index of the display containing a point
+     *
+     * <p>This is a raw C-style version of the function. Prefer Java-style version
+     * {@link #SDL_GetPointDisplayIndex(SDL_Point)}.</p>
+     *
+     * @param point the Pointer to an SDL_Point struct to query
      * @return the index of the display containing the point or a negative error
      * code on failure; call SDL_GetError() for more information.
      * @see #SDL_GetDisplayBounds(int, SDL_Rect)
@@ -352,7 +375,7 @@ public final class SdlVideo {
      * @since This function is available since SDL 2.24.0.
      */
     public static native int SDL_GetPointDisplayIndex(
-            SDL_Point point);
+            Pointer point);
 
     /**
      * Get the index of the display primarily containing a rect
