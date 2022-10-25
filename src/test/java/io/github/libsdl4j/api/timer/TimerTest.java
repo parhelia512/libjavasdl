@@ -55,8 +55,6 @@ public class TimerTest {
         Thread.sleep(2000L);
 
         assertEquals(6, counter.get());
-        // TODO: Report the leak to SDL authors and enable the assert after it is fix in the native library
-        // assertNoMemoryLeak(numOfAllocationsBefore);
     }
 
     @AfterEach
