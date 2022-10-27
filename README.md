@@ -13,7 +13,104 @@ but it is outside the scope of this project.
 
                           
 
+## How to use it
+
+Use Maven:
+
+~~~xml
+<dependency>
+    <groupId>io.github.libsdl4j</groupId>
+    <artifactId>libsdlj4</artifactId>
+    <version>2.24.0-1.0</version>
+</dependency>
+~~~
+
+or Gradle:
+
+~~~kotlin
+dependencies {
+    implementation("io.github.libsdl4j:libsdl4j:2.24.0-1.0")
+}
+~~~
+
+The library binary and source code is deployed to 
+[Maven Central](https://repo1.maven.org/maven2/io/github/libsdl4j/)
+from where Maven and Gradle download it.
+ 
+ 
+
+## Sample demo program
+
+If you have LibSDL4J set up as a dependency of your project,
+you can try to a sample program:
+
+~~~
+import io.github.libsdl4j.api.render.SDL_Renderer;
+import io.github.libsdl4j.api.video.SDL_Window;
+
+import static io.github.libsdl4j.api.Sdl.SDL_Init;
+import static io.github.libsdl4j.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
+import static io.github.libsdl4j.api.error.SdlError.SDL_GetError;
+import static io.github.libsdl4j.api.render.SDL_RendererFlags.SDL_RENDERER_ACCELERATED;
+import static io.github.libsdl4j.api.render.SdlRender.SDL_CreateRenderer;
+import static io.github.libsdl4j.api.render.SdlRender.SDL_RenderClear;
+import static io.github.libsdl4j.api.render.SdlRender.SDL_RenderPresent;
+import static io.github.libsdl4j.api.render.SdlRender.SDL_SetRenderDrawColor;
+import static io.github.libsdl4j.api.timer.SdlTimer.SDL_Delay;
+import static io.github.libsdl4j.api.video.SDL_WindowFlags.SDL_WINDOW_RESIZABLE;
+import static io.github.libsdl4j.api.video.SdlVideo.SDL_CreateWindow;
+import static io.github.libsdl4j.api.video.SdlVideoConst.SDL_WINDOWPOS_CENTERED;
+
+public class Demo {
+
+    public static void main(String[] args) {
+        // Initialize SDL
+        int result = SDL_Init(SDL_INIT_EVERYTHING);
+        if (result != 0) {
+            throw new IllegalStateException("Unable to initialize SDL library (Error code " + result + "): " + SDL_GetError());
+        }
+
+        // Create and init the window
+        SDL_Window window = SDL_CreateWindow("Demo SDL2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, SDL_WINDOW_RESIZABLE);
+        if (window == null) {
+            throw new IllegalStateException("Unable to create SDL window: " + SDL_GetError());
+        }
+
+        // Create and init the renderer
+        SDL_Renderer renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+        if (renderer == null) {
+            throw new IllegalStateException("Unable to create SDL renderer: " + SDL_GetError());
+        }
+
+        // Set color of renderer to green
+        SDL_SetRenderDrawColor(renderer, (byte) 0, (byte) 255, (byte) 0, (byte) 255);
+
+        // Clear the window and make it all red
+        SDL_RenderClear(renderer);
+
+        // Render the changes above ( which up until now had just happened behind the scenes )
+        SDL_RenderPresent(renderer);
+
+        // Pause program so that the window doesn't disappear at once.
+        // This will pause for 4000 milliseconds which is the same as 4 seconds
+        SDL_Delay(4000);
+    }
+}
+~~~
+
+You should be able to follow any C-style tutorial,
+just tweak it very slightly to make it working in Java.
+
+Some resources:
+- https://headerphile.blogspot.com/2014/04/a-quick-introduction-to-sdl-2-part-1.html
+- https://www.parallelrealities.co.uk/tutorials/shooter/shooter1.php
+
+
+
 ## Design choices
+
+
+### SDL Functions
 
 Each SDL C source file maps to a separate package in the API.
 
@@ -34,6 +131,22 @@ the Java functions to it, which is a costly operation.
 It is not necessary for accessing constants, because they are mere values.
 Therefore, they are placed in a separate class to avoid triggering 
 premature DLL/so loading.
+       
+
+### SDL Structures
+
+SDL works with structures, which are translated 1:1 to Java as classes (such as `SDL_Point` or `SDL_Rect`).
+However, for the sake of efficiency, there are sometimes overloaded methods present in the code:
+
+-   One signature accepts Java objects
+    as parameters (it serializes them to off-heap C memory),
+    Such as `SDL_RenderDrawPoints(SDL_Renderer renderer, List<SDL_Point> points)`
+
+-   Another signature that accepts just a [Pointer](https://java-native-access.github.io/jna/4.2.1/com/sun/jna/Pointer.html)
+    (you are responsible for
+    filling the data into memory - for maximum speed).
+    Such as `SDL_RenderDrawPoints(SDL_Renderer renderer, Pointer points, int count)`.
+
 
 
 
@@ -124,3 +237,11 @@ In rare cases, the structure is passed by value even to the native function.
 In that case, the structure implements Structure.ByValue.
 
 More documentation in the [JNA docs](https://github.com/java-native-access/jna/blob/master/www/StructuresAndUnions.md).
+
+There are some SDL structures, which, for the sake of efficiency,
+are not implemented as JNA Structures, but are plain POJOs.
+This is used in places where many instances of these POJOs
+are expected to be created.
+Such as `SDL_Color`, `SDL_Point`, `SDL_FPoint`.
+JNA Structure have certain memory footprint
+and it would not be appreciated in large number of object instances.
