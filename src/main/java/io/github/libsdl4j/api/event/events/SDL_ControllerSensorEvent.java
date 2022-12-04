@@ -37,6 +37,9 @@ public final class SDL_ControllerSensorEvent extends Structure {
     /** Up to 3 values from the sensor, as defined in SDL_sensor.h */
     public float[] data = new float[3];
 
+    /** The timestamp of the sensor reading in microseconds, if the hardware provides this information. */
+    public long timestampUs;
+
     public SDL_ControllerSensorEvent() {
     }
 

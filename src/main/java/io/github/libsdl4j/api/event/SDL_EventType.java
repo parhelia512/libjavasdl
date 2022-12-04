@@ -162,7 +162,7 @@ public final class SDL_EventType implements JnaEnum {
     public static final int SDL_DOLLARRECORD = 0x801;
     public static final int SDL_MULTIGESTURE = 0x802;
 
-    /** The clipboard changed */
+    /** The clipboard or primary selection changed */
     public static final int SDL_CLIPBOARDUPDATE = 0x900;
 
     /** The system requests a file open */

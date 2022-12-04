@@ -2078,6 +2078,9 @@ public final class SdlRender {
     /**
      * Destroy the rendering context for a window and free associated textures.
      *
+     * If {@code renderer} is null, this function will return immediately after setting
+     * the SDL error message to "Invalid renderer". See SDL_GetError().
+     *
      * @param renderer the rendering context
      * @see #SDL_CreateRenderer(SDL_Window, int, int)
      * @since This function is available since SDL 2.0.0.

@@ -60,6 +60,12 @@ public final class SDL_MouseWheelEvent extends Structure {
     /** The amount scrolled vertically, positive away from the user and negative toward the user, with float precision (added in 2.0.18) */
     public float preciseY;
 
+    /** X coordinate, relative to window (added in 2.26.0) */
+    public int mouseX;
+
+    /** Y coordinate, relative to window (added in 2.26.0) */
+    public int mouseY;
+
     public SDL_MouseWheelEvent() {
     }
 

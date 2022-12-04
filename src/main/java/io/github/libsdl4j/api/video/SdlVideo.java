@@ -814,6 +814,28 @@ public final class SdlVideo {
             IntByReference right);
 
     /**
+     * Get the size of a window in pixels.
+     *
+     * <p>This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI
+     * drawable, i.e. the window was created with {@code SDL_WINDOW_ALLOW_HIGHDPI} on a
+     * platform with high-DPI support (Apple calls this "Retina"), and not
+     * disabled by the {@code SDL_HINT_VIDEO_HIGHDPI_DISABLED} hint.</p>
+     *
+     * @param window the window from which the drawable size should be queried
+     * @param w a pointer to variable for storing the width in pixels, may be null
+     * @param h a pointer to variable for storing the height in pixels, may be null
+     *
+     * @since This function is available since SDL 2.26.0.
+     *
+     * @see #SDL_CreateWindow(String, int, int, int, int, int)
+     * @see #SDL_GetWindowSize(SDL_Window, IntByReference, IntByReference)
+     */
+    public static native void SDL_GetWindowSizeInPixels(
+            SDL_Window window,
+            IntByReference w,
+            IntByReference h);
+
+    /**
      * Set the minimum size of a window's client area.
      *
      * @param window the window to change
@@ -1618,6 +1640,9 @@ public final class SdlVideo {
      *
      * <p>If you disable the screensaver, it is automatically re-enabled when SDL
      * quits.</p>
+     *
+     * <p>The screensaver is disabled by default since SDL 2.0.2. Before SDL 2.0.2
+     * the screensaver was enabled by default.</p>
      *
      * @see #SDL_EnableScreenSaver()
      * @see #SDL_IsScreenSaverEnabled()

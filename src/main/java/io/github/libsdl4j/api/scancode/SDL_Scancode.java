@@ -213,17 +213,33 @@ public final class SDL_Scancode implements JnaEnum {
     public static final int SDL_SCANCODE_F23 = 114;
     public static final int SDL_SCANCODE_F24 = 115;
     public static final int SDL_SCANCODE_EXECUTE = 116;
+
+    /** AL Integrated Help Center */
     public static final int SDL_SCANCODE_HELP = 117;
+
+    /** Menu (show menu) */
     public static final int SDL_SCANCODE_MENU = 118;
     public static final int SDL_SCANCODE_SELECT = 119;
+
+    /** AC Stop */
     public static final int SDL_SCANCODE_STOP = 120;
 
-    /** redo */
+    /** AC Redo/Repeat */
     public static final int SDL_SCANCODE_AGAIN = 121;
+
+    /** AC Undo */
     public static final int SDL_SCANCODE_UNDO = 122;
+
+    /** AC Cut */
     public static final int SDL_SCANCODE_CUT = 123;
+
+    /** AC Copy */
     public static final int SDL_SCANCODE_COPY = 124;
+
+    /** AC Paste */
     public static final int SDL_SCANCODE_PASTE = 125;
+
+    /** AC Find */
     public static final int SDL_SCANCODE_FIND = 126;
     public static final int SDL_SCANCODE_MUTE = 127;
     public static final int SDL_SCANCODE_VOLUMEUP = 128;
@@ -281,6 +297,8 @@ public final class SDL_Scancode implements JnaEnum {
     /** Erase-Eaze */
     public static final int SDL_SCANCODE_ALTERASE = 153;
     public static final int SDL_SCANCODE_SYSREQ = 154;
+
+    /** AC Cancel */
     public static final int SDL_SCANCODE_CANCEL = 155;
     public static final int SDL_SCANCODE_CLEAR = 156;
     public static final int SDL_SCANCODE_PRIOR = 157;
@@ -369,16 +387,34 @@ public final class SDL_Scancode implements JnaEnum {
     public static final int SDL_SCANCODE_AUDIOPLAY = 261;
     public static final int SDL_SCANCODE_AUDIOMUTE = 262;
     public static final int SDL_SCANCODE_MEDIASELECT = 263;
+
+    /** AL Internet Browser */
     public static final int SDL_SCANCODE_WWW = 264;
     public static final int SDL_SCANCODE_MAIL = 265;
+
+    /** AL Calculator */
     public static final int SDL_SCANCODE_CALCULATOR = 266;
     public static final int SDL_SCANCODE_COMPUTER = 267;
+
+    /** AC Search */
     public static final int SDL_SCANCODE_AC_SEARCH = 268;
+
+    /** AC Home */
     public static final int SDL_SCANCODE_AC_HOME = 269;
+
+    /** AC Back */
     public static final int SDL_SCANCODE_AC_BACK = 270;
+
+    /** AC Forward */
     public static final int SDL_SCANCODE_AC_FORWARD = 271;
+
+    /** AC Stop */
     public static final int SDL_SCANCODE_AC_STOP = 272;
+
+    /** AC Refresh */
     public static final int SDL_SCANCODE_AC_REFRESH = 273;
+
+    /** AC Bookmarks */
     public static final int SDL_SCANCODE_AC_BOOKMARKS = 274;
 
     public static final int SDL_SCANCODE_BRIGHTNESSDOWN = 275;
@@ -393,6 +429,8 @@ public final class SDL_Scancode implements JnaEnum {
     public static final int SDL_SCANCODE_KBDILLUMDOWN = 279;
     public static final int SDL_SCANCODE_KBDILLUMUP = 280;
     public static final int SDL_SCANCODE_EJECT = 281;
+
+    /** SC System Sleep */
     public static final int SDL_SCANCODE_SLEEP = 282;
 
     public static final int SDL_SCANCODE_APP1 = 283;

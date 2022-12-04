@@ -36,6 +36,10 @@ public final class SdlFilesystem {
      *         <p>{@code /Applications/SDLApp/}</p></li>
      * </ul>
      *
+     * <p><b>Nintendo 3DS Specific Functionality</b>: This function returns "romfs"
+     * directory of the application as it is uncommon to store resources outside
+     * the executable. As such it is not a writable directory.</p>
+     *
      * <p>The returned path is guaranteed to end with a path separator ('\' on
      * Windows, '/' on most other platforms).</p>
      *

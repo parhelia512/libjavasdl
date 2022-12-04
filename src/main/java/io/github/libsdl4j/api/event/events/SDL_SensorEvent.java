@@ -31,6 +31,9 @@ public final class SDL_SensorEvent extends Structure {
     /** Up to 6 values from the sensor - additional values can be queried using SDL_SensorGetData() */
     public float[] data = new float[6];
 
+    /** The timestamp of the sensor reading in microseconds, if the hardware provides this information. */
+    public long timestampUs;
+
     public SDL_SensorEvent() {
     }
 
