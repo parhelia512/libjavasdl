@@ -84,6 +84,20 @@ public final class SdlHints {
             String name);
 
     /**
+     * Reset all hints to the default values.
+     *
+     * <p>This will reset all hints to the value of the associated environment
+     * variable, or null if the environment isn't set. Callbacks will be called
+     * normally with this change.</p>
+     *
+     * @see #SDL_GetHint(String)
+     * @see #SDL_SetHint(String, String)
+     * @see #SDL_ResetHint(String)
+     * @since This function is available since SDL 2.26.0.
+     */
+    public static native void SDL_ResetHints();
+
+    /**
      * Get the value of a hint.
      *
      * @param name the hint to query
@@ -143,8 +157,14 @@ public final class SdlHints {
     /**
      * Clear all hints.
      *
-     * <p>This function is automatically called during SDL_Quit().</p>
+     * <p>This function is automatically called during SDL_Quit(), and deletes all
+     * callbacks without calling them and frees all memory associated with hints.
+     * If you're calling this from application code you probably want to call
+     * SDL_ResetHints() instead.</p>
      *
+     * <p>This function will be removed from the API the next time we rev the ABI.</p>
+     *
+     * @see #SDL_ResetHints()
      * @since This function is available since SDL 2.0.0.
      */
     public static native void SDL_ClearHints();

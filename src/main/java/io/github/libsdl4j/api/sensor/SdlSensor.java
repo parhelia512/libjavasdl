@@ -1,6 +1,7 @@
 package io.github.libsdl4j.api.sensor;
 
 import com.sun.jna.Pointer;
+import com.sun.jna.ptr.LongByReference;
 import io.github.libsdl4j.jna.SdlNativeLibraryLoader;
 import org.intellij.lang.annotations.MagicConstant;
 
@@ -205,6 +206,26 @@ public final class SdlSensor {
      */
     public static native int SDL_SensorGetData(
             SDL_Sensor sensor,
+            Pointer data,
+            int numValues);
+
+    /**
+     * Get the current state of an opened sensor with the timestamp of the last
+     * update.
+     *
+     * <p>The number of values and interpretation of the data is sensor dependent.</p>
+     *
+     * @param sensor    The SDL_Sensor object to query
+     * @param timestamp A pointer filled with the timestamp in microseconds of the
+     *                  current sensor reading if available, or 0 if not
+     * @param data      A pointer filled with the current sensor state
+     * @param numValues The number of values to write to data
+     * @return 0 or -1 if an error occurred.
+     * @since This function is available since SDL 2.26.0.
+     */
+    public static native int SDL_SensorGetDataWithTimestamp(
+            SDL_Sensor sensor,
+            LongByReference timestamp,
             Pointer data,
             int numValues);
 

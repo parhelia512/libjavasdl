@@ -3,6 +3,7 @@ package io.github.libsdl4j.api.gamecontroller;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.ByteByReference;
 import com.sun.jna.ptr.FloatByReference;
+import com.sun.jna.ptr.LongByReference;
 import io.github.libsdl4j.api.SdlSubSystemConst;
 import io.github.libsdl4j.api.joystick.SDL_Joystick;
 import io.github.libsdl4j.api.joystick.SDL_JoystickGUID;
@@ -637,7 +638,7 @@ public final class SdlGamecontroller {
      * <p>The caller should not SDL_free() the returned string.</p>
      *
      * @param button an enum value for a given SDL_GameControllerButton
-     * @return a string for the given button, or null if an invalid axis is
+     * @return a string for the given button, or null if an invalid button is
      * specified. The string returned is of the format used by
      * SDL_GameController mapping strings.
      * @see #SDL_GameControllerGetButtonFromString(String)
@@ -792,6 +793,30 @@ public final class SdlGamecontroller {
             @MagicConstant(valuesFromClass = SDL_SensorType.class) int type,
             Pointer data,
             int numValues);
+
+    /**
+     * Get the current state of a game controller sensor with the timestamp of the
+     * last update.
+     *
+     * <p>The number of values and interpretation of the data is sensor dependent.
+     * See SDL_sensor.h for the details for each type of sensor.</p>
+     *
+     * @param gamecontroller The controller to query
+     * @param type           The type of sensor to query
+     * @param timestamp      A pointer filled with the timestamp in microseconds of the
+     *                       current sensor reading if available, or 0 if not
+     * @param data           A pointer filled with the current sensor state
+     * @param numValues      The number of values to write to data
+     * @return 0 or -1 if an error occurred.
+     * @since This function is available since SDL 2.26.0.
+     */
+    public static native int SDL_GameControllerGetSensorDataWithTimestamp(
+            SDL_GameController gamecontroller,
+            @MagicConstant(valuesFromClass = SDL_SensorType.class) int type,
+            LongByReference timestamp,
+            Pointer data,
+            int numValues);
+
 
     /**
      * Start a rumble effect on a game controller.

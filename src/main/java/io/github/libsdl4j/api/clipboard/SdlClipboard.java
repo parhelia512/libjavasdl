@@ -58,6 +58,48 @@ public final class SdlClipboard {
      */
     public static native boolean SDL_HasClipboardText();
 
+    /**
+     * Put UTF-8 text into the primary selection.
+     *
+     * @param text the text to store in the primary selection
+     * @return 0 on success or a negative error code on failure; call
+     * SDL_GetError() for more information.
+     * @see #SDL_GetPrimarySelectionText()
+     * @see #SDL_HasPrimarySelectionText()
+     * @since This function is available since SDL 2.26.0.
+     */
+    public static native int SDL_SetPrimarySelectionText(
+            String text);
+
+    /**
+     * Get UTF-8 text from the primary selection.
+     *
+     * This functions returns empty string if there was not enough memory left for
+     * a copy of the primary selection's content.
+     *
+     * @return the primary selection text on success or an empty string on
+     * failure; call SDL_GetError() for more information.
+     * @see #SDL_HasPrimarySelectionText()
+     * @see #SDL_SetPrimarySelectionText(String)
+     * @since This function is available since SDL 2.26.0.
+     */
+    public static String SDL_GetPrimarySelectionText() {
+        Pointer text = InternalNativeFunctions.SDL_GetPrimarySelectionText();
+        return JnaUtils.extractStringAndReleaseNativeSdlMemory(text);
+    }
+
+    /**
+     * Query whether the primary selection exists and contains a non-empty text
+     * string.
+     *
+     * @return true if the primary selection has text, or false if it
+     * does not.
+     * @see #SDL_GetPrimarySelectionText()
+     * @see #SDL_SetPrimarySelectionText(String)
+     * @since This function is available since SDL 2.26.0.
+     */
+    public static native boolean SDL_HasPrimarySelectionText();
+
     private static final class InternalNativeFunctions {
 
         static {
@@ -68,5 +110,7 @@ public final class SdlClipboard {
         }
 
         public static native Pointer SDL_GetClipboardText();
+
+        public static native Pointer SDL_GetPrimarySelectionText();
     }
 }

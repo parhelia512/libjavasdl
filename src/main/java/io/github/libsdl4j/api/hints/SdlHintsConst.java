@@ -250,10 +250,7 @@ public final class SdlHintsConst {
      * <p>If this hint isn't specified to a valid setting, or libsamplerate isn't
      * available, SDL will use the default, internal resampling algorithm.</p>
      *
-     * <p>Note that this is currently only applicable to resampling audio that is
-     * being written to a device for playback or audio being read from a device
-     * for capture. SDL_AudioCVT always uses the default resampler (although this
-     * might change for SDL 2.1).</p>
+     * <p>As of SDL 2.26, SDL_ConvertAudio() respects this hint when libsamplerate is available.</p>
      *
      * <p>This hint is currently only checked at audio subsystem initialization.</p>
      *
@@ -543,6 +540,14 @@ public final class SdlHintsConst {
     public static final String SDL_HINT_GRAB_KEYBOARD = "SDL_GRAB_KEYBOARD";
 
     /**
+     * A variable containing a list of devices to ignore in SDL_hid_enumerate()
+     *
+     * <p>For example, to ignore the Shanwan DS3 controller and any Valve controller, you might
+     * have the string "0x2563/0x0523,0x28de/0x0000"</p>
+     */
+    public static final String SDL_HINT_HIDAPI_IGNORE_DEVICES = "SDL_HIDAPI_IGNORE_DEVICES";
+
+    /**
      * A variable controlling whether the idle timer is disabled on iOS.
      *
      * <p>When an iOS app does not receive touches for some time, the screen is
@@ -696,6 +701,19 @@ public final class SdlHintsConst {
     public static final String SDL_HINT_JOYSTICK_HIDAPI_COMBINE_JOY_CONS = "SDL_JOYSTICK_HIDAPI_COMBINE_JOY_CONS";
 
     /**
+     * A variable controlling whether Nintendo Switch Joy-Con controllers will be in vertical mode when using the HIDAPI driver
+     *
+     * <p>This variable can be set to the following values:</p>
+     * <pre>
+     * "0"       - Left and right Joy-Con controllers will not be in vertical mode (the default)
+     * "1"       - Left and right Joy-Con controllers will be in vertical mode
+     * </pre>
+     *
+     * <p>This hint must be set before calling SDL_Init(SDL_INIT_GAMECONTROLLER)</p>
+     */
+    public static final String SDL_HINT_JOYSTICK_HIDAPI_VERTICAL_JOY_CONS = "SDL_JOYSTICK_HIDAPI_VERTICAL_JOY_CONS";
+
+    /**
      * A variable controlling whether the HIDAPI driver for Amazon Luna controllers connected via Bluetooth should be used.
      *
      * <p>This variable can be set to the following values:</p>
@@ -733,6 +751,22 @@ public final class SdlHintsConst {
      * <p>The default is the value of SDL_HINT_JOYSTICK_HIDAPI</p>
      */
     public static final String SDL_HINT_JOYSTICK_HIDAPI_SHIELD = "SDL_JOYSTICK_HIDAPI_SHIELD";
+
+    /**
+     * A variable controlling whether the HIDAPI driver for PS3 controllers should be used.
+     *
+     * <p>This variable can be set to the following values:</p>
+     * <pre>
+     * "0"       - HIDAPI driver is not used
+     * "1"       - HIDAPI driver is used
+     * </pre>
+     *
+     * <p>The default is the value of SDL_HINT_JOYSTICK_HIDAPI on macOS, and "0" on other platforms.</p>
+     *
+     * <p>It is not possible to use this driver on Windows, due to limitations in the default drivers
+     * installed. See https://github.com/ViGEm/DsHidMini for an alternative driver on Windows.</p>
+     */
+    public static final String SDL_HINT_JOYSTICK_HIDAPI_PS3 = "SDL_JOYSTICK_HIDAPI_PS3";
 
     /**
      * A variable controlling whether the HIDAPI driver for PS4 controllers should be used.
@@ -828,7 +862,7 @@ public final class SdlHintsConst {
     public static final String SDL_HINT_JOYSTICK_HIDAPI_STADIA = "SDL_JOYSTICK_HIDAPI_STADIA";
 
     /**
-     * A variable controlling whether the HIDAPI driver for Steam Controllers should be used.
+     * A variable controlling whether the HIDAPI driver for Bluetooth Steam Controllers should be used.
      *
      * <p>This variable can be set to the following values:</p>
      * <pre>
@@ -892,6 +926,30 @@ public final class SdlHintsConst {
     public static final String SDL_HINT_JOYSTICK_HIDAPI_SWITCH_PLAYER_LED = "SDL_JOYSTICK_HIDAPI_SWITCH_PLAYER_LED";
 
     /**
+     * A variable controlling whether the HIDAPI driver for Nintendo Wii and Wii U controllers should be used.
+     *
+     * <p>This variable can be set to the following values:</p>
+     * <pre>
+     * "0"       - HIDAPI driver is not used
+     * "1"       - HIDAPI driver is used
+     * </pre>
+     *
+     * <p>This driver doesn't work with the dolphinbar, so the default is SDL_FALSE for now.</p>
+     */
+    public static final String SDL_HINT_JOYSTICK_HIDAPI_WII = "SDL_JOYSTICK_HIDAPI_WII";
+
+    /**
+     * A variable controlling whether the player LEDs should be lit to indicate which player is associated with a Wii controller.
+     *
+     * <p>This variable can be set to the following values:</p>
+     * <pre>
+     * "0"       - player LEDs are not enabled
+     * "1"       - player LEDs are enabled (the default)
+     * </pre>
+     */
+    public static final String SDL_HINT_JOYSTICK_HIDAPI_WII_PLAYER_LED = "SDL_JOYSTICK_HIDAPI_WII_PLAYER_LED";
+
+    /**
      * A variable controlling whether the HIDAPI driver for XBox controllers should be used.
      *
      * <p>This variable can be set to the following values:</p>
@@ -903,6 +961,69 @@ public final class SdlHintsConst {
      * <p>The default is "0" on Windows, otherwise the value of SDL_HINT_JOYSTICK_HIDAPI</p>
      */
     public static final String SDL_HINT_JOYSTICK_HIDAPI_XBOX = "SDL_JOYSTICK_HIDAPI_XBOX";
+
+    /**
+     * A variable controlling whether the HIDAPI driver for XBox 360 controllers should be used.
+     *
+     * <p>This variable can be set to the following values:</p>
+     * <pre>
+     * "0"       - HIDAPI driver is not used
+     * "1"       - HIDAPI driver is used
+     * </pre>
+     *
+     * <p>The default is the value of SDL_HINT_JOYSTICK_HIDAPI_XBOX</p>
+     */
+    public static final String SDL_HINT_JOYSTICK_HIDAPI_XBOX_360 = "SDL_JOYSTICK_HIDAPI_XBOX_360";
+
+    /**
+     * A variable controlling whether the player LEDs should be lit to indicate which player is associated with an Xbox 360 controller.
+     *
+     * <p>This variable can be set to the following values:</p>
+     * <pre>
+     * "0"       - player LEDs are not enabled
+     * "1"       - player LEDs are enabled (the default)
+     * </pre>
+     */
+    public static final String SDL_HINT_JOYSTICK_HIDAPI_XBOX_360_PLAYER_LED = "SDL_JOYSTICK_HIDAPI_XBOX_360_PLAYER_LED";
+
+    /**
+     * A variable controlling whether the HIDAPI driver for XBox 360 wireless controllers should be used.
+     *
+     * <p>This variable can be set to the following values:</p>
+     * <pre>
+     * "0"       - HIDAPI driver is not used
+     * "1"       - HIDAPI driver is used
+     * </pre>
+     *
+     * <p>The default is the value of SDL_HINT_JOYSTICK_HIDAPI_XBOX_360</p>
+     */
+    public static final String SDL_HINT_JOYSTICK_HIDAPI_XBOX_360_WIRELESS = "SDL_JOYSTICK_HIDAPI_XBOX_360_WIRELESS";
+
+    /**
+     * A variable controlling whether the HIDAPI driver for XBox One controllers should be used.
+     *
+     * <p>This variable can be set to the following values:</p>
+     * <pre>
+     * "0"       - HIDAPI driver is not used
+     * "1"       - HIDAPI driver is used
+     * </pre>
+     *
+     * <p>The default is the value of SDL_HINT_JOYSTICK_HIDAPI_XBOX</p>
+     */
+    public static final String SDL_HINT_JOYSTICK_HIDAPI_XBOX_ONE = "SDL_JOYSTICK_HIDAPI_XBOX_ONE";
+
+    /**
+     * A variable controlling whether the Home button LED should be turned on when an Xbox One controller is opened.
+     *
+     * <p>This variable can be set to the following values:</p>
+     * <pre>
+     * "0"       - home button LED is turned off
+     * "1"       - home button LED is turned on
+     * </pre>
+     *
+     * <p>By default the Home button LED state is not changed. This hint can also be set to a floating point value between 0.0 and 1.0 which controls the brightness of the Home button LED. The default brightness is 0.4.</p>
+     */
+    public static final String SDL_HINT_JOYSTICK_HIDAPI_XBOX_ONE_HOME_LED = "SDL_JOYSTICK_HIDAPI_XBOX_ONE_HOME_LED";
 
     /**
      * A variable controlling whether the RAWINPUT joystick drivers should be used for better handling XInput-capable devices.
@@ -1143,6 +1264,19 @@ public final class SdlHintsConst {
     public static final String SDL_HINT_MOUSE_RELATIVE_SPEED_SCALE = "SDL_MOUSE_RELATIVE_SPEED_SCALE";
 
     /**
+     * A variable controlling whether the system mouse acceleration curve is used for relative mouse motion.
+     *
+     * <p>This variable can be set to the following values:</p>
+     * <pre>
+     * "0"       - Relative mouse motion will be unscaled (the default)
+     * "1"       - Relative mouse motion will be scaled using the system mouse acceleration curve.
+     * </pre>
+     *
+     * <p>If SDL_HINT_MOUSE_RELATIVE_SPEED_SCALE is set, that will override the system speed scale.</p>
+     */
+    public static final String SDL_HINT_MOUSE_RELATIVE_SYSTEM_SCALE = "SDL_MOUSE_RELATIVE_SYSTEM_SCALE";
+
+    /**
      * A variable controlling whether a motion event should be generated for mouse warping in relative mode.
      *
      * <p>This variable can be set to the following values:</p>
@@ -1256,7 +1390,7 @@ public final class SdlHintsConst {
      * <p>When polling for events, SDL_PumpEvents is used to gather new events from devices.
      * If a device keeps producing new events between calls to SDL_PumpEvents, a poll loop will
      * become stuck until the new events stop.
-     * This is most noticable when moving a high frequency mouse.</p>
+     * This is most noticeable when moving a high frequency mouse.</p>
      *
      * <p>By default, poll sentinels are enabled.</p>
      */
@@ -1458,6 +1592,19 @@ public final class SdlHintsConst {
      * <p>By default SDL does not sync screen surface updates with vertical refresh.</p>
      */
     public static final String SDL_HINT_RENDER_VSYNC = "SDL_RENDER_VSYNC";
+
+    /**
+     * A variable controlling if VSYNC is automatically disable if doesn't reach the enough FPS
+     *
+     * <p>This variable can be set to the following values:</p>
+     * <pre>
+     * "0"       - It will be using VSYNC as defined in the main flag. Default
+     * "1"       - If VSYNC was previously enabled, then it will disable VSYNC if doesn't reach enough speed
+     * </pre>
+     *
+     * <p>By default SDL does not enable the automatic VSYNC</p>
+     */
+    public static final String SDL_HINT_PS2_DYNAMIC_VSYNC = "SDL_PS2_DYNAMIC_VSYNC";
 
     /**
      * A variable to control whether the return key on the soft keyboard
@@ -1749,6 +1896,25 @@ public final class SdlHintsConst {
      * <p>By default video mode emulation is enabled.</p>
      */
     public static final String SDL_HINT_VIDEO_WAYLAND_MODE_EMULATION = "SDL_VIDEO_WAYLAND_MODE_EMULATION";
+
+    /**
+     * Enable or disable mouse pointer warp emulation, needed by some older games.
+     *
+     * <p>When this hint is set, any SDL will emulate mouse warps using relative mouse mode.
+     * This is required for some older games (such as Source engine games), which warp the
+     * mouse to the centre of the screen rather than using relative mouse motion. Note that
+     * relative mouse mode may have different mouse acceleration behaviour than pointer warps.</p>
+     *
+     * <p>This variable can be set to the following values:</p>
+     * <pre>
+     * "0"       - All mouse warps fail, as mouse warping is not available under wayland.
+     * "1"       - Some mouse warps will be emulated by forcing relative mouse mode.
+     * </pre>
+     *
+     * <p>If not set, this is automatically enabled unless an application uses relative mouse
+     * mode directly.</p>
+     */
+    public static final String SDL_HINT_VIDEO_WAYLAND_EMULATE_MOUSE_WARP = "SDL_VIDEO_WAYLAND_EMULATE_MOUSE_WARP";
 
     /**
      * A variable that is the address of another SDL_Window* (as a hex string formatted with "%p").
