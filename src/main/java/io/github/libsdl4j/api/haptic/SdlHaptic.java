@@ -27,7 +27,7 @@ import org.intellij.lang.annotations.MagicConstant;
  * </ol>
  *
  *
- * <h3>Simple rumble example:</h3>
+ * <h2>Simple rumble example:</h2>
  *
  * <pre>
  * // Open the device

@@ -43,7 +43,7 @@ import static io.github.libsdl4j.api.haptic.SDL_HapticEffectType.SDL_HAPTIC_TRIA
  * <p>If both attackLength and fadeLevel are 0, the envelope is not used,
  * otherwise both values are used.</p>
  *
- * <h3>Common parts:</h3>
+ * <h2>Common parts:</h2>
  *
  * <pre>
  * // Replay - All effects have this
