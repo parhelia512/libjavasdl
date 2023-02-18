@@ -21,7 +21,9 @@ import static io.github.libsdl4j.api.touch.SdlTouchConst.SDL_TOUCH_MOUSEID;
         "y",
         "direction",
         "preciseX",
-        "preciseY"
+        "preciseY",
+        "mouseX",
+        "mouseY"
 })
 public final class SDL_MouseWheelEvent extends Structure {
 

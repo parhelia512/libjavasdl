@@ -16,7 +16,8 @@ import static io.github.libsdl4j.api.event.SDL_EventType.SDL_CONTROLLERSENSORUPD
         "timestamp",
         "which",
         "sensor",
-        "data"
+        "data",
+        "timestampUs"
 })
 public final class SDL_ControllerSensorEvent extends Structure {
 
