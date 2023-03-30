@@ -40,7 +40,7 @@ import static io.github.libsdl4j.api.haptic.SdlHapticConst.SDL_HAPTIC_INFINITY;
  * 36000: Displaced 100% of its period, same as 0, but 0 is preferred.
  * </pre>
  *
- * <h3>Examples:</h3>
+ * <h2>Examples:</h2>
  * <pre>
  * SDL_HAPTIC_SINE
  *   __      __      __      __

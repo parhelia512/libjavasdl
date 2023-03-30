@@ -16,7 +16,7 @@ import org.intellij.lang.annotations.MagicConstant;
  *
  *
  *
- * <h3>Accelerometer sensor</h3>
+ * <h2>Accelerometer sensor</h2>
  *
  * <p>The accelerometer returns the current acceleration in SI meters per
  * second squared. This measurement includes the force of gravity, so
