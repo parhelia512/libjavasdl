@@ -32,8 +32,8 @@ public class TimerTest {
         int time1 = SDL_GetTicks();
         Thread.sleep(2500L);
         int time2 = SDL_GetTicks();
-        assertTrue(time2 - 2500L >= time1);
-        assertTrue(time2 - 4500L < time1);
+        assertTrue(time1 + 2450L <= time2);
+        assertTrue(time1 + 10_000L > time2);
         assertNoMemoryLeak(numOfAllocationsBefore);
     }
 
