@@ -90,7 +90,7 @@ public final class SdlVersion {
     public static boolean SDL_CheckNativeLibraryMatchesAtLeastJavaBindingsVersion() {
         SDL_version nativeLibraryVersion = SDL_GetNativeLibraryVersion();
         SDL_version javaBindingsVersion = SDL_GetJavaBindingsVersion();
-        if (nativeLibraryVersion.major == javaBindingsVersion.major) {
+        if (nativeLibraryVersion.major != javaBindingsVersion.major) {
             // "SDL library major version number (" + nativeLibraryVersion + ") does not match the version required by application (" + javaBindingsVersion + ")".
             return false;
         } else if (compareVersions(nativeLibraryVersion, javaBindingsVersion) < 0) {
