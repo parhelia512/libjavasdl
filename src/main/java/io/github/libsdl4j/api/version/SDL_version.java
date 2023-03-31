@@ -39,6 +39,27 @@ public final class SDL_version extends Structure {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SDL_version that = (SDL_version) o;
+
+        if (major != that.major) return false;
+        if (minor != that.minor) return false;
+        return patch == that.patch;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (int) major;
+        result = 31 * result + (int) minor;
+        result = 31 * result + (int) patch;
+        return result;
+    }
+
+    @Override
     public String toString() {
         return major + "." + minor + "." + patch;
     }

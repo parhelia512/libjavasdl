@@ -21,7 +21,7 @@ Use Maven:
 <dependency>
     <groupId>io.github.libsdl4j</groupId>
     <artifactId>libsdlj4</artifactId>
-    <version>2.26.3-1.2</version>
+    <version>2.26.4-1.2</version>
 </dependency>
 ~~~
 
