@@ -11,7 +11,7 @@ Because of these goals, there is a lot of room for Java niceties (enums, encapsu
 which are intentionally avoided. These can be applied by wrapping the raw API,
 but it is outside the scope of this project.
 
-                          
+
 
 ## How to use it
 
@@ -20,8 +20,8 @@ Use Maven:
 ~~~xml
 <dependency>
     <groupId>io.github.libsdl4j</groupId>
-    <artifactId>libsdlj4</artifactId>
-    <version>2.26.4-1.2</version>
+    <artifactId>libsdl4j</artifactId>
+    <version>2.26.5-1.2</version>
 </dependency>
 ~~~
 
@@ -29,15 +29,15 @@ or Gradle:
 
 ~~~kotlin
 dependencies {
-    implementation("io.github.libsdl4j:libsdl4j:2.26.3-1.2")
+    implementation("io.github.libsdl4j:libsdl4j:2.26.5-1.2")
 }
 ~~~
 
-The library binary and source code is deployed to 
+The library binary and source code is deployed to
 [Maven Central](https://repo1.maven.org/maven2/io/github/libsdl4j/)
 from where Maven and Gradle download it.
- 
- 
+
+
 
 ## Sample demo program
 
@@ -45,19 +45,21 @@ If you have LibSDL4J set up as a dependency of your project,
 you can try to a sample program:
 
 ~~~
+import io.github.libsdl4j.api.event.SDL_Event;
 import io.github.libsdl4j.api.render.SDL_Renderer;
 import io.github.libsdl4j.api.video.SDL_Window;
 
 import static io.github.libsdl4j.api.Sdl.SDL_Init;
+import static io.github.libsdl4j.api.Sdl.SDL_Quit;
 import static io.github.libsdl4j.api.SdlSubSystemConst.SDL_INIT_EVERYTHING;
 import static io.github.libsdl4j.api.error.SdlError.SDL_GetError;
+import static io.github.libsdl4j.api.event.SDL_EventType.*;
+import static io.github.libsdl4j.api.event.SdlEvents.SDL_PollEvent;
+import static io.github.libsdl4j.api.keycode.SDL_Keycode.SDLK_SPACE;
 import static io.github.libsdl4j.api.render.SDL_RendererFlags.SDL_RENDERER_ACCELERATED;
-import static io.github.libsdl4j.api.render.SdlRender.SDL_CreateRenderer;
-import static io.github.libsdl4j.api.render.SdlRender.SDL_RenderClear;
-import static io.github.libsdl4j.api.render.SdlRender.SDL_RenderPresent;
-import static io.github.libsdl4j.api.render.SdlRender.SDL_SetRenderDrawColor;
-import static io.github.libsdl4j.api.timer.SdlTimer.SDL_Delay;
+import static io.github.libsdl4j.api.render.SdlRender.*;
 import static io.github.libsdl4j.api.video.SDL_WindowFlags.SDL_WINDOW_RESIZABLE;
+import static io.github.libsdl4j.api.video.SDL_WindowFlags.SDL_WINDOW_SHOWN;
 import static io.github.libsdl4j.api.video.SdlVideo.SDL_CreateWindow;
 import static io.github.libsdl4j.api.video.SdlVideoConst.SDL_WINDOWPOS_CENTERED;
 
@@ -71,7 +73,7 @@ public class Demo {
         }
 
         // Create and init the window
-        SDL_Window window = SDL_CreateWindow("Demo SDL2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, SDL_WINDOW_RESIZABLE);
+        SDL_Window window = SDL_CreateWindow("Demo SDL2", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
         if (window == null) {
             throw new IllegalStateException("Unable to create SDL window: " + SDL_GetError());
         }
@@ -91,12 +93,38 @@ public class Demo {
         // Render the changes above ( which up until now had just happened behind the scenes )
         SDL_RenderPresent(renderer);
 
-        // Pause program so that the window doesn't disappear at once.
-        // This will pause for 4000 milliseconds which is the same as 4 seconds
-        SDL_Delay(4000);
+        // Start an event loop and react to events
+        SDL_Event evt = new SDL_Event();
+        boolean shouldRun = true;
+        while (shouldRun) {
+            while (SDL_PollEvent(evt) != 0) {
+                switch (evt.type) {
+                    case SDL_QUIT:
+                        shouldRun = false;
+                        break;
+                    case SDL_KEYDOWN:
+                        if (evt.key.keysym.sym == SDLK_SPACE) {
+                            System.out.println("SPACE pressed");
+                        }
+                        break;
+                    case SDL_WINDOWEVENT:
+                        System.out.println("Window event " + evt.window.event);
+                    default:
+                        break;
+                }
+            }
+        }
+
+        SDL_Quit();
     }
 }
 ~~~
+
+If you are on macOS, you need to run the application with JVM option `-XstartOnFirstThread`.<br/>
+Such as `java -classpath $YOUR_CLASSPATH -XstartOnFirstThread Demo`
+
+
+### Next steps
 
 You should be able to follow any C-style tutorial,
 just tweak it very slightly to make it working in Java.
@@ -117,21 +145,21 @@ Each SDL C source file maps to a separate package in the API.
 In each package, there is a Sdl*Name* class with `public static native` functions
 corresponding to the SDL exported C functions.
 
-If there are structs, enums, unions or other data types defined in the 
+If there are structs, enums, unions or other data types defined in the
 C source file, corresponding Java classes are available.
 
 If there are global constants in the C source file,
 there is also an Sdl*Name*Const file present with the constants.
 
-There is a reason to put the constants into a separate class rather than keeping it 
+There is a reason to put the constants into a separate class rather than keeping it
 within the Sdl*Name* class:
 The first time you use any symbol from a Sdl*Name* class in a client code,
-JNA loads the DLL/so into memory and maps 
+JNA loads the DLL/so into memory and maps
 the Java functions to it, which is a costly operation.
 It is not necessary for accessing constants, because they are mere values.
-Therefore, they are placed in a separate class to avoid triggering 
+Therefore, they are placed in a separate class to avoid triggering
 premature DLL/so loading.
-       
+
 
 ### SDL Structures
 
@@ -154,10 +182,10 @@ However, for the sake of efficiency, there are sometimes overloaded methods pres
 
 The Java bindings will lookup the SDL2 dynamic library in the following locations
 in order of precedence (algorithm built into `NativeLibrary.loadLibrary()`):
- 
-1. Any custom paths set by calling: `NativeLibrary.addSearchPath("SDL2", CUSTOM_PATHS)`.  
+
+1. Any custom paths set by calling: `NativeLibrary.addSearchPath("SDL2", CUSTOM_PATHS)`.
 2. Java Web Start (if used).
-3. Any custom paths set to `jna.library.path` system property 
+3. Any custom paths set to `jna.library.path` system property
    (`System.setProperty("jna.library.path", "CUSTOM_PATHS");` in the Java code
    or `-Djna.library.path=CUSTOM_PATHS` Java command line parameter).
 4. Any OS standard library paths (`/usr/lib/`, `LD_LIBRARY_PATH` etc.)
@@ -175,8 +203,8 @@ If you find it difficult to make it working, the process of searching for the dl
 Note: If you set system property `jna.debug_load` to `true`,
 the minimum threshold level will become `INFO`, and thus will likely be logged by default to the console.
 
-              
-        
+
+
 ### Embedded SDL2 libraries for Windows and Linux
 
 Windows DLLs are the official ones from SDL2 distribution.
@@ -188,7 +216,7 @@ The compilation went on a newly installed and updated OS
 (`sudo apt-get update`, `sudo apt-get upgrade`)
 with all recommended build dependencies installed
 (see SDL2's [README-linux.md](https://github.com/libsdl-org/SDL/blob/main/docs/README-linux.md#user-content-build-dependencies))
-and with default `./configure` (<https://wiki.libsdl.org/Installation#cb1>). 
+and with default `./configure` (<https://wiki.libsdl.org/Installation#cb1>).
 
 On Linux, the embedded library might be missing support for a specific library or framework you have on your computer,
 so it is advised to have the libSDL2 installed as a separate package. Watch out for the library version, though.
@@ -197,7 +225,7 @@ The embedded libraries should be fine in most cases.
 On macOS, it is recommended to distribute the libSDL2 library
 as a framework bundled in your `.app` package.
 
-                   
+
 
 ## What Is Not Implemented by LibSDL4J
 
@@ -222,7 +250,7 @@ Amongst the omitted things are:
     class for each OS, but many times platform specific
     header files and libraries would also need to be loaded,
     so it was left out of the scope of the project.
-* **SDL_opengl_\*.h**, **SDL_opengles_\*.h**, **SDL_egl.h** 
+* **SDL_opengl_\*.h**, **SDL_opengles_\*.h**, **SDL_egl.h**
 
 
 
