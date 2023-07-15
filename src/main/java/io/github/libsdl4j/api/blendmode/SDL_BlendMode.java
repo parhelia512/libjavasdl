@@ -46,7 +46,7 @@ public final class SDL_BlendMode implements JnaEnum {
      * color multiply
      * <pre>
      * dstRGB = (srcRGB * dstRGB) + (dstRGB * (1-srcA))
-     * dstA = (srcA * dstA) + (dstA * (1-srcA))
+     * dstA = dstA
      * </pre>
      */
     public static final int SDL_BLENDMODE_MUL = 0x00000008;

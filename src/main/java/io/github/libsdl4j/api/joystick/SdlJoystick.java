@@ -210,13 +210,12 @@ public final class SdlJoystick {
     /**
      * Get the instance ID of a joystick.
      *
-     * <p>This can be called before any joysticks are opened. If the index is out of
-     * range, this function will return -1.</p>
+     * <p>This can be called before any joysticks are opened.</p>
      *
      * @param deviceIndex the index of the joystick to query (the N'th joystick
      *                    on the system
      * @return the instance id of the selected joystick. If called on an invalid
-     * index, this function returns zero
+     * index, this function returns -1
      * @since This function is available since SDL 2.0.6.
      */
     public static native SDL_JoystickID SDL_JoystickGetDeviceInstanceID(

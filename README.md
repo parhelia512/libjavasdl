@@ -21,7 +21,7 @@ Use Maven:
 <dependency>
     <groupId>io.github.libsdl4j</groupId>
     <artifactId>libsdl4j</artifactId>
-    <version>2.26.5-1.2</version>
+    <version>2.28.0-1.3</version>
 </dependency>
 ~~~
 
@@ -29,7 +29,7 @@ or Gradle:
 
 ~~~kotlin
 dependencies {
-    implementation("io.github.libsdl4j:libsdl4j:2.26.5-1.2")
+    implementation("io.github.libsdl4j:libsdl4j:2.28.0-1.3")
 }
 ~~~
 
