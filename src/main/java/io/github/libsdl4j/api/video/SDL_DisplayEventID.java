@@ -19,6 +19,9 @@ public final class SDL_DisplayEventID implements JnaEnum {
     /** Display has been removed from the system */
     public static final int SDL_DISPLAYEVENT_DISCONNECTED = 3;
 
+    /** Display has changed position */
+    public static final int SDL_DISPLAYEVENT_MOVED = 4;
+
     // TODO: Generate public static String toString(int value)
 
     private SDL_DisplayEventID() {

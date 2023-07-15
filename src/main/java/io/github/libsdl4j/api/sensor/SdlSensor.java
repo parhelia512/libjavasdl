@@ -21,7 +21,7 @@ import org.intellij.lang.annotations.MagicConstant;
  * <p>The accelerometer returns the current acceleration in SI meters per
  * second squared. This measurement includes the force of gravity, so
  * a device at rest will have an value of {@link SdlSensorConst#SDL_STANDARD_GRAVITY SDL_STANDARD_GRAVITY} away
- * from the center of the earth.</p>
+ * from the center of the earth, which is a positive Y value.</p>
  *
  * <ul>
  *     <li>values[0]: Acceleration on the x axis</li>

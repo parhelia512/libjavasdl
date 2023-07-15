@@ -30,22 +30,22 @@ public final class SDL_GameControllerButton implements JnaEnum {
     public static final int SDL_CONTROLLER_BUTTON_MISC1 = 15;
 
     /**
-     * Xbox Elite paddle P1
+     * Xbox Elite paddle P1 (upper left, facing the back)
      */
     public static final int SDL_CONTROLLER_BUTTON_PADDLE1 = 16;
 
     /**
-     * Xbox Elite paddle P3
+     * Xbox Elite paddle P3 (upper right, facing the back)
      */
     public static final int SDL_CONTROLLER_BUTTON_PADDLE2 = 17;
 
     /**
-     * Xbox Elite paddle P2
+     * Xbox Elite paddle P2 (lower left, facing the back)
      */
     public static final int SDL_CONTROLLER_BUTTON_PADDLE3 = 18;
 
     /**
-     * Xbox Elite paddle P4
+     * Xbox Elite paddle P4 (lower right, facing the back)
      */
     public static final int SDL_CONTROLLER_BUTTON_PADDLE4 = 19;
 

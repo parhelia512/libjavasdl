@@ -14,7 +14,7 @@ import static io.github.libsdl4j.api.scancode.SDL_Scancode.*;
  * an SDLK_* constant for those keys that do not generate characters.</p>
  *
  * <p>A special exception is the number keys at the top of the keyboard which
- * always map to SDLK_0...SDLK_9, regardless of layout.</p>
+ * map to SDLK_0...SDLK_9 on AZERTY layouts.</p>
  */
 public final class SDL_Keycode implements JnaEnum {
 

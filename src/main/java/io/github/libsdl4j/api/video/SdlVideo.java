@@ -822,13 +822,11 @@ public final class SdlVideo {
      * disabled by the {@code SDL_HINT_VIDEO_HIGHDPI_DISABLED} hint.</p>
      *
      * @param window the window from which the drawable size should be queried
-     * @param w a pointer to variable for storing the width in pixels, may be null
-     * @param h a pointer to variable for storing the height in pixels, may be null
-     *
-     * @since This function is available since SDL 2.26.0.
-     *
+     * @param w      a pointer to variable for storing the width in pixels, may be null
+     * @param h      a pointer to variable for storing the height in pixels, may be null
      * @see #SDL_CreateWindow(String, int, int, int, int, int)
      * @see #SDL_GetWindowSize(SDL_Window, IntByReference, IntByReference)
+     * @since This function is available since SDL 2.26.0.
      */
     public static native void SDL_GetWindowSizeInPixels(
             SDL_Window window,
@@ -1034,6 +1032,16 @@ public final class SdlVideo {
             @MagicConstant(flags = {SDL_WINDOW_FULLSCREEN, SDL_WINDOW_FULLSCREEN_DESKTOP, 0}) int flags);
 
     /**
+     * Return whether the window has a surface associated with it.
+     *
+     * @return true if there is a surface associated with the window, or false otherwise.
+     * @see #SDL_GetWindowSurface(SDL_Window)
+     * @since This function is available since SDL 2.28.0.
+     */
+    public static native boolean SDL_HasWindowSurface(
+            SDL_Window window);
+
+    /**
      * Get the SDL surface associated with the window.
      *
      * <p>A new surface will be created with the optimal format for the window, if
@@ -1050,6 +1058,8 @@ public final class SdlVideo {
      * @param window the window to query
      * @return the surface associated with the window, or null on failure; call
      * SDL_GetError() for more information.
+     * @see #SDL_DestroyWindowSurface(SDL_Window)
+     * @see #SDL_HasWindowSurface(SDL_Window)
      * @see #SDL_UpdateWindowSurface(SDL_Window)
      * @see #SDL_UpdateWindowSurfaceRects(SDL_Window, ContiguousArrayList)
      * @since This function is available since SDL 2.0.0.
@@ -1087,7 +1097,7 @@ public final class SdlVideo {
      *
      * @param window the window to update
      * @param rects  a {@link ContiguousArrayList} of SDL_Rect structures representing areas of the
-     *               surface to copy
+     *               surface to copy, in pixels
      * @return 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
      * @see #SDL_GetWindowSurface(SDL_Window)
@@ -1113,7 +1123,7 @@ public final class SdlVideo {
      *
      * @param window   the window to update
      * @param rects    an array of SDL_Rect structures representing areas of the
-     *                 surface to copy
+     *                 surface to copy, in pixels
      * @param numrects the number of rectangles
      * @return 0 on success or a negative error code on failure; call
      * SDL_GetError() for more information.
@@ -1125,6 +1135,21 @@ public final class SdlVideo {
             SDL_Window window,
             Pointer rects,
             int numrects);
+
+    /**
+     * Destroy the surface associated with the window.
+     *
+     * @param window the window to update
+     * @return 0 on success or a negative error code on failure; call
+     *         SDL_GetError() for more information.
+     *
+     * @since This function is available since SDL 2.28.0.
+     *
+     * @see #SDL_GetWindowSurface(SDL_Window)
+     * @see #SDL_HasWindowSurface(SDL_Window)
+     */
+    public static native int SDL_DestroyWindowSurface(
+            SDL_Window window);
 
     /**
      * Set a window's input grab mode.

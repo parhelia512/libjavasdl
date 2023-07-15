@@ -154,13 +154,9 @@ public final class SdlMouse {
     /**
      * Set relative mouse mode.
      *
-     * <p>While the mouse is in relative mode, the cursor is hidden, and the driver
-     * will try to report continuous motion in the current window. Only relative
-     * motion events will be delivered, the mouse position will not change.</p>
-     *
-     * <p>Note that this function will not be able to provide continuous relative
-     * motion when used over Microsoft Remote Desktop, instead motion is limited
-     * to the bounds of the screen.</p>
+     * <p>While the mouse is in relative mode, the cursor is hidden, the mouse
+     * position is constrained to the window, and SDL will report continuous
+     * relative mouse motion even if the mouse is at the edge of the window.</p>
      *
      * <p>This function will flush any pending mouse motion.</p>
      *
@@ -336,6 +332,9 @@ public final class SdlMouse {
 
     /**
      * Get the default cursor.
+     *
+     * <p>You do not have to call SDL_FreeCursor() on the return value, but it is
+     * safe to do so.</p>
      *
      * @return the default cursor on success or null on failure.
      * @see #SDL_CreateSystemCursor(int)

@@ -2044,6 +2044,11 @@ public final class SdlRender {
      * starting each new frame's drawing, even if you plan to overwrite every
      * pixel.</p>
      *
+     * <p>You may only call this function on the main thread. If this
+     * happens to work on a background thread on any given platform
+     * or backend, it's purely by luck and you should not rely on it
+     * to work next time.</p>
+     *
      * @param renderer the rendering context
      * @see #SDL_RenderClear(SDL_Renderer)
      * @see #SDL_RenderDrawLine(SDL_Renderer, int, int, int, int)
